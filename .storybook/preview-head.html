@@ -1,0 +1,54 @@
+<!-- 
+  Bootstrap Icons CDN
+  Full library: https://icons.getbootstrap.com/ (2000+ icons)
+  Used by: src/components/Icon/Icon.jsx - BootstrapIcon component
+-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+<!-- Google Fonts for GOV.cz Design System -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- 
+  Storybook Theme Styles
+  Forces consistent background regardless of browser/OS dark mode settings.
+  Ready for dark mode implementation.
+-->
+<style>
+  /* Force color scheme to prevent browser dark mode from affecting content */
+  :root {
+    color-scheme: light;
+  }
+  
+  /* When dark mode is enabled via theme switcher */
+  [data-theme="dark"] {
+    color-scheme: dark;
+  }
+  
+  /* Storybook iframe body reset */
+  body {
+    background-color: transparent !important;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Theme container base styles */
+  .storybook-theme {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    box-sizing: border-box;
+  }
+  
+  /* Light theme (default) */
+  .storybook-theme--light {
+    background-color: #ffffff;
+    color: #262626;
+  }
+  
+  /* Dark theme (ready for future use) */
+  .storybook-theme--dark {
+    background-color: #262626;
+    color: #e7e7e7;
+  }
+</style>

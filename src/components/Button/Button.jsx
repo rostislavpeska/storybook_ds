@@ -2,40 +2,76 @@ import PropTypes from 'prop-types';
 import './Button.css';
 
 /**
- * Primary UI component for user interaction
+ * GOV.cz Button Component
+ * 
+ * A versatile button component following the GOV.cz design system.
+ * Supports multiple colors, types, sizes, and states.
+ * 
+ * @example
+ * // Solid primary button (default)
+ * <Button>Click me</Button>
+ * 
+ * // Outlined secondary button
+ * <Button color="secondary" type="outlined">Secondary</Button>
+ * 
+ * // Large success button with icons
+ * <Button color="success" size="l" leftIcon={<Icon name="check" />}>Confirm</Button>
  */
 export const Button = ({
-  variant = 'primary',
-  size = 'medium',
+  color = 'primary',
+  type = 'solid',
+  size = 'm',
   disabled = false,
   children,
+  leftIcon,
+  rightIcon,
   onClick,
+  className = '',
   ...props
 }) => {
+  const classNames = [
+    'gov-button',
+    `gov-button--${color}`,
+    `gov-button--${type}`,
+    `gov-button--${size}`,
+    disabled && 'gov-button--disabled',
+    className,
+  ].filter(Boolean).join(' ');
+
   return (
     <button
       type="button"
-      className={`btn btn--${variant} btn--${size}`}
+      className={classNames}
       disabled={disabled}
       onClick={onClick}
       {...props}
     >
-      {children}
+      {leftIcon && <span className="gov-button__icon gov-button__icon--left">{leftIcon}</span>}
+      {children && <span className="gov-button__label">{children}</span>}
+      {rightIcon && <span className="gov-button__icon gov-button__icon--right">{rightIcon}</span>}
     </button>
   );
 };
 
 Button.propTypes = {
-  /** Visual style variant */
-  variant: PropTypes.oneOf(['primary', 'secondary', 'ghost', 'danger']),
-  /** Size of the button */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /** Color variant - matches GOV.cz semantic colors */
+  color: PropTypes.oneOf(['primary', 'secondary', 'neutral', 'error', 'warning', 'success']),
+  /** Button type - visual style */
+  type: PropTypes.oneOf(['solid', 'outlined', 'base', 'link']),
+  /** Size variant - matches GOV.cz component height tokens */
+  size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
   /** Disabled state */
   disabled: PropTypes.bool,
-  /** Button contents */
-  children: PropTypes.node.isRequired,
+  /** Button text content */
+  children: PropTypes.node,
+  /** Icon to display on the left side */
+  leftIcon: PropTypes.node,
+  /** Icon to display on the right side */
+  rightIcon: PropTypes.node,
   /** Click handler */
   onClick: PropTypes.func,
+  /** Additional CSS class names */
+  className: PropTypes.string,
 };
 
-
+export default Button;

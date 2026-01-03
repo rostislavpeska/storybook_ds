@@ -1,0 +1,173 @@
+/* ========================================
+   Typography Tokens Component
+   GOV.cz Design System
+   ======================================== */
+
+.typography-tokens {
+  font-family: var(--font-primary, 'DM Sans', system-ui, sans-serif);
+}
+
+.typography-tokens__title {
+  font-size: var(--gov-font-headline-l, 32px);
+  font-weight: 700;
+  color: var(--gov-text-primary, #262626);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.typography-tokens__description {
+  font-size: var(--gov-font-body-m, 16px);
+  color: var(--gov-text-secondary, #5d5d5d);
+  margin: 0 0 2rem 0;
+  max-width: 60ch;
+  line-height: 1.6;
+}
+
+.typography-tokens__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ----------------------------------------
+   Type Specimen
+   ---------------------------------------- */
+
+.type-specimen {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--gov-bg-secondary, #f6f6f6);
+  border-radius: var(--gov-radius-m, 8px);
+  border: 1px solid var(--gov-border-primary, #e7e7e7);
+  transition: all 0.2s ease;
+}
+
+.type-specimen:hover {
+  border-color: var(--gov-primary-400, #599bd7);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.type-specimen__preview {
+  color: var(--gov-text-primary, #262626);
+  word-break: break-word;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--gov-border-primary, #e7e7e7);
+}
+
+.type-specimen__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.type-specimen__name {
+  font-size: var(--gov-font-body-l, 18px);
+  font-weight: 600;
+  color: var(--gov-text-primary, #262626);
+}
+
+.type-specimen__var {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: var(--gov-font-body-s, 14px);
+  color: var(--gov-primary-600, #2362a2);
+  background: var(--gov-primary-50, #f3f7fc);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--gov-radius-xs, 4px);
+  display: inline-block;
+  width: fit-content;
+}
+
+.type-specimen__details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: var(--gov-font-body-s, 14px);
+  color: var(--gov-text-tertiary, #6d6d6d);
+}
+
+.type-specimen__details span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.type-specimen__size {
+  font-weight: 600;
+  color: var(--gov-text-secondary, #5d5d5d);
+  background: var(--gov-neutral-100, #e7e7e7);
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--gov-radius-xs, 4px);
+}
+
+.type-specimen__usage {
+  font-size: var(--gov-font-body-s, 14px);
+  color: var(--gov-text-secondary, #5d5d5d);
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+
+/* ----------------------------------------
+   Dark Mode Support
+   ---------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+  .type-specimen {
+    background: var(--gov-bg-secondary, #1a1a1a);
+    border-color: var(--gov-border-primary, #3b3b3b);
+  }
+
+  .type-specimen:hover {
+    border-color: var(--gov-primary-400, #599bd7);
+  }
+
+  .type-specimen__preview {
+    border-bottom-color: var(--gov-border-primary, #3b3b3b);
+  }
+
+  .type-specimen__var {
+    background: var(--gov-primary-950, #13263e);
+    color: var(--gov-primary-300, #93bde6);
+  }
+
+  .type-specimen__size {
+    background: var(--gov-neutral-800, #454545);
+    color: var(--gov-neutral-100, #e7e7e7);
+  }
+}
+
+/* Storybook dark background override */
+.sb-main-padded.sb-show-main,
+[data-theme="dark"] .typography-tokens,
+.docs-story [data-theme="dark"] .typography-tokens {
+  --gov-text-primary: var(--gov-neutral-50, #f6f6f6);
+  --gov-text-secondary: var(--gov-neutral-200, #d1d1d1);
+  --gov-text-tertiary: var(--gov-neutral-300, #b0b0b0);
+  --gov-bg-secondary: #1a1a2e;
+  --gov-border-primary: #3b3b3b;
+}
+
+/* ----------------------------------------
+   Responsive
+   ---------------------------------------- */
+
+@media (min-width: 768px) {
+  .type-specimen {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+
+  .type-specimen__preview {
+    border-bottom: none;
+    border-right: 1px solid var(--gov-border-primary, #e7e7e7);
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .type-specimen {
+    grid-template-columns: 3fr 1fr;
+  }
+}
+
