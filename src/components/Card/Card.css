@@ -1,0 +1,117 @@
+/* ========================================
+   Card Component Styles
+   ======================================== */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+  font-family: var(--font-family);
+  border: none;
+  cursor: default;
+}
+
+.card--clickable {
+  cursor: pointer;
+}
+
+.card--clickable:hover {
+  transform: translateY(-4px);
+}
+
+/* Card Variants */
+.card--default {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.card--default:hover {
+  border-color: var(--color-border-hover);
+}
+
+.card--elevated {
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-lg);
+}
+
+.card--elevated:hover {
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.card--outlined {
+  background: transparent;
+  border: 2px solid var(--color-border);
+}
+
+.card--outlined:hover {
+  border-color: var(--color-accent-secondary);
+}
+
+.card--gradient {
+  background: var(--color-bg-secondary);
+  position: relative;
+}
+
+.card--gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: var(--color-accent-gradient);
+  border-radius: var(--radius-lg);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Card Image */
+.card__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.card--clickable:hover .card__image img {
+  transform: scale(1.05);
+}
+
+/* Card Content */
+.card__content {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.card__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+  margin: 0;
+}
+
+.card__description {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+

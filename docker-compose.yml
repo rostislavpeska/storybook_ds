@@ -1,0 +1,38 @@
+services:
+  # Development mode - with hot reload
+  storybook-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "6006:6006"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    profiles:
+      - dev
+
+  # Production mode - static build with nginx
+  storybook-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - "80:80"
+    profiles:
+      - prod
+
+  # Build only - outputs static files
+  storybook-build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    volumes:
+      - ./storybook-static:/app/storybook-static
+    profiles:
+      - build
+

@@ -1,0 +1,24 @@
+# ========================================
+# Storybook Development Dockerfile
+# Use this for local development with hot-reload
+# ========================================
+
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy source files
+COPY . .
+
+# Expose Storybook port
+EXPOSE 6006
+
+# Run Storybook in development mode (--no-open prevents browser auto-open crash in container)
+CMD ["npm", "run", "storybook", "--", "--host", "0.0.0.0", "--no-open"]
+
