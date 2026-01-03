@@ -50,3 +50,4 @@ Card.propTypes = {
   onClick: PropTypes.func,
 };
 
+
