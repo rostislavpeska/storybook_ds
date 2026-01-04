@@ -258,3 +258,4 @@ AccessibilityInfo.propTypes = {
 
 export default TypeScale;
 
+
