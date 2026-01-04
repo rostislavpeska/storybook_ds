@@ -26,7 +26,7 @@ Build a **GOV.cz Form Application** with:
 
 | Round | Approach | Status | Start Time | End Time | Duration |
 |-------|----------|--------|------------|----------|----------|
-| **A** | npm Packages | 🔄 Restarting | - | - | - |
+| **A** | npm Packages | ✅ Complete | TBD | TBD | TBD |
 | **B** | Figma + Custom | ⏳ Waiting | - | - | - |
 | **C** | Storybook Copy | ⏳ Waiting | - | - | - |
 
@@ -44,16 +44,22 @@ Build a **GOV.cz Form Application** with:
 | Functionality | 20% |
 | Developer experience | 10% |
 
-### Round A: npm Packages
+### Round A: npm Packages ❌ FAILED - NON-VIABLE
 
 | Criterion | Score (1-10) | Weighted | Notes |
 |-----------|--------------|----------|-------|
-| Time | - | - | |
-| Visual | - | - | |
-| Code | - | - | |
-| Function | - | - | |
-| DX | - | - | |
-| **TOTAL** | - | **-/100** | |
+| Visual | 0 | 0/25 | **NO frontend produced** |
+| Code | 2 | 4/20 | Backend only, no components |
+| Function | 3 | 6/20 | Default HTML elements |
+| Completeness | 1 | 2.5/25 | Missing entire design system |
+| DX | 0 | 0/10 | Failed completely |
+| **TOTAL** | - | **12.5/100** | ❌ NON-VIABLE |
+
+## 🚨 VERDICT: Can bot use npm packages to produce clean frontend?
+
+# ❌ NO
+
+**Result**: Backend + default browser components. NO actual GOV.cz design system. Packages installed but NEVER used.
 
 ### Round B: Figma + Custom
 
