@@ -27,6 +27,7 @@ export const Datepicker = ({
   value: controlledValue,
   defaultValue,
   placeholder = 'dd.mm.rrrr',
+  autoOpenOnFocus = false,
   disabled = false,
   invalid = false,
   invalidMessage,
@@ -114,19 +115,82 @@ export const Datepicker = ({
     inputRef.current?.focus();
   };
 
-  // Handle input text change
-  const handleInputChange = (e) => {
-    const text = e.target.value;
-    setInputText(text);
+  // Auto-format input as user types (dd.mm.rrrr)
+  const formatInputAsTyped = (rawValue, previousValue) => {
+    // Remove all non-numeric characters
+    let digits = rawValue.replace(/\D/g, '');
     
-    const parsed = parseDate(text);
-    if (parsed) {
-      if (!isControlled) {
-        setInternalValue(parsed);
+    // Limit to 8 digits (ddmmyyyy)
+    digits = digits.slice(0, 8);
+    
+    // Build formatted string
+    let formatted = '';
+    
+    if (digits.length > 0) {
+      // Day (first 2 digits)
+      formatted = digits.slice(0, 2);
+      
+      if (digits.length >= 2) {
+        formatted += '.';
       }
-      onChange?.(parsed);
-      setViewDate(parsed);
+      
+      if (digits.length > 2) {
+        // Month (next 2 digits)
+        formatted += digits.slice(2, 4);
+        
+        if (digits.length >= 4) {
+          formatted += '.';
+        }
+        
+        if (digits.length > 4) {
+          // Year (remaining digits)
+          formatted += digits.slice(4, 8);
+        }
+      }
     }
+    
+    return formatted;
+  };
+
+  // Handle input text change with auto-formatting
+  const handleInputChange = (e) => {
+    const rawValue = e.target.value;
+    const cursorPos = e.target.selectionStart;
+    
+    // Check if user is deleting (backspace)
+    const isDeleting = rawValue.length < inputText.length;
+    
+    // Format the input
+    const formatted = formatInputAsTyped(rawValue, inputText);
+    setInputText(formatted);
+    
+    // Calculate new cursor position
+    let newCursorPos = cursorPos;
+    if (!isDeleting) {
+      // If we just auto-inserted a dot, move cursor past it
+      if (formatted.length > rawValue.length) {
+        newCursorPos = formatted.length;
+      }
+    }
+    
+    // Try to parse complete date
+    if (formatted.length === 10) {
+      const parsed = parseDate(formatted);
+      if (parsed) {
+        if (!isControlled) {
+          setInternalValue(parsed);
+        }
+        onChange?.(parsed);
+        setViewDate(parsed);
+      }
+    }
+    
+    // Set cursor position after React re-render
+    requestAnimationFrame(() => {
+      if (inputRef.current) {
+        inputRef.current.setSelectionRange(newCursorPos, newCursorPos);
+      }
+    });
   };
 
   // Handle input blur - validate and format
@@ -134,10 +198,23 @@ export const Datepicker = ({
     const parsed = parseDate(inputText);
     if (parsed) {
       setInputText(formatDate(parsed));
-    } else if (inputText && !value) {
-      setInputText('');
-    } else {
-      setInputText(formatDate(value));
+      if (!isControlled) {
+        setInternalValue(parsed);
+      }
+      onChange?.(parsed);
+    } else if (inputText && inputText.length > 0 && inputText.length < 10) {
+      // Incomplete date - clear or show error
+      if (!value) {
+        setInputText('');
+      } else {
+        setInputText(formatDate(value));
+      }
+    } else if (!inputText) {
+      // Empty input - clear value
+      if (!isControlled && value) {
+        setInternalValue(null);
+        onChange?.(null);
+      }
     }
     onBlur?.(e);
   };
@@ -150,6 +227,100 @@ export const Datepicker = ({
         setViewDate(value || new Date());
         setFocusedDate(value || new Date());
       }
+    }
+  };
+
+  // Handle input focus
+  const handleInputFocus = (e) => {
+    if (autoOpenOnFocus && !disabled) {
+      setIsOpen(true);
+      setViewDate(value || new Date());
+      setFocusedDate(value || new Date());
+    }
+    onFocus?.(e);
+  };
+
+  // Handle input keydown for better UX
+  const handleInputKeyDown = (e) => {
+    // When calendar is open, handle navigation
+    if (isOpen) {
+      const current = focusedDate || value || new Date();
+      let newDate = new Date(current);
+
+      switch (e.key) {
+        case 'ArrowLeft':
+          e.preventDefault();
+          newDate.setDate(newDate.getDate() - 1);
+          setFocusedDate(newDate);
+          if (newDate.getMonth() !== viewDate.getMonth()) {
+            setViewDate(newDate);
+          }
+          return;
+        case 'ArrowRight':
+          e.preventDefault();
+          newDate.setDate(newDate.getDate() + 1);
+          setFocusedDate(newDate);
+          if (newDate.getMonth() !== viewDate.getMonth()) {
+            setViewDate(newDate);
+          }
+          return;
+        case 'ArrowUp':
+          e.preventDefault();
+          newDate.setDate(newDate.getDate() - 7);
+          setFocusedDate(newDate);
+          if (newDate.getMonth() !== viewDate.getMonth()) {
+            setViewDate(newDate);
+          }
+          return;
+        case 'ArrowDown':
+          e.preventDefault();
+          newDate.setDate(newDate.getDate() + 7);
+          setFocusedDate(newDate);
+          if (newDate.getMonth() !== viewDate.getMonth()) {
+            setViewDate(newDate);
+          }
+          return;
+        case 'Enter':
+        case ' ':
+          e.preventDefault();
+          if (!isDateDisabled(current)) {
+            handleDateChange(current);
+          }
+          return;
+        case 'Escape':
+          e.preventDefault();
+          setIsOpen(false);
+          return;
+        default:
+          break;
+      }
+    }
+    
+    // When calendar is closed
+    // Allow: backspace, delete, tab, escape, arrows (for text cursor)
+    const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape', 'ArrowLeft', 'ArrowRight', 'Home', 'End'];
+    
+    if (allowedKeys.includes(e.key)) {
+      return;
+    }
+    
+    // Arrow down opens calendar
+    if (e.key === 'ArrowDown' && !isOpen) {
+      e.preventDefault();
+      setIsOpen(true);
+      setViewDate(value || new Date());
+      setFocusedDate(value || new Date());
+      return;
+    }
+    
+    // Allow Ctrl/Cmd + A, C, V, X
+    if ((e.ctrlKey || e.metaKey) && ['a', 'c', 'v', 'x'].includes(e.key.toLowerCase())) {
+      return;
+    }
+    
+    // Block non-numeric input
+    if (!/^\d$/.test(e.key)) {
+      e.preventDefault();
     }
   };
 
@@ -251,60 +422,6 @@ export const Datepicker = ({
     handleDateChange(today);
   };
 
-  // Keyboard navigation
-  const handleKeyDown = (e) => {
-    if (!isOpen) {
-      if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        setIsOpen(true);
-        setViewDate(value || new Date());
-        setFocusedDate(value || new Date());
-      }
-      return;
-    }
-
-    const current = focusedDate || value || new Date();
-    let newDate = new Date(current);
-
-    switch (e.key) {
-      case 'ArrowLeft':
-        e.preventDefault();
-        newDate.setDate(newDate.getDate() - 1);
-        break;
-      case 'ArrowRight':
-        e.preventDefault();
-        newDate.setDate(newDate.getDate() + 1);
-        break;
-      case 'ArrowUp':
-        e.preventDefault();
-        newDate.setDate(newDate.getDate() - 7);
-        break;
-      case 'ArrowDown':
-        e.preventDefault();
-        newDate.setDate(newDate.getDate() + 7);
-        break;
-      case 'Enter':
-      case ' ':
-        e.preventDefault();
-        if (!isDateDisabled(current)) {
-          handleDateChange(current);
-        }
-        return;
-      case 'Escape':
-        e.preventDefault();
-        setIsOpen(false);
-        inputRef.current?.focus();
-        return;
-      default:
-        return;
-    }
-
-    setFocusedDate(newDate);
-    if (newDate.getMonth() !== viewDate.getMonth()) {
-      setViewDate(newDate);
-    }
-  };
-
   const classNames = [
     'gov-datepicker',
     disabled && 'gov-datepicker--disabled',
@@ -333,9 +450,9 @@ export const Datepicker = ({
           disabled={disabled}
           required={required}
           onChange={handleInputChange}
-          onFocus={onFocus}
+          onFocus={handleInputFocus}
           onBlur={handleInputBlur}
-          onKeyDown={handleKeyDown}
+          onKeyDown={handleInputKeyDown}
           aria-invalid={invalid || undefined}
           aria-describedby={
             [helperText && `${id}-helper`, invalid && invalidMessage && `${id}-error`]
@@ -345,6 +462,7 @@ export const Datepicker = ({
           aria-expanded={isOpen}
           className="gov-datepicker__input"
           autoComplete="off"
+          inputMode="numeric"
           {...props}
         />
         <button
@@ -522,6 +640,8 @@ Datepicker.propTypes = {
   minDate: PropTypes.instanceOf(Date),
   /** Maximum selectable date */
   maxDate: PropTypes.instanceOf(Date),
+  /** Auto-open calendar on input focus */
+  autoOpenOnFocus: PropTypes.bool,
   /** Called when date changes */
   onChange: PropTypes.func,
   /** Called on input focus */
