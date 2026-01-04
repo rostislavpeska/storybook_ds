@@ -245,7 +245,72 @@ src/components/Card/
 
 **Dark Mode Ready**: Styles prepared with `[data-theme="dark"]` selectors.
 
-### 9. Typography Tokens Component
+### 9. Checkbox Component Implementation
+
+Created `Checkbox` component based on Figma design (gov-materials-4-2-5, node: 1113:76953):
+
+**Component Structure**:
+```
+src/components/Checkbox/
+├── index.js              # Barrel export
+├── Checkbox.jsx          # Main component with PropTypes
+├── Checkbox.css          # GOV.cz design token styling
+└── Checkbox.stories.jsx  # 12 comprehensive stories
+```
+
+**Features**:
+| Feature | Description |
+|---------|-------------|
+| **Check States** | Unchecked, Checked, Indeterminate |
+| **Sizes** | Small (s), Medium (m), Large (l) |
+| **Validation** | Default, Disabled, Error states |
+| **Helper Text** | Descriptive text below checkbox |
+| **Error Messages** | Validation feedback with icon |
+| **Accessibility** | ARIA attributes, keyboard navigation |
+
+**Props**:
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | string | - | Label text next to checkbox |
+| `helperText` | string | - | Helper text below |
+| `checked` | boolean | false | Controlled checked state |
+| `indeterminate` | boolean | false | Partial selection state |
+| `disabled` | boolean | false | Disabled state |
+| `error` | boolean | false | Error state |
+| `errorMessage` | string | - | Error message text |
+| `size` | 's' \| 'm' \| 'l' | 'm' | Size variant |
+| `onChange` | function | - | Change handler |
+| `name` | string | - | Input name attribute |
+| `value` | string | - | Input value attribute |
+| `id` | string | auto | Custom ID |
+
+**Stories Created**:
+| Story | Description |
+|-------|-------------|
+| Default | Basic unchecked checkbox |
+| Interactive | Controlled state demo |
+| States | All state combinations |
+| Sizes | Three size variants |
+| WithHelperText | Helper text example |
+| WithError | Error validation |
+| Indeterminate | Parent/child select all |
+| FormGroup | Notification preferences form |
+| TermsExample | Real-world terms validation |
+| DisabledStates | All disabled variants |
+| CompleteMatrix | Full variant matrix table |
+| LongLabels | Multi-line label handling |
+
+**Design Tokens Used**:
+- `--gov-primary-600` (#2362a2) - Checked background
+- `--gov-border-subtle` - Unchecked border
+- `--gov-border-error` - Error state border
+- `--gov-text-error` - Error text color
+- `--gov-focus-600` - Focus ring color
+- `--gov-radius-xs` - Border radius
+
+**Dark Mode Ready**: Styles prepared with `[data-theme="dark"]` selectors.
+
+### 10. Typography Tokens Component
 
 Created `TypographyTokens` component with 5 stories documenting text styles:
 
@@ -461,6 +526,7 @@ The `get_variable_defs` tool returns **variables used in a specific node**, not 
 | ✅ Implement Icon component | Complete (50 icons + Bootstrap Icons) |
 | ✅ Implement Button component | Complete (light mode) |
 | ✅ Implement Card component | Complete (light mode, 15 stories) |
+| ✅ Implement Checkbox component | Complete (light mode, 12 stories) |
 | ⚠️ Align typography with official GOV.cz spec | **Pending** |
 | ⏳ Implement dark mode for components | Future |
 | ⏳ Build more GOV components | Future |
@@ -755,8 +821,8 @@ This experiment successfully demonstrated:
 
 **Total Effort**: ~8 hours  
 **Tokens Generated**: 200+ CSS custom properties  
-**Components Created**: 4 (Button, Card, Icon, ColorTokens)
-**Stories Created**: 60+ total (19 color + 5 typography + 15 card + button + icon stories)
+**Components Created**: 5 (Button, Card, Checkbox, Icon, ColorTokens)
+**Stories Created**: 70+ total (19 color + 5 typography + 15 card + 12 checkbox + button + icon stories)
 
 ---
 
