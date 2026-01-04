@@ -40,7 +40,7 @@
 }
 
 .gov-lang-switcher--toggle:focus {
-  outline: 2px solid var(--gov-focus-base, #284163);
+  outline: 2px solid currentColor;
   outline-offset: 2px;
 }
 
@@ -74,7 +74,7 @@
 }
 
 .gov-lang-switcher__button:focus {
-  outline: 2px solid var(--gov-focus-base, #284163);
+  outline: 2px solid currentColor;
   outline-offset: 2px;
 }
 
@@ -111,7 +111,7 @@
 }
 
 .gov-lang-switcher__trigger:focus {
-  outline: 2px solid var(--gov-focus-base, #284163);
+  outline: 2px solid currentColor;
   outline-offset: 2px;
 }
 

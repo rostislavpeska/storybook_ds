@@ -40,7 +40,7 @@ Government-style header component with logo, navigation, and language switcher.
 import { Header } from '@/components/Header';
 
 <Header
-  logo={{ text: 'GOV.cz', href: '/' }}
+  appName="Můj Portál"
   navigation={[
     { label: 'Služby', href: '/sluzby', active: true },
     { label: 'Životní události', href: '/udalosti' }
@@ -54,6 +54,14 @@ import { Header } from '@/components/Header';
     },
   },
   argTypes: {
+    appName: {
+      control: 'text',
+      description: 'Application name displayed next to the logo',
+    },
+    showLogo: {
+      control: 'boolean',
+      description: 'Show/hide the Czech lion logo',
+    },
     sticky: {
       control: 'boolean',
       description: 'Sticky header that stays on top when scrolling',
@@ -99,13 +107,14 @@ export const Playground = {
     );
   },
   args: {
-    logo: { text: 'GOV.cz', href: '/', ariaLabel: 'Přejít na úvodní stránku' },
+    appName: 'Portál formulářů',
     navigation: [
       { label: 'Služby občanům', href: '/sluzby', active: true },
       { label: 'Životní události', href: '/udalosti' },
       { label: 'Kontakt', href: '/kontakt' },
     ],
     showLanguageSwitcher: true,
+    showLogo: true,
     currentLanguage: 'cs',
     sticky: false,
   },
@@ -117,7 +126,7 @@ export const Playground = {
 
 export const Default = {
   args: {
-    logo: { text: 'GOV.cz', href: '/' },
+    appName: 'Portál',
   },
   parameters: {
     controls: { disable: true },
@@ -126,7 +135,7 @@ export const Default = {
 
 export const WithNavigation = {
   args: {
-    logo: { text: 'GOV.cz Forms', href: '/' },
+    appName: 'Portál formulářů',
     navigation: [
       { label: 'Formuláře', href: '/formulare', active: true },
       { label: 'Služby', href: '/sluzby' },
@@ -157,7 +166,7 @@ export const WithActions = {
     
     return (
       <Header
-        logo={{ text: 'Portál občana', href: '/' }}
+        appName="Portál občana"
         navigation={[
           { label: 'Služby', href: '/sluzby' },
           { label: 'Životní události', href: '/udalosti' },
@@ -231,7 +240,7 @@ export const StickyHeader = {
     return (
       <div>
         <Header
-          logo={{ text: 'GOV.cz', href: '/' }}
+          appName="Portál"
           navigation={[
             { label: 'Služby', href: '/sluzby', active: true },
             { label: 'Kontakt', href: '/kontakt' },
@@ -277,7 +286,7 @@ export const LanguageSwitching = {
     return (
       <div>
         <Header
-          logo={{ text: 'GOV.cz', href: '/' }}
+          appName="Portál"
           navigation={[
             { label: labels[lang].services, href: '/sluzby' },
             { label: labels[lang].events, href: '/udalosti' },
@@ -314,7 +323,7 @@ export const LanguageSwitching = {
 
 export const MinimalHeader = {
   args: {
-    logo: { text: 'Simple App', href: '/' },
+    appName: 'Simple App',
     showLanguageSwitcher: false,
     navigation: [],
   },
@@ -346,7 +355,7 @@ export const PortalExample = {
     return (
       <div>
         <Header
-          logo={{ text: 'Portál veřejné správy', href: '/' }}
+          appName="Portál veřejné správy"
           navigation={[
             { label: 'Služby občanům', href: '/sluzby-fo' },
             { label: 'Služby podnikatelům', href: '/sluzby-po' },
