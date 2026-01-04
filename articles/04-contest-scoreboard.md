@@ -26,9 +26,11 @@ Build a **GOV.cz Form Application** with:
 
 | Round | Approach | Status | Start Time | End Time | Duration |
 |-------|----------|--------|------------|----------|----------|
-| **A** | npm Packages | ✅ Complete | TBD | TBD | TBD |
-| **B** | Figma + Custom | ⏳ Waiting | - | - | - |
-| **C** | Storybook Copy | ⏳ Waiting | - | - | - |
+| **A** | npm Packages | ❌ FAILED | - | - | - |
+| **B** | Figma + Custom | ⏳ Next | - | - | - |
+| ~~C~~ | ~~Storybook Copy~~ | ⏭️ SKIPPED | - | - | Too time-consuming |
+
+**Contest reduced to 2 approaches** - Storybook copy approach skipped due to time constraints.
 
 ---
 
