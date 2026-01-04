@@ -1,0 +1,264 @@
+/* ==========================================================================
+   GOV.CZ FILE UPLOAD COMPONENT
+   Based on GOV.cz Design System
+   Light mode implementation with dark mode preparation
+   ========================================================================== */
+
+/* Base */
+.gov-file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-spacing-xs, 8px);
+  width: 100%;
+}
+
+/* Label */
+.gov-file-upload__label {
+  font-family: var(--gov-font-family-primary, 'Roboto', sans-serif);
+  font-size: var(--gov-font-size-m, 16px);
+  font-weight: var(--gov-font-weight-medium, 500);
+  line-height: var(--gov-line-height-m, 24px);
+  color: var(--gov-text-primary, #262626);
+}
+
+.gov-file-upload__required {
+  color: var(--gov-error-70, #c52a3a);
+}
+
+/* Dropzone */
+.gov-file-upload__dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gov-spacing-s, 12px);
+  padding: var(--gov-spacing-xl, 32px);
+  border: 2px dashed var(--gov-neutral-30, #b4b4b4);
+  border-radius: var(--gov-border-radius-m, 8px);
+  background-color: var(--gov-neutral-5, #f9f9f9);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gov-file-upload__dropzone:hover {
+  border-color: var(--gov-primary-70, #2362a2);
+  background-color: var(--gov-primary-10, #e8f0fa);
+}
+
+.gov-file-upload__dropzone:focus {
+  outline: 2px solid var(--gov-focus-base, #284163);
+  outline-offset: 2px;
+  border-color: var(--gov-primary-70, #2362a2);
+}
+
+/* Dragging state */
+.gov-file-upload--dragging .gov-file-upload__dropzone {
+  border-color: var(--gov-primary-70, #2362a2);
+  background-color: var(--gov-primary-10, #e8f0fa);
+  border-style: solid;
+}
+
+/* Disabled state */
+.gov-file-upload--disabled .gov-file-upload__dropzone {
+  border-color: var(--gov-neutral-20, #cccccc);
+  background-color: var(--gov-neutral-10, #f2f2f2);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Invalid state */
+.gov-file-upload--invalid .gov-file-upload__dropzone {
+  border-color: var(--gov-error-70, #c52a3a);
+  background-color: var(--gov-error-10, #fef1f2);
+}
+
+/* Hidden input */
+.gov-file-upload__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Content */
+.gov-file-upload__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gov-spacing-s, 12px);
+}
+
+/* Upload icon */
+.gov-file-upload__icon {
+  width: 48px;
+  height: 48px;
+  color: var(--gov-primary-70, #2362a2);
+}
+
+.gov-file-upload--disabled .gov-file-upload__icon {
+  color: var(--gov-neutral-40, #999999);
+}
+
+/* Button */
+.gov-file-upload__button {
+  font-family: var(--gov-font-family-primary, 'Roboto', sans-serif);
+  font-size: var(--gov-font-size-m, 16px);
+  font-weight: var(--gov-font-weight-medium, 500);
+  line-height: var(--gov-line-height-m, 24px);
+  color: var(--gov-neutral-0, #ffffff);
+  background-color: var(--gov-primary-70, #2362a2);
+  border: none;
+  border-radius: var(--gov-border-radius-s, 4px);
+  padding: var(--gov-spacing-xs, 8px) var(--gov-spacing-m, 16px);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  pointer-events: none;
+}
+
+.gov-file-upload__dropzone:hover .gov-file-upload__button {
+  background-color: var(--gov-primary-80, #1a4a7a);
+}
+
+.gov-file-upload--disabled .gov-file-upload__button {
+  background-color: var(--gov-neutral-30, #b4b4b4);
+  cursor: not-allowed;
+}
+
+/* Drag text */
+.gov-file-upload__drag-text {
+  font-family: var(--gov-font-family-primary, 'Roboto', sans-serif);
+  font-size: var(--gov-font-size-s, 14px);
+  line-height: var(--gov-line-height-s, 20px);
+  color: var(--gov-text-secondary, #686868);
+}
+
+/* File list */
+.gov-file-upload__file-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-spacing-xs, 8px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gov-file-upload__file-item {
+  display: flex;
+  align-items: center;
+  gap: var(--gov-spacing-xs, 8px);
+  padding: var(--gov-spacing-xs, 8px) var(--gov-spacing-s, 12px);
+  background-color: var(--gov-neutral-5, #f9f9f9);
+  border: 1px solid var(--gov-neutral-20, #cccccc);
+  border-radius: var(--gov-border-radius-s, 4px);
+}
+
+.gov-file-upload__file-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--gov-primary-70, #2362a2);
+}
+
+.gov-file-upload__file-name {
+  font-family: var(--gov-font-family-primary, 'Roboto', sans-serif);
+  font-size: var(--gov-font-size-s, 14px);
+  line-height: var(--gov-line-height-s, 20px);
+  color: var(--gov-text-primary, #262626);
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gov-file-upload__file-size {
+  font-family: var(--gov-font-family-primary, 'Roboto', sans-serif);
+  font-size: var(--gov-font-size-xs, 12px);
+  line-height: var(--gov-line-height-xs, 16px);
+  color: var(--gov-text-secondary, #686868);
+  flex-shrink: 0;
+}
+
+.gov-file-upload__remove-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: var(--gov-border-radius-s, 4px);
+  background-color: transparent;
+  color: var(--gov-text-secondary, #686868);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.gov-file-upload__remove-button:hover {
+  background-color: var(--gov-error-10, #fef1f2);
+  color: var(--gov-error-70, #c52a3a);
+}
+
+.gov-file-upload__remove-button:focus {
+  outline: 2px solid var(--gov-focus-base, #284163);
+  outline-offset: 2px;
+}
+
+/* Footer */
+.gov-file-upload__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gov-spacing-xs, 8px);
+  align-items: center;
+}
+
+/* Helper text */
+.gov-file-upload__helper {
+  font-family: var(--gov-font-family-primary, 'Roboto', sans-serif);
+  font-size: var(--gov-font-size-s, 14px);
+  line-height: var(--gov-line-height-s, 20px);
+  color: var(--gov-text-secondary, #686868);
+  flex-grow: 1;
+}
+
+/* Error message */
+.gov-file-upload__error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gov-spacing-xs, 8px);
+  font-family: var(--gov-font-family-primary, 'Roboto', sans-serif);
+  font-size: var(--gov-font-size-s, 14px);
+  line-height: var(--gov-line-height-s, 20px);
+  color: var(--gov-error-70, #c52a3a);
+  flex-grow: 1;
+}
+
+.gov-file-upload__error-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* File count */
+.gov-file-upload__count {
+  font-family: var(--gov-font-family-primary, 'Roboto', sans-serif);
+  font-size: var(--gov-font-size-s, 14px);
+  line-height: var(--gov-line-height-s, 20px);
+  color: var(--gov-text-secondary, #686868);
+  margin-left: auto;
+}
+
+/* ==========================================================================
+   DARK MODE (prepared for future implementation)
+   ========================================================================== */
+
+/* Dark mode styles will use:
+   - --gov-neutral-100 for background
+   - --gov-text-inverted for text
+   - Adjusted border and background colors
+*/
+
