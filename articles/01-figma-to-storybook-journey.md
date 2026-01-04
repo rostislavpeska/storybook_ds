@@ -545,54 +545,49 @@ This section will document how Agent 02 uses the synthetic components to build t
 
 ## 🎯 The Challenge
 
-We have synthetic components in React/Storybook that don't exist in Figma. How do we bring them back?
+We have synthetic components in React/Storybook that don't exist in Figma. How do we bring them back to maintain a single source of truth?
 
 ## 📊 Available Approaches
 
 | Approach | Type | Creates Components? | Best For |
 |----------|------|---------------------|----------|
-| **story.to.design** | Plugin | ✅ Yes | Our use case |
-| **Figma Code Connect** | Official | ❌ Links only | Documentation |
-| **Anima DSA** | SaaS | ✅ Yes | Enterprise |
+| **story.to.design** | Plugin | ✅ Yes | Specific Storybook setups |
+| **Figma Code Connect** | Official | ❌ Links only | Paid tiers, documentation |
+| **Anima DSA** | SaaS | ✅ Yes | Enterprise ($29/mo) |
 | **Chromatic Connect** | Plugin | ❌ Embeds only | Visual QA |
-| **Manual Recreation** | Manual | ✅ Yes | One-time |
+| **Manual Recreation** | Manual | ✅ Yes | One-time, full control |
 
-## 🏆 Recommended: story.to.design
+## 🧪 Tested: story.to.design
 
-**Why**: It's the only tool that **creates real Figma components** from Storybook stories.
+### What We Tried
 
-### How It Works
+We tested story.to.design plugin with our local Docker-based Storybook.
 
-1. Publish Storybook to public URL
-2. Install story.to.design plugin in Figma
-3. Connect to Storybook URL
-4. Select components to import
-5. Plugin generates Figma components with:
-   - Auto-layout
-   - Variants from story args
-   - Nested components
-   - Proper naming
+### Results
 
-### Implementation Plan
+| Aspect | Finding |
+|--------|---------|
+| **Connection** | ⚠️ Requires specific Storybook setup |
+| **Local Storybook** | ❌ Does not reliably work with Docker-based local Storybook |
+| **Import Behavior** | ⚠️ Imports components in batches (not individually) |
+| **Component Quality** | ✅ When it works, creates proper Figma components |
 
-```
-Step 1: Deploy Storybook (Vercel/Netlify/Chromatic)
-Step 2: Install story.to.design in Figma
-Step 3: Import: Header, Footer, LanguageSwitcher
-Step 4: Organize in "Synthetic Components" page
-Step 5: Add Code Connect for documentation
-```
+### Screenshot: story.to.design in Action
 
-### Pricing
+The plugin successfully connected to the official GOV.cz Storybook and imported Button components with variants. However, local Docker-based Storybook presented challenges.
 
-| Plan | Price | Limit |
-|------|-------|-------|
-| Free | $0 | 3 components/month |
-| Pro | ~$15/mo | Unlimited |
+### Conclusion
 
-## 🔗 Figma Code Connect (For Documentation)
+story.to.design **is a valid approach** but requires:
+- Publicly deployed Storybook (not localhost)
+- Specific Storybook configuration
+- May need their local agent for private Storybooks
 
-After importing, use Code Connect to link components back to code:
+## 🔗 Figma Code Connect (Official)
+
+**Availability**: Requires Figma **Professional, Organization, or Enterprise** plans (not available in Free/Starter). Verify current plans at [figma.com/pricing](https://www.figma.com/pricing).
+
+Code Connect links existing code to existing Figma components - it does NOT create Figma components:
 
 ```tsx
 // Button.figma.tsx
@@ -610,9 +605,146 @@ figma.connect(Button, "https://figma.com/file/xxx?node-id=1:23", {
 
 This shows the correct code snippet in Figma's Dev Mode.
 
+## 🚧 Status: Unfinished
+
+This loop (Code → Figma) remains **incomplete** and needs further exploration:
+
+- [ ] Test story.to.design with publicly deployed Storybook
+- [ ] Evaluate Anima Design System Automation for enterprise use
+- [ ] Document manual recreation workflow for teams without budget
+- [ ] Explore Figma Code Connect on paid plans
+
 ## 📚 Full Research
 
 See: `articles/08-research-code-to-figma.md` for complete analysis of all approaches.
+See: `articles/11-alternatives-to-story-to-design.md` for alternatives when story.to.design doesn't work.
+
+---
+
+# 5. Conclusions and Recommendations
+
+## 🎯 The Design-Code Loop: Current State
+
+Based on our extensive exploration, here's the reality of maintaining a single source of truth between Figma and code:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    THE DESIGN-CODE LOOP                         │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   FIGMA ──────────────────────────────────────────► CODE        │
+│   (Design)           WORKS WELL ✅                 (React)      │
+│                                                                 │
+│   • Figma MCP extracts designs reliably                         │
+│   • Design tokens translate to CSS variables                    │
+│   • AI can implement components from Figma specs                │
+│   • Storybook documents components effectively                  │
+│                                                                 │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   CODE ──────────────────────────────────────────► FIGMA        │
+│   (React)          CHALLENGING ⚠️                  (Design)     │
+│                                                                 │
+│   • story.to.design requires specific setup                     │
+│   • Local Storybook not well supported                          │
+│   • Code Connect requires paid Figma plans                      │
+│   • Manual recreation is time-consuming                         │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+## 📋 Recommendations for Design Teams
+
+### For Teams Starting Fresh
+
+| Situation | Recommendation |
+|-----------|----------------|
+| **Small team, budget-conscious** | Start in Figma, use AI to implement, accept one-way flow |
+| **Enterprise team** | Invest in Anima DSA ($29/mo) for bidirectional sync |
+| **Learning/Experimentation** | Use this workflow to understand design systems deeply |
+
+### For Teams with Existing Storybook
+
+| Situation | Recommendation |
+|-----------|----------------|
+| **Storybook publicly deployed** | Try story.to.design first |
+| **Local/Docker Storybook** | Deploy to Chromatic/Vercel first, then use story.to.design |
+| **Need quick visual reference** | Use Chromatic Connect (free) for live embeds |
+| **Need editable Figma components** | Manual recreation or Anima DSA |
+
+### Single Source of Truth Strategies
+
+#### Strategy A: Figma as Source of Truth
+```
+Figma (source) → Code (derived)
+```
+- **Pros**: Designers control the source, visual-first approach
+- **Cons**: Code may diverge, requires discipline to update Figma first
+- **Best for**: Design-led teams, new projects
+
+#### Strategy B: Code as Source of Truth
+```
+Code (source) → Figma (documentation)
+```
+- **Pros**: Code is always accurate, developers control the source
+- **Cons**: Designers work with derived artifacts, harder to explore
+- **Best for**: Developer-led teams, mature systems
+
+#### Strategy C: Parallel Sources with Sync
+```
+Figma ↔ Code (bidirectional sync)
+```
+- **Pros**: Both teams work in their preferred tools
+- **Cons**: Requires expensive tools (Anima DSA), complex setup
+- **Best for**: Enterprise teams with budget
+
+### Our Recommendation
+
+For most teams, **Strategy A (Figma as Source)** is the most practical:
+
+1. **Design in Figma** - Full creative control
+2. **Export to Code** - AI-assisted implementation works well
+3. **Document in Storybook** - Living documentation
+4. **Accept one-way flow** - Don't fight the tooling limitations
+5. **Sync manually when needed** - Occasional manual Figma updates
+
+## 🔮 Future Considerations
+
+### What We Hope to See
+
+1. **Better story.to.design local support** - Agent improvements for Docker
+2. **Figma Code Connect on free tier** - Broader accessibility
+3. **Native Figma ↔ Storybook sync** - First-party solution
+4. **AI-powered bidirectional sync** - Automatic reconciliation
+
+### What's Working Well
+
+| ✅ Figma → Code | Status |
+|-----------------|--------|
+| Figma MCP extraction | Works great |
+| Design token export | Works great |
+| AI implementation | Works well (with good prompts) |
+| Storybook documentation | Works great |
+
+### What Needs Work
+
+| ⚠️ Code → Figma | Status |
+|-----------------|--------|
+| story.to.design | Requires specific setup |
+| Local Storybook support | Problematic |
+| Code Connect | Paid only |
+| Bidirectional sync | Expensive |
+
+## 📝 Summary
+
+**The Figma → Code direction is mature and works well.** AI can reliably implement components from Figma designs, and Storybook provides excellent documentation.
+
+**The Code → Figma direction is still evolving.** Current tools have significant limitations, especially for local development setups. Teams should plan for this gap and choose a single source of truth strategy that works for their situation.
+
+**For our GOV.cz project**: We successfully built synthetic components (Header, Footer, LanguageSwitcher) that aren't in the original design system. Getting them back into Figma remains an open challenge that requires either:
+- Deploying Storybook publicly and using story.to.design
+- Investing in Anima DSA for enterprise sync
+- Manual recreation in Figma
 
 ---
 
