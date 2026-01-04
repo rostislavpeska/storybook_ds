@@ -1,7 +1,7 @@
 # GOV.cz Implementation Contest - Scoreboard
 
 **Moderator**: Claude (This Thread)  
-**Status**: 🔄 Restarting with New Challenge  
+**Status**: ✅ CONTEST COMPLETE  
 **Date**: January 4, 2026  
 **Challenge Version**: 2.0 (Full Form Application)
 
@@ -24,118 +24,127 @@ Build a **GOV.cz Form Application** with:
 
 ## 🏁 Contest Progress
 
-| Round | Approach | Status | Start Time | End Time | Duration |
-|-------|----------|--------|------------|----------|----------|
-| **A** | npm Packages | ❌ FAILED | - | - | - |
-| **B** | Figma + Custom | ⏳ Next | - | - | - |
-| ~~C~~ | ~~Storybook Copy~~ | ⏭️ SKIPPED | - | - | Too time-consuming |
+| Round | Approach | Status | Result |
+|-------|----------|--------|--------|
+| **A** | npm Packages | ❌ FAILED | Systemic failure - AI cannot use npm packages |
+| **B** | Figma + Custom Storybook | ✅ SUCCESS | 42/50 - Excellent result |
+| ~~C~~ | ~~Storybook Copy~~ | ⏭️ SKIPPED | Too time-consuming |
 
 **Contest reduced to 2 approaches** - Storybook copy approach skipped due to time constraints.
 
 ---
 
-## 📊 Scoring (To Be Filled After Each Round)
+## 📊 Final Scores
 
-### Criteria Weights
+### Round A: npm Packages ❌ SYSTEMIC FAILURE
 
-| Criterion | Weight |
-|-----------|--------|
-| Time to complete | 25% |
-| Visual accuracy | 25% |
-| Code quality | 20% |
-| Functionality | 20% |
-| Developer experience | 10% |
+| Criterion | Score (1-10) | Notes |
+|-----------|--------------|-------|
+| Visual Accuracy | 0 | NO components rendered |
+| Functionality | 2 | Default HTML only |
+| Accessibility | 1 | No ARIA, no semantics |
+| Code Quality | 2 | Backend only |
+| Completeness | 1 | Missing everything |
+| **TOTAL** | **6/50** | ❌ NON-VIABLE |
 
-### Round A: npm Packages ❌ FAILED - NON-VIABLE
+**Attempt 1**: Backend + default browser components. Packages installed but NEVER used.  
+**Attempt 2**: Even WORSE. Same problems despite explicit instructions.
 
-| Criterion | Score (1-10) | Weighted | Notes |
-|-----------|--------------|----------|-------|
-| Visual | 0 | 0/25 | **NO frontend produced** |
-| Code | 2 | 4/20 | Backend only, no components |
-| Function | 3 | 6/20 | Default HTML elements |
-| Completeness | 1 | 2.5/25 | Missing entire design system |
-| DX | 0 | 0/10 | Failed completely |
-| **TOTAL** | - | **12.5/100** | ❌ NON-VIABLE |
+### Round B: Figma + Custom Storybook ✅ SUCCESS
 
-## 🚨 VERDICT: Can bot use npm packages to produce clean frontend?
+| Criterion | Score (1-10) | Notes |
+|-----------|--------------|-------|
+| Visual Accuracy | 8 | GOV.cz styling, proper components |
+| Functionality | 9 | All features work |
+| Accessibility | 8 | Proper structure, labels |
+| Code Quality | 8 | Clean component usage |
+| Completeness | 9 | All sections, file upload, dynamic fields |
+| **TOTAL** | **42/50** | ✅ EXCELLENT |
 
-# ❌ NO
-
-**Attempt 1**: Backend + default browser components. Packages installed but NEVER used.
-
-**Attempt 2 (Second Chance)**: Even WORSE. Same problems despite explicit instructions.
-
-## 💀 SYSTEMIC FAILURE
-
-The failures are **not** caused by bad prompts or lack of instructions. The AI fundamentally cannot use npm component libraries to produce proper frontend, even with multiple attempts.
-
-### Round B: Figma + Custom
-
-| Criterion | Score (1-10) | Weighted | Notes |
-|-----------|--------------|----------|-------|
-| Time | - | - | |
-| Visual | - | - | |
-| Code | - | - | |
-| Function | - | - | |
-| DX | - | - | |
-| **TOTAL** | - | **-/100** | |
-
-### Round C: Storybook Copy
-
-| Criterion | Score (1-10) | Weighted | Notes |
-|-----------|--------------|----------|-------|
-| Time | - | - | |
-| Visual | - | - | |
-| Code | - | - | |
-| Function | - | - | |
-| DX | - | - | |
-| **TOTAL** | - | **-/100** | |
+**Key achievements:**
+- ✅ All Storybook components properly used
+- ✅ Complete form with all 12+ sections
+- ✅ File upload with drag & drop
+- ✅ Dynamic "Add Another" fields
+- ✅ Header with language switcher
+- ✅ Footer with links
+- ✅ Card-based homepage
+- ✅ Breadcrumb navigation
 
 ---
 
 ## 🏆 Final Rankings
 
-| Rank | Approach | Score | Notes |
-|------|----------|-------|-------|
-| 🥇 | - | - | |
-| 🥈 | - | - | |
-| 🥉 | - | - | |
+| Rank | Approach | Score | Verdict |
+|------|----------|-------|---------|
+| 🥇 | **Figma + Custom Storybook** | **42/50** | ✅ RECOMMENDED |
+| 🥈 | npm Packages Only | 6/50 | ❌ NOT VIABLE |
+| - | Storybook Copy | SKIPPED | - |
 
 ---
 
-## 📝 Round Logs
+## 📈 Key Findings
 
-### Round A Log
+### What Works ✅
+
+1. **Pre-built custom components** - AI can effectively USE components that exist in the workspace
+2. **Figma as design reference** - Works well when components are already built
+3. **Explicit component mapping** - Telling AI exactly which component to use for each field
+4. **Copy-paste approach** - Copying existing component files into new project
+
+### What Doesn't Work ❌
+
+1. **npm packages only** - AI cannot properly use npm component libraries
+2. **Reading documentation** - AI may read docs but fails to apply them correctly
+3. **Implicit understanding** - AI doesn't "know" how to use unfamiliar packages
+4. **Complex component APIs** - Official packages have APIs too complex for AI to infer
+
+---
+
+## 🎯 Recommendation for GOV.cz Development
+
+### Use This Workflow:
 
 ```
-Status: In Progress
-Agent: Separate thread
-Approach: npm packages only
-
-Timeline:
-- [Waiting for updates from user]
+1. BUILD components in Storybook first (human or AI-assisted)
+2. COPY component files to new project
+3. LET AI wire up the components
+4. AI handles: routing, state, form logic, i18n, PDF export
 ```
 
-### Round B Log
+### Avoid:
 
 ```
-Status: Not Started
-```
-
-### Round C Log
-
-```
-Status: Not Started
+❌ Expecting AI to use npm packages directly
+❌ Relying on AI to read and understand package documentation
+❌ Giving AI vague instructions about styling
 ```
 
 ---
 
-## 📋 Judge Notes
+## 📊 Visual Comparison
 
-*To be filled during evaluation*
+| Element | npm (Agent 01) | Figma (Agent 02) |
+|---------|----------------|------------------|
+| Cards | ❌ | ✅ |
+| Buttons | ❌ | ✅ |
+| Inputs | ❌ (plain) | ✅ (styled) |
+| Radio | ❌ (plain) | ✅ (styled) |
+| Datepicker | ❌ (native) | ✅ (calendar) |
+| File Upload | ❌ (missing) | ✅ (drag & drop) |
+| Checkbox | ❌ (plain) | ✅ (styled) |
+| Layout | ❌ (messy) | ✅ (clean) |
+| Header | ❌ (missing) | ✅ (present) |
+| Footer | ❌ (missing) | ✅ (present) |
 
 ---
 
-*Scoreboard created: January 4, 2026*
-*Last updated: January 4, 2026*
+## 🏁 Contest Conclusion
 
+The **Figma + Custom Storybook** approach is the clear winner and the **recommended workflow** for AI-assisted GOV.cz development.
+
+**Key insight**: AI excels at USING pre-built components but FAILS at importing and configuring npm packages.
+
+---
+
+*Contest completed: January 4, 2026*
