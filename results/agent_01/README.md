@@ -32,6 +32,19 @@ This test proves that **having npm packages available ≠ ability to use them co
 
 ---
 
+## 🔄 Second Chance Attempt
+
+**Result**: ❌ **EVEN WORSE**
+
+A second attempt was given with explicit instructions to use GOV.cz components. The result was worse than the first attempt - still plain HTML, still no actual components used.
+
+**Conclusion**: The failures are **SYSTEMIC**, not caused by:
+- ❌ Bad prompt engineering
+- ❌ Lack of instructions  
+- ❌ Need for debugging
+
+The AI fundamentally **cannot** use npm component libraries to produce a proper frontend, even when given multiple chances and explicit guidance.
+
 ---
 
 ## 📸 Screenshots

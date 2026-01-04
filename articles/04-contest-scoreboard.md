@@ -59,7 +59,13 @@ Build a **GOV.cz Form Application** with:
 
 # ❌ NO
 
-**Result**: Backend + default browser components. NO actual GOV.cz design system. Packages installed but NEVER used.
+**Attempt 1**: Backend + default browser components. Packages installed but NEVER used.
+
+**Attempt 2 (Second Chance)**: Even WORSE. Same problems despite explicit instructions.
+
+## 💀 SYSTEMIC FAILURE
+
+The failures are **not** caused by bad prompts or lack of instructions. The AI fundamentally cannot use npm component libraries to produce proper frontend, even with multiple attempts.
 
 ### Round B: Figma + Custom
 
