@@ -12,7 +12,7 @@
 0. [About the Experiment](#0-about-the-experiment)
 1. [Synthetic Component Library from Figma](#1-synthetic-component-library-from-figma)
 2. [Contest: Robot 01 vs Robot 02](#2-contest-robot-01-vs-robot-02)
-3. [Inventing Own Synthetic Components](#3-inventing-own-synthetic-components) *(TBD)*
+3. [Inventing Own Synthetic Components](#3-inventing-own-synthetic-components)
 4. [Reimporting Synthetic Components Back to Figma](#4-reimporting-synthetic-components-back-to-figma) *(TBD)*
 
 ---
@@ -307,14 +307,190 @@ The failures are **systemic**, not caused by:
 
 # 3. Inventing Own Synthetic Components
 
-*(TBD - Future section)*
+## 🎨 What Are Synthetic Components?
 
-## Planned Content
+**Synthetic components** are UI components that:
+1. Don't exist in the official design system (or are built independently)
+2. Are inspired by real-world examples but abstracted for reuse
+3. Fill gaps in the component library
+4. Are designed to be AI-friendly (clear props, good defaults)
 
-- Creating components that don't exist in the official design system
-- Extending existing components with custom functionality
-- Building complex composite components
-- Design patterns for AI-friendly component APIs
+## 🏗️ Components Created
+
+We created **3 synthetic structural components** inspired by [portal.gov.cz](https://portal.gov.cz/sluzby-verejne-spravy/?typ=FO):
+
+### 1. Header
+
+A dark blue government-style header with:
+
+| Feature | Description |
+|---------|-------------|
+| **Logo** | Customizable (default: GOV.cz house icon) |
+| **Navigation** | Links with active state |
+| **Language Switcher** | Integrated component |
+| **Actions** | Login/user buttons |
+| **Skip Link** | Accessibility: skip to main content |
+| **Accent Bar** | Blue gradient line under header |
+| **Sticky** | Optional fixed position |
+
+**Props**:
+```jsx
+<Header
+  logo={{ text: 'GOV.cz', href: '/' }}
+  navigation={[
+    { label: 'Služby', href: '/sluzby', active: true },
+    { label: 'Kontakt', href: '/kontakt' }
+  ]}
+  currentLanguage="cs"
+  onLanguageChange={(code) => setLang(code)}
+  actions={[
+    { label: 'Přihlásit', href: '/login', icon: <UserIcon /> }
+  ]}
+  sticky={false}
+/>
+```
+
+### 2. LanguageSwitcher
+
+A flexible language toggle with three variants:
+
+| Variant | Description | Best For |
+|---------|-------------|----------|
+| **toggle** | Single button that cycles | 2 languages |
+| **buttons** | All options visible | 2-3 languages |
+| **dropdown** | Menu on click | 3+ languages |
+
+**Features**:
+- Globe icon (optional)
+- Full or short labels (EN vs English)
+- Light/dark theme variants
+- Multi-language support (not limited to CZ/EN)
+
+**Props**:
+```jsx
+<LanguageSwitcher
+  variant="toggle"
+  languages={[
+    { code: 'cs', label: 'Čeština', shortLabel: 'CZ' },
+    { code: 'en', label: 'English', shortLabel: 'EN' }
+  ]}
+  currentLanguage="cs"
+  onChange={(code) => setLang(code)}
+  showIcon={true}
+  className="gov-lang-switcher--light"
+/>
+```
+
+### 3. Footer
+
+A comprehensive footer with configurable sections:
+
+| Section | Description |
+|---------|-------------|
+| **Columns** | Link groups with titles |
+| **Contact** | Email and phone |
+| **Social Links** | Social media icons |
+| **Logos** | Partner/sponsor logos |
+| **Bottom Bar** | Copyright + legal links |
+| **Back to Top** | Smooth scroll button |
+
+**Props**:
+```jsx
+<Footer
+  columns={[
+    {
+      title: 'Informace',
+      links: [
+        { label: 'O nás', href: '/o-nas' },
+        { label: 'Kontakt', href: '/kontakt' }
+      ]
+    }
+  ]}
+  contact={{
+    title: 'Napište nám',
+    email: 'info@gov.cz'
+  }}
+  copyright="© 2026 GOV.cz"
+  bottomLinks={[
+    { label: 'Ochrana soukromí', href: '/privacy' }
+  ]}
+  version="1.0.0"
+/>
+```
+
+## 📋 Design Principles
+
+### 1. Abstraction Over Hardcoding
+
+**Bad** (hardcoded):
+```jsx
+<header>
+  <a href="/">Portal.gov.cz</a>
+  <nav>
+    <a href="/sluzby">Služby</a>
+  </nav>
+</header>
+```
+
+**Good** (abstracted):
+```jsx
+<Header
+  logo={{ text: 'Any App', href: '/' }}
+  navigation={props.navigation}
+/>
+```
+
+### 2. WCAG 2.1 AA Compliance
+
+All synthetic components include:
+
+| Feature | Implementation |
+|---------|----------------|
+| Skip link | `<a href="#main-content">Přeskočit...</a>` |
+| Landmarks | `role="banner"`, `role="contentinfo"` |
+| ARIA labels | `aria-label`, `aria-expanded`, etc. |
+| Focus states | Visible outline on focus |
+| Keyboard nav | Tab, Enter, Escape support |
+| Color contrast | 4.5:1 minimum ratio |
+
+### 3. AI-Friendly API
+
+Components designed for AI consumption:
+
+| Principle | Example |
+|-----------|---------|
+| **Clear props** | `showLanguageSwitcher={true}` not `options.lang.show` |
+| **Good defaults** | Works with zero props: `<Header />` |
+| **Flat structure** | Avoid deeply nested objects |
+| **Explicit actions** | `onLanguageChange` not `onEvent` |
+
+## 📦 Component Summary
+
+| Component | Variants | Stories | WCAG |
+|-----------|----------|---------|------|
+| **Header** | Dark/Light, Sticky | 8 | ✅ AA |
+| **LanguageSwitcher** | Toggle/Buttons/Dropdown | 10 | ✅ AA |
+| **Footer** | Light/Dark | 10 | ✅ AA |
+
+## 🔗 Integration with Agent 02
+
+These components are now available for Agent 02 to use:
+
+```bash
+# Copy to new project
+cp -r "Storybook DS/src/components/Header" my-project/src/components/
+cp -r "Storybook DS/src/components/Footer" my-project/src/components/
+cp -r "Storybook DS/src/components/LanguageSwitcher" my-project/src/components/
+```
+
+**Updated Component Inventory** (11 total):
+
+| Category | Components |
+|----------|------------|
+| **Form Inputs** | Input, Select, Checkbox, Radio, Datepicker, FileUpload |
+| **Actions** | Button |
+| **Layout** | Card, Header, Footer |
+| **Utilities** | LanguageSwitcher, Icon |
 
 ---
 
