@@ -1,81 +1,121 @@
-import { useId } from 'react';
+import { useId, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './Checkbox.css';
 
 /**
- * GOV.cz Checkbox Component
+ * Checkbox component for form inputs following the GOV.cz design system.
  * 
- * A form checkbox following the GOV.cz design system.
- * Supports checked, unchecked, and indeterminate states with error validation.
+ * Supports both controlled and uncontrolled modes:
+ * - **Controlled**: Pass `checked` and `onChange` props
+ * - **Uncontrolled**: Pass `defaultChecked` for initial value
  * 
+ * @component
  * @example
- * // Basic checkbox
- * <Checkbox label="Accept terms" />
+ * // Uncontrolled (simplest usage)
+ * <Checkbox name="terms" label="I agree to terms" />
  * 
- * // Checkbox with helper text
- * <Checkbox label="Subscribe" helperText="We'll send you updates" />
- * 
- * // Error state
- * <Checkbox label="Required field" error errorMessage="This field is required" />
+ * // Controlled
+ * const [checked, setChecked] = useState(false);
+ * <Checkbox 
+ *   checked={checked} 
+ *   onChange={(e) => setChecked(e.target.checked)} 
+ *   label="Subscribe" 
+ * />
  */
 export const Checkbox = ({
+  // Core props
   label,
-  helperText,
-  checked = false,
-  indeterminate = false,
-  disabled = false,
-  error = false,
-  errorMessage,
-  size = 'm',
-  onChange,
   name,
   value,
+  
+  // State props
+  checked: controlledChecked,
+  defaultChecked = false,
+  indeterminate = false,
+  disabled = false,
+  
+  // Validation props
+  invalid = false,
+  invalidMessage,
+  helperText,
+  required = false,
+  
+  // Appearance props  
+  size = 'm',
+  
+  // Event handlers
+  onChange,
+  onFocus,
+  onBlur,
+  
+  // Other
   id: providedId,
   className = '',
   ...props
 }) => {
+  // Support both controlled and uncontrolled modes
+  const isControlled = controlledChecked !== undefined;
+  const [internalChecked, setInternalChecked] = useState(defaultChecked);
+  const checked = isControlled ? controlledChecked : internalChecked;
+
   const generatedId = useId();
   const id = providedId || generatedId;
   const helperId = `${id}-helper`;
   const errorId = `${id}-error`;
 
+  // Handle indeterminate state via ref
+  const [inputRef, setInputRef] = useState(null);
+  useEffect(() => {
+    if (inputRef) {
+      inputRef.indeterminate = indeterminate;
+    }
+  }, [inputRef, indeterminate]);
+
+  const handleChange = (event) => {
+    if (!isControlled) {
+      setInternalChecked(event.target.checked);
+    }
+    onChange?.(event);
+  };
+
   const classNames = [
     'gov-checkbox',
     `gov-checkbox--${size}`,
     disabled && 'gov-checkbox--disabled',
-    error && 'gov-checkbox--error',
+    invalid && 'gov-checkbox--invalid',
     checked && 'gov-checkbox--checked',
     indeterminate && 'gov-checkbox--indeterminate',
     className,
   ].filter(Boolean).join(' ');
 
   const describedBy = [
-    helperText && helperId,
-    error && errorMessage && errorId,
+    helperText && !invalid && helperId,
+    invalid && invalidMessage && errorId,
   ].filter(Boolean).join(' ') || undefined;
 
   return (
     <div className={classNames}>
-      <div className="gov-checkbox__control">
+      <label className="gov-checkbox__control">
         <input
+          ref={setInputRef}
           type="checkbox"
           id={id}
           name={name}
           value={value}
           checked={checked}
           disabled={disabled}
-          onChange={onChange}
-          aria-invalid={error || undefined}
+          required={required}
+          onChange={handleChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          aria-invalid={invalid || undefined}
           aria-describedby={describedBy}
-          ref={(el) => {
-            if (el) el.indeterminate = indeterminate;
-          }}
           className="gov-checkbox__input"
           {...props}
         />
         <span className="gov-checkbox__box" aria-hidden="true">
           {checked && !indeterminate && (
-            <svg className="gov-checkbox__icon gov-checkbox__icon--check" viewBox="0 0 16 16" fill="none">
+            <svg className="gov-checkbox__icon" viewBox="0 0 16 16" fill="none">
               <path 
                 d="M13.5 4.5L6 12L2.5 8.5" 
                 stroke="currentColor" 
@@ -86,7 +126,7 @@ export const Checkbox = ({
             </svg>
           )}
           {indeterminate && (
-            <svg className="gov-checkbox__icon gov-checkbox__icon--indeterminate" viewBox="0 0 16 16" fill="none">
+            <svg className="gov-checkbox__icon" viewBox="0 0 16 16" fill="none">
               <path 
                 d="M3 8H13" 
                 stroke="currentColor" 
@@ -97,25 +137,26 @@ export const Checkbox = ({
           )}
         </span>
         {label && (
-          <label htmlFor={id} className="gov-checkbox__label">
+          <span className="gov-checkbox__label">
             {label}
-          </label>
+            {required && <span className="gov-checkbox__required" aria-hidden="true"> *</span>}
+          </span>
         )}
-      </div>
+      </label>
       
-      {(helperText || (error && errorMessage)) && (
-        <div className="gov-checkbox__messages">
-          {helperText && !error && (
+      {(helperText || (invalid && invalidMessage)) && (
+        <div className="gov-checkbox__message">
+          {helperText && !invalid && (
             <span id={helperId} className="gov-checkbox__helper">
               {helperText}
             </span>
           )}
-          {error && errorMessage && (
+          {invalid && invalidMessage && (
             <span id={errorId} className="gov-checkbox__error" role="alert">
-              <svg className="gov-checkbox__error-icon" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0-1A6 6 0 1 0 8 2a6 6 0 0 0 0 12zM7.25 4.5h1.5v4.25h-1.5V4.5zm.75 7a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5z"/>
+              <svg className="gov-checkbox__error-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4zm0 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
               </svg>
-              {errorMessage}
+              {invalidMessage}
             </span>
           )}
         </div>
@@ -125,33 +166,40 @@ export const Checkbox = ({
 };
 
 Checkbox.propTypes = {
-  /** Label text displayed next to the checkbox */
+  /** Text label displayed next to the checkbox */
   label: PropTypes.string,
-  /** Helper text displayed below the checkbox */
-  helperText: PropTypes.string,
-  /** Controlled checked state */
+  /** Form input name */
+  name: PropTypes.string,
+  /** Form input value */
+  value: PropTypes.string,
+  /** Controlled checked state. Use with `onChange`. */
   checked: PropTypes.bool,
-  /** Indeterminate state (partially checked) */
+  /** Initial checked state for uncontrolled usage */
+  defaultChecked: PropTypes.bool,
+  /** Shows indeterminate (minus) state instead of check */
   indeterminate: PropTypes.bool,
-  /** Disabled state */
+  /** Disables the checkbox */
   disabled: PropTypes.bool,
-  /** Error state */
-  error: PropTypes.bool,
-  /** Error message displayed when in error state */
-  errorMessage: PropTypes.string,
+  /** Shows invalid/error styling */
+  invalid: PropTypes.bool,
+  /** Error message shown when `invalid` is true */
+  invalidMessage: PropTypes.string,
+  /** Helper text shown below the checkbox */
+  helperText: PropTypes.string,
+  /** Marks field as required */
+  required: PropTypes.bool,
   /** Size variant */
   size: PropTypes.oneOf(['s', 'm', 'l']),
-  /** Change handler */
+  /** Called when checked state changes */
   onChange: PropTypes.func,
-  /** Input name attribute */
-  name: PropTypes.string,
-  /** Input value attribute */
-  value: PropTypes.string,
+  /** Called when checkbox receives focus */
+  onFocus: PropTypes.func,
+  /** Called when checkbox loses focus */
+  onBlur: PropTypes.func,
   /** Custom ID (auto-generated if not provided) */
   id: PropTypes.string,
-  /** Additional CSS class names */
+  /** Additional CSS classes */
   className: PropTypes.string,
 };
 
 export default Checkbox;
-

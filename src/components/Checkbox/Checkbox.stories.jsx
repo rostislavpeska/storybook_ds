@@ -1,225 +1,491 @@
 import { useState } from 'react';
 import { Checkbox } from './Checkbox';
 
+/**
+ * # Checkbox
+ * 
+ * A form checkbox component following the GOV.cz design system.
+ * 
+ * ## Features
+ * - Supports **controlled** and **uncontrolled** modes
+ * - Three visual states: unchecked, checked, indeterminate
+ * - Three sizes: small, medium, large
+ * - Validation with error messages
+ * - Helper text support
+ * - Full keyboard and screen reader accessibility
+ * 
+ * ## Usage
+ * 
+ * ```jsx
+ * // Uncontrolled (simplest)
+ * <Checkbox name="terms" label="I agree to terms" />
+ * 
+ * // Controlled
+ * const [checked, setChecked] = useState(false);
+ * <Checkbox 
+ *   checked={checked} 
+ *   onChange={(e) => setChecked(e.target.checked)} 
+ *   label="Subscribe" 
+ * />
+ * ```
+ */
 export default {
   title: 'Components/Checkbox',
   component: Checkbox,
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
     backgrounds: { default: 'light' },
-    docs: {
-      description: {
-        component: `
-## GOV.cz Checkbox Component
-
-A form checkbox component following the GOV.cz design system. Supports checked, unchecked, and indeterminate states with error validation.
-
-### Features
-- **Three states**: Unchecked, Checked, Indeterminate
-- **Three sizes**: Small (s), Medium (m), Large (l)
-- **Validation states**: Default, Error
-- **Accessibility**: Full keyboard navigation, ARIA attributes
-- **Helper text**: Optional descriptive text below the checkbox
-- **Error messages**: Validation feedback with icon
-
-### Usage
-\`\`\`jsx
-import { Checkbox } from './components/Checkbox';
-
-// Basic usage
-<Checkbox label="Accept terms and conditions" />
-
-// Controlled checkbox
-const [checked, setChecked] = useState(false);
-<Checkbox 
-  label="Subscribe to newsletter"
-  checked={checked}
-  onChange={(e) => setChecked(e.target.checked)}
-/>
-
-// With error validation
-<Checkbox 
-  label="Required field"
-  error
-  errorMessage="You must accept the terms"
-/>
-\`\`\`
-        `,
-      },
-    },
   },
+  tags: ['autodocs'],
   argTypes: {
+    // Content
     label: {
       control: 'text',
-      description: 'Label text displayed next to the checkbox',
+      description: 'Text label displayed next to the checkbox',
+      table: { category: 'Content' },
     },
     helperText: {
       control: 'text',
-      description: 'Helper text displayed below the checkbox',
+      description: 'Helper text shown below the checkbox',
+      table: { category: 'Content' },
     },
+    
+    // State
     checked: {
       control: 'boolean',
       description: 'Controlled checked state',
+      table: { category: 'State' },
+    },
+    defaultChecked: {
+      control: 'boolean',
+      description: 'Initial checked state (uncontrolled)',
+      table: { category: 'State' },
     },
     indeterminate: {
       control: 'boolean',
-      description: 'Indeterminate state (partially checked)',
+      description: 'Shows indeterminate (minus) icon',
+      table: { category: 'State' },
     },
     disabled: {
       control: 'boolean',
-      description: 'Disabled state',
+      description: 'Disables the checkbox',
+      table: { category: 'State' },
     },
-    error: {
+    
+    // Validation
+    invalid: {
       control: 'boolean',
-      description: 'Error state',
+      description: 'Shows invalid/error styling',
+      table: { category: 'Validation' },
     },
-    errorMessage: {
+    invalidMessage: {
       control: 'text',
-      description: 'Error message displayed when in error state',
+      description: 'Error message shown when invalid',
+      table: { category: 'Validation' },
     },
+    required: {
+      control: 'boolean',
+      description: 'Marks field as required',
+      table: { category: 'Validation' },
+    },
+    
+    // Appearance
     size: {
-      control: 'select',
+      control: 'radio',
       options: ['s', 'm', 'l'],
       description: 'Size variant',
+      table: { category: 'Appearance' },
+    },
+    
+    // Events
+    onChange: {
+      action: 'changed',
+      description: 'Called when checked state changes',
+      table: { category: 'Events' },
     },
   },
 };
 
-// Default Story
-export const Default = {
-  args: {
-    label: 'Accept terms and conditions',
-    checked: false,
-    disabled: false,
-    error: false,
-  },
-};
+// =============================================================================
+// PLAYGROUND (Interactive)
+// =============================================================================
 
-// Interactive/Controlled Story
-export const Interactive = {
-  render: () => {
-    const [checked, setChecked] = useState(false);
+/**
+ * Interactive playground - click the checkbox or use Controls panel.
+ * Uses internal state management for full interactivity.
+ */
+export const Playground = {
+  render: function PlaygroundStory(args) {
+    const [checked, setChecked] = useState(args.defaultChecked || false);
+    
     return (
       <Checkbox
-        label="Click to toggle this checkbox"
+        {...args}
         checked={checked}
-        onChange={(e) => setChecked(e.target.checked)}
-        helperText={checked ? 'Checkbox is checked' : 'Checkbox is unchecked'}
+        onChange={(e) => {
+          setChecked(e.target.checked);
+          args.onChange?.(e);
+        }}
       />
     );
   },
-  parameters: {
-    docs: {
-      description: {
-        story: 'An interactive checkbox that demonstrates controlled state management.',
-      },
-    },
+  args: {
+    label: 'Accept terms and conditions',
+    defaultChecked: false,
+    disabled: false,
+    invalid: false,
+    size: 'm',
   },
 };
 
-// All States
-export const States = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <div>
-        <h3 style={{ margin: '0 0 12px 0', fontSize: '14px', color: '#666' }}>Unchecked States</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <Checkbox label="Default unchecked" />
-          <Checkbox label="Disabled unchecked" disabled />
-          <Checkbox label="Error unchecked" error errorMessage="This field is required" />
-        </div>
-      </div>
-      
-      <div>
-        <h3 style={{ margin: '0 0 12px 0', fontSize: '14px', color: '#666' }}>Checked States</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <Checkbox label="Default checked" checked />
-          <Checkbox label="Disabled checked" checked disabled />
-          <Checkbox label="Error checked" checked error errorMessage="Invalid selection" />
-        </div>
-      </div>
-      
-      <div>
-        <h3 style={{ margin: '0 0 12px 0', fontSize: '14px', color: '#666' }}>Indeterminate States</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <Checkbox label="Indeterminate" indeterminate />
-          <Checkbox label="Indeterminate disabled" indeterminate disabled />
-          <Checkbox label="Indeterminate error" indeterminate error errorMessage="Mixed state not allowed" />
-        </div>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'All checkbox states: unchecked, checked, and indeterminate with default, disabled, and error variants.',
-      },
-    },
+// =============================================================================
+// STATES (Static displays)
+// =============================================================================
+
+/**
+ * Unchecked state - the default state of a checkbox.
+ */
+export const Unchecked = {
+  args: {
+    label: 'Unchecked checkbox',
   },
+  parameters: { controls: { disable: true } },
 };
 
-// Size Variants
-export const Sizes = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <Checkbox size="s" label="Small checkbox (size: s)" checked />
-        <Checkbox size="m" label="Medium checkbox (size: m) - Default" checked />
-        <Checkbox size="l" label="Large checkbox (size: l)" checked />
-      </div>
-      
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <Checkbox size="s" label="Small unchecked" />
-        <Checkbox size="m" label="Medium unchecked" />
-        <Checkbox size="l" label="Large unchecked" />
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Three size variants: small (s), medium (m), and large (l).',
-      },
-    },
+/**
+ * Checked state - indicates the option is selected.
+ */
+export const Checked = {
+  args: {
+    label: 'Checked checkbox',
+    defaultChecked: true,
   },
+  parameters: { controls: { disable: true } },
 };
 
-// With Helper Text
+/**
+ * Indeterminate state - represents a partial selection.
+ */
+export const Indeterminate = {
+  args: {
+    label: 'Indeterminate checkbox',
+    indeterminate: true,
+  },
+  parameters: { controls: { disable: true } },
+};
+
+/**
+ * Disabled state - the checkbox cannot be interacted with.
+ */
+export const Disabled = {
+  args: {
+    label: 'Disabled checkbox',
+    disabled: true,
+  },
+  parameters: { controls: { disable: true } },
+};
+
+/**
+ * Disabled and checked.
+ */
+export const DisabledChecked = {
+  args: {
+    label: 'Disabled checked',
+    defaultChecked: true,
+    disabled: true,
+  },
+  parameters: { controls: { disable: true } },
+};
+
+// =============================================================================
+// SIZES
+// =============================================================================
+
+/**
+ * Small size (16px box).
+ */
+export const SizeSmall = {
+  args: {
+    label: 'Small checkbox',
+    size: 's',
+    defaultChecked: true,
+  },
+  parameters: { controls: { disable: true } },
+};
+
+/**
+ * Medium size (20px box) - default.
+ */
+export const SizeMedium = {
+  args: {
+    label: 'Medium checkbox',
+    size: 'm',
+    defaultChecked: true,
+  },
+  parameters: { controls: { disable: true } },
+};
+
+/**
+ * Large size (24px box).
+ */
+export const SizeLarge = {
+  args: {
+    label: 'Large checkbox',
+    size: 'l',
+    defaultChecked: true,
+  },
+  parameters: { controls: { disable: true } },
+};
+
+// =============================================================================
+// VALIDATION
+// =============================================================================
+
+/**
+ * Invalid state with error message.
+ */
+export const Invalid = {
+  args: {
+    label: 'I agree to the terms',
+    invalid: true,
+    invalidMessage: 'You must agree to continue',
+  },
+  parameters: { controls: { disable: true } },
+};
+
+/**
+ * Required field indicator.
+ */
+export const Required = {
+  args: {
+    label: 'This field is required',
+    required: true,
+  },
+  parameters: { controls: { disable: true } },
+};
+
+/**
+ * With helper text.
+ */
 export const WithHelperText = {
   args: {
     label: 'Subscribe to newsletter',
-    helperText: 'We will send you updates about new features and promotions.',
+    helperText: 'We will send you updates about new features.',
+  },
+  parameters: { controls: { disable: true } },
+};
+
+// =============================================================================
+// ALL STATES OVERVIEW (Static matrix)
+// =============================================================================
+
+/**
+ * Visual overview of all checkbox states.
+ * Static display for documentation purposes.
+ */
+export const AllStates = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'padded',
+  },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+      <section>
+        <h3 style={{ margin: '0 0 16px', fontSize: '14px', fontWeight: 600, color: '#374151' }}>
+          Unchecked
+        </h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <Checkbox label="Default" />
+          <Checkbox label="Disabled" disabled />
+          <Checkbox label="Invalid" invalid invalidMessage="Error message" />
+        </div>
+      </section>
+      
+      <section>
+        <h3 style={{ margin: '0 0 16px', fontSize: '14px', fontWeight: 600, color: '#374151' }}>
+          Checked
+        </h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <Checkbox label="Default" defaultChecked />
+          <Checkbox label="Disabled" defaultChecked disabled />
+          <Checkbox label="Invalid" defaultChecked invalid invalidMessage="Error message" />
+        </div>
+      </section>
+      
+      <section>
+        <h3 style={{ margin: '0 0 16px', fontSize: '14px', fontWeight: 600, color: '#374151' }}>
+          Indeterminate
+        </h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <Checkbox label="Default" indeterminate />
+          <Checkbox label="Disabled" indeterminate disabled />
+        </div>
+      </section>
+      
+      <section>
+        <h3 style={{ margin: '0 0 16px', fontSize: '14px', fontWeight: 600, color: '#374151' }}>
+          Sizes
+        </h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <Checkbox label="Small (s)" size="s" defaultChecked />
+          <Checkbox label="Medium (m)" size="m" defaultChecked />
+          <Checkbox label="Large (l)" size="l" defaultChecked />
+        </div>
+      </section>
+    </div>
+  ),
+};
+
+// =============================================================================
+// REAL-WORLD EXAMPLES
+// =============================================================================
+
+/**
+ * Form group for notification preferences.
+ */
+export const ExampleFormGroup = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'padded',
+  },
+  render: () => (
+    <fieldset style={{ 
+      border: '1px solid #e5e7eb', 
+      borderRadius: '8px', 
+      padding: '24px',
+      maxWidth: '400px',
+      margin: 0,
+    }}>
+      <legend style={{ 
+        fontSize: '16px', 
+        fontWeight: 600, 
+        color: '#111827',
+        padding: '0 8px',
+      }}>
+        Notification Preferences
+      </legend>
+      <p style={{ margin: '0 0 20px', fontSize: '14px', color: '#6b7280' }}>
+        Choose how you would like to receive notifications:
+      </p>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <Checkbox
+          name="notifications"
+          value="email"
+          label="Email notifications"
+          helperText="Receive updates via email"
+          defaultChecked
+        />
+        <Checkbox
+          name="notifications"
+          value="sms"
+          label="SMS notifications"
+          helperText="Receive text messages for important updates"
+        />
+        <Checkbox
+          name="notifications"
+          value="push"
+          label="Push notifications"
+          helperText="Get real-time alerts on your device"
+        />
+      </div>
+    </fieldset>
+  ),
+};
+
+/**
+ * Terms and conditions agreement with validation.
+ */
+export const ExampleTermsAgreement = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'padded',
+  },
+  render: function TermsStory() {
+    const [agreed, setAgreed] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const showError = submitted && !agreed;
+
+    return (
+      <div style={{ 
+        border: '1px solid #e5e7eb', 
+        borderRadius: '8px', 
+        padding: '24px',
+        maxWidth: '480px',
+      }}>
+        <h3 style={{ margin: '0 0 16px', fontSize: '18px', fontWeight: 600, color: '#111827' }}>
+          Complete Registration
+        </h3>
+        <div style={{ marginBottom: '20px' }}>
+          <Checkbox
+            name="terms"
+            label="I have read and agree to the Terms of Service and Privacy Policy"
+            checked={agreed}
+            onChange={(e) => {
+              setAgreed(e.target.checked);
+              if (e.target.checked) setSubmitted(false);
+            }}
+            invalid={showError}
+            invalidMessage="You must agree to the terms to continue"
+            required
+          />
+        </div>
+        <div style={{ marginBottom: '20px' }}>
+          <Checkbox
+            name="marketing"
+            label="I would like to receive marketing emails"
+            helperText="You can unsubscribe at any time"
+          />
+        </div>
+        <button
+          type="button"
+          onClick={() => {
+            setSubmitted(true);
+            if (agreed) {
+              alert('Form submitted!');
+            }
+          }}
+          style={{
+            padding: '12px 24px',
+            backgroundColor: '#2362a2',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '6px',
+            fontSize: '14px',
+            fontWeight: 500,
+            cursor: 'pointer',
+          }}
+        >
+          Create Account
+        </button>
+      </div>
+    );
   },
 };
 
-// With Error Message
-export const WithError = {
-  args: {
-    label: 'I agree to the terms and conditions',
-    error: true,
-    errorMessage: 'You must agree to the terms and conditions to continue.',
+/**
+ * Select all pattern with indeterminate state.
+ */
+export const ExampleSelectAll = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'padded',
   },
-};
-
-// Indeterminate State
-export const Indeterminate = {
-  render: () => {
+  render: function SelectAllStory() {
     const [items, setItems] = useState([
-      { id: 1, label: 'Option 1', checked: true },
-      { id: 2, label: 'Option 2', checked: false },
-      { id: 3, label: 'Option 3', checked: true },
+      { id: 'item1', label: 'Item 1', checked: true },
+      { id: 'item2', label: 'Item 2', checked: false },
+      { id: 'item3', label: 'Item 3', checked: true },
     ]);
 
     const allChecked = items.every((item) => item.checked);
     const someChecked = items.some((item) => item.checked);
     const indeterminate = someChecked && !allChecked;
 
-    const handleParentChange = () => {
-      const newValue = !allChecked;
-      setItems(items.map((item) => ({ ...item, checked: newValue })));
+    const handleSelectAll = () => {
+      setItems(items.map((item) => ({ ...item, checked: !allChecked })));
     };
 
-    const handleChildChange = (id) => {
+    const handleItemChange = (id) => {
       setItems(items.map((item) => 
         item.id === id ? { ...item, checked: !item.checked } : item
       ));
@@ -228,297 +494,29 @@ export const Indeterminate = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         <Checkbox
-          label="Select all options"
+          label="Select all"
           checked={allChecked}
           indeterminate={indeterminate}
-          onChange={handleParentChange}
+          onChange={handleSelectAll}
         />
-        <div style={{ marginLeft: '32px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <div style={{ 
+          marginLeft: '32px', 
+          display: 'flex', 
+          flexDirection: 'column', 
+          gap: '8px',
+          borderLeft: '2px solid #e5e7eb',
+          paddingLeft: '16px',
+        }}>
           {items.map((item) => (
             <Checkbox
               key={item.id}
               label={item.label}
               checked={item.checked}
-              onChange={() => handleChildChange(item.id)}
+              onChange={() => handleItemChange(item.id)}
             />
           ))}
         </div>
       </div>
     );
   },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Indeterminate state is useful for "select all" checkboxes when only some children are selected.',
-      },
-    },
-  },
 };
-
-// Form Group Example
-export const FormGroup = {
-  render: () => {
-    const [values, setValues] = useState({
-      email: true,
-      sms: false,
-      push: false,
-    });
-
-    const handleChange = (key) => (e) => {
-      setValues({ ...values, [key]: e.target.checked });
-    };
-
-    return (
-      <div style={{ 
-        padding: '24px', 
-        border: '1px solid #e5e5e5', 
-        borderRadius: '8px',
-        maxWidth: '400px',
-      }}>
-        <h3 style={{ 
-          margin: '0 0 16px 0', 
-          fontSize: '18px', 
-          fontWeight: '500',
-          color: '#262626',
-        }}>
-          Notification Preferences
-        </h3>
-        <p style={{ 
-          margin: '0 0 20px 0', 
-          fontSize: '14px', 
-          color: '#666',
-        }}>
-          Choose how you would like to receive notifications:
-        </p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <Checkbox
-            label="Email notifications"
-            helperText="Receive updates via email"
-            checked={values.email}
-            onChange={handleChange('email')}
-          />
-          <Checkbox
-            label="SMS notifications"
-            helperText="Receive text messages for important updates"
-            checked={values.sms}
-            onChange={handleChange('sms')}
-          />
-          <Checkbox
-            label="Push notifications"
-            helperText="Get real-time alerts on your device"
-            checked={values.push}
-            onChange={handleChange('push')}
-          />
-        </div>
-      </div>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Example of multiple checkboxes used in a form group for notification preferences.',
-      },
-    },
-  },
-};
-
-// Terms and Conditions Example
-export const TermsExample = {
-  render: () => {
-    const [agreed, setAgreed] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
-    const showError = submitted && !agreed;
-
-    return (
-      <div style={{ 
-        padding: '24px', 
-        border: '1px solid #e5e5e5', 
-        borderRadius: '8px',
-        maxWidth: '500px',
-      }}>
-        <h3 style={{ 
-          margin: '0 0 16px 0', 
-          fontSize: '18px', 
-          fontWeight: '500',
-          color: '#262626',
-        }}>
-          Complete Registration
-        </h3>
-        <div style={{ marginBottom: '20px' }}>
-          <Checkbox
-            label="I have read and agree to the Terms of Service and Privacy Policy"
-            checked={agreed}
-            onChange={(e) => {
-              setAgreed(e.target.checked);
-              if (e.target.checked) setSubmitted(false);
-            }}
-            error={showError}
-            errorMessage="You must agree to the terms to continue"
-          />
-        </div>
-        <button
-          onClick={() => setSubmitted(true)}
-          style={{
-            padding: '12px 24px',
-            backgroundColor: agreed ? '#2362a2' : '#e5e5e5',
-            color: agreed ? '#fff' : '#666',
-            border: 'none',
-            borderRadius: '6px',
-            fontSize: '14px',
-            fontWeight: '500',
-            cursor: agreed ? 'pointer' : 'not-allowed',
-          }}
-        >
-          {agreed ? 'Continue' : 'Please agree to terms'}
-        </button>
-      </div>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Real-world example of a terms and conditions checkbox with validation.',
-      },
-    },
-  },
-};
-
-// Disabled Examples
-export const DisabledStates = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <Checkbox label="Disabled unchecked" disabled />
-      <Checkbox label="Disabled checked" checked disabled />
-      <Checkbox label="Disabled indeterminate" indeterminate disabled />
-      <Checkbox 
-        label="Disabled with helper text" 
-        disabled 
-        helperText="This option is not available at this time."
-      />
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Disabled checkboxes in various states.',
-      },
-    },
-  },
-};
-
-// Complete Matrix
-export const CompleteMatrix = {
-  render: () => {
-    const sizes = ['s', 'm', 'l'];
-    const states = [
-      { name: 'Default', props: {} },
-      { name: 'Checked', props: { checked: true } },
-      { name: 'Indeterminate', props: { indeterminate: true } },
-      { name: 'Disabled', props: { disabled: true } },
-      { name: 'Disabled Checked', props: { disabled: true, checked: true } },
-      { name: 'Error', props: { error: true } },
-      { name: 'Error Checked', props: { error: true, checked: true } },
-    ];
-
-    return (
-      <div style={{ overflowX: 'auto' }}>
-        <table style={{ borderCollapse: 'collapse', width: '100%' }}>
-          <thead>
-            <tr>
-              <th style={{ 
-                padding: '12px', 
-                textAlign: 'left', 
-                borderBottom: '2px solid #e5e5e5',
-                fontSize: '14px',
-                fontWeight: '600',
-                color: '#262626',
-              }}>
-                State
-              </th>
-              {sizes.map((size) => (
-                <th 
-                  key={size}
-                  style={{ 
-                    padding: '12px', 
-                    textAlign: 'center', 
-                    borderBottom: '2px solid #e5e5e5',
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    color: '#262626',
-                  }}
-                >
-                  Size {size.toUpperCase()}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {states.map((state) => (
-              <tr key={state.name}>
-                <td style={{ 
-                  padding: '16px 12px', 
-                  borderBottom: '1px solid #f0f0f0',
-                  fontSize: '14px',
-                  color: '#4f4f4f',
-                }}>
-                  {state.name}
-                </td>
-                {sizes.map((size) => (
-                  <td 
-                    key={`${state.name}-${size}`}
-                    style={{ 
-                      padding: '16px 12px', 
-                      textAlign: 'center',
-                      borderBottom: '1px solid #f0f0f0',
-                    }}
-                  >
-                    <div style={{ display: 'inline-block' }}>
-                      <Checkbox 
-                        size={size} 
-                        label="Label"
-                        {...state.props} 
-                      />
-                    </div>
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Complete matrix showing all checkbox variants across sizes and states.',
-      },
-    },
-  },
-};
-
-// Long Label Example
-export const LongLabels = {
-  render: () => (
-    <div style={{ maxWidth: '400px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <Checkbox 
-        label="I acknowledge that I have read and understood all the terms and conditions, privacy policy, and data processing agreement that govern the use of this service."
-      />
-      <Checkbox 
-        label="I consent to receiving marketing communications including newsletters, promotional offers, and product updates via email."
-        helperText="You can unsubscribe at any time by clicking the link in our emails."
-      />
-      <Checkbox 
-        label="Short label"
-      />
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Checkboxes with long labels that wrap to multiple lines.',
-      },
-    },
-  },
-};
-

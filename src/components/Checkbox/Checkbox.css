@@ -152,42 +152,47 @@
   color: var(--gov-neutral-0, #ffffff);
 }
 
-/* Error State */
-.gov-checkbox--error .gov-checkbox__box {
+/* Invalid/Error State */
+.gov-checkbox--invalid .gov-checkbox__box {
   border-color: var(--gov-border-error, #dc2626);
 }
 
-.gov-checkbox--error:not(.gov-checkbox--disabled):hover .gov-checkbox__box {
+.gov-checkbox--invalid:not(.gov-checkbox--disabled):hover .gov-checkbox__box {
   border-color: var(--gov-error-700, #b91c1c);
   background-color: var(--gov-bg-error-subtlest, #fef2f2);
 }
 
-.gov-checkbox--error .gov-checkbox__label {
-  color: var(--gov-text-error, #dc2626);
+.gov-checkbox--invalid .gov-checkbox__label {
+  color: var(--gov-text-primary, #262626);
 }
 
-.gov-checkbox--error.gov-checkbox--checked .gov-checkbox__box,
-.gov-checkbox--error.gov-checkbox--indeterminate .gov-checkbox__box {
+.gov-checkbox--invalid.gov-checkbox--checked .gov-checkbox__box,
+.gov-checkbox--invalid.gov-checkbox--indeterminate .gov-checkbox__box {
   background-color: var(--gov-error-600, #dc2626);
   border-color: var(--gov-error-600, #dc2626);
+}
+
+/* Required asterisk */
+.gov-checkbox__required {
+  color: var(--gov-text-error, #dc2626);
 }
 
 /* ==========================================================================
    Messages (Helper & Error)
    ========================================================================== */
 
-.gov-checkbox__messages {
+.gov-checkbox__message {
   display: flex;
   flex-direction: column;
   gap: var(--gov-space-1, 4px);
   margin-left: calc(20px + var(--gov-space-3, 12px));
 }
 
-.gov-checkbox--s .gov-checkbox__messages {
+.gov-checkbox--s .gov-checkbox__message {
   margin-left: calc(16px + var(--gov-space-3, 12px));
 }
 
-.gov-checkbox--l .gov-checkbox__messages {
+.gov-checkbox--l .gov-checkbox__message {
   margin-left: calc(24px + var(--gov-space-3, 12px));
 }
 
@@ -255,7 +260,7 @@
   color: var(--gov-text-error);
 }
 
-[data-theme="dark"] .gov-checkbox--error .gov-checkbox__box {
+[data-theme="dark"] .gov-checkbox--invalid .gov-checkbox__box {
   border-color: var(--gov-border-error);
 }
 
