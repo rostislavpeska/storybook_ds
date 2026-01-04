@@ -14,7 +14,7 @@
 2. [Contest: Robot 01 vs Robot 02](#2-contest-robot-01-vs-robot-02)
 3. [Inventing Own Synthetic Components](#3-inventing-own-synthetic-components)
    - 3.5 [Using Synthetic Components in Applications](#35-using-synthetic-components-in-applications) *(Agent 02)*
-4. [Reimporting Synthetic Components Back to Figma](#4-reimporting-synthetic-components-back-to-figma) *(TBD)*
+4. [Reimporting Synthetic Components Back to Figma](#4-reimporting-synthetic-components-back-to-figma)
 
 ---
 
@@ -543,14 +543,76 @@ This section will document how Agent 02 uses the synthetic components to build t
 
 # 4. Reimporting Synthetic Components Back to Figma
 
-*(TBD - Future section)*
+## 🎯 The Challenge
 
-## Planned Content
+We have synthetic components in React/Storybook that don't exist in Figma. How do we bring them back?
 
-- Converting React components back to Figma designs
-- Maintaining design-code synchronization
-- Two-way workflow: Figma ↔ Code
-- Tools and techniques for bidirectional updates
+## 📊 Available Approaches
+
+| Approach | Type | Creates Components? | Best For |
+|----------|------|---------------------|----------|
+| **story.to.design** | Plugin | ✅ Yes | Our use case |
+| **Figma Code Connect** | Official | ❌ Links only | Documentation |
+| **Anima DSA** | SaaS | ✅ Yes | Enterprise |
+| **Chromatic Connect** | Plugin | ❌ Embeds only | Visual QA |
+| **Manual Recreation** | Manual | ✅ Yes | One-time |
+
+## 🏆 Recommended: story.to.design
+
+**Why**: It's the only tool that **creates real Figma components** from Storybook stories.
+
+### How It Works
+
+1. Publish Storybook to public URL
+2. Install story.to.design plugin in Figma
+3. Connect to Storybook URL
+4. Select components to import
+5. Plugin generates Figma components with:
+   - Auto-layout
+   - Variants from story args
+   - Nested components
+   - Proper naming
+
+### Implementation Plan
+
+```
+Step 1: Deploy Storybook (Vercel/Netlify/Chromatic)
+Step 2: Install story.to.design in Figma
+Step 3: Import: Header, Footer, LanguageSwitcher
+Step 4: Organize in "Synthetic Components" page
+Step 5: Add Code Connect for documentation
+```
+
+### Pricing
+
+| Plan | Price | Limit |
+|------|-------|-------|
+| Free | $0 | 3 components/month |
+| Pro | ~$15/mo | Unlimited |
+
+## 🔗 Figma Code Connect (For Documentation)
+
+After importing, use Code Connect to link components back to code:
+
+```tsx
+// Button.figma.tsx
+import figma from "@figma/code-connect";
+import { Button } from "./Button";
+
+figma.connect(Button, "https://figma.com/file/xxx?node-id=1:23", {
+  props: {
+    label: figma.string("Label"),
+    variant: figma.enum("Variant", { Primary: "primary" }),
+  },
+  example: (props) => <Button variant={props.variant}>{props.label}</Button>,
+});
+```
+
+This shows the correct code snippet in Figma's Dev Mode.
+
+## 📚 Full Research
+
+See: `articles/08-research-code-to-figma.md` for complete analysis of all approaches.
 
 ---
 
