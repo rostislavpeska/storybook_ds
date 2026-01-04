@@ -13,6 +13,7 @@
 1. [Synthetic Component Library from Figma](#1-synthetic-component-library-from-figma)
 2. [Contest: Robot 01 vs Robot 02](#2-contest-robot-01-vs-robot-02)
 3. [Inventing Own Synthetic Components](#3-inventing-own-synthetic-components)
+   - 3.5 [Using Synthetic Components in Applications](#35-using-synthetic-components-in-applications) *(Agent 02)*
 4. [Reimporting Synthetic Components Back to Figma](#4-reimporting-synthetic-components-back-to-figma) *(TBD)*
 
 ---
@@ -325,7 +326,8 @@ A dark blue government-style header with:
 
 | Feature | Description |
 |---------|-------------|
-| **Logo** | Customizable (default: GOV.cz house icon) |
+| **Czech Lion Logo** | Official GOV.cz heraldic lion (inline SVG) |
+| **App Name** | Configurable application name |
 | **Navigation** | Links with active state |
 | **Language Switcher** | Integrated component |
 | **Actions** | Login/user buttons |
@@ -333,10 +335,14 @@ A dark blue government-style header with:
 | **Accent Bar** | Blue gradient line under header |
 | **Sticky** | Optional fixed position |
 
+**Czech Lion Logo**:
+The official GOV.cz logo was extracted from Figma (`gov-icons-1-1`, node `700:1279`) and embedded as inline SVG. This is the Czech heraldic lion used across all government portals.
+
 **Props**:
 ```jsx
 <Header
-  logo={{ text: 'GOV.cz', href: '/' }}
+  appName="Portál formulářů"    // Your application name
+  showLogo={true}               // Show/hide Czech lion
   navigation={[
     { label: 'Služby', href: '/sluzby', active: true },
     { label: 'Kontakt', href: '/kontakt' }
@@ -435,7 +441,7 @@ A comprehensive footer with configurable sections:
 **Good** (abstracted):
 ```jsx
 <Header
-  logo={{ text: 'Any App', href: '/' }}
+  appName="Any App"
   navigation={props.navigation}
 />
 ```
@@ -472,6 +478,31 @@ Components designed for AI consumption:
 | **LanguageSwitcher** | Toggle/Buttons/Dropdown | 10 | ✅ AA |
 | **Footer** | Light/Dark | 10 | ✅ AA |
 
+## 🦁 Logo Extraction from Figma
+
+The official Czech lion logo was extracted directly from Figma:
+
+**Source**: `gov-icons-1-1` file, node `700:1279`
+
+**Process**:
+1. Used `mcp_figma-desktop_get_design_context` to get SVG references
+2. Downloaded SVG from Figma's local server
+3. Extracted path data and embedded as inline SVG
+4. Color set to `currentColor` for theme flexibility
+
+**Result**: The Header component now includes the authentic GOV.cz heraldic lion logo.
+
+## 🎨 Contrast Fixes for WCAG Compliance
+
+Fixed focus outline contrast issues:
+
+| Background | Focus Color | Rationale |
+|------------|-------------|-----------|
+| Dark (`#0d2a4a`) | White (`#ffffff`) | High contrast on dark |
+| Light (`#ffffff`) | Dark blue (`#284163`) | High contrast on light |
+
+**LanguageSwitcher**: Uses `currentColor` for focus outline - automatically adapts to background.
+
 ## 🔗 Integration with Agent 02
 
 These components are now available for Agent 02 to use:
@@ -491,6 +522,22 @@ cp -r "Storybook DS/src/components/LanguageSwitcher" my-project/src/components/
 | **Actions** | Button |
 | **Layout** | Card, Header, Footer |
 | **Utilities** | LanguageSwitcher, Icon |
+
+---
+
+# 3.5 Using Synthetic Components in Applications
+
+*(To be completed by Agent 02)*
+
+This section will document how Agent 02 uses the synthetic components to build the GOV.cz form application.
+
+**Expected Content**:
+- How components were copied to the new project
+- Integration challenges and solutions
+- Component customization for the specific use case
+- Final application screenshots
+
+**Status**: Waiting for Agent 02 to complete Round B of the contest.
 
 ---
 
