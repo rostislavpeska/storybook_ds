@@ -2,10 +2,10 @@
 
 **Project**: GOV.cz Design System → Storybook Component Library  
 **Date Started**: January 2026  
-**Status**: ✅ Phase 3 In Progress - Components Implementation  
-**Last Updated**: January 3, 2026
+**Status**: ⏸️ Paused - Official GOV.cz Storybook Discovered  
+**Last Updated**: January 4, 2026
 
-> **Latest**: Card component implemented from Figma design with vertical/horizontal layouts, image sizes, and interactive states. See [Card Component Implementation](#-card-component-implementation) section.
+> **Latest**: Discovered official `@gov-design-system-ce/react` npm package with 40+ pre-built React components. Project paused for strategic evaluation. See [Official GOV.cz Discovery](#-official-govcz-design-system-discovery) section.
 
 ---
 
@@ -34,22 +34,27 @@ Create a Storybook component library from the **designsystem.gov.cz** Figma file
 ```
 Storybook DS/
 ├── .storybook/
-│   ├── main.js          # Storybook config with MCP addon
-│   └── preview.js       # Global decorators & styles
-├── articles/            # Project documentation
+│   ├── main.js              # Storybook config with MCP addon
+│   ├── preview.js           # Global decorators, backgrounds, theme toggle
+│   └── preview-head.html    # Bootstrap Icons CDN, light mode forcing
+├── articles/                # Project documentation
 │   └── 01-figma-to-storybook-journey.md
-├── export/              # Figma exports
-│   └── color_variables.json  # Full variable export from Figma
+├── export/                  # Figma exports
+│   └── color_variables.json # Full variable export from Figma
 ├── src/
-│   ├── index.css        # Design tokens (GOV + Ember Blaze themes)
+│   ├── index.css            # Design tokens (GOV.cz light + dark)
 │   └── components/
-│       ├── Button/      # Button component with variants
-│       ├── Card/        # Card component with variants
-│       ├── ColorTokens/ # Color token documentation (19 stories!)
-│       └── TypographyTokens/ # Typography documentation (5 stories)
-├── docker-compose.yml   # Container orchestration
-├── Dockerfile           # Production build
-└── Dockerfile.dev       # Development build
+│       ├── Button/          # Button component (6 colors, 4 types, 5 sizes)
+│       ├── Card/            # Card component (vertical/horizontal, 2 image sizes)
+│       ├── Checkbox/        # Checkbox component (3 sizes, validation states)
+│       ├── Datepicker/      # Datepicker component (auto-format, calendar)
+│       ├── Icon/            # Icon component (50 built-in + Bootstrap Icons)
+│       ├── ColorTokens/     # Color token documentation (19 stories)
+│       ├── TypographyTokens/# Typography documentation (5 stories)
+│       └── SizeTokens/      # Spacing & sizing documentation
+├── docker-compose.yml       # Container orchestration
+├── Dockerfile               # Production build
+└── Dockerfile.dev           # Development build
 ```
 
 ---
@@ -255,7 +260,7 @@ src/components/Checkbox/
 ├── index.js              # Barrel export
 ├── Checkbox.jsx          # Main component with PropTypes
 ├── Checkbox.css          # GOV.cz design token styling
-└── Checkbox.stories.jsx  # 12 comprehensive stories
+└── Checkbox.stories.jsx  # Storybook best practices stories
 ```
 
 **Features**:
@@ -263,42 +268,62 @@ src/components/Checkbox/
 |---------|-------------|
 | **Check States** | Unchecked, Checked, Indeterminate |
 | **Sizes** | Small (s), Medium (m), Large (l) |
-| **Validation** | Default, Disabled, Error states |
+| **Validation** | Default, Disabled, Invalid states |
 | **Helper Text** | Descriptive text below checkbox |
 | **Error Messages** | Validation feedback with icon |
 | **Accessibility** | ARIA attributes, keyboard navigation |
+| **Controlled/Uncontrolled** | Supports both React patterns |
 
-**Props**:
+**Props** (Standardized naming):
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `label` | string | - | Label text next to checkbox |
 | `helperText` | string | - | Helper text below |
-| `checked` | boolean | false | Controlled checked state |
+| `checked` | boolean | - | Controlled checked state |
+| `defaultChecked` | boolean | false | Uncontrolled initial state |
 | `indeterminate` | boolean | false | Partial selection state |
 | `disabled` | boolean | false | Disabled state |
-| `error` | boolean | false | Error state |
-| `errorMessage` | string | - | Error message text |
+| `invalid` | boolean | false | Invalid/error state |
+| `invalidMessage` | string | - | Error message text |
+| `required` | boolean | false | Required field indicator |
 | `size` | 's' \| 'm' \| 'l' | 'm' | Size variant |
 | `onChange` | function | - | Change handler |
 | `name` | string | - | Input name attribute |
 | `value` | string | - | Input value attribute |
 | `id` | string | auto | Custom ID |
 
-**Stories Created**:
-| Story | Description |
-|-------|-------------|
-| Default | Basic unchecked checkbox |
-| Interactive | Controlled state demo |
-| States | All state combinations |
-| Sizes | Three size variants |
-| WithHelperText | Helper text example |
-| WithError | Error validation |
-| Indeterminate | Parent/child select all |
-| FormGroup | Notification preferences form |
-| TermsExample | Real-world terms validation |
-| DisabledStates | All disabled variants |
-| CompleteMatrix | Full variant matrix table |
-| LongLabels | Multi-line label handling |
+**Stories** (Storybook Best Practices):
+| Story | Type | Description |
+|-------|------|-------------|
+| Playground | Interactive | Full controls for testing |
+| Unchecked | Static | Default unchecked state |
+| Checked | Static | Checked state |
+| Indeterminate | Static | Partial selection indicator |
+| Disabled | Static | Disabled unchecked |
+| DisabledChecked | Static | Disabled checked |
+| SizeSmall/Medium/Large | Static | Size variants |
+| Invalid | Static | Error validation state |
+| Required | Static | Required field indicator |
+| WithHelperText | Static | Helper text example |
+| AllStates | Matrix | All combinations displayed |
+| ExampleSelectAll | Interactive | Parent/child select pattern |
+| ExampleFormGroup | Interactive | Form with multiple checkboxes |
+| ExampleTermsAgreement | Interactive | Terms validation pattern |
+
+**Refactoring Details** (Jan 4, 2026):
+- Renamed `error` → `invalid` (standardized naming)
+- Renamed `errorMessage` → `invalidMessage`
+- Added `defaultChecked` for uncontrolled usage
+- Added `required` prop
+- Fixed "bouncing" bug (inconsistent padding)
+- Static stories use `controls: { disable: true }`
+- Interactive stories use `useState` in render function
+- Comprehensive component description in `docs`
+
+**Bug Fix**: Checkbox "bouncing" issue
+- **Problem**: Checkboxes shifted position when toggled
+- **Cause**: SVG icons only rendered when checked, changing box size
+- **Solution**: SVG icons always in DOM, hidden with `color: transparent`
 
 **Design Tokens Used**:
 - `--gov-primary-600` (#2362a2) - Checked background
@@ -310,7 +335,147 @@ src/components/Checkbox/
 
 **Dark Mode Ready**: Styles prepared with `[data-theme="dark"]` selectors.
 
-### 10. Typography Tokens Component
+### 10. Datepicker Component Implementation
+
+Created `Datepicker` component based on [GOV.cz datepicker guidelines](https://designsystem.gov.cz/komponenty/datepicker.html):
+
+**Component Structure**:
+```
+src/components/Datepicker/
+├── index.js              # Barrel export
+├── Datepicker.jsx        # Main component with PropTypes
+├── Datepicker.css        # GOV.cz design token styling
+└── Datepicker.stories.jsx # 13 comprehensive stories
+```
+
+**Features**:
+| Feature | Description |
+|---------|-------------|
+| **Date Input** | Text input with auto-formatting (dd.mm.rrrr) |
+| **Calendar Popup** | Month calendar with day selection |
+| **Auto-format** | Dots inserted automatically as user types |
+| **Numeric-only** | Non-numeric characters blocked |
+| **Mobile Keyboard** | `inputMode="numeric"` for number pad |
+| **Keyboard Navigation** | Arrow keys, Enter, Escape support |
+| **Date Constraints** | minDate, maxDate support |
+| **Localization** | Czech (cs) and English (en) locales |
+| **Controlled/Uncontrolled** | Supports both React patterns |
+| **Accessibility** | ARIA attributes, keyboard focus management |
+
+**Props**:
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | string | - | Input label |
+| `name` | string | - | Input name attribute |
+| `value` | Date | - | Controlled date value |
+| `defaultValue` | Date | - | Uncontrolled initial value |
+| `placeholder` | string | 'dd.mm.rrrr' | Input placeholder |
+| `disabled` | boolean | false | Disabled state |
+| `invalid` | boolean | false | Invalid/error state |
+| `invalidMessage` | string | - | Error message text |
+| `helperText` | string | - | Helper text below |
+| `required` | boolean | false | Required field indicator |
+| `locale` | 'cs' \| 'en' | 'cs' | Localization |
+| `minDate` | Date | - | Minimum selectable date |
+| `maxDate` | Date | - | Maximum selectable date |
+| `autoOpenOnFocus` | boolean | false | Open calendar on focus |
+| `onChange` | function | - | Date change handler |
+| `onFocus` | function | - | Focus handler |
+| `onBlur` | function | - | Blur handler |
+| `id` | string | auto | Custom ID |
+
+**Input Auto-formatting**:
+| User Types | Displayed |
+|------------|-----------|
+| `1` | `1` |
+| `15` | `15.` (auto-adds dot) |
+| `151` | `15.1` |
+| `1512` | `15.12.` (auto-adds dot) |
+| `15122025` | `15.12.2025` |
+
+**Keyboard Support**:
+| Key | Calendar Closed | Calendar Open |
+|-----|-----------------|---------------|
+| Arrow Down | Open calendar | Move 1 week forward |
+| Arrow Up | - | Move 1 week back |
+| Arrow Left | Cursor in input | Move 1 day back |
+| Arrow Right | Cursor in input | Move 1 day forward |
+| Enter | - | Select focused date |
+| Escape | - | Close calendar |
+
+**Stories Created**:
+| Story | Description |
+|-------|-------------|
+| Playground | Interactive with all controls |
+| Default | Empty datepicker |
+| WithValue | Pre-selected date |
+| Disabled | Disabled state |
+| Invalid | Error validation |
+| Required | Required field |
+| WithHelperText | Helper text example |
+| LocaleCzech | Czech month/day names |
+| LocaleEnglish | English month/day names |
+| WithDateRange | Min/max date constraints |
+| ExampleBirthDate | Birth date pattern |
+| ExampleEventBooking | Future event booking |
+| AllStates | All states displayed |
+
+**Design Tokens Used**:
+- `--gov-primary-600` - Selected day background
+- `--gov-primary-100` - Today highlight
+- `--gov-border-subtle` - Calendar border
+- `--gov-bg-block-primary` - Calendar background
+- `--gov-text-primary` - Day numbers
+- `--gov-focus-600` - Focus ring
+
+**Compliance with Official Guidelines**:
+- Date format: `dd. mm. rrrr` (Czech standard)
+- Placeholder shows format guidance
+- Full keyboard navigation (Enter to select, Escape to close)
+- Source: [designsystem.gov.cz/komponenty/datepicker.html](https://designsystem.gov.cz/komponenty/datepicker.html)
+
+### 11. Storybook Light Mode Configuration
+
+Configured Storybook to default to light mode for component development:
+
+**Changes Made**:
+
+1. **`.storybook/preview.js`**:
+```javascript
+parameters: {
+  backgrounds: {
+    default: 'light',
+    values: [
+      { name: 'light', value: '#ffffff' },
+      { name: 'dark', value: '#1a1a1a' },
+    ],
+  },
+},
+globals: {
+  theme: 'light', // Theme toggle in toolbar
+},
+```
+
+2. **`.storybook/preview-head.html`**:
+```html
+<!-- Bootstrap Icons CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons..." />
+
+<!-- Force light mode -->
+<style>
+  :root { color-scheme: light !important; }
+  body, html, #storybook-root { background-color: #ffffff !important; }
+</style>
+```
+
+3. **Typography & Size Token CSS Fixes**:
+- `TypeScale.css` - Rewritten for light backgrounds (dark text on white)
+- `SizeTokens.css` - Rewritten for light backgrounds
+- Both story files updated: `backgrounds: { default: 'light' }`
+
+**Reason**: Components designed for light mode first, with dark mode support prepared structurally via `[data-theme="dark"]` selectors.
+
+### 12. Typography Tokens Component
 
 Created `TypographyTokens` component with 5 stories documenting text styles:
 
@@ -515,21 +680,33 @@ The `get_variable_defs` tool returns **variables used in a specific node**, not 
 
 ## 📋 Task Status
 
-| Task | Status |
-|------|--------|
-| ✅ Extract GOV color palette from Figma | Complete |
-| ✅ Generate CSS custom properties | Complete |
-| ✅ Create ColorTokens stories | Complete (19 stories) |
-| ✅ Verify ColorTokens renders in Storybook | Complete |
-| ✅ Add typography tokens documentation | Complete (5 stories) |
-| ✅ Add size tokens documentation | Complete |
-| ✅ Implement Icon component | Complete (50 icons + Bootstrap Icons) |
-| ✅ Implement Button component | Complete (light mode) |
-| ✅ Implement Card component | Complete (light mode, 15 stories) |
-| ✅ Implement Checkbox component | Complete (light mode, 12 stories) |
-| ⚠️ Align typography with official GOV.cz spec | **Pending** |
-| ⏳ Implement dark mode for components | Future |
-| ⏳ Build more GOV components | Future |
+### Phase 1-3: Completed Work
+
+| Task | Status | Details |
+|------|--------|---------|
+| ✅ Extract GOV color palette from Figma | Complete | Via plugin export |
+| ✅ Generate CSS custom properties | Complete | 200+ tokens |
+| ✅ Create ColorTokens stories | Complete | 19 stories |
+| ✅ Verify ColorTokens renders | Complete | All working |
+| ✅ Add typography tokens documentation | Complete | 5 stories |
+| ✅ Add size tokens documentation | Complete | Multiple stories |
+| ✅ Implement Icon component | Complete | 50 icons + Bootstrap Icons |
+| ✅ Implement Button component | Complete | 6 colors, 4 types, 5 sizes |
+| ✅ Implement Card component | Complete | 15 stories |
+| ✅ Implement Checkbox component | Complete | Refactored to best practices |
+| ✅ Implement Datepicker component | Complete | 13 stories, auto-format |
+| ✅ Configure Storybook light mode | Complete | Default white background |
+| ✅ Fix Typography/Size token styling | Complete | Light mode CSS |
+
+### Phase 4: Strategic Decision Required
+
+| Task | Status | Notes |
+|------|--------|-------|
+| ⏸️ Align typography with official GOV.cz spec | **Paused** | Official package may handle this |
+| ⏸️ Implement dark mode for components | **Paused** | Official has `GovThemeSwitch` |
+| ⏸️ Build more GOV components | **Paused** | 40+ available in official package |
+| 🆕 Evaluate official npm packages | **Pending** | Strategic decision needed |
+| 🆕 Decide custom vs official approach | **Pending** | User decision required |
 
 ---
 
@@ -797,13 +974,103 @@ If alignment with official GOV.cz is required:
 
 ---
 
-## 🔮 Next Steps (Phase 4)
+## 🚨 Official GOV.cz Design System Discovery
 
-1. **Implement Dark Mode** - Complete dark mode styling for Button, Card, Icon components
-2. **Align with Official Spec** - Fix font family and CSS variable naming
-3. **Build More GOV Components** - Form inputs, navigation, footer, etc.
-4. **Dark Mode Toggle** - Add story demonstrating `data-theme="dark"` switching
-5. **Brand Mode Switcher** - Add interactive demo for `data-brand-mode` switching
+**Date**: January 4, 2026
+
+### Discovery
+
+While researching the datepicker implementation, we discovered that GOV.cz provides an **official Storybook and React component library**:
+
+- **Official Storybook**: [designsystem.gov.cz/storybook/](https://designsystem.gov.cz/storybook/)
+- **Developer Documentation**: [designsystem.gov.cz/zaciname/for-developers.html](https://designsystem.gov.cz/zaciname/for-developers.html)
+
+### Official npm Packages
+
+| Package | Version | Description |
+|---------|---------|-------------|
+| `@gov-design-system-ce/components` | 4.2.9 | Core Web Components |
+| **`@gov-design-system-ce/react`** | 3.4.0 | **React component wrappers** |
+| `@gov-design-system-ce/styles` | 4.2.7 | CSS tokens & styles |
+| `@gov-design-system-ce/icons` | 0.2.3 | Icon library |
+| `@gov-design-system-ce/fonts` | 0.0.2 | Roboto fonts |
+| `@gov-design-system-ce/react-form` | 0.2.5 | Advanced form handling |
+| `@gov-design-system-ce/angular` | 1.3.1 | Angular wrappers |
+| `@gov-design-system-ce/vue` | 2.3.4 | Vue wrappers |
+
+### Components in Official React Package (40+)
+
+**Form Components**:
+- `GovFormInput`, `GovFormTextArea`, `GovFormSelect`
+- `GovFormCheckbox`, `GovFormRadio`, `GovFormSwitch`
+- `GovFormAutocomplete`, `GovFormMultiSelect`
+- `GovFormFile`, `GovFormSearch`, `GovFormRange`
+- `GovFormLabel`, `GovFormMessage`, `GovFormControl`
+
+**UI Components**:
+- `GovButton`, `GovCard`, `GovChip`, `GovTag`
+- `GovAccordion`, `GovTabs`, `GovDialog`
+- `GovBreadcrumbs`, `GovPagination`
+- `GovToast`, `GovTooltip`, `GovInfobar`
+- `GovStepper`, `GovWizard`, `GovThemeSwitch`
+- `GovIcon`, `GovLoading`, `GovSkeleton`
+- And many more...
+
+### Comparison: Our Implementation vs Official
+
+| Component | We Built | Official Package | Notes |
+|-----------|----------|------------------|-------|
+| Button | ✅ | ✅ `GovButton` | Official has more features |
+| Card | ✅ | ✅ `GovCard` | Similar functionality |
+| Checkbox | ✅ | ✅ `GovFormCheckbox` | Official integrated with form system |
+| Datepicker | ✅ | ⚠️ Web Component only | Our React implementation fills gap |
+| Icon | ✅ | ✅ `GovIcon` | Official uses lazy-loaded SVGs |
+
+### Strategic Implications
+
+| Factor | Our Custom Approach | Using Official Packages |
+|--------|---------------------|------------------------|
+| **Maintenance** | We maintain | DIA (Digital Agency) maintains |
+| **Updates** | Manual implementation | Automatic via npm |
+| **Compliance** | Must verify ourselves | Guaranteed compliant |
+| **Accessibility** | Must implement | Built-in WCAG |
+| **Dark Mode** | Manual `[data-theme]` | `GovThemeSwitch` component |
+| **Development Time** | Weeks/months | Hours to integrate |
+| **Customization** | Full control | Limited to component API |
+| **Learning Value** | High (built from scratch) | Lower (using pre-built) |
+
+### Recommendation
+
+**Use the official packages** for production applications, but **keep our custom components** as:
+1. Learning reference for GOV.cz design patterns
+2. Fallback for components not in official package (e.g., our Datepicker)
+3. Examples of Storybook best practices
+4. Template for custom extensions
+
+### Next Action Required
+
+Before continuing development, decide:
+
+1. **Option A**: Integrate official `@gov-design-system-ce/react` package
+2. **Option B**: Continue custom implementation for specific needs
+3. **Option C**: Hybrid - use official for most, custom for gaps
+
+---
+
+## 🔮 Next Steps (Paused)
+
+**Previous plans** (on hold pending strategic decision):
+1. ~~Implement Dark Mode~~ - Official package has `GovThemeSwitch`
+2. ~~Align with Official Spec~~ - Could just use official packages
+3. ~~Build More GOV Components~~ - 40+ already available
+4. ~~Dark Mode Toggle~~ - Already exists in official
+5. ~~Brand Mode Switcher~~ - May exist in official
+
+**New potential directions**:
+1. **Evaluate official packages** - Install and test in isolated branch
+2. **Document integration guide** - How to use official components in React
+3. **Identify gaps** - Which components we built that aren't in official
+4. **Migration plan** - If deciding to switch to official
 
 ---
 
@@ -817,12 +1084,50 @@ This experiment successfully demonstrated:
 4. **Storybook documentation** makes tokens discoverable and testable
 5. **Anti-hallucination rules** are essential for data-dependent workflows
 6. **Official spec validation is critical** - comparing against the authoritative source revealed discrepancies
-7. **Figma-to-code workflow** - Successfully implemented Card component from Figma design using MCP tools
+7. **Figma-to-code workflow** - Successfully implemented components from Figma design using MCP tools
+8. **Research before building** - Discovering official packages could have saved significant effort
 
-**Total Effort**: ~8 hours  
+### What We Built
+
+| Category | Count | Details |
+|----------|-------|---------|
+| **CSS Tokens** | 200+ | Colors, spacing, typography, sizing |
+| **Components** | 6 | Button, Card, Checkbox, Datepicker, Icon, ColorTokens |
+| **Stories** | 90+ | Interactive documentation |
+| **Documentation** | 1 | This comprehensive article |
+
+### Component Summary
+
+| Component | Stories | Features |
+|-----------|---------|----------|
+| Button | 7+ | 6 colors, 4 types, 5 sizes, icons |
+| Card | 15 | Vertical/horizontal, 2 image sizes |
+| Checkbox | 15 | 3 sizes, validation, indeterminate |
+| Datepicker | 13 | Auto-format, calendar, localization |
+| Icon | 5+ | 50 built-in + Bootstrap Icons CDN |
+| ColorTokens | 19 | All GOV.cz color scales |
+| TypographyTokens | 5 | Display, headline, body, UI styles |
+
+### Key Discovery
+
+**Official GOV.cz packages exist** with 40+ production-ready React components:
+- `@gov-design-system-ce/react` (v3.4.0)
+- Maintained by Czech Digital Agency (DIA)
+- WCAG accessible, dark mode ready
+
+### Value of Custom Implementation
+
+Despite the official packages, our custom work provides:
+1. **Deep understanding** of GOV.cz design patterns
+2. **Storybook best practices** reference
+3. **Datepicker** - Our React implementation may fill a gap
+4. **Learning documentation** - This article
+5. **Customization template** - For projects needing extensions
+
+**Total Effort**: ~12 hours  
 **Tokens Generated**: 200+ CSS custom properties  
-**Components Created**: 5 (Button, Card, Checkbox, Icon, ColorTokens)
-**Stories Created**: 70+ total (19 color + 5 typography + 15 card + 12 checkbox + button + icon stories)
+**Components Created**: 6 (Button, Card, Checkbox, Datepicker, Icon, Tokens)  
+**Stories Created**: 90+ total
 
 ---
 
@@ -855,8 +1160,9 @@ This experiment successfully demonstrated:
 ---
 
 *Document created: January 3, 2026*  
-*Last updated: January 3, 2026*  
+*Last updated: January 4, 2026*  
 *Phase 1 Status: ✅ Complete (Design Tokens)*  
 *Phase 2 Status: ✅ Complete (Typography & Size Tokens)*  
-*Phase 3 Status: ✅ In Progress (Components - Button, Card, Icon)*  
-*Phase 4: Pending (Dark Mode & More Components)*
+*Phase 3 Status: ✅ Complete (Components - Button, Card, Checkbox, Datepicker, Icon)*  
+*Phase 4 Status: ⏸️ Paused (Official GOV.cz packages discovered)*  
+*Next: Strategic decision on custom vs. official approach*
