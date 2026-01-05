@@ -238,9 +238,16 @@ storybook_ds/
 
 ---
 
-## 📄 License
+## 📄 License & Attribution
 
-MIT License - feel free to use this design system in your projects!
+This project is based on the **[GOV.cz Design System](https://designsystem.gov.cz/)** created by the Digital and Information Agency of the Czech Republic.
+
+| Source | License |
+|--------|---------|
+| GOV.cz Design System components & tokens | [EUPL v1.2](https://eupl.eu/) |
+| This Storybook implementation | MIT |
+
+> **Note:** This is an independent experimental project reusing publicly available GOV.cz components. It is not an official GOV.cz product. The original design system is freely available for use by anyone.
 
 ---
 
