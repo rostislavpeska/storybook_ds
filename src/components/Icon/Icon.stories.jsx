@@ -1,4 +1,5 @@
 import { Icon, BootstrapIcon, AVAILABLE_ICONS } from './Icon';
+import { Button } from '../Button';
 import './Icon.css';
 
 export default {
@@ -573,65 +574,16 @@ export const UsageExamples = {
           In Buttons
         </h4>
         <div style={{ display: 'flex', gap: 'var(--gov-space-m)', flexWrap: 'wrap' }}>
-          <button style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '12px 24px',
-            background: 'var(--gov-primary-600)',
-            color: 'white',
-            border: 'none',
-            borderRadius: 'var(--gov-radius-s)',
-            cursor: 'pointer',
-            fontSize: '14px'
-          }}>
-            <Icon name="download" size="md" />
+          <Button leftIcon={<Icon name="download" />}>
             Download
-          </button>
-          <button style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '12px 24px',
-            background: 'var(--gov-success-600)',
-            color: 'white',
-            border: 'none',
-            borderRadius: 'var(--gov-radius-s)',
-            cursor: 'pointer',
-            fontSize: '14px'
-          }}>
-            <Icon name="check" size="md" />
+          </Button>
+          <Button color="success" leftIcon={<Icon name="check" />}>
             Confirm
-          </button>
-          <button style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '12px 24px',
-            background: 'var(--gov-error-600)',
-            color: 'white',
-            border: 'none',
-            borderRadius: 'var(--gov-radius-s)',
-            cursor: 'pointer',
-            fontSize: '14px'
-          }}>
-            <Icon name="trash" size="md" />
+          </Button>
+          <Button color="error" leftIcon={<Icon name="trash" />}>
             Delete
-          </button>
-          <button style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '40px',
-            height: '40px',
-            background: 'var(--gov-neutral-200)',
-            color: 'var(--gov-neutral-900)',
-            border: 'none',
-            borderRadius: 'var(--gov-radius-s)',
-            cursor: 'pointer'
-          }}>
-            <Icon name="gear" size="lg" />
-          </button>
+          </Button>
+          <Button color="neutral" leftIcon={<Icon name="gear" size="lg" />} />
         </div>
       </div>
 
