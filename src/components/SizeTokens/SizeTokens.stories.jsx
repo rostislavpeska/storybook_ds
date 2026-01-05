@@ -48,7 +48,7 @@ export const SpacingTokens = {
     <div className="size-tokens-docs">
       {/* Info Box (Unified Design) */}
       <div className="size-info-box">
-        <h2 className="size-info-box__title">
+        <h1 className="size-info-box__title">
           Size & Spacing System
         </h1>
         <p className="size-info-box__description">
@@ -629,6 +629,7 @@ export const MultilinePadding = {
         <SizeTokenTable tokens={multilinePaddingTokens} />
       </section>
 
+      <section className="size-section">
         <div className="size-section__header">
           <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Usage Note</h1>
         </div>
