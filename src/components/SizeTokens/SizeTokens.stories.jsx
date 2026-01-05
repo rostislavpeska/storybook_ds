@@ -5,7 +5,7 @@ export default {
   title: 'Design Tokens/Size',
   component: SizeTokens,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'padded',
     backgrounds: {
       default: 'light',
     },
@@ -46,28 +46,35 @@ const spacingTokens = [
 export const SpacingTokens = {
   render: () => (
     <div className="size-tokens-docs">
-      <header className="size-tokens-docs__header">
-        <h1 className="size-tokens-docs__title">Spacing Tokens</h1>
-        <p className="size-tokens-docs__subtitle">
-          Consistent spacing values for gaps, margins, and paddings across all components
+      {/* Info Box (Unified Design) */}
+      <div className="size-info-box">
+        <h2 className="size-info-box__title">
+          Size & Spacing System
+        </h1>
+        <p className="size-info-box__description">
+          The GOV.cz Design System uses a consistent set of size tokens for spacing, components, and layout. 
+          This ensures vertical and horizontal rhythm across all applications.
         </p>
-        <div className="size-tokens-docs__meta">
-          <span className="size-tokens-docs__meta-item">
-            <strong>Pattern:</strong> --gov-space-{'{size}'}
-          </span>
-          <span className="size-tokens-docs__meta-item">
-            <strong>Range:</strong> 0px → 120px
-          </span>
-          <span className="size-tokens-docs__meta-item">
-            <strong>Base:</strong> 16px (m)
-          </span>
-        </div>
-      </header>
+        <a 
+          href="https://designsystem.gov.cz/principy/velikostni-tokeny.html" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="size-info-box__link"
+        >
+          Official Documentation: Size Tokens
+        </a>
+      </div>
+
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Spacing Tokens
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Consistent spacing values for gaps, margins, and paddings across all components.
+      </p>
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">📏</span>
-          <h2 className="size-section__title">Visual Scale</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Visual Scale</h1>
         </div>
         {spacingTokens.map((token, i) => (
           <SizeBar 
@@ -83,16 +90,14 @@ export const SpacingTokens = {
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">🔧</span>
-          <h2 className="size-section__title">Token Reference</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Token Reference</h1>
         </div>
         <SizeTokenTable tokens={spacingTokens} />
       </section>
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">📖</span>
-          <h2 className="size-section__title">Usage Guidelines</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Usage Guidelines</h1>
         </div>
         <div className="usage-guidelines">
           <div className="guideline-section guideline-section--do">
@@ -117,8 +122,7 @@ export const SpacingTokens = {
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">💻</span>
-          <h2 className="size-section__title">Code Example</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Code Example</h1>
         </div>
         <div className="code-snippet">
           <div className="code-snippet__header">
@@ -182,28 +186,16 @@ const componentHeightTokens = [
 export const ComponentHeights = {
   render: () => (
     <div className="size-tokens-docs">
-      <header className="size-tokens-docs__header">
-        <h1 className="size-tokens-docs__title">Component Height Tokens</h1>
-        <p className="size-tokens-docs__subtitle">
-          Standardized heights for interactive components like buttons, inputs, and selects
-        </p>
-        <div className="size-tokens-docs__meta">
-          <span className="size-tokens-docs__meta-item">
-            <strong>Pattern:</strong> --gov-height-component-{'{size}'}
-          </span>
-          <span className="size-tokens-docs__meta-item">
-            <strong>Range:</strong> 24px → 56px
-          </span>
-          <span className="size-tokens-docs__meta-item">
-            <strong>Default:</strong> 40px (m)
-          </span>
-        </div>
-      </header>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Component Height Tokens
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Standardized heights for interactive components like buttons, inputs, and selects.
+      </p>
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">📐</span>
-          <h2 className="size-section__title">Visual Scale</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Visual Scale</h1>
         </div>
         <div className="component-height-demos">
           {componentHeightTokens.map((token, i) => (
@@ -226,16 +218,14 @@ export const ComponentHeights = {
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">🔧</span>
-          <h2 className="size-section__title">Token Reference</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Token Reference</h1>
         </div>
         <SizeTokenTable tokens={componentHeightTokens} />
       </section>
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">📖</span>
-          <h2 className="size-section__title">Usage Guidelines</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Usage Guidelines</h1>
         </div>
         <div className="usage-guidelines">
           <div className="guideline-section guideline-section--do">
@@ -260,8 +250,7 @@ export const ComponentHeights = {
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">💻</span>
-          <h2 className="size-section__title">Code Example</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Code Example</h1>
         </div>
         <div className="code-snippet">
           <div className="code-snippet__header">
@@ -307,28 +296,16 @@ const lineHeightTokens = [
 export const LineHeights = {
   render: () => (
     <div className="size-tokens-docs">
-      <header className="size-tokens-docs__header">
-        <h1 className="size-tokens-docs__title">Line Height Tokens</h1>
-        <p className="size-tokens-docs__subtitle">
-          Fixed line heights for aligning icons with the first line of multi-line text
-        </p>
-        <div className="size-tokens-docs__meta">
-          <span className="size-tokens-docs__meta-item">
-            <strong>Pattern:</strong> --gov-height-line-{'{size}'}
-          </span>
-          <span className="size-tokens-docs__meta-item">
-            <strong>Range:</strong> 18px → 48px
-          </span>
-          <span className="size-tokens-docs__meta-item">
-            <strong>Purpose:</strong> Icon alignment in text blocks
-          </span>
-        </div>
-      </header>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Line Height Tokens
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Fixed line heights for aligning icons with the first line of multi-line text.
+      </p>
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">📐</span>
-          <h2 className="size-section__title">Visual Demonstration</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Visual Demonstration</h1>
           <span className="size-section__subtitle">Icon aligned to first line height</span>
         </div>
         <div className="line-height-demos">
@@ -346,8 +323,7 @@ export const LineHeights = {
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">🔧</span>
-          <h2 className="size-section__title">Token Reference</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Token Reference</h1>
         </div>
         <SizeTokenTable tokens={lineHeightTokens.map(t => ({
           ...t,
@@ -357,8 +333,7 @@ export const LineHeights = {
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">💻</span>
-          <h2 className="size-section__title">Code Example</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Code Example</h1>
         </div>
         <div className="code-snippet">
           <div className="code-snippet__header">
@@ -424,28 +399,16 @@ const iconSizeTokens = [
 export const IconSizes = {
   render: () => (
     <div className="size-tokens-docs">
-      <header className="size-tokens-docs__header">
-        <h1 className="size-tokens-docs__title">Icon Size Tokens</h1>
-        <p className="size-tokens-docs__subtitle">
-          Standardized dimensions for icons across the design system
-        </p>
-        <div className="size-tokens-docs__meta">
-          <span className="size-tokens-docs__meta-item">
-            <strong>Pattern:</strong> --gov-icon-{'{size}'}
-          </span>
-          <span className="size-tokens-docs__meta-item">
-            <strong>Range:</strong> 12px → 48px
-          </span>
-          <span className="size-tokens-docs__meta-item">
-            <strong>Default:</strong> 16px (m)
-          </span>
-        </div>
-      </header>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Icon Size Tokens
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Standardized dimensions for icons across the design system.
+      </p>
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">⭐</span>
-          <h2 className="size-section__title">Visual Scale</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Visual Scale</h1>
         </div>
         <div className="size-boxes-grid">
           {iconSizeTokens.map((token, i) => (
@@ -463,16 +426,14 @@ export const IconSizes = {
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">🔧</span>
-          <h2 className="size-section__title">Token Reference</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Token Reference</h1>
         </div>
         <SizeTokenTable tokens={iconSizeTokens} />
       </section>
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">💻</span>
-          <h2 className="size-section__title">Code Example</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Code Example</h1>
         </div>
         <div className="code-snippet">
           <div className="code-snippet__header">
@@ -526,28 +487,16 @@ const cornerRadiusTokens = [
 export const CornerRadius = {
   render: () => (
     <div className="size-tokens-docs">
-      <header className="size-tokens-docs__header">
-        <h1 className="size-tokens-docs__title">Corner Radius Tokens</h1>
-        <p className="size-tokens-docs__subtitle">
-          Border radius values for rounded corners. This is one of the few safe tokens to customize.
-        </p>
-        <div className="size-tokens-docs__meta">
-          <span className="size-tokens-docs__meta-item">
-            <strong>Pattern:</strong> --gov-radius-{'{size}'}
-          </span>
-          <span className="size-tokens-docs__meta-item">
-            <strong>Range:</strong> 0px → 40px
-          </span>
-          <span className="size-tokens-docs__meta-item">
-            <strong>Customizable:</strong> ✅ Safe to modify
-          </span>
-        </div>
-      </header>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Corner Radius Tokens
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Border radius values for rounded corners. This is one of the few safe tokens to customize.
+      </p>
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">◼️</span>
-          <h2 className="size-section__title">Visual Scale</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Visual Scale</h1>
         </div>
         <div className="size-boxes-grid">
           {cornerRadiusTokens.map((token, i) => (
@@ -565,16 +514,14 @@ export const CornerRadius = {
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">🔧</span>
-          <h2 className="size-section__title">Token Reference</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Token Reference</h1>
         </div>
         <SizeTokenTable tokens={cornerRadiusTokens} />
       </section>
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">⚠️</span>
-          <h2 className="size-section__title">Customization Note</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Customization Note</h1>
         </div>
         <div className="usage-guidelines">
           <div className="guideline-section guideline-section--warning">
@@ -590,8 +537,7 @@ export const CornerRadius = {
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">💻</span>
-          <h2 className="size-section__title">Code Example</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Code Example</h1>
         </div>
         <div className="code-snippet">
           <div className="code-snippet__header">
@@ -653,28 +599,16 @@ const multilinePaddingTokens = [
 export const MultilinePadding = {
   render: () => (
     <div className="size-tokens-docs">
-      <header className="size-tokens-docs__header">
-        <h1 className="size-tokens-docs__title">Multiline Vertical Padding</h1>
-        <p className="size-tokens-docs__subtitle">
-          Specialized vertical padding for multiline components like textareas and multi-row inputs
-        </p>
-        <div className="size-tokens-docs__meta">
-          <span className="size-tokens-docs__meta-item">
-            <strong>Pattern:</strong> --gov-space-multiline-vertical-padding-{'{size}'}
-          </span>
-          <span className="size-tokens-docs__meta-item">
-            <strong>Range:</strong> 3px → 13px
-          </span>
-          <span className="size-tokens-docs__meta-item">
-            <strong>Purpose:</strong> Textarea & multiline input padding
-          </span>
-        </div>
-      </header>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Multiline Vertical Padding
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Specialized vertical padding for multiline components like textareas and multi-row inputs.
+      </p>
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">📐</span>
-          <h2 className="size-section__title">Visual Scale</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Visual Scale</h1>
         </div>
         {multilinePaddingTokens.map((token, i) => (
           <SizeBar 
@@ -690,16 +624,13 @@ export const MultilinePadding = {
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">🔧</span>
-          <h2 className="size-section__title">Token Reference</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Token Reference</h1>
         </div>
         <SizeTokenTable tokens={multilinePaddingTokens} />
       </section>
 
-      <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">📝</span>
-          <h2 className="size-section__title">Usage Note</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Usage Note</h1>
         </div>
         <div className="usage-guidelines">
           <div className="guideline-section guideline-section--do">
@@ -715,8 +646,7 @@ export const MultilinePadding = {
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">💻</span>
-          <h2 className="size-section__title">Code Example</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Code Example</h1>
         </div>
         <div className="code-snippet">
           <div className="code-snippet__header">
@@ -751,28 +681,16 @@ export const MultilinePadding = {
 export const CompleteOverview = {
   render: () => (
     <div className="size-tokens-docs">
-      <header className="size-tokens-docs__header">
-        <h1 className="size-tokens-docs__title">Size Tokens Overview</h1>
-        <p className="size-tokens-docs__subtitle">
-          Complete reference of all size tokens in the GOV.cz Design System
-        </p>
-        <div className="size-tokens-docs__meta">
-          <span className="size-tokens-docs__meta-item">
-            <strong>Source:</strong> designsystem.gov.cz/principy/velikostni-tokeny.html
-          </span>
-          <span className="size-tokens-docs__meta-item">
-            <strong>Categories:</strong> 7
-          </span>
-          <span className="size-tokens-docs__meta-item">
-            <strong>Total Tokens:</strong> 60+
-          </span>
-        </div>
-      </header>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Size Tokens Overview
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Complete reference of all size tokens in the GOV.cz Design System.
+      </p>
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">📊</span>
-          <h2 className="size-section__title">Token Categories</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Token Categories</h1>
         </div>
         <SizeTokenTable 
           tokens={[
@@ -789,8 +707,7 @@ export const CompleteOverview = {
 
       <section className="size-section">
         <div className="size-section__header">
-          <span className="size-section__icon">⚠️</span>
-          <h2 className="size-section__title">Modification Guidelines</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Modification Guidelines</h1>
         </div>
         <div className="usage-guidelines">
           <div className="guideline-section guideline-section--warning">
