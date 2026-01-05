@@ -159,9 +159,9 @@ These icons are embedded as inline SVG for optimal performance and are always av
 export const IconSizes = {
   render: () => (
     <div className="icon-docs">
-      <h3 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
         Icon Size Scale
-      </h3>
+      </h1>
       <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
         Icons use GOV.cz design tokens for consistent sizing across the design system.
       </p>
@@ -236,9 +236,9 @@ The icon component uses GOV.cz design tokens for sizing, ensuring consistency wi
 export const IconColors = {
   render: () => (
     <div className="icon-docs">
-      <h3 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
         Icon Colors
-      </h3>
+      </h1>
       <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
         Icons can use any color from the GOV.cz color palette. By default, they inherit <code>currentColor</code>.
       </p>
@@ -337,9 +337,9 @@ The design system provides semantic icon color tokens:
 export const NavigationIcons = {
   render: () => (
     <div className="icon-docs">
-      <h3 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
         Navigation & UI Icons
-      </h3>
+      </h1>
       <div className="icon-grid">
         {[
           'arrow-left', 'arrow-right', 'arrow-up', 'arrow-down',
@@ -364,9 +364,9 @@ export const NavigationIcons = {
 export const ActionIcons = {
   render: () => (
     <div className="icon-docs">
-      <h3 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
         Action Icons
-      </h3>
+      </h1>
       <div className="icon-grid">
         {[
           'search', 'download', 'upload', 'share',
@@ -390,9 +390,9 @@ export const ActionIcons = {
 export const StatusIcons = {
   render: () => (
     <div className="icon-docs">
-      <h3 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
         Status & Feedback Icons
-      </h3>
+      </h1>
       <div className="icon-grid">
         {[
           'info-circle', 'question-circle', 'exclamation-circle', 'exclamation-triangle',
@@ -469,9 +469,9 @@ export const BootstrapIconsCDN = {
         </div>
       </div>
 
-      <h3 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
         Popular Bootstrap Icons Examples
-      </h3>
+      </h1>
       <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)', fontStyle: 'italic' }}>
         Note: These icons require the Bootstrap Icons CDN to be loaded. If you don't see icons below, add the CDN link above to your index.html.
       </p>
@@ -532,9 +532,9 @@ For the complete icon library, use Bootstrap Icons via CDN. This gives you acces
 export const UsageExamples = {
   render: () => (
     <div className="icon-docs">
-      <h3 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
         Icon Usage Examples
-      </h3>
+      </h1>
 
       {/* Inline with Text */}
       <div style={{ 
