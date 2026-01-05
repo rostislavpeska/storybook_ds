@@ -19,7 +19,7 @@
   font-size: var(--gov-font-body-s, 14px);
   font-weight: 500;
   line-height: 1.4;
-  color: var(--gov-text-primary, var(--gov-neutral-950, #262626));
+  color: #262626;
   margin-bottom: var(--gov-space-xs, 8px);
   padding: 0;
 }
@@ -43,7 +43,7 @@
 .gov-radio-group__helper {
   font-size: var(--gov-font-body-xs, 12px);
   line-height: 1.4;
-  color: var(--gov-text-tertiary, var(--gov-neutral-600, #5d5d5d));
+  color: #5d5d5d;
   margin-top: var(--gov-space-2xs, 4px);
 }
 
@@ -164,7 +164,7 @@
 .gov-radio__label {
   font-size: var(--gov-font-body-m, 16px);
   line-height: 1.4;
-  color: var(--gov-text-primary, var(--gov-neutral-950, #262626));
+  color: #262626;
 }
 
 .gov-radio--s .gov-radio__label {
@@ -178,7 +178,7 @@
 .gov-radio__helper {
   font-size: var(--gov-font-body-xs, 12px);
   line-height: 1.4;
-  color: var(--gov-text-tertiary, var(--gov-neutral-600, #5d5d5d));
+  color: #5d5d5d;
 }
 
 /* ----------------------------------------
@@ -216,7 +216,7 @@
 }
 
 .gov-radio--disabled .gov-radio__label {
-  color: var(--gov-neutral-500, #6d6d6d);
+  color: #6d6d6d;
 }
 
 .gov-radio--disabled.gov-radio--checked .gov-radio__dot,

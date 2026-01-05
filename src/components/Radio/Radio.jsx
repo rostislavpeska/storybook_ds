@@ -14,12 +14,12 @@ const RadioGroupContext = createContext(null);
  * @example
  * <RadioGroup 
  *   name="gender" 
- *   label="Pohlaví" 
+ *   label="Gender" 
  *   value={gender} 
  *   onChange={(e) => setGender(e.target.value)}
  * >
- *   <Radio value="male" label="Muž" />
- *   <Radio value="female" label="Žena" />
+ *   <Radio value="male" label="Male" />
+ *   <Radio value="female" label="Female" />
  * </RadioGroup>
  */
 export const RadioGroup = ({

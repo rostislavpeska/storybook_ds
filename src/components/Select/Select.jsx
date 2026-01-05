@@ -23,8 +23,8 @@ import './Select.css';
  * 
  * // With placeholder
  * <Select 
- *   label="Vyberte možnost" 
- *   placeholder="-- Vyberte --"
+ *   label="Select option" 
+ *   placeholder="-- Select --"
  *   options={options}
  * />
  */

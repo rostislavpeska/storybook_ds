@@ -14,13 +14,13 @@ import './Input.css';
  * @component
  * @example
  * // Basic text input
- * <Input label="Jméno" name="firstName" placeholder="Zadejte jméno" />
+ * <Input label="Name" name="firstName" placeholder="Enter name" />
  * 
  * // With helper text
- * <Input label="E-mail" type="email" helperText="Zadejte platný e-mail" />
+ * <Input label="E-mail" type="email" helperText="Enter valid e-mail" />
  * 
  * // With error
- * <Input label="PSČ" invalid invalidMessage="Neplatné PSČ" />
+ * <Input label="ZIP code" invalid invalidMessage="Invalid ZIP code" />
  * 
  * // Textarea (multiline)
  * <Input label="Popis" multiline rows={4} />

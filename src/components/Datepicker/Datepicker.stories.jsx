@@ -22,7 +22,7 @@ import { Datepicker } from './Datepicker';
  * 
  * ```jsx
  * // Uncontrolled
- * <Datepicker label="Datum narození" name="birthdate" />
+ * <Datepicker label="Date of birth" name="birthdate" />
  * 
  * // Controlled
  * const [date, setDate] = useState(null);
@@ -126,7 +126,7 @@ export const Playground = {
     );
   },
   args: {
-    label: 'Datum narození',
+    label: 'Date of birth',
     placeholder: 'dd.mm.rrrr',
     locale: 'cs',
   },
@@ -141,7 +141,7 @@ export const Playground = {
  */
 export const Default = {
   args: {
-    label: 'Vyberte datum',
+    label: 'Select date',
     placeholder: 'dd.mm.rrrr',
   },
   parameters: { controls: { disable: true } },
@@ -157,7 +157,7 @@ export const Default = {
  */
 export const WithValue = {
   args: {
-    label: 'Datum nástupu',
+    label: 'Start date',
     defaultValue: new Date(2025, 0, 15), // January 15, 2025
   },
   parameters: { controls: { disable: true } },
@@ -173,7 +173,7 @@ export const WithValue = {
  */
 export const Disabled = {
   args: {
-    label: 'Datum (neaktivní)',
+    label: 'Date (disabled)',
     defaultValue: new Date(),
     disabled: true,
   },
@@ -190,9 +190,9 @@ export const Disabled = {
  */
 export const Invalid = {
   args: {
-    label: 'Datum narození',
+    label: 'Date of birth',
     invalid: true,
-    invalidMessage: 'Prosím zadejte platné datum narození',
+    invalidMessage: 'Please enter a valid date of birth',
   },
   parameters: { controls: { disable: true } },
   render: (args) => (
@@ -207,7 +207,7 @@ export const Invalid = {
  */
 export const Required = {
   args: {
-    label: 'Povinné datum',
+    label: 'Required date',
     required: true,
   },
   parameters: { controls: { disable: true } },
@@ -224,7 +224,7 @@ export const Required = {
 export const WithHelperText = {
   args: {
     label: 'Datum platnosti',
-    helperText: 'Zadejte datum ve formátu dd.mm.rrrr',
+    helperText: 'Enter date in format dd.mm.yyyy',
   },
   parameters: { controls: { disable: true } },
   render: (args) => (
@@ -243,7 +243,7 @@ export const WithHelperText = {
  */
 export const LocaleCzech = {
   args: {
-    label: 'Datum (česky)',
+    label: 'Date (Czech locale)',
     locale: 'cs',
   },
   parameters: { controls: { disable: true } },
@@ -289,8 +289,8 @@ export const WithDateRange = {
     return (
       <div style={{ minHeight: '400px', paddingTop: '20px' }}>
         <Datepicker
-          label="Datum rezervace"
-          helperText="Vyberte datum v rozmezí příštích 30 dnů"
+          label="Booking date"
+          helperText="Select a date within the next 30 days"
           value={date}
           onChange={setDate}
           minDate={minDate}
@@ -298,7 +298,7 @@ export const WithDateRange = {
         />
         {date && (
           <p style={{ marginTop: '16px', fontSize: '14px', color: '#666' }}>
-            Vybráno: {date.toLocaleDateString('cs-CZ')}
+            Selected: {date.toLocaleDateString('en-US')}
           </p>
         )}
       </div>
@@ -327,7 +327,7 @@ export const ExampleBirthDate = {
     const handleChange = (newDate) => {
       setDate(newDate);
       if (newDate && newDate > maxDate) {
-        setError('Musíte být starší 18 let');
+        setError('You must be at least 18 years old');
       } else {
         setError('');
       }
@@ -342,10 +342,10 @@ export const ExampleBirthDate = {
         minHeight: '150px',
       }}>
         <h3 style={{ margin: '0 0 16px', fontSize: '18px', fontWeight: 600, color: '#111827' }}>
-          Osobní údaje
+          Personal information
         </h3>
         <Datepicker
-          label="Datum narození"
+          label="Date of birth"
           value={date}
           onChange={handleChange}
           maxDate={new Date()}
@@ -380,18 +380,18 @@ export const ExampleEventBooking = {
         minHeight: '200px',
       }}>
         <h3 style={{ margin: '0 0 16px', fontSize: '18px', fontWeight: 600, color: '#111827' }}>
-          Rezervace ubytování
+          Accommodation booking
         </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <Datepicker
-            label="Příjezd"
+            label="Check-in"
             value={startDate}
             onChange={setStartDate}
             minDate={today}
             required
           />
           <Datepicker
-            label="Odjezd"
+            label="Departure"
             value={endDate}
             onChange={setEndDate}
             minDate={startDate || today}
@@ -400,7 +400,7 @@ export const ExampleEventBooking = {
         </div>
         {startDate && endDate && (
           <p style={{ marginTop: '16px', fontSize: '14px', color: '#666' }}>
-            Délka pobytu: {Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24))} nocí
+            Length of stay: {Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24))} nights
           </p>
         )}
       </div>
@@ -429,7 +429,7 @@ export const AllStates = {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <Datepicker label="Empty" placeholder="dd.mm.rrrr" />
           <Datepicker label="With value" defaultValue={new Date(2025, 5, 15)} />
-          <Datepicker label="With helper text" helperText="Pomocný text" />
+          <Datepicker label="With helper text" helperText="Helper text" />
         </div>
       </section>
       
@@ -439,7 +439,7 @@ export const AllStates = {
         </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <Datepicker label="Required" required />
-          <Datepicker label="Invalid" invalid invalidMessage="Neplatné datum" />
+          <Datepicker label="Invalid" invalid invalidMessage="Invalid date" />
           <Datepicker label="Disabled" disabled defaultValue={new Date()} />
         </div>
       </section>

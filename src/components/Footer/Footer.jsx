@@ -13,10 +13,10 @@ import './Footer.css';
  * <Footer
  *   columns={[
  *     {
- *       title: 'Informace',
+ *       title: 'Information',
  *       links: [
- *         { label: 'O portálu', href: '/o-nas' },
- *         { label: 'Kontakty', href: '/kontakt' }
+ *         { label: 'About portal', href: '/o-nas' },
+ *         { label: 'Contacts', href: '/kontakt' }
  *       ]
  *     }
  *   ]}
@@ -43,7 +43,7 @@ export const Footer = ({
   
   // Back to top
   showBackToTop = true,
-  backToTopText = 'Zpět nahoru',
+  backToTopText = 'Back to top',
   
   // Version
   version,
@@ -128,7 +128,7 @@ export const Footer = ({
           {/* Social links */}
           {socialLinks.length > 0 && (
             <div className="gov-footer__social">
-              <span className="gov-footer__social-label">Sledujte nás:</span>
+              <span className="gov-footer__social-label">Follow us:</span>
               <div className="gov-footer__social-links">
                 {socialLinks.map((social, index) => (
                   <a
@@ -200,7 +200,7 @@ export const Footer = ({
             
             {/* Bottom links */}
             {bottomLinks.length > 0 && (
-              <nav className="gov-footer__bottom-nav" aria-label="Právní informace">
+              <nav className="gov-footer__bottom-nav" aria-label="Legal information">
                 <ul className="gov-footer__bottom-list">
                   {bottomLinks.map((link, index) => (
                     <li key={index} className="gov-footer__bottom-item">

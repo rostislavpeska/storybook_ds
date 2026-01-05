@@ -13,7 +13,7 @@ import './LanguageSwitcher.css';
  * // Two languages
  * <LanguageSwitcher 
  *   languages={[
- *     { code: 'cs', label: 'Čeština', shortLabel: 'CZ' },
+ *     { code: 'cs', label: 'Czech', shortLabel: 'CZ' },
  *     { code: 'en', label: 'English', shortLabel: 'EN' }
  *   ]}
  *   currentLanguage="cs"
@@ -23,7 +23,7 @@ import './LanguageSwitcher.css';
 export const LanguageSwitcher = ({
   // Language configuration
   languages = [
-    { code: 'cs', label: 'Čeština', shortLabel: 'CZ' },
+    { code: 'cs', label: 'Czech', shortLabel: 'CZ' },
     { code: 'en', label: 'English', shortLabel: 'EN' }
   ],
   currentLanguage,
@@ -40,7 +40,7 @@ export const LanguageSwitcher = ({
   // Other
   id,
   className = '',
-  ariaLabel = 'Změna jazyka',
+  ariaLabel = 'Change language',
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -93,7 +93,7 @@ export const LanguageSwitcher = ({
         className={classNames}
         onClick={() => handleLanguageChange(otherLang.code)}
         aria-label={`${ariaLabel}: ${currentLang.label}. ${otherLang.label}`}
-        title={`Přepnout na ${otherLang.label}`}
+        title={`Switch to ${otherLang.label}`}
         {...props}
       >
         {showIcon && <GlobeIcon />}

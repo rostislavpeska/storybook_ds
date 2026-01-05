@@ -72,7 +72,7 @@ const sampleImage = 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w
 
 export const Default = {
   args: {
-    title: 'Název článku',
+    title: 'Article title',
     description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In sem justo, commodo ut, suscipit at...',
     image: sampleImage,
     date: '15.01.2026',

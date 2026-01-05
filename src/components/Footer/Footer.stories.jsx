@@ -39,16 +39,16 @@ import { Footer } from '@/components/Footer';
 <Footer
   columns={[
     {
-      title: 'Informace',
+      title: 'Information',
       links: [
-        { label: 'O nás', href: '/o-nas' },
-        { label: 'Kontakty', href: '/kontakt' }
+        { label: 'About us', href: '/o-nas' },
+        { label: 'Contacts', href: '/kontakt' }
       ]
     }
   ]}
   copyright="© 2026 GOV.cz"
   bottomLinks={[
-    { label: 'Ochrana soukromí', href: '/privacy' }
+    { label: 'Privacy policy', href: '/privacy' }
   ]}
 />
 \`\`\`
@@ -76,23 +76,23 @@ export const Playground = {
   args: {
     columns: [
       {
-        title: 'Informace',
+        title: 'Information',
         links: [
-          { label: 'Zpracování osobních údajů a cookies', href: '/cookies' },
-          { label: 'Kontakty pro média', href: '/media' },
+          { label: 'Personal data processing and cookies', href: '/cookies' },
+          { label: 'Media contacts', href: '/media' },
           { label: 'Mapa webu', href: '/sitemap' },
-          { label: 'Prohlášení o přístupnosti', href: '/accessibility' },
+          { label: 'Accessibility statement', href: '/accessibility' },
         ],
       },
     ],
     contact: {
-      title: 'Máte dotaz? Napište nám',
+      title: 'Have a question? Contact us',
       email: 'info@gov.cz',
     },
-    copyright: '© 2026 GOV.cz. Všechna práva vyhrazena.',
+    copyright: '© 2026 GOV.cz. All rights reserved.',
     bottomLinks: [
-      { label: 'Ochrana soukromí', href: '/privacy' },
-      { label: 'Podmínky užití', href: '/terms' },
+      { label: 'Privacy policy', href: '/privacy' },
+      { label: 'Terms of use', href: '/terms' },
     ],
     showBackToTop: true,
     version: '4.2.241',
@@ -121,27 +121,27 @@ export const WithColumns = {
   args: {
     columns: [
       {
-        title: 'Služby',
+        title: 'Services',
         links: [
-          { label: 'Služby občanům', href: '/sluzby-fo' },
-          { label: 'Služby podnikatelům', href: '/sluzby-po' },
-          { label: 'Elektronické podání', href: '/epodani' },
+          { label: 'Services for citizens', href: '/sluzby-fo' },
+          { label: 'Services for businesses', href: '/sluzby-po' },
+          { label: 'Electronic submission', href: '/epodani' },
         ],
       },
       {
-        title: 'Informace',
+        title: 'Information',
         links: [
-          { label: 'O portálu', href: '/o-portalu' },
-          { label: 'Časté dotazy', href: '/faq' },
-          { label: 'Prohlášení o přístupnosti', href: '/accessibility' },
+          { label: 'About portal', href: '/o-portalu' },
+          { label: 'FAQ', href: '/faq' },
+          { label: 'Accessibility statement', href: '/accessibility' },
         ],
       },
       {
-        title: 'Podpora',
+        title: 'Support',
         links: [
-          { label: 'Kontakty', href: '/kontakt' },
-          { label: 'Technická podpora', href: '/podpora' },
-          { label: 'Nahlásit problém', href: '/problem' },
+          { label: 'Contacts', href: '/kontakt' },
+          { label: 'Technical support', href: '/podpora' },
+          { label: 'Report a problem', href: '/problem' },
         ],
       },
     ],
@@ -165,15 +165,15 @@ export const WithContact = {
   args: {
     columns: [
       {
-        title: 'Informace',
+        title: 'Information',
         links: [
-          { label: 'O nás', href: '/o-nas' },
-          { label: 'Kariéra', href: '/kariera' },
+          { label: 'About us', href: '/o-nas' },
+          { label: 'Careers', href: '/kariera' },
         ],
       },
     ],
     contact: {
-      title: 'Kontaktujte nás',
+      title: 'Contact us',
       email: 'podpora@gov.cz',
       phone: '+420 123 456 789',
     },
@@ -218,10 +218,10 @@ export const WithSocialLinks = {
       <Footer
         columns={[
           {
-            title: 'Informace',
+            title: 'Information',
             links: [
-              { label: 'O nás', href: '/o-nas' },
-              { label: 'Tiskové zprávy', href: '/press' },
+              { label: 'About us', href: '/o-nas' },
+              { label: 'Press releases', href: '/press' },
             ],
           },
         ]}
@@ -252,17 +252,17 @@ export const WithLogos = {
   args: {
     columns: [
       {
-        title: 'Portál vám přináší',
+        title: 'Portal brought to you by',
         links: [],
       },
     ],
     logos: [
       { alt: 'NextGeneration EU', href: 'https://ec.europa.eu' },
-      { alt: 'Národní plán obnovy', href: 'https://www.planobnovycr.cz' },
+      { alt: 'National Recovery Plan', href: 'https://www.planobnovycr.cz' },
       { alt: 'DIA', href: 'https://dia.gov.cz' },
       { alt: 'NAKIT', href: 'https://nakit.cz' },
     ],
-    copyright: '© 2026 Digitální a informační agentura',
+    copyright: '© 2026 Digital and Information Agency',
   },
   parameters: {
     controls: { disable: true },
@@ -282,11 +282,11 @@ export const WithExternalLinks = {
   args: {
     columns: [
       {
-        title: 'Související weby',
+        title: 'Related websites',
         links: [
-          { label: 'Portál občana', href: 'https://portal.gov.cz', external: true },
+          { label: 'Citizen Portal', href: 'https://portal.gov.cz', external: true },
           { label: 'eIdentita', href: 'https://eidentita.cz', external: true },
-          { label: 'Datové schránky', href: 'https://mojedatovaschranka.cz', external: true },
+          { label: 'Data boxes', href: 'https://mojedatovaschranka.cz', external: true },
         ],
       },
     ],
@@ -310,9 +310,9 @@ export const WithoutBackToTop = {
   args: {
     columns: [
       {
-        title: 'Informace',
+        title: 'Information',
         links: [
-          { label: 'O nás', href: '/o-nas' },
+          { label: 'About us', href: '/o-nas' },
         ],
       },
     ],
@@ -332,15 +332,15 @@ export const DarkVariant = {
   args: {
     columns: [
       {
-        title: 'Informace',
+        title: 'Information',
         links: [
-          { label: 'O nás', href: '/o-nas' },
-          { label: 'Kontakty', href: '/kontakt' },
+          { label: 'About us', href: '/o-nas' },
+          { label: 'Contacts', href: '/kontakt' },
         ],
       },
     ],
     contact: {
-      title: 'Kontakt',
+      title: 'Contact',
       email: 'info@gov.cz',
     },
     copyright: '© 2026 GOV.cz',
@@ -382,18 +382,18 @@ export const PortalExample = {
         <Footer
           columns={[
             {
-              title: 'Informace',
+              title: 'Information',
               links: [
-                { label: 'Zpracování osobních údajů a cookies', href: '/cookies' },
-                { label: 'Kontakty pro média', href: '/media' },
+                { label: 'Personal data processing and cookies', href: '/cookies' },
+                { label: 'Media contacts', href: '/media' },
                 { label: 'Mapa webu', href: '/sitemap' },
-                { label: 'Prohlášení o přístupnosti', href: '/accessibility' },
-                { label: 'Uživatelská příručka', href: '/manual' },
+                { label: 'Accessibility statement', href: '/accessibility' },
+                { label: 'User manual', href: '/manual' },
               ],
             },
           ]}
           contact={{
-            title: 'Máte dotaz? Napište nám',
+            title: 'Have a question? Contact us',
             email: 'portalobcana@dia.gov.cz',
           }}
           socialLinks={[
@@ -402,14 +402,14 @@ export const PortalExample = {
           ]}
           logos={[
             { alt: 'NextGeneration EU' },
-            { alt: 'Národní plán obnovy' },
+            { alt: 'National Recovery Plan' },
             { alt: 'DIA' },
             { alt: 'NAKIT' },
           ]}
-          copyright="© 2026 Digitální a informační agentura • Informace jsou poskytovány v souladu se zákonem č. 106/1999 Sb."
+          copyright="© 2026 Digital and Information Agency • Information is provided in accordance with Act No. 106/1999 Coll."
           bottomLinks={[
-            { label: 'Ochrana soukromí', href: '/privacy' },
-            { label: 'Podmínky užití', href: '/terms' },
+            { label: 'Privacy policy', href: '/privacy' },
+            { label: 'Terms of use', href: '/terms' },
           ]}
           version="4.2.241"
           showBackToTop={true}
@@ -436,28 +436,28 @@ export const AllSections = {
     <Footer
       columns={[
         {
-          title: 'Služby',
+          title: 'Services',
           links: [
-            { label: 'Služby občanům', href: '/fo' },
-            { label: 'Služby podnikatelům', href: '/po' },
+            { label: 'Services for citizens', href: '/fo' },
+            { label: 'Services for businesses', href: '/po' },
           ],
         },
         {
-          title: 'Informace',
+          title: 'Information',
           links: [
-            { label: 'O portálu', href: '/about' },
+            { label: 'About portal', href: '/about' },
             { label: 'FAQ', href: '/faq' },
           ],
         },
         {
-          title: 'Externí odkazy',
+          title: 'External links',
           links: [
             { label: 'Portal.gov.cz', href: 'https://portal.gov.cz', external: true },
           ],
         },
       ]}
       contact={{
-        title: 'Kontakt',
+        title: 'Contact',
         email: 'info@example.cz',
         phone: '+420 123 456 789',
       }}

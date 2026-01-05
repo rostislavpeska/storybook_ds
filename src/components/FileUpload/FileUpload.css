@@ -18,7 +18,7 @@
   font-size: var(--gov-font-size-m, 16px);
   font-weight: var(--gov-font-weight-medium, 500);
   line-height: var(--gov-line-height-m, 24px);
-  color: var(--gov-text-primary, #262626);
+  color: #262626;
 }
 
 .gov-file-upload__required {
@@ -134,7 +134,7 @@
   font-family: var(--gov-font-family-primary, 'Roboto', sans-serif);
   font-size: var(--gov-font-size-s, 14px);
   line-height: var(--gov-line-height-s, 20px);
-  color: var(--gov-text-secondary, #686868);
+  color: #686868;
 }
 
 /* File list */
@@ -168,7 +168,7 @@
   font-family: var(--gov-font-family-primary, 'Roboto', sans-serif);
   font-size: var(--gov-font-size-s, 14px);
   line-height: var(--gov-line-height-s, 20px);
-  color: var(--gov-text-primary, #262626);
+  color: #262626;
   flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -179,7 +179,7 @@
   font-family: var(--gov-font-family-primary, 'Roboto', sans-serif);
   font-size: var(--gov-font-size-xs, 12px);
   line-height: var(--gov-line-height-xs, 16px);
-  color: var(--gov-text-secondary, #686868);
+  color: #686868;
   flex-shrink: 0;
 }
 
@@ -193,7 +193,7 @@
   border: none;
   border-radius: var(--gov-border-radius-s, 4px);
   background-color: transparent;
-  color: var(--gov-text-secondary, #686868);
+  color: #686868;
   cursor: pointer;
   transition: all 0.2s ease;
   flex-shrink: 0;
@@ -222,7 +222,7 @@
   font-family: var(--gov-font-family-primary, 'Roboto', sans-serif);
   font-size: var(--gov-font-size-s, 14px);
   line-height: var(--gov-line-height-s, 20px);
-  color: var(--gov-text-secondary, #686868);
+  color: #686868;
   flex-grow: 1;
 }
 
@@ -248,7 +248,7 @@
   font-family: var(--gov-font-family-primary, 'Roboto', sans-serif);
   font-size: var(--gov-font-size-s, 14px);
   line-height: var(--gov-line-height-s, 20px);
-  color: var(--gov-text-secondary, #686868);
+  color: #686868;
   margin-left: auto;
 }
 

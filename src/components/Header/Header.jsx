@@ -31,10 +31,10 @@ const CzechLionLogo = ({ className }) => (
  * @component
  * @example
  * <Header
- *   appName="Portál formulářů"
+ *   appName="Forms Portal"
  *   navigation={[
- *     { label: 'Služby', href: '/sluzby' },
- *     { label: 'Životní události', href: '/udalosti' }
+ *     { label: 'Services', href: '/sluzby' },
+ *     { label: 'Life events', href: '/udalosti' }
  *   ]}
  *   currentLanguage="cs"
  *   onLanguageChange={(code) => setLanguage(code)}
@@ -42,9 +42,9 @@ const CzechLionLogo = ({ className }) => (
  */
 export const Header = ({
   // App name and branding
-  appName = 'Portál',
+  appName = 'Portal',
   appNameHref = '/',
-  appNameAriaLabel = 'Přejít na úvodní stránku',
+  appNameAriaLabel = 'Go to homepage',
   showLogo = true,
   
   // Custom logo component (overrides default Czech lion)
@@ -56,7 +56,7 @@ export const Header = ({
   // Language configuration
   showLanguageSwitcher = true,
   languages = [
-    { code: 'cs', label: 'Čeština', shortLabel: 'CZ' },
+    { code: 'cs', label: 'Czech', shortLabel: 'CZ' },
     { code: 'en', label: 'English', shortLabel: 'EN' }
   ],
   currentLanguage = 'cs',
@@ -66,7 +66,7 @@ export const Header = ({
   actions = [],
   
   // Skip link
-  skipLinkText = 'Přeskočit na hlavní obsah',
+  skipLinkText = 'Skip to main content',
   mainContentId = 'main-content',
   
   // Other
@@ -110,7 +110,7 @@ export const Header = ({
           
           {/* Navigation */}
           {navigation.length > 0 && (
-            <nav className="gov-header__nav" aria-label="Hlavní navigace">
+            <nav className="gov-header__nav" aria-label="Main navigation">
               <ul className="gov-header__nav-list">
                 {navigation.map((item, index) => (
                   <li key={index} className="gov-header__nav-item">

@@ -26,7 +26,7 @@ The **Input** component provides text input fields following the GOV.cz design s
 
 \`\`\`jsx
 // Basic text input
-<Input label="Jméno" name="firstName" />
+<Input label="Name" name="firstName" />
 
 // With validation
 <Input 
@@ -34,15 +34,15 @@ The **Input** component provides text input fields following the GOV.cz design s
   type="email" 
   required 
   invalid={!isValidEmail} 
-  invalidMessage="Zadejte platný e-mail" 
+  invalidMessage="Enter a valid email" 
 />
 
 // Textarea (multiline)
 <Input 
-  label="Popis" 
+  label="Description" 
   multiline 
   rows={4} 
-  placeholder="Popište vaše zkušenosti..." 
+  placeholder="Describe your experience..." 
 />
 \`\`\`
         `,
@@ -76,9 +76,9 @@ The **Input** component provides text input fields following the GOV.cz design s
 // ============================================
 export const Playground = {
   args: {
-    label: 'Jméno a příjmení',
-    placeholder: 'Zadejte vaše jméno',
-    helperText: 'Uveďte celé jméno včetně příjmení',
+    label: 'Full name',
+    placeholder: 'Enter your name',
+    helperText: 'Enter your full name including surname',
     size: 'm',
     required: false,
     disabled: false,
@@ -94,25 +94,25 @@ export const TextInput = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '400px' }}>
       <Input 
-        label="Jméno" 
+        label="First name" 
         name="firstName" 
-        placeholder="Zadejte jméno" 
+        placeholder="Enter first name" 
       />
       <Input 
-        label="Příjmení" 
+        label="Last name" 
         name="lastName" 
-        placeholder="Zadejte příjmení" 
+        placeholder="Enter last name" 
         required 
       />
       <Input 
         label="E-mail" 
         name="email" 
         type="email" 
-        placeholder="vas@email.cz" 
-        helperText="Na tento e-mail vám zašleme potvrzení" 
+        placeholder="your@email.com" 
+        helperText="We will send confirmation to this email" 
       />
       <Input 
-        label="Telefon" 
+        label="Phone" 
         name="phone" 
         type="tel" 
         placeholder="+420 XXX XXX XXX" 
@@ -132,29 +132,29 @@ export const Textarea = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '500px' }}>
       <Input 
-        label="Popis vzdělání a dovedností" 
+        label="Education and skills description" 
         name="education"
         multiline 
         rows={3}
-        placeholder="Popište vaše vzdělání, certifikace a dovednosti..."
-        helperText="Uveďte relevantní informace"
+        placeholder="Describe your education, certifications and skills..."
+        helperText="Provide relevant information"
       />
       <Input 
-        label="Zdůvodnění požadované rekvalifikace" 
+        label="Justification for requested requalification" 
         name="justification"
         multiline 
         rows={5}
-        placeholder="Uveďte, jak rekvalifikace přispěje k Vašemu uplatnění na trhu práce..."
+        placeholder="Explain how requalification will help your employment..."
         required
       />
       <Input 
-        label="Poznámka (s limitem znaků)" 
+        label="Note (with character limit)" 
         name="note"
         multiline 
         rows={3}
         maxLength={200}
         showCharCount
-        placeholder="Max 200 znaků..."
+        placeholder="Max 200 characters..."
       />
     </div>
   ),
@@ -173,17 +173,17 @@ export const Sizes = {
       <Input 
         label="Small (s)" 
         size="s" 
-        placeholder="Malé pole" 
+        placeholder="Small field" 
       />
       <Input 
         label="Medium (m) - Default" 
         size="m" 
-        placeholder="Střední pole" 
+        placeholder="Medium field" 
       />
       <Input 
         label="Large (l)" 
         size="l" 
-        placeholder="Velké pole" 
+        placeholder="Large field" 
       />
     </div>
   ),
@@ -201,32 +201,32 @@ export const States = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '400px' }}>
       <Input 
         label="Default" 
-        placeholder="Zadejte text..." 
+        placeholder="Enter text..." 
       />
       <Input 
         label="With Value" 
-        defaultValue="Jan Novák" 
+        defaultValue="John Smith" 
       />
       <Input 
         label="Disabled" 
-        placeholder="Nelze upravit" 
+        placeholder="Cannot edit" 
         disabled 
       />
       <Input 
         label="Read Only" 
-        defaultValue="Pouze pro čtení" 
+        defaultValue="Read only" 
         readOnly 
       />
       <Input 
         label="Required" 
-        placeholder="Povinné pole" 
+        placeholder="Required field" 
         required 
       />
       <Input 
         label="Invalid" 
-        defaultValue="neplatný-email" 
+        defaultValue="invalid-email" 
         invalid 
-        invalidMessage="Zadejte platnou e-mailovou adresu" 
+        invalidMessage="Enter a valid email address" 
       />
     </div>
   ),
@@ -243,16 +243,16 @@ export const WithHelperText = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '400px' }}>
       <Input 
-        label="Rodné číslo" 
+        label="Birth number" 
         name="birthNumber"
         placeholder="XXXXXX/XXXX"
-        helperText="Formát: XXXXXX/XXXX (6 číslic/4 číslice)"
+        helperText="Format: XXXXXX/XXXX (6 digits/4 digits)"
       />
       <Input 
-        label="PSČ" 
+        label="Postal code" 
         name="postalCode"
         placeholder="12345"
-        helperText="5 číslic bez mezer"
+        helperText="5 digits without spaces"
         maxLength={5}
       />
     </div>
@@ -273,20 +273,20 @@ export const Invalid = {
         type="email"
         defaultValue="neplatny-email"
         invalid 
-        invalidMessage="Zadejte platnou e-mailovou adresu" 
+        invalidMessage="Enter a valid email address" 
       />
       <Input 
-        label="Povinné pole" 
+        label="Required field" 
         required
         invalid 
-        invalidMessage="Toto pole je povinné" 
+        invalidMessage="This field is required" 
       />
       <Input 
-        label="Zdůvodnění" 
+        label="Justification" 
         multiline
         rows={3}
         invalid 
-        invalidMessage="Text musí obsahovat alespoň 50 znaků" 
+        invalidMessage="Text must contain at least 50 characters" 
       />
     </div>
   ),
@@ -305,20 +305,20 @@ export const InputTypes = {
       <Input 
         label="Text" 
         type="text"
-        placeholder="Běžný text"
+        placeholder="Regular text"
       />
       <Input 
         label="E-mail" 
         type="email"
-        placeholder="vas@email.cz"
+        placeholder="your@email.com"
       />
       <Input 
-        label="Telefon" 
+        label="Phone" 
         type="tel"
         placeholder="+420 XXX XXX XXX"
       />
       <Input 
-        label="Číslo" 
+        label="Number" 
         type="number"
         placeholder="0"
       />
@@ -349,14 +349,14 @@ export const CharacterCount = {
     return (
       <div style={{ maxWidth: '500px' }}>
         <Input 
-          label="Poznámka (max 200 znaků)" 
+          label="Note (max 200 characters)" 
           multiline
           rows={4}
           maxLength={200}
           showCharCount
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          placeholder="Napište poznámku..."
+          placeholder="Write a note..."
         />
       </div>
     );
@@ -389,21 +389,21 @@ export const FormExample = {
 
     const validate = () => {
       const newErrors = {};
-      if (!formData.firstName) newErrors.firstName = 'Jméno je povinné';
-      if (!formData.lastName) newErrors.lastName = 'Příjmení je povinné';
-      if (!formData.email) newErrors.email = 'E-mail je povinný';
-      else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Neplatný e-mail';
+      if (!formData.firstName) newErrors.firstName = 'First name is required';
+      if (!formData.lastName) newErrors.lastName = 'Last name is required';
+      if (!formData.email) newErrors.email = 'Email is required';
+      else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Invalid email';
       setErrors(newErrors);
       return Object.keys(newErrors).length === 0;
     };
 
     return (
       <div style={{ maxWidth: '500px' }}>
-        <h3 style={{ marginBottom: '24px', color: '#1e5086' }}>Kontaktní údaje</h3>
+        <h3 style={{ marginBottom: '24px', color: '#1e5086' }}>Contact information</h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
             <Input 
-              label="Jméno" 
+              label="First name" 
               name="firstName"
               required
               value={formData.firstName}
@@ -412,7 +412,7 @@ export const FormExample = {
               invalidMessage={errors.firstName}
             />
             <Input 
-              label="Příjmení" 
+              label="Last name" 
               name="lastName"
               required
               value={formData.lastName}
@@ -430,18 +430,18 @@ export const FormExample = {
             onChange={handleChange('email')}
             invalid={!!errors.email}
             invalidMessage={errors.email}
-            helperText="Na tento e-mail vám zašleme potvrzení"
+            helperText="We will send confirmation to this email"
           />
           <Input 
-            label="Telefon" 
+            label="Phone" 
             name="phone"
             type="tel"
             value={formData.phone}
             onChange={handleChange('phone')}
-            helperText="Nepovinné"
+            helperText="Optional"
           />
           <Input 
-            label="Poznámka" 
+            label="Note" 
             name="description"
             multiline
             rows={3}
@@ -463,7 +463,7 @@ export const FormExample = {
               fontWeight: 500,
             }}
           >
-            Ověřit formulář
+            Validate form
           </button>
         </div>
       </div>
@@ -490,7 +490,7 @@ export const AllStates = {
         </thead>
         <tbody>
           <tr>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500 }}>Default</td>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500, color: '#262626' }}>Default</td>
             <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
               <Input label="Label" placeholder="Placeholder" />
             </td>
@@ -499,48 +499,48 @@ export const AllStates = {
             </td>
           </tr>
           <tr>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500 }}>With Value</td>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500, color: '#262626' }}>With Value</td>
             <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
-              <Input label="Label" defaultValue="Jan Novák" />
+              <Input label="Label" defaultValue="John Smith" />
             </td>
             <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
-              <Input label="Label" multiline rows={2} defaultValue="Popis textu..." />
-            </td>
-          </tr>
-          <tr>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500 }}>Required</td>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
-              <Input label="Label" required placeholder="Povinné" />
-            </td>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
-              <Input label="Label" multiline rows={2} required placeholder="Povinné" />
+              <Input label="Label" multiline rows={2} defaultValue="Text description..." />
             </td>
           </tr>
           <tr>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500 }}>Disabled</td>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500, color: '#262626' }}>Required</td>
             <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
-              <Input label="Label" disabled defaultValue="Nelze upravit" />
+              <Input label="Label" required placeholder="Required" />
             </td>
             <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
-              <Input label="Label" multiline rows={2} disabled defaultValue="Nelze upravit" />
-            </td>
-          </tr>
-          <tr>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500 }}>Invalid</td>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
-              <Input label="Label" invalid invalidMessage="Chybová zpráva" defaultValue="Chybná hodnota" />
-            </td>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
-              <Input label="Label" multiline rows={2} invalid invalidMessage="Chybová zpráva" defaultValue="Chybný text" />
+              <Input label="Label" multiline rows={2} required placeholder="Required" />
             </td>
           </tr>
           <tr>
-            <td style={{ padding: '12px', fontWeight: 500 }}>With Helper</td>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500, color: '#262626' }}>Disabled</td>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
+              <Input label="Label" disabled defaultValue="Cannot edit" />
+            </td>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
+              <Input label="Label" multiline rows={2} disabled defaultValue="Cannot edit" />
+            </td>
+          </tr>
+          <tr>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500, color: '#262626' }}>Invalid</td>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
+              <Input label="Label" invalid invalidMessage="Error message" defaultValue="Invalid value" />
+            </td>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
+              <Input label="Label" multiline rows={2} invalid invalidMessage="Error message" defaultValue="Invalid text" />
+            </td>
+          </tr>
+          <tr>
+            <td style={{ padding: '12px', fontWeight: 500, color: '#262626' }}>With Helper</td>
             <td style={{ padding: '12px' }}>
-              <Input label="Label" helperText="Nápověda k poli" placeholder="Placeholder" />
+              <Input label="Label" helperText="Field helper text" placeholder="Placeholder" />
             </td>
             <td style={{ padding: '12px' }}>
-              <Input label="Label" multiline rows={2} helperText="Nápověda k poli" placeholder="Placeholder" />
+              <Input label="Label" multiline rows={2} helperText="Field helper text" placeholder="Placeholder" />
             </td>
           </tr>
         </tbody>

@@ -22,7 +22,7 @@
   font-size: var(--gov-font-body-s, 14px);
   font-weight: 500;
   line-height: 1.4;
-  color: var(--gov-text-primary, var(--gov-neutral-950, #262626));
+  color: #262626;
   margin-bottom: var(--gov-space-2xs, 4px);
 }
 
@@ -47,7 +47,7 @@
   font-family: inherit;
   font-size: var(--gov-font-body-m, 16px);
   line-height: 1.5;
-  color: var(--gov-text-primary, var(--gov-neutral-950, #262626));
+  color: #262626;
   background-color: var(--gov-neutral-0, #ffffff);
   border: 1px solid var(--gov-border-subtle, var(--gov-neutral-300, #b0b0b0));
   border-radius: var(--gov-radius-s, 4px);
@@ -55,7 +55,7 @@
 }
 
 .gov-input__field::placeholder {
-  color: var(--gov-text-tertiary, var(--gov-neutral-500, #6d6d6d));
+  color: #6d6d6d;
 }
 
 /* Size Variants */
@@ -163,7 +163,7 @@
 .gov-input__helper {
   font-size: var(--gov-font-body-xs, 12px);
   line-height: 1.4;
-  color: var(--gov-text-tertiary, var(--gov-neutral-600, #5d5d5d));
+  color: #5d5d5d;
 }
 
 .gov-input__error {
@@ -182,7 +182,7 @@
 
 .gov-input__char-count {
   font-size: var(--gov-font-body-xs, 12px);
-  color: var(--gov-text-tertiary, var(--gov-neutral-500, #6d6d6d));
+  color: #6d6d6d;
   margin-left: auto;
 }
 

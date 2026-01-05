@@ -40,10 +40,10 @@ Government-style header component with logo, navigation, and language switcher.
 import { Header } from '@/components/Header';
 
 <Header
-  appName="Můj Portál"
+  appName="My Portal"
   navigation={[
-    { label: 'Služby', href: '/sluzby', active: true },
-    { label: 'Životní události', href: '/udalosti' }
+    { label: 'Services', href: '/sluzby', active: true },
+    { label: 'Life events', href: '/udalosti' }
   ]}
   currentLanguage="cs"
   onLanguageChange={(code) => setLanguage(code)}
@@ -98,7 +98,7 @@ export const Playground = {
             args.onLanguageChange?.(code);
           }}
         />
-        <main id="main-content" style={{ padding: '40px', minHeight: '300px' }}>
+        <main id="main-content" style={{ padding: '40px', minHeight: '300px', color: '#262626' }}>
           <h1>Main Content</h1>
           <p>This is the main content area. Try tabbing from the browser address bar to see the skip link.</p>
           <p>Current language: <strong>{lang}</strong></p>
@@ -107,10 +107,10 @@ export const Playground = {
     );
   },
   args: {
-    appName: 'Portál formulářů',
+    appName: 'Forms Portal',
     navigation: [
-      { label: 'Služby občanům', href: '/sluzby', active: true },
-      { label: 'Životní události', href: '/udalosti' },
+      { label: 'Services for citizens', href: '/sluzby', active: true },
+      { label: 'Life events', href: '/udalosti' },
       { label: 'Kontakt', href: '/kontakt' },
     ],
     showLanguageSwitcher: true,
@@ -126,7 +126,7 @@ export const Playground = {
 
 export const Default = {
   args: {
-    appName: 'Portál',
+    appName: 'Portal',
   },
   parameters: {
     controls: { disable: true },
@@ -135,11 +135,11 @@ export const Default = {
 
 export const WithNavigation = {
   args: {
-    appName: 'Portál formulářů',
+    appName: 'Forms Portal',
     navigation: [
       { label: 'Formuláře', href: '/formulare', active: true },
-      { label: 'Služby', href: '/sluzby' },
-      { label: 'Nápověda', href: '/napoveda' },
+      { label: 'Services', href: '/sluzby' },
+      { label: 'Help', href: '/napoveda' },
     ],
   },
   parameters: {
@@ -166,19 +166,19 @@ export const WithActions = {
     
     return (
       <Header
-        appName="Portál občana"
+        appName="Citizen Portal"
         navigation={[
-          { label: 'Služby', href: '/sluzby' },
-          { label: 'Životní události', href: '/udalosti' },
+          { label: 'Services', href: '/sluzby' },
+          { label: 'Life events', href: '/udalosti' },
         ]}
         currentLanguage={lang}
         onLanguageChange={setLang}
         actions={[
           { 
-            label: 'Přihlásit se', 
+            label: 'Sign in', 
             href: '/login',
             icon: UserIcon,
-            ariaLabel: 'Přihlásit se do Portálu občana'
+            ariaLabel: 'Sign in to Citizen Portal'
           },
         ]}
       />
@@ -215,7 +215,7 @@ export const CustomLogo = {
         customLogo={CustomLogoComponent}
         navigation={[
           { label: 'Dashboard', href: '/dashboard' },
-          { label: 'Nastavení', href: '/nastaveni' },
+          { label: 'Settings', href: '/nastaveni' },
         ]}
       />
     );
@@ -240,16 +240,16 @@ export const StickyHeader = {
     return (
       <div>
         <Header
-          appName="Portál"
+          appName="Portal"
           navigation={[
-            { label: 'Služby', href: '/sluzby', active: true },
+            { label: 'Services', href: '/sluzby', active: true },
             { label: 'Kontakt', href: '/kontakt' },
           ]}
           currentLanguage={lang}
           onLanguageChange={setLang}
           sticky={true}
         />
-        <main id="main-content" style={{ padding: '40px' }}>
+        <main id="main-content" style={{ padding: '40px', color: '#262626' }}>
           <h1>Scroll down to test sticky header</h1>
           {Array.from({ length: 20 }, (_, i) => (
             <p key={i} style={{ marginBottom: '16px' }}>
@@ -279,14 +279,14 @@ export const LanguageSwitching = {
     const [lang, setLang] = useState('cs');
     
     const labels = {
-      cs: { services: 'Služby', events: 'Životní události', help: 'Nápověda' },
+      cs: { services: 'Services', events: 'Life events', help: 'Help' },
       en: { services: 'Services', events: 'Life Events', help: 'Help' },
     };
     
     return (
       <div>
         <Header
-          appName="Portál"
+          appName="Portal"
           navigation={[
             { label: labels[lang].services, href: '/sluzby' },
             { label: labels[lang].events, href: '/udalosti' },
@@ -295,11 +295,11 @@ export const LanguageSwitching = {
           currentLanguage={lang}
           onLanguageChange={setLang}
         />
-        <main id="main-content" style={{ padding: '40px' }}>
-          <h1>{lang === 'cs' ? 'Obsah v češtině' : 'Content in English'}</h1>
+        <main id="main-content" style={{ padding: '40px', color: '#262626' }}>
+          <h1>{lang === 'cs' ? 'Content in Czech' : 'Content in English'}</h1>
           <p>
             {lang === 'cs' 
-              ? 'Klikněte na přepínač jazyka v hlavičce pro změnu jazyka.' 
+              ? 'Click on the language switcher in the header to change language.' 
               : 'Click the language switcher in the header to change language.'
             }
           </p>
@@ -355,21 +355,21 @@ export const PortalExample = {
     return (
       <div>
         <Header
-          appName="Portál veřejné správy"
+          appName="Public Administration Portal"
           navigation={[
-            { label: 'Služby občanům', href: '/sluzby-fo' },
-            { label: 'Služby podnikatelům', href: '/sluzby-po' },
-            { label: 'Životní události', href: '/udalosti', active: true },
-            { label: 'Kam dál', href: '/kam-dal' },
+            { label: 'Services for citizens', href: '/sluzby-fo' },
+            { label: 'Services for businesses', href: '/sluzby-po' },
+            { label: 'Life events', href: '/udalosti', active: true },
+            { label: 'Where next', href: '/kam-dal' },
           ]}
           currentLanguage={lang}
           onLanguageChange={setLang}
           actions={[
             { 
-              label: 'Portál občana', 
+              label: 'Citizen Portal', 
               href: 'https://portal.gov.cz',
               icon: UserIcon,
-              ariaLabel: 'Přejít na Portál občana'
+              ariaLabel: 'Go to Citizen Portal'
             },
           ]}
         />
@@ -378,10 +378,11 @@ export const PortalExample = {
           maxWidth: '1200px', 
           margin: '0 auto',
           minHeight: '400px',
-          backgroundColor: '#f5f5f5'
+          backgroundColor: '#f5f5f5',
+          color: '#262626'
         }}>
-          <h1 style={{ marginTop: 0 }}>Životní události</h1>
-          <p>Najděte informace o službách veřejné správy podle životních situací.</p>
+          <h1 style={{ marginTop: 0 }}>Life events</h1>
+          <p>Find information about public administration services by life situations.</p>
         </main>
       </div>
     );

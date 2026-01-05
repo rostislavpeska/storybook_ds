@@ -15,7 +15,7 @@ import './Datepicker.css';
  * @component
  * @example
  * // Uncontrolled
- * <Datepicker label="Datum narození" name="birthdate" />
+ * <Datepicker label="Date of birth" name="birthdate" />
  * 
  * // Controlled
  * const [date, setDate] = useState(null);
@@ -62,9 +62,9 @@ export const Datepicker = ({
   // Localization
   const locales = {
     cs: {
-      months: ['Leden', 'Únor', 'Březen', 'Duben', 'Květen', 'Červen', 
-               'Červenec', 'Srpen', 'Září', 'Říjen', 'Listopad', 'Prosinec'],
-      weekdays: ['Po', 'Út', 'St', 'Čt', 'Pá', 'So', 'Ne'],
+      months: ['January', 'February', 'March', 'April', 'May', 'June', 
+               'July', 'August', 'September', 'October', 'November', 'December'],
+      weekdays: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
       today: 'Dnes',
     },
     en: {
@@ -470,7 +470,7 @@ export const Datepicker = ({
           className="gov-datepicker__toggle"
           onClick={toggleCalendar}
           disabled={disabled}
-          aria-label="Otevřít kalendář"
+          aria-label="Open calendar"
           tabIndex={-1}
         >
           <svg className="gov-datepicker__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -488,14 +488,14 @@ export const Datepicker = ({
           className="gov-datepicker__calendar"
           role="dialog"
           aria-modal="true"
-          aria-label="Kalendář"
+          aria-label="Calendar"
         >
           <div className="gov-datepicker__header">
             <button
               type="button"
               className="gov-datepicker__nav gov-datepicker__nav--prev-year"
               onClick={() => navigateYear(-1)}
-              aria-label="Předchozí rok"
+              aria-label="Previous year"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="11,17 6,12 11,7"/>
@@ -506,7 +506,7 @@ export const Datepicker = ({
               type="button"
               className="gov-datepicker__nav gov-datepicker__nav--prev-month"
               onClick={() => navigateMonth(-1)}
-              aria-label="Předchozí měsíc"
+              aria-label="Previous month"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="15,18 9,12 15,6"/>
@@ -521,7 +521,7 @@ export const Datepicker = ({
               type="button"
               className="gov-datepicker__nav gov-datepicker__nav--next-month"
               onClick={() => navigateMonth(1)}
-              aria-label="Další měsíc"
+              aria-label="Next month"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="9,18 15,12 9,6"/>
@@ -531,7 +531,7 @@ export const Datepicker = ({
               type="button"
               className="gov-datepicker__nav gov-datepicker__nav--next-year"
               onClick={() => navigateYear(1)}
-              aria-label="Další rok"
+              aria-label="Next year"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="6,17 11,12 6,7"/>

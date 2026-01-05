@@ -11,14 +11,14 @@ import './FileUpload.css';
  * @example
  * // Single file
  * <FileUpload 
- *   label="Nahrát dokument" 
+ *   label="Upload document" 
  *   accept=".pdf,.doc,.docx"
  *   onChange={(files) => console.log(files)}
  * />
  * 
  * // Multiple files with drag & drop
  * <FileUpload 
- *   label="Přílohy" 
+ *   label="Attachments" 
  *   multiple
  *   maxFiles={5}
  *   maxSize={10 * 1024 * 1024} // 10MB
@@ -53,8 +53,8 @@ export const FileUpload = ({
   className = '',
   
   // Text customization
-  buttonText = 'Vložit soubor z počítače',
-  dragText = 'nebo přetáhněte soubory sem',
+  buttonText = 'Choose file from computer',
+  dragText = 'or drag and drop files here',
   ...props
 }) => {
   const generatedId = useId();
@@ -84,7 +84,7 @@ export const FileUpload = ({
     Array.from(fileList).forEach((file) => {
       // Check max size
       if (maxSize && file.size > maxSize) {
-        errors.push(`${file.name}: Soubor je příliš velký (max ${formatFileSize(maxSize)})`);
+        errors.push(`${file.name}: File is too large (max ${formatFileSize(maxSize)})`);
         return;
       }
 
@@ -105,7 +105,7 @@ export const FileUpload = ({
         });
 
         if (!isAccepted) {
-          errors.push(`${file.name}: Nepodporovaný formát souboru`);
+          errors.push(`${file.name}: Unsupported file format`);
           return;
         }
       }
@@ -124,7 +124,7 @@ export const FileUpload = ({
     if (multiple) {
       const totalFiles = [...files, ...validFiles];
       if (totalFiles.length > maxFiles) {
-        errors.push(`Maximální počet souborů je ${maxFiles}`);
+        errors.push(`Maximum number of files is ${maxFiles}`);
         newFiles = totalFiles.slice(0, maxFiles);
       } else {
         newFiles = totalFiles;
@@ -312,7 +312,7 @@ export const FileUpload = ({
         
         {multiple && maxFiles && (
           <span className="gov-file-upload__count">
-            {files.length} / {maxFiles} souborů
+            {files.length} / {maxFiles} files
           </span>
         )}
       </div>

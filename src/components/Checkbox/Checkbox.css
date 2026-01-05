@@ -100,7 +100,7 @@
   font-size: var(--gov-font-body-m, 16px);
   font-weight: 400;
   line-height: 20px; /* Match checkbox box height for vertical alignment */
-  color: var(--gov-text-primary, #262626);
+  color: #262626;
   cursor: pointer;
   user-select: none;
 }
@@ -154,7 +154,7 @@
 }
 
 .gov-checkbox--disabled .gov-checkbox__label {
-  color: var(--gov-text-disabled, #999999);
+  color: #999999;
   cursor: not-allowed;
 }
 
@@ -176,7 +176,7 @@
 }
 
 .gov-checkbox--invalid .gov-checkbox__label {
-  color: var(--gov-text-primary, #262626);
+  color: #262626;
 }
 
 .gov-checkbox--invalid.gov-checkbox--checked .gov-checkbox__box,
@@ -187,7 +187,7 @@
 
 /* Required asterisk */
 .gov-checkbox__required {
-  color: var(--gov-text-error, #dc2626);
+  color: #dc2626;
 }
 
 /* ==========================================================================
@@ -211,7 +211,7 @@
 
 .gov-checkbox__helper {
   font-size: var(--gov-font-body-s, 14px);
-  color: var(--gov-text-secondary, #4f4f4f);
+  color: #4f4f4f;
   line-height: 1.4;
 }
 
@@ -220,7 +220,7 @@
   align-items: center;
   gap: var(--gov-space-1, 4px);
   font-size: var(--gov-font-body-s, 14px);
-  color: var(--gov-text-error, #dc2626);
+  color: #dc2626;
   line-height: 1.4;
 }
 
@@ -242,7 +242,7 @@
 }
 
 [data-theme="dark"] .gov-checkbox__label {
-  color: var(--gov-text-primary);
+  color: #262626;
 }
 
 [data-theme="dark"] .gov-checkbox:not(.gov-checkbox--disabled):hover .gov-checkbox__box {
@@ -262,15 +262,15 @@
 }
 
 [data-theme="dark"] .gov-checkbox--disabled .gov-checkbox__label {
-  color: var(--gov-text-disabled);
+  color: #999999;
 }
 
 [data-theme="dark"] .gov-checkbox__helper {
-  color: var(--gov-text-secondary);
+  color: #4f4f4f;
 }
 
 [data-theme="dark"] .gov-checkbox__error {
-  color: var(--gov-text-error);
+  color: #dc2626;
 }
 
 [data-theme="dark"] .gov-checkbox--invalid .gov-checkbox__box {

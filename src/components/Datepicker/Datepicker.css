@@ -19,12 +19,12 @@
 .gov-datepicker__label {
   font-size: var(--gov-font-body-m, 16px);
   font-weight: 500;
-  color: var(--gov-text-primary, #262626);
+  color: #262626;
   cursor: pointer;
 }
 
 .gov-datepicker__required {
-  color: var(--gov-text-error, #dc2626);
+  color: #dc2626;
 }
 
 /* Input Wrapper */
@@ -41,7 +41,7 @@
   padding: 0 44px 0 12px;
   font-size: var(--gov-font-body-m, 16px);
   font-family: inherit;
-  color: var(--gov-text-primary, #262626);
+  color: #262626;
   background-color: var(--gov-bg-page, #ffffff);
   border: 1px solid var(--gov-border-subtle, #999999);
   border-radius: var(--gov-radius-s, 6px);
@@ -50,7 +50,7 @@
 }
 
 .gov-datepicker__input::placeholder {
-  color: var(--gov-text-tertiary, #6d6d6d);
+  color: #6d6d6d;
 }
 
 .gov-datepicker__input:hover:not(:disabled) {
@@ -65,7 +65,7 @@
 .gov-datepicker--disabled .gov-datepicker__input {
   background-color: var(--gov-bg-neutral-disabled, #e5e5e5);
   border-color: var(--gov-border-disabled, #cccccc);
-  color: var(--gov-text-disabled, #999999);
+  color: #999999;
   cursor: not-allowed;
 }
 
@@ -90,7 +90,7 @@
   background: transparent;
   border: none;
   border-radius: var(--gov-radius-xs, 4px);
-  color: var(--gov-text-secondary, #4f4f4f);
+  color: #4f4f4f;
   cursor: pointer;
   transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
 }
@@ -101,7 +101,7 @@
 }
 
 .gov-datepicker__toggle:disabled {
-  color: var(--gov-text-disabled, #999999);
+  color: #999999;
   cursor: not-allowed;
 }
 
@@ -138,7 +138,7 @@
 .gov-datepicker__title {
   font-size: var(--gov-font-body-m, 16px);
   font-weight: 600;
-  color: var(--gov-text-primary, #262626);
+  color: #262626;
 }
 
 .gov-datepicker__nav {
@@ -151,7 +151,7 @@
   background: transparent;
   border: none;
   border-radius: var(--gov-radius-xs, 4px);
-  color: var(--gov-text-secondary, #4f4f4f);
+  color: #4f4f4f;
   cursor: pointer;
   transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
 }
@@ -181,7 +181,7 @@
   height: 32px;
   font-size: var(--gov-font-body-s, 14px);
   font-weight: 500;
-  color: var(--gov-text-tertiary, #6d6d6d);
+  color: #6d6d6d;
 }
 
 /* Days Grid */
@@ -200,7 +200,7 @@
   padding: 0;
   font-size: var(--gov-font-body-s, 14px);
   font-family: inherit;
-  color: var(--gov-text-primary, #262626);
+  color: #262626;
   background: transparent;
   border: none;
   border-radius: var(--gov-radius-xs, 4px);
@@ -214,7 +214,7 @@
 }
 
 .gov-datepicker__day--other-month {
-  color: var(--gov-text-tertiary, #6d6d6d);
+  color: #6d6d6d;
 }
 
 .gov-datepicker__day--today {
@@ -237,7 +237,7 @@
 }
 
 .gov-datepicker__day--disabled {
-  color: var(--gov-text-disabled, #999999);
+  color: #999999;
   cursor: not-allowed;
 }
 
@@ -285,7 +285,7 @@
 
 .gov-datepicker__helper {
   font-size: var(--gov-font-body-s, 14px);
-  color: var(--gov-text-secondary, #4f4f4f);
+  color: #4f4f4f;
   line-height: 1.4;
 }
 
@@ -294,7 +294,7 @@
   align-items: center;
   gap: var(--gov-space-1, 4px);
   font-size: var(--gov-font-body-s, 14px);
-  color: var(--gov-text-error, #dc2626);
+  color: #dc2626;
   line-height: 1.4;
 }
 
@@ -309,21 +309,21 @@
    ========================================================================== */
 
 [data-theme="dark"] .gov-datepicker__label {
-  color: var(--gov-text-primary);
+  color: #262626;
 }
 
 [data-theme="dark"] .gov-datepicker__input {
   background-color: var(--gov-bg-page);
   border-color: var(--gov-border-subtle);
-  color: var(--gov-text-primary);
+  color: #262626;
 }
 
 [data-theme="dark"] .gov-datepicker__input::placeholder {
-  color: var(--gov-text-tertiary);
+  color: #6d6d6d;
 }
 
 [data-theme="dark"] .gov-datepicker__toggle {
-  color: var(--gov-text-secondary);
+  color: #4f4f4f;
 }
 
 [data-theme="dark"] .gov-datepicker__calendar {
@@ -333,23 +333,23 @@
 }
 
 [data-theme="dark"] .gov-datepicker__title {
-  color: var(--gov-text-primary);
+  color: #262626;
 }
 
 [data-theme="dark"] .gov-datepicker__nav {
-  color: var(--gov-text-secondary);
+  color: #4f4f4f;
 }
 
 [data-theme="dark"] .gov-datepicker__weekday {
-  color: var(--gov-text-tertiary);
+  color: #6d6d6d;
 }
 
 [data-theme="dark"] .gov-datepicker__day {
-  color: var(--gov-text-primary);
+  color: #262626;
 }
 
 [data-theme="dark"] .gov-datepicker__day--other-month {
-  color: var(--gov-text-tertiary);
+  color: #6d6d6d;
 }
 
 [data-theme="dark"] .gov-datepicker__day--today {
@@ -361,11 +361,11 @@
 }
 
 [data-theme="dark"] .gov-datepicker__helper {
-  color: var(--gov-text-secondary);
+  color: #4f4f4f;
 }
 
 [data-theme="dark"] .gov-datepicker__error {
-  color: var(--gov-text-error);
+  color: #dc2626;
 }
 
 

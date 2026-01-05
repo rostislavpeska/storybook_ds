@@ -31,12 +31,12 @@ The **Radio** component provides radio button inputs following the GOV.cz design
 // With RadioGroup (recommended)
 <RadioGroup 
   name="gender" 
-  label="Pohlaví" 
+  label="Gender" 
   value={gender} 
   onChange={(e) => setGender(e.target.value)}
 >
-  <Radio value="male" label="Muž" />
-  <Radio value="female" label="Žena" />
+  <Radio value="male" label="Male" />
+  <Radio value="female" label="Female" />
 </RadioGroup>
 
 // Standalone (less common)
@@ -71,7 +71,7 @@ export const Playground = {
     return (
       <RadioGroup
         name="playground"
-        label={args.label || 'Vyberte možnost'}
+        label={args.label || 'Select option'}
         value={value}
         onChange={(e) => setValue(e.target.value)}
         direction={args.direction}
@@ -81,14 +81,14 @@ export const Playground = {
         helperText={args.helperText}
         required={args.required}
       >
-        <Radio value="option1" label="Možnost 1" size={args.size} />
-        <Radio value="option2" label="Možnost 2" size={args.size} />
-        <Radio value="option3" label="Možnost 3" size={args.size} />
+        <Radio value="option1" label="Option 1" size={args.size} />
+        <Radio value="option2" label="Option 2" size={args.size} />
+        <Radio value="option3" label="Option 3" size={args.size} />
       </RadioGroup>
     );
   },
   args: {
-    label: 'Vyberte možnost',
+    label: 'Select option',
     direction: 'vertical',
     size: 'm',
     required: false,
@@ -110,17 +110,17 @@ export const Playground = {
 // ============================================
 export const BasicRadioGroup = {
   render: () => {
-    const [value, setValue] = useState('uchazeč');
+    const [value, setValue] = useState('applicant');
     return (
       <RadioGroup
         name="applicantType"
-        label="Typ žadatele"
+        label="Applicant type"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         required
       >
-        <Radio value="uchazeč" label="Uchazeč o zaměstnání" />
-        <Radio value="zájemce" label="Zájemce o zaměstnání" />
+        <Radio value="applicant" label="Job applicant" />
+        <Radio value="interested" label="Interested in employment" />
       </RadioGroup>
     );
   },
@@ -138,14 +138,14 @@ export const GenderSelection = {
     return (
       <RadioGroup
         name="gender"
-        label="Pohlaví"
+        label="Gender"
         value={gender}
         onChange={(e) => setGender(e.target.value)}
         direction="horizontal"
         required
       >
-        <Radio value="male" label="Muž" />
-        <Radio value="female" label="Žena" />
+        <Radio value="male" label="Male" />
+        <Radio value="female" label="Female" />
       </RadioGroup>
     );
   },
@@ -163,14 +163,14 @@ export const HorizontalLayout = {
     return (
       <RadioGroup
         name="horizontal"
-        label="Horizontální rozložení"
+        label="Horizontal layout"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         direction="horizontal"
       >
-        <Radio value="option1" label="Možnost 1" />
-        <Radio value="option2" label="Možnost 2" />
-        <Radio value="option3" label="Možnost 3" />
+        <Radio value="option1" label="Option 1" />
+        <Radio value="option2" label="Option 2" />
+        <Radio value="option3" label="Option 3" />
       </RadioGroup>
     );
   },
@@ -188,14 +188,14 @@ export const VerticalLayout = {
     return (
       <RadioGroup
         name="vertical"
-        label="Vertikální rozložení"
+        label="Vertical layout"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         direction="vertical"
       >
-        <Radio value="option1" label="Možnost 1" />
-        <Radio value="option2" label="Možnost 2" />
-        <Radio value="option3" label="Možnost 3" />
+        <Radio value="option1" label="Option 1" />
+        <Radio value="option2" label="Option 2" />
+        <Radio value="option3" label="Option 3" />
       </RadioGroup>
     );
   },
@@ -211,18 +211,18 @@ export const Sizes = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
       <RadioGroup name="size-s" label="Small (s)" direction="horizontal">
-        <Radio value="a" label="Možnost A" size="s" defaultChecked />
-        <Radio value="b" label="Možnost B" size="s" />
+        <Radio value="a" label="Option A" size="s" defaultChecked />
+        <Radio value="b" label="Option B" size="s" />
       </RadioGroup>
       
       <RadioGroup name="size-m" label="Medium (m) - Default" direction="horizontal">
-        <Radio value="a" label="Možnost A" size="m" defaultChecked />
-        <Radio value="b" label="Možnost B" size="m" />
+        <Radio value="a" label="Option A" size="m" defaultChecked />
+        <Radio value="b" label="Option B" size="m" />
       </RadioGroup>
       
       <RadioGroup name="size-l" label="Large (l)" direction="horizontal">
-        <Radio value="a" label="Možnost A" size="l" defaultChecked />
-        <Radio value="b" label="Možnost B" size="l" />
+        <Radio value="a" label="Option A" size="l" defaultChecked />
+        <Radio value="b" label="Option B" size="l" />
       </RadioGroup>
     </div>
   ),
@@ -239,18 +239,18 @@ export const States = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
       <RadioGroup name="default" label="Default" direction="horizontal">
-        <Radio value="a" label="Nevybraná" />
-        <Radio value="b" label="Vybraná" defaultChecked />
+        <Radio value="a" label="Unselected" />
+        <Radio value="b" label="Selected" defaultChecked />
       </RadioGroup>
       
       <RadioGroup name="disabled" label="Disabled" direction="horizontal" disabled>
-        <Radio value="a" label="Disabled nevybraná" />
-        <Radio value="b" label="Disabled vybraná" defaultChecked />
+        <Radio value="a" label="Disabled unselected" />
+        <Radio value="b" label="Disabled selected" defaultChecked />
       </RadioGroup>
       
-      <RadioGroup name="invalid" label="Invalid" direction="horizontal" invalid invalidMessage="Vyberte jednu z možností">
-        <Radio value="a" label="Chybná možnost A" />
-        <Radio value="b" label="Chybná možnost B" />
+      <RadioGroup name="invalid" label="Invalid" direction="horizontal" invalid invalidMessage="Select one of the options">
+        <Radio value="a" label="Invalid option A" />
+        <Radio value="b" label="Invalid option B" />
       </RadioGroup>
     </div>
   ),
@@ -269,25 +269,25 @@ export const WithHelperText = {
     return (
       <RadioGroup
         name="plan"
-        label="Vyberte tarif"
+        label="Select plan"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        helperText="Tarif můžete kdykoliv změnit"
+        helperText="You can change the plan anytime"
       >
         <Radio 
           value="basic" 
-          label="Základní" 
-          helperText="Pro jednotlivce, omezené funkce"
+          label="Basic" 
+          helperText="For individuals, limited features"
         />
         <Radio 
           value="standard" 
-          label="Standardní" 
-          helperText="Pro malé týmy, plné funkce"
+          label="Standard" 
+          helperText="For small teams, full features"
         />
         <Radio 
           value="premium" 
           label="Premium" 
-          helperText="Pro firmy, prioritní podpora"
+          helperText="For businesses, priority support"
         />
       </RadioGroup>
     );
@@ -304,14 +304,14 @@ export const Invalid = {
   render: () => (
     <RadioGroup
       name="required-field"
-      label="Povinná volba"
+      label="Required choice"
       invalid
-      invalidMessage="Toto pole je povinné. Vyberte jednu z možností."
+      invalidMessage="This field is required. Select one of the options."
       required
     >
-      <Radio value="a" label="Možnost A" />
-      <Radio value="b" label="Možnost B" />
-      <Radio value="c" label="Možnost C" />
+      <Radio value="a" label="Option A" />
+      <Radio value="b" label="Option B" />
+      <Radio value="c" label="Option C" />
     </RadioGroup>
   ),
   parameters: {
@@ -326,16 +326,16 @@ export const Invalid = {
 export const Disabled = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-      <RadioGroup name="disabled-group" label="Celá skupina disabled" disabled>
-        <Radio value="a" label="Možnost A" />
-        <Radio value="b" label="Možnost B" defaultChecked />
-        <Radio value="c" label="Možnost C" />
+      <RadioGroup name="disabled-group" label="Entire group disabled" disabled>
+        <Radio value="a" label="Option A" />
+        <Radio value="b" label="Option B" defaultChecked />
+        <Radio value="c" label="Option C" />
       </RadioGroup>
       
-      <RadioGroup name="partial-disabled" label="Některé možnosti disabled">
-        <Radio value="a" label="Dostupná možnost" />
-        <Radio value="b" label="Nedostupná možnost" disabled />
-        <Radio value="c" label="Další dostupná" />
+      <RadioGroup name="partial-disabled" label="Some options disabled">
+        <Radio value="a" label="Available option" />
+        <Radio value="b" label="Unavailable option" disabled />
+        <Radio value="c" label="Another available" />
       </RadioGroup>
     </div>
   ),
@@ -364,19 +364,19 @@ export const FormExample = {
 
     const validate = () => {
       const newErrors = {};
-      if (!formData.applicantType) newErrors.applicantType = 'Vyberte typ žadatele';
-      if (!formData.gender) newErrors.gender = 'Vyberte pohlaví';
+      if (!formData.applicantType) newErrors.applicantType = 'Select applicant type';
+      if (!formData.gender) newErrors.gender = 'Select gender';
       setErrors(newErrors);
       return Object.keys(newErrors).length === 0;
     };
 
     return (
       <div style={{ maxWidth: '500px' }}>
-        <h3 style={{ marginBottom: '24px', color: '#1e5086' }}>A. Žadatel</h3>
+        <h3 style={{ marginBottom: '24px', color: '#1e5086' }}>A. Applicant</h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <RadioGroup
             name="applicantType"
-            label="Typ žadatele"
+            label="Applicant type"
             value={formData.applicantType}
             onChange={handleChange('applicantType')}
             invalid={!!errors.applicantType}
@@ -389,7 +389,7 @@ export const FormExample = {
 
           <RadioGroup
             name="gender"
-            label="Pohlaví"
+            label="Gender"
             value={formData.gender}
             onChange={handleChange('gender')}
             direction="horizontal"
@@ -397,8 +397,8 @@ export const FormExample = {
             invalidMessage={errors.gender}
             required
           >
-            <Radio value="male" label="Muž" />
-            <Radio value="female" label="Žena" />
+            <Radio value="male" label="Male" />
+            <Radio value="female" label="Female" />
           </RadioGroup>
 
           <button 
@@ -415,7 +415,7 @@ export const FormExample = {
               alignSelf: 'flex-start',
             }}
           >
-            Ověřit formulář
+            Validate form
           </button>
         </div>
       </div>
@@ -442,7 +442,7 @@ export const AllStates = {
         </thead>
         <tbody>
           <tr>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500 }}>Default</td>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500, color: '#262626' }}>Default</td>
             <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
               <Radio name="matrix-default" value="unchecked" label="Unchecked" />
             </td>
@@ -451,7 +451,7 @@ export const AllStates = {
             </td>
           </tr>
           <tr>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500 }}>Disabled</td>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500, color: '#262626' }}>Disabled</td>
             <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
               <Radio name="matrix-disabled" value="unchecked" label="Disabled" disabled />
             </td>
@@ -460,7 +460,7 @@ export const AllStates = {
             </td>
           </tr>
           <tr>
-            <td style={{ padding: '12px', fontWeight: 500 }}>Invalid</td>
+            <td style={{ padding: '12px', fontWeight: 500, color: '#262626' }}>Invalid</td>
             <td style={{ padding: '12px' }}>
               <Radio name="matrix-invalid" value="unchecked" label="Invalid" invalid />
             </td>

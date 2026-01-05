@@ -29,7 +29,7 @@ import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 <LanguageSwitcher 
   languages={[
-    { code: 'cs', label: 'Čeština', shortLabel: 'CZ' },
+    { code: 'cs', label: 'Czech', shortLabel: 'CZ' },
     { code: 'en', label: 'English', shortLabel: 'EN' }
   ]}
   currentLanguage="cs"
@@ -91,7 +91,7 @@ export const Playground = {
     showIcon: true,
     showFullLabel: false,
     languages: [
-      { code: 'cs', label: 'Čeština', shortLabel: 'CZ' },
+      { code: 'cs', label: 'Czech', shortLabel: 'CZ' },
       { code: 'en', label: 'English', shortLabel: 'EN' }
     ],
     currentLanguage: 'cs',
@@ -216,10 +216,10 @@ export const MultipleLanguages = {
   render: () => {
     const [lang, setLang] = useState('cs');
     const languages = [
-      { code: 'cs', label: 'Čeština', shortLabel: 'CZ' },
+      { code: 'cs', label: 'Czech', shortLabel: 'CZ' },
       { code: 'en', label: 'English', shortLabel: 'EN' },
       { code: 'de', label: 'Deutsch', shortLabel: 'DE' },
-      { code: 'sk', label: 'Slovenčina', shortLabel: 'SK' },
+      { code: 'sk', label: 'Slovak', shortLabel: 'SK' },
     ];
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>

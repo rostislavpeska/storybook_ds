@@ -30,14 +30,14 @@ import { FileUpload } from '@/components/FileUpload';
 
 // Single file upload
 <FileUpload 
-  label="Nahrát dokument"
+  label="Upload document"
   accept=".pdf,.doc,.docx"
   onChange={(files) => handleFiles(files)}
 />
 
 // Multiple files with constraints
 <FileUpload 
-  label="Přílohy"
+  label="Attachments"
   multiple
   maxFiles={5}
   maxSize={10 * 1024 * 1024} // 10MB
@@ -128,10 +128,10 @@ import { FileUpload } from '@/components/FileUpload';
 
 export const Playground = {
   args: {
-    label: 'Nahrát soubory',
-    buttonText: 'Vložit soubor z počítače',
-    dragText: 'nebo přetáhněte soubory sem',
-    helperText: 'Podporované formáty: PDF, DOC, DOCX, JPG, PNG',
+    label: 'Upload files',
+    buttonText: 'Choose file from computer',
+    dragText: 'or drag and drop files here',
+    helperText: 'Supported formats: PDF, DOC, DOCX, JPG, PNG',
     multiple: false,
     disabled: false,
     invalid: false,
@@ -145,7 +145,7 @@ export const Playground = {
 
 export const Default = {
   args: {
-    label: 'Nahrát soubor',
+    label: 'Upload file',
   },
   parameters: {
     controls: { disable: true },
@@ -154,8 +154,8 @@ export const Default = {
 
 export const SingleFile = {
   args: {
-    label: 'Životopis (CV)',
-    helperText: 'Nahrajte váš životopis ve formátu PDF',
+    label: 'Resume (CV)',
+    helperText: 'Upload your resume in PDF format',
     accept: '.pdf',
     required: true,
   },
@@ -171,8 +171,8 @@ export const SingleFile = {
 
 export const MultipleFiles = {
   args: {
-    label: 'Přílohy k žádosti',
-    helperText: 'Můžete nahrát až 5 souborů, každý max. 5 MB',
+    label: 'Application attachments',
+    helperText: 'You can upload up to 5 files, each max. 5 MB',
     multiple: true,
     maxFiles: 5,
     maxSize: 5 * 1024 * 1024, // 5MB
@@ -194,9 +194,9 @@ export const MultipleFiles = {
 
 export const Disabled = {
   args: {
-    label: 'Nahrát soubor',
+    label: 'Upload file',
     disabled: true,
-    helperText: 'Nahrávání souborů je momentálně nedostupné',
+    helperText: 'File upload is currently unavailable',
   },
   parameters: {
     controls: { disable: true },
@@ -205,9 +205,9 @@ export const Disabled = {
 
 export const Invalid = {
   args: {
-    label: 'Povinné přílohy',
+    label: 'Required attachments',
     invalid: true,
-    invalidMessage: 'Prosím nahrajte alespoň jeden soubor',
+    invalidMessage: 'Please upload at least one file',
     required: true,
   },
   parameters: {
@@ -217,9 +217,9 @@ export const Invalid = {
 
 export const Required = {
   args: {
-    label: 'Potvrzení o studiu',
+    label: 'Proof of study',
     required: true,
-    helperText: 'Povinná příloha k žádosti',
+    helperText: 'Required attachment for application',
     accept: '.pdf,.jpg,.jpeg,.png',
   },
   parameters: {
@@ -230,7 +230,7 @@ export const Required = {
 export const WithHelperText = {
   args: {
     label: 'Fotografie',
-    helperText: 'Nahrajte fotografii ve formátu JPG nebo PNG, maximálně 2 MB',
+    helperText: 'Upload a photo in JPG or PNG format, maximum 2 MB',
     accept: 'image/jpeg,image/png',
     maxSize: 2 * 1024 * 1024,
   },
@@ -273,11 +273,11 @@ export const ExampleDocumentUpload = {
     return (
       <div style={{ maxWidth: '500px' }}>
         <h3 style={{ marginBottom: '16px', color: '#262626' }}>
-          Elektronické přílohy
+          Electronic attachments
         </h3>
         <FileUpload
-          label="Přílohy k žádosti"
-          helperText="Přijímáme PDF, DOC, DOCX a obrazové soubory. Max. 10 MB na soubor."
+          label="Application attachments"
+          helperText="We accept PDF, DOC, DOCX and image files. Max. 10 MB per file."
           multiple
           maxFiles={5}
           maxSize={10 * 1024 * 1024}
@@ -286,7 +286,7 @@ export const ExampleDocumentUpload = {
         />
         {files.length > 0 && (
           <p style={{ marginTop: '12px', fontSize: '14px', color: '#686868' }}>
-            Nahráno {files.length} {files.length === 1 ? 'soubor' : files.length < 5 ? 'soubory' : 'souborů'}
+            Uploaded {files.length} {files.length === 1 ? 'file' : 'files'}
           </p>
         )}
       </div>
@@ -306,8 +306,8 @@ export const ExampleImageUpload = {
   args: {
     label: 'Fotografie dokladu',
     buttonText: 'Vybrat fotografii',
-    dragText: 'nebo přetáhněte obrázek sem',
-    helperText: 'Nahrajte čitelnou fotografii dokladu totožnosti (max. 5 MB)',
+    dragText: 'or drag and drop image here',
+    helperText: 'Upload a legible photo of ID document (max. 5 MB)',
     accept: 'image/*',
     maxSize: 5 * 1024 * 1024,
     required: true,
@@ -341,17 +341,17 @@ export const ExampleFormWithUpload = {
     return (
       <form onSubmit={handleSubmit} style={{ maxWidth: '500px' }}>
         <h3 style={{ marginBottom: '24px', color: '#262626' }}>
-          Odeslání žádosti
+          Submit application
         </h3>
         
         <div style={{ marginBottom: '24px' }}>
           <FileUpload
-            label="Naskenovaná žádost"
-            helperText="Nahrajte podepsanou žádost ve formátu PDF"
+            label="Scanned application"
+            helperText="Upload signed application in PDF format"
             accept=".pdf"
             required
             invalid={error}
-            invalidMessage={error ? 'Nahrajte prosím podepsanou žádost' : undefined}
+            invalidMessage={error ? 'Please upload signed application' : undefined}
             onChange={(f) => {
               setFiles(f);
               if (f.length > 0) setError(false);
@@ -372,12 +372,12 @@ export const ExampleFormWithUpload = {
             cursor: 'pointer',
           }}
         >
-          Odeslat žádost
+          Submit application
         </button>
         
         {submitted && (
           <p style={{ marginTop: '16px', color: '#1e7e34', fontWeight: 500 }}>
-            ✓ Žádost byla úspěšně odeslána
+            ✓ Application was successfully submitted
           </p>
         )}
       </form>
@@ -404,7 +404,7 @@ export const AllStates = {
         <h4 style={{ marginBottom: '12px', color: '#262626', fontSize: '14px', fontWeight: 500 }}>
           Default
         </h4>
-        <FileUpload label="Nahrát soubor" />
+        <FileUpload label="Upload file" />
       </div>
       
       <div>
@@ -412,8 +412,8 @@ export const AllStates = {
           With Helper Text
         </h4>
         <FileUpload 
-          label="Nahrát soubor" 
-          helperText="Podporované formáty: PDF, DOC, DOCX"
+          label="Upload file" 
+          helperText="Supported formats: PDF, DOC, DOCX"
         />
       </div>
       
@@ -422,7 +422,7 @@ export const AllStates = {
           Required
         </h4>
         <FileUpload 
-          label="Povinný soubor" 
+          label="Required file" 
           required
         />
       </div>
@@ -432,7 +432,7 @@ export const AllStates = {
           Disabled
         </h4>
         <FileUpload 
-          label="Nahrát soubor" 
+          label="Upload file" 
           disabled
         />
       </div>
@@ -454,10 +454,10 @@ export const AllStates = {
           Multiple Files
         </h4>
         <FileUpload 
-          label="Přílohy" 
+          label="Attachments" 
           multiple
           maxFiles={5}
-          helperText="Můžete nahrát až 5 souborů"
+          helperText="You can upload up to 5 files"
         />
       </div>
     </div>

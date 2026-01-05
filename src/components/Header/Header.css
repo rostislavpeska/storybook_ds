@@ -214,7 +214,7 @@
 
 .gov-header--light {
   background-color: var(--gov-neutral-0, #ffffff);
-  color: var(--gov-text-primary, #262626);
+  color: #262626;
   border-bottom: 1px solid var(--gov-border-subtle, #e7e7e7);
 }
 

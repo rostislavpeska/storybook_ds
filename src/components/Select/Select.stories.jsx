@@ -28,7 +28,7 @@ The **Select** component provides dropdown selection following the GOV.cz design
 <Select 
   label="Kraj" 
   name="region"
-  placeholder="-- Vyberte kraj --"
+  placeholder="-- Select region --"
   options={[
     { value: 'praha', label: 'Praha' },
     { value: 'brno', label: 'Jihomoravský kraj' },
@@ -38,7 +38,7 @@ The **Select** component provides dropdown selection following the GOV.cz design
 
 // With option groups
 <Select 
-  label="Město"
+  label="City"
   options={[
     { 
       group: 'Čechy',
@@ -93,13 +93,13 @@ const regionOptions = [
 ];
 
 const educationOptions = [
-  { value: 'zakladni', label: 'Základní vzdělání' },
-  { value: 'stredni', label: 'Střední vzdělání bez maturity' },
-  { value: 'stredni-maturita', label: 'Střední vzdělání s maturitou' },
-  { value: 'vyssi-odborne', label: 'Vyšší odborné vzdělání' },
-  { value: 'bakalarske', label: 'Bakalářské vzdělání' },
-  { value: 'magisterske', label: 'Magisterské vzdělání' },
-  { value: 'doktorske', label: 'Doktorské vzdělání' },
+  { value: 'zakladni', label: 'Elementary education' },
+  { value: 'stredni', label: 'Secondary education without diploma' },
+  { value: 'stredni-maturita', label: 'Secondary education with diploma' },
+  { value: 'vyssi-odborne', label: 'Higher vocational education' },
+  { value: 'bakalarske', label: 'Bachelor degree' },
+  { value: 'magisterske', label: 'Master degree' },
+  { value: 'doktorske', label: 'Doctoral degree' },
 ];
 
 const groupedOptions = [
@@ -150,14 +150,14 @@ export const BasicSelect = {
         <Select
           label="Kraj"
           name="region"
-          placeholder="-- Vyberte kraj --"
+          placeholder="-- Select region --"
           options={regionOptions}
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
         {value && (
           <p style={{ marginTop: '16px', color: '#4f4f4f' }}>
-            Vybraná hodnota: <strong>{value}</strong>
+            Selected value: <strong>{value}</strong>
           </p>
         )}
       </div>
@@ -175,12 +175,12 @@ export const WithPlaceholder = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '400px' }}>
       <Select
-        label="S placeholder"
-        placeholder="-- Vyberte možnost --"
+        label="With Placeholder"
+        placeholder="-- Select an option --"
         options={educationOptions}
       />
       <Select
-        label="Bez placeholder (první možnost vybraná)"
+        label="Without placeholder (first option selected)"
         options={educationOptions}
         defaultValue="zakladni"
       />
@@ -200,19 +200,19 @@ export const Sizes = {
       <Select
         label="Small (s)"
         size="s"
-        placeholder="-- Vyberte --"
+        placeholder="-- Select --"
         options={educationOptions.slice(0, 4)}
       />
       <Select
         label="Medium (m) - Default"
         size="m"
-        placeholder="-- Vyberte --"
+        placeholder="-- Select --"
         options={educationOptions.slice(0, 4)}
       />
       <Select
         label="Large (l)"
         size="l"
-        placeholder="-- Vyberte --"
+        placeholder="-- Select --"
         options={educationOptions.slice(0, 4)}
       />
     </div>
@@ -231,7 +231,7 @@ export const States = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '400px' }}>
       <Select
         label="Default"
-        placeholder="-- Vyberte --"
+        placeholder="-- Select --"
         options={educationOptions.slice(0, 4)}
       />
       <Select
@@ -241,22 +241,22 @@ export const States = {
       />
       <Select
         label="Disabled"
-        placeholder="-- Nelze vybrat --"
+        placeholder="-- Cannot select --"
         options={educationOptions.slice(0, 4)}
         disabled
       />
       <Select
         label="Required"
-        placeholder="-- Vyberte (povinné) --"
+        placeholder="-- Select (required) --"
         options={educationOptions.slice(0, 4)}
         required
       />
       <Select
         label="Invalid"
-        placeholder="-- Vyberte --"
+        placeholder="-- Select --"
         options={educationOptions.slice(0, 4)}
         invalid
-        invalidMessage="Toto pole je povinné"
+        invalidMessage="This field is required"
       />
     </div>
   ),
@@ -273,11 +273,11 @@ export const WithHelperText = {
   render: () => (
     <div style={{ maxWidth: '400px' }}>
       <Select
-        label="Nejvyšší dosažené vzdělání"
+        label="Highest education level"
         name="education"
-        placeholder="-- Vyberte vzdělání --"
+        placeholder="-- Select education --"
         options={educationOptions}
-        helperText="Vyberte úroveň vzdělání, kterou jste dokončili"
+        helperText="Select the education level you completed"
       />
     </div>
   ),
@@ -294,18 +294,18 @@ export const Invalid = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '400px' }}>
       <Select
         label="Kraj"
-        placeholder="-- Vyberte kraj --"
+        placeholder="-- Select region --"
         options={regionOptions}
         invalid
-        invalidMessage="Vyberte prosím kraj"
+        invalidMessage="Please select a region"
         required
       />
       <Select
-        label="Vzdělání"
-        placeholder="-- Vyberte --"
+        label="Education"
+        placeholder="-- Select --"
         options={educationOptions}
         invalid
-        invalidMessage="Toto pole je povinné pro pokračování"
+        invalidMessage="This field is required to continue"
         required
       />
     </div>
@@ -325,13 +325,13 @@ export const OptionGroups = {
     return (
       <div style={{ maxWidth: '400px' }}>
         <Select
-          label="Město"
+          label="City"
           name="city"
-          placeholder="-- Vyberte město --"
+          placeholder="-- Select city --"
           options={groupedOptions}
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          helperText="Města jsou seskupena podle regionu"
+          helperText="Cities are grouped by region"
         />
       </div>
     );
@@ -348,16 +348,16 @@ export const DisabledOptions = {
   render: () => (
     <div style={{ maxWidth: '400px' }}>
       <Select
-        label="Dostupné termíny"
-        placeholder="-- Vyberte termín --"
+        label="Available dates"
+        placeholder="-- Select date --"
         options={[
           { value: '2026-01', label: 'Leden 2026' },
-          { value: '2026-02', label: 'Únor 2026', disabled: true },
-          { value: '2026-03', label: 'Březen 2026' },
+          { value: '2026-02', label: 'February 2026', disabled: true },
+          { value: '2026-03', label: 'March 2026' },
           { value: '2026-04', label: 'Duben 2026', disabled: true },
-          { value: '2026-05', label: 'Květen 2026' },
+          { value: '2026-05', label: 'May 2026' },
         ]}
-        helperText="Některé termíny jsou již obsazeny"
+        helperText="Some dates are already booked"
       />
     </div>
   ),
@@ -386,20 +386,20 @@ export const FormExample = {
 
     const validate = () => {
       const newErrors = {};
-      if (!formData.region) newErrors.region = 'Vyberte prosím kraj';
-      if (!formData.education) newErrors.education = 'Vyberte prosím vzdělání';
+      if (!formData.region) newErrors.region = 'Please select a region';
+      if (!formData.education) newErrors.education = 'Please select education';
       setErrors(newErrors);
       return Object.keys(newErrors).length === 0;
     };
 
     return (
       <div style={{ maxWidth: '500px' }}>
-        <h3 style={{ marginBottom: '24px', color: '#1e5086' }}>Osobní údaje</h3>
+        <h3 style={{ marginBottom: '24px', color: '#1e5086' }}>Personal information</h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <Select
-            label="Kraj trvalého bydliště"
+            label="Region of permanent residence"
             name="region"
-            placeholder="-- Vyberte kraj --"
+            placeholder="-- Select region --"
             options={regionOptions}
             value={formData.region}
             onChange={handleChange('region')}
@@ -409,9 +409,9 @@ export const FormExample = {
           />
           
           <Select
-            label="Nejvyšší dosažené vzdělání"
+            label="Highest education level"
             name="education"
-            placeholder="-- Vyberte vzdělání --"
+            placeholder="-- Select education --"
             options={educationOptions}
             value={formData.education}
             onChange={handleChange('education')}
@@ -434,7 +434,7 @@ export const FormExample = {
               alignSelf: 'flex-start',
             }}
           >
-            Ověřit formulář
+            Validate form
           </button>
         </div>
       </div>
@@ -460,39 +460,39 @@ export const AllStates = {
         </thead>
         <tbody>
           <tr>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500 }}>Default</td>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500, color: '#262626' }}>Default</td>
             <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
               <Select label="Label" placeholder="Placeholder" options={educationOptions.slice(0, 3)} />
             </td>
           </tr>
           <tr>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500 }}>With Value</td>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500, color: '#262626' }}>With Value</td>
             <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
               <Select label="Label" options={educationOptions.slice(0, 3)} defaultValue="stredni" />
             </td>
           </tr>
           <tr>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500 }}>Required</td>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500, color: '#262626' }}>Required</td>
             <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
-              <Select label="Label" placeholder="Povinné" options={educationOptions.slice(0, 3)} required />
+              <Select label="Label" placeholder="Required" options={educationOptions.slice(0, 3)} required />
             </td>
           </tr>
           <tr>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500 }}>Disabled</td>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500, color: '#262626' }}>Disabled</td>
             <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
               <Select label="Label" placeholder="Disabled" options={educationOptions.slice(0, 3)} disabled />
             </td>
           </tr>
           <tr>
-            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500 }}>Invalid</td>
+            <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7', fontWeight: 500, color: '#262626' }}>Invalid</td>
             <td style={{ padding: '12px', borderBottom: '1px solid #e7e7e7' }}>
-              <Select label="Label" placeholder="Invalid" options={educationOptions.slice(0, 3)} invalid invalidMessage="Chybová zpráva" />
+              <Select label="Label" placeholder="Invalid" options={educationOptions.slice(0, 3)} invalid invalidMessage="Error message" />
             </td>
           </tr>
           <tr>
-            <td style={{ padding: '12px', fontWeight: 500 }}>With Helper</td>
+            <td style={{ padding: '12px', fontWeight: 500, color: '#262626' }}>With Helper</td>
             <td style={{ padding: '12px' }}>
-              <Select label="Label" placeholder="Placeholder" options={educationOptions.slice(0, 3)} helperText="Nápověda k poli" />
+              <Select label="Label" placeholder="Placeholder" options={educationOptions.slice(0, 3)} helperText="Field helper text" />
             </td>
           </tr>
         </tbody>
