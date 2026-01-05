@@ -244,3 +244,4 @@ anima sync
 | **Learning Curve** | Medium | Low | Low |
 
 **For your project:** Start with Chromatic (free, quick) + Manual recreation for the components you need most.
+

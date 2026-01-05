@@ -99,25 +99,25 @@
   align-items: center;
   gap: var(--gov-space-xs, 4px);
   padding: var(--gov-space-m, 16px);
-  background-color: var(--gov-neutral-900, #3b3b3b);
+  background-color: var(--gov-neutral-50, #f9f9f9);
   border-radius: var(--gov-radius-s, 8px);
-  border: 1px solid var(--gov-neutral-800, #454545);
+  border: 1px solid var(--gov-neutral-200, #e0e0e0);
   transition: all 0.2s ease;
 }
 
 .icon-grid__item:hover {
-  background-color: var(--gov-neutral-800, #454545);
+  background-color: var(--gov-neutral-100, #f0f0f0);
   border-color: var(--gov-primary-500, #337fc4);
 }
 
 .icon-grid__item .gov-icon,
 .icon-grid__item .gov-bootstrap-icon {
-  color: var(--gov-primary-400, #599bd7);
+  color: var(--gov-primary-600, #2362a2);
 }
 
 .icon-grid__name {
   font-size: var(--gov-font-body-xs, 12px);
-  color: var(--gov-text-secondary, #a09090);
+  color: var(--gov-neutral-700, #666666);
   text-align: center;
   word-break: break-word;
   font-family: 'JetBrains Mono', monospace;
@@ -129,8 +129,9 @@
   align-items: flex-end;
   gap: var(--gov-space-l, 24px);
   padding: var(--gov-space-l, 24px);
-  background-color: var(--gov-neutral-900, #3b3b3b);
+  background-color: var(--gov-neutral-50, #f9f9f9);
   border-radius: var(--gov-radius-m, 16px);
+  border: 1px solid var(--gov-neutral-200, #e0e0e0);
 }
 
 .icon-size-demo__item {
@@ -142,7 +143,7 @@
 
 .icon-size-demo__label {
   font-size: var(--gov-font-body-xs, 12px);
-  color: var(--gov-text-tertiary, #706060);
+  color: var(--gov-neutral-600, #666666);
   font-family: 'JetBrains Mono', monospace;
 }
 
@@ -152,8 +153,9 @@
   flex-wrap: wrap;
   gap: var(--gov-space-l, 24px);
   padding: var(--gov-space-l, 24px);
-  background-color: var(--gov-neutral-900, #3b3b3b);
+  background-color: var(--gov-neutral-50, #f9f9f9);
   border-radius: var(--gov-radius-m, 16px);
+  border: 1px solid var(--gov-neutral-200, #e0e0e0);
 }
 
 .icon-color-demo__item {
@@ -165,7 +167,7 @@
 
 .icon-color-demo__label {
   font-size: var(--gov-font-body-xs, 12px);
-  color: var(--gov-text-secondary, #a09090);
+  color: var(--gov-neutral-600, #666666);
   font-family: 'JetBrains Mono', monospace;
 }
 
@@ -222,5 +224,6 @@
 .bootstrap-icons-info__code code {
   color: var(--gov-secondary-400);
 }
+
 
 

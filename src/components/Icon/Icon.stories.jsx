@@ -7,7 +7,7 @@ export default {
   parameters: {
     layout: 'padded',
     backgrounds: {
-      default: 'dark',
+      default: 'light',
     },
     docs: {
       description: {
@@ -83,18 +83,6 @@ Browse all 2000+ Bootstrap Icons at: [icons.getbootstrap.com](https://icons.getb
 };
 
 // ============================================================
-//  DEFAULT STORY - Interactive Playground
-// ============================================================
-
-export const Default = {
-  args: {
-    name: 'star',
-    size: 'xl',
-    color: 'var(--gov-primary-400)',
-  },
-};
-
-// ============================================================
 //  ALL 50 BUILT-IN ICONS
 // ============================================================
 
@@ -127,9 +115,9 @@ export const AllBuiltInIcons = {
       </div>
 
       {/* Icon Grid */}
-      <h3 style={{ color: 'var(--gov-neutral-0)', marginBottom: 'var(--gov-space-m)' }}>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
         Built-in Icons ({AVAILABLE_ICONS.length} icons)
-      </h3>
+      </h1>
       <div className="icon-grid">
         {AVAILABLE_ICONS.map((iconName) => (
           <div key={iconName} className="icon-grid__item">
@@ -171,10 +159,10 @@ These icons are embedded as inline SVG for optimal performance and are always av
 export const IconSizes = {
   render: () => (
     <div className="icon-docs">
-      <h3 style={{ color: 'var(--gov-neutral-0)', marginBottom: 'var(--gov-space-m)' }}>
+      <h3 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
         Icon Size Scale
       </h3>
-      <p style={{ color: 'var(--gov-neutral-300)', marginBottom: 'var(--gov-space-l)' }}>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
         Icons use GOV.cz design tokens for consistent sizing across the design system.
       </p>
       
@@ -188,17 +176,17 @@ export const IconSizes = {
       </div>
 
       <div style={{ marginTop: 'var(--gov-space-xl)' }}>
-        <h4 style={{ color: 'var(--gov-neutral-0)', marginBottom: 'var(--gov-space-s)' }}>
+        <h4 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-s)' }}>
           Size Token Reference
         </h4>
         <table style={{ 
           width: '100%', 
           borderCollapse: 'collapse',
-          color: 'var(--gov-neutral-200)',
+          color: 'var(--gov-neutral-800)',
           fontSize: 'var(--gov-font-body-s)'
         }}>
           <thead>
-            <tr style={{ borderBottom: '1px solid var(--gov-neutral-700)' }}>
+            <tr style={{ borderBottom: '1px solid var(--gov-neutral-200)' }}>
               <th style={{ padding: 'var(--gov-space-s)', textAlign: 'left' }}>Size</th>
               <th style={{ padding: 'var(--gov-space-s)', textAlign: 'left' }}>Token</th>
               <th style={{ padding: 'var(--gov-space-s)', textAlign: 'left' }}>Value</th>
@@ -248,10 +236,10 @@ The icon component uses GOV.cz design tokens for sizing, ensuring consistency wi
 export const IconColors = {
   render: () => (
     <div className="icon-docs">
-      <h3 style={{ color: 'var(--gov-neutral-0)', marginBottom: 'var(--gov-space-m)' }}>
+      <h3 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
         Icon Colors
       </h3>
-      <p style={{ color: 'var(--gov-neutral-300)', marginBottom: 'var(--gov-space-l)' }}>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
         Icons can use any color from the GOV.cz color palette. By default, they inherit <code>currentColor</code>.
       </p>
       
@@ -286,7 +274,7 @@ export const IconColors = {
         </div>
       </div>
 
-      <h4 style={{ color: 'var(--gov-neutral-0)', marginTop: 'var(--gov-space-xl)', marginBottom: 'var(--gov-space-s)' }}>
+      <h4 style={{ color: 'var(--gov-neutral-900)', marginTop: 'var(--gov-space-xl)', marginBottom: 'var(--gov-space-s)' }}>
         Semantic Icon Colors
       </h4>
       <div className="icon-color-demo">
@@ -349,7 +337,7 @@ The design system provides semantic icon color tokens:
 export const NavigationIcons = {
   render: () => (
     <div className="icon-docs">
-      <h3 style={{ color: 'var(--gov-neutral-0)', marginBottom: 'var(--gov-space-m)' }}>
+      <h3 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
         Navigation & UI Icons
       </h3>
       <div className="icon-grid">
@@ -376,7 +364,7 @@ export const NavigationIcons = {
 export const ActionIcons = {
   render: () => (
     <div className="icon-docs">
-      <h3 style={{ color: 'var(--gov-neutral-0)', marginBottom: 'var(--gov-space-m)' }}>
+      <h3 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
         Action Icons
       </h3>
       <div className="icon-grid">
@@ -402,7 +390,7 @@ export const ActionIcons = {
 export const StatusIcons = {
   render: () => (
     <div className="icon-docs">
-      <h3 style={{ color: 'var(--gov-neutral-0)', marginBottom: 'var(--gov-space-m)' }}>
+      <h3 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
         Status & Feedback Icons
       </h3>
       <div className="icon-grid">
@@ -417,7 +405,7 @@ export const StatusIcons = {
         ))}
       </div>
 
-      <h4 style={{ color: 'var(--gov-neutral-0)', marginTop: 'var(--gov-space-xl)', marginBottom: 'var(--gov-space-m)' }}>
+      <h4 style={{ color: 'var(--gov-neutral-900)', marginTop: 'var(--gov-space-xl)', marginBottom: 'var(--gov-space-m)' }}>
         Status Icons with Semantic Colors
       </h4>
       <div className="icon-color-demo">
@@ -481,10 +469,10 @@ export const BootstrapIconsCDN = {
         </div>
       </div>
 
-      <h3 style={{ color: 'var(--gov-neutral-0)', marginBottom: 'var(--gov-space-m)' }}>
+      <h3 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
         Popular Bootstrap Icons Examples
       </h3>
-      <p style={{ color: 'var(--gov-neutral-400)', marginBottom: 'var(--gov-space-l)', fontStyle: 'italic' }}>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)', fontStyle: 'italic' }}>
         Note: These icons require the Bootstrap Icons CDN to be loaded. If you don't see icons below, add the CDN link above to your index.html.
       </p>
       
@@ -544,42 +532,44 @@ For the complete icon library, use Bootstrap Icons via CDN. This gives you acces
 export const UsageExamples = {
   render: () => (
     <div className="icon-docs">
-      <h3 style={{ color: 'var(--gov-neutral-0)', marginBottom: 'var(--gov-space-m)' }}>
+      <h3 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
         Icon Usage Examples
       </h3>
 
       {/* Inline with Text */}
       <div style={{ 
-        background: 'var(--gov-neutral-900)', 
+        background: 'var(--gov-neutral-50)', 
         padding: 'var(--gov-space-l)', 
         borderRadius: 'var(--gov-radius-m)',
-        marginBottom: 'var(--gov-space-m)'
+        marginBottom: 'var(--gov-space-m)',
+        border: '1px solid var(--gov-neutral-200)'
       }}>
-        <h4 style={{ color: 'var(--gov-neutral-200)', marginBottom: 'var(--gov-space-s)' }}>
+        <h4 style={{ color: 'var(--gov-neutral-700)', marginBottom: 'var(--gov-space-s)' }}>
           Inline with Text
         </h4>
-        <p style={{ color: 'var(--gov-neutral-0)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Icon name="envelope" size="md" color="var(--gov-primary-400)" />
+        <p style={{ color: 'var(--gov-neutral-900)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Icon name="envelope" size="md" color="var(--gov-primary-600)" />
           Contact us at support@gov.cz
         </p>
-        <p style={{ color: 'var(--gov-neutral-0)', display: 'flex', alignItems: 'center', gap: '8px', marginTop: '8px' }}>
-          <Icon name="telephone" size="md" color="var(--gov-primary-400)" />
+        <p style={{ color: 'var(--gov-neutral-900)', display: 'flex', alignItems: 'center', gap: '8px', marginTop: '8px' }}>
+          <Icon name="telephone" size="md" color="var(--gov-primary-600)" />
           +420 123 456 789
         </p>
-        <p style={{ color: 'var(--gov-neutral-0)', display: 'flex', alignItems: 'center', gap: '8px', marginTop: '8px' }}>
-          <Icon name="geo-alt" size="md" color="var(--gov-primary-400)" />
+        <p style={{ color: 'var(--gov-neutral-900)', display: 'flex', alignItems: 'center', gap: '8px', marginTop: '8px' }}>
+          <Icon name="geo-alt" size="md" color="var(--gov-primary-600)" />
           Praha, Czech Republic
         </p>
       </div>
 
       {/* Button Examples */}
       <div style={{ 
-        background: 'var(--gov-neutral-900)', 
+        background: 'var(--gov-neutral-50)', 
         padding: 'var(--gov-space-l)', 
         borderRadius: 'var(--gov-radius-m)',
-        marginBottom: 'var(--gov-space-m)'
+        marginBottom: 'var(--gov-space-m)',
+        border: '1px solid var(--gov-neutral-200)'
       }}>
-        <h4 style={{ color: 'var(--gov-neutral-200)', marginBottom: 'var(--gov-space-s)' }}>
+        <h4 style={{ color: 'var(--gov-neutral-700)', marginBottom: 'var(--gov-space-s)' }}>
           In Buttons
         </h4>
         <div style={{ display: 'flex', gap: 'var(--gov-space-m)', flexWrap: 'wrap' }}>
@@ -634,8 +624,8 @@ export const UsageExamples = {
             justifyContent: 'center',
             width: '40px',
             height: '40px',
-            background: 'var(--gov-neutral-700)',
-            color: 'white',
+            background: 'var(--gov-neutral-200)',
+            color: 'var(--gov-neutral-900)',
             border: 'none',
             borderRadius: 'var(--gov-radius-s)',
             cursor: 'pointer'
@@ -647,11 +637,12 @@ export const UsageExamples = {
 
       {/* Alert Examples */}
       <div style={{ 
-        background: 'var(--gov-neutral-900)', 
+        background: 'var(--gov-neutral-50)', 
         padding: 'var(--gov-space-l)', 
-        borderRadius: 'var(--gov-radius-m)'
+        borderRadius: 'var(--gov-radius-m)',
+        border: '1px solid var(--gov-neutral-200)'
       }}>
-        <h4 style={{ color: 'var(--gov-neutral-200)', marginBottom: 'var(--gov-space-s)' }}>
+        <h4 style={{ color: 'var(--gov-neutral-700)', marginBottom: 'var(--gov-space-s)' }}>
           In Alerts
         </h4>
         <div style={{
@@ -659,15 +650,15 @@ export const UsageExamples = {
           alignItems: 'flex-start',
           gap: '12px',
           padding: '16px',
-          background: 'var(--gov-success-950)',
+          background: '#e6f4ea',
           border: '1px solid var(--gov-success-600)',
           borderRadius: 'var(--gov-radius-s)',
           marginBottom: '12px'
         }}>
-          <Icon name="check-circle-fill" size="xl" color="var(--gov-success-500)" />
+          <Icon name="check-circle-fill" size="xl" color="var(--gov-success-600)" />
           <div>
-            <strong style={{ color: 'var(--gov-success-400)' }}>Success!</strong>
-            <p style={{ color: 'var(--gov-neutral-200)', margin: 0 }}>Your form has been submitted successfully.</p>
+            <strong style={{ color: 'var(--gov-success-800)' }}>Success!</strong>
+            <p style={{ color: 'var(--gov-success-900)', margin: 0 }}>Your form has been submitted successfully.</p>
           </div>
         </div>
         <div style={{
@@ -675,15 +666,15 @@ export const UsageExamples = {
           alignItems: 'flex-start',
           gap: '12px',
           padding: '16px',
-          background: 'var(--gov-warning-950)',
+          background: '#fff3e0',
           border: '1px solid var(--gov-warning-600)',
           borderRadius: 'var(--gov-radius-s)',
           marginBottom: '12px'
         }}>
-          <Icon name="exclamation-triangle" size="xl" color="var(--gov-warning-500)" />
+          <Icon name="exclamation-triangle" size="xl" color="var(--gov-warning-600)" />
           <div>
-            <strong style={{ color: 'var(--gov-warning-400)' }}>Warning</strong>
-            <p style={{ color: 'var(--gov-neutral-200)', margin: 0 }}>Please review your information before proceeding.</p>
+            <strong style={{ color: 'var(--gov-warning-800)' }}>Warning</strong>
+            <p style={{ color: 'var(--gov-warning-900)', margin: 0 }}>Please review your information before proceeding.</p>
           </div>
         </div>
         <div style={{
@@ -691,14 +682,14 @@ export const UsageExamples = {
           alignItems: 'flex-start',
           gap: '12px',
           padding: '16px',
-          background: 'var(--gov-error-950)',
+          background: '#fde8e8',
           border: '1px solid var(--gov-error-600)',
           borderRadius: 'var(--gov-radius-s)'
         }}>
-          <Icon name="x-circle-fill" size="xl" color="var(--gov-error-500)" />
+          <Icon name="x-circle-fill" size="xl" color="var(--gov-error-600)" />
           <div>
-            <strong style={{ color: 'var(--gov-error-400)' }}>Error</strong>
-            <p style={{ color: 'var(--gov-neutral-200)', margin: 0 }}>Something went wrong. Please try again.</p>
+            <strong style={{ color: 'var(--gov-error-800)' }}>Error</strong>
+            <p style={{ color: 'var(--gov-error-900)', margin: 0 }}>Something went wrong. Please try again.</p>
           </div>
         </div>
       </div>
@@ -728,5 +719,18 @@ For purely decorative icons, the component automatically sets \`aria-hidden="tru
     },
   },
 };
+
+// ============================================================
+//  DEFAULT STORY - Interactive Playground (Sandbox)
+// ============================================================
+
+export const Default = {
+  args: {
+    name: 'star',
+    size: 'xl',
+    color: 'var(--gov-primary-400)',
+  },
+};
+
 
 
