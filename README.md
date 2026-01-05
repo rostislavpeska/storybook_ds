@@ -1,6 +1,8 @@
 # 🔥 Storybook Design System
 
-A modern, beautiful design system built with **React**, **Vite**, and **Storybook**. Features the **Ember Blaze** dark theme with red/orange accents and MCP integration for AI-powered component development.
+> ⚠️ **EXPERIMENTAL PROJECT** - This is a research experiment for AI-assisted design system development. Not intended for production use.
+
+A design system built with **React**, **Vite**, and **Storybook**, based on the [GOV.cz Design System](https://designsystem.gov.cz/). Features MCP integration for AI-powered component development.
 
 ![Storybook](https://img.shields.io/badge/Storybook-8.6-ff4785?logo=storybook&logoColor=white)
 ![React](https://img.shields.io/badge/React-18.3-61dafb?logo=react&logoColor=white)
@@ -10,13 +12,25 @@ A modern, beautiful design system built with **React**, **Vite**, and **Storyboo
 
 ---
 
+## ⚠️ Known Issues
+
+> **Dark Mode / Light Mode Problem**
+> 
+> This project has **unresolved theming issues**. The GOV.cz design system uses CSS custom properties (e.g., `var(--gov-text-primary)`) that change based on dark/light mode. However:
+> 
+> - **Not all components use color tokens properly** - Some components have hardcoded colors, others use variables inconsistently
+> - **Storybook displays in light mode** but some CSS variables resolve to dark mode values, causing **white text on white background** issues
+> - Several CSS files have been patched with explicit hex colors (`#262626`) instead of variables as a workaround
+> - **This is a known architectural flaw** that would require systematic refactoring to fix properly
+
+---
+
 ## ✨ Features
 
-- 🎨 **Ember Blaze Theme** - Dark theme with red/orange gradient accents
 - 🤖 **MCP Integration** - AI agents can interact with components via `@storybook/addon-mcp`
 - 🐳 **Docker Ready** - Development and production Docker configurations
 - ⚡ **Hot Reload** - Fast development with Vite and volume mounting
-- 📚 **Well Documented** - Comprehensive Storybook stories with controls
+- 📚 **Component Stories** - Storybook stories with controls and documentation
 
 ---
 
@@ -138,22 +152,24 @@ Now AI agents can:
 
 ## 🎨 Design Tokens
 
-The design system uses CSS custom properties for consistent theming:
-
-### Ember Blaze Theme Colors
+The design system uses GOV.cz CSS custom properties:
 
 ```css
---color-accent-primary: #dc2626    /* Red */
---color-accent-secondary: #f97316  /* Orange */
---color-accent-gradient: linear-gradient(135deg, #dc2626 0%, #f97316 100%)
---color-bg-primary: #0f0a0a        /* Dark warm background */
---color-bg-secondary: #1a1210      /* Elevated surfaces */
+/* Text colors (problematic - see Known Issues) */
+--gov-text-primary      /* Should be dark in light mode, light in dark mode */
+--gov-text-secondary
+--gov-text-disabled
+
+/* Primary colors */
+--gov-primary-500: #2362a2   /* GOV.cz blue */
+--gov-primary-600: #1e5086
+
+/* Neutrals */
+--gov-neutral-0: #ffffff
+--gov-neutral-950: #262626
 ```
 
-### Typography
-
-- **Font Family:** DM Sans, system fallbacks
-- **Monospace:** JetBrains Mono
+> ⚠️ **Note:** Many components have been patched with hardcoded hex values due to theming issues. See "Known Issues" section.
 
 ---
 
