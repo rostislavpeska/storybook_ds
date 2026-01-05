@@ -38,8 +38,26 @@ A design system built with **React**, **Vite**, and **Storybook**, based on the 
 
 | Component | Description |
 |-----------|-------------|
-| **Button** | Primary UI interaction component with multiple variants (primary, secondary, ghost, danger) and sizes |
-| **Card** | Content container with various visual styles (elevated, outlined, ghost) |
+| **Button** | Action button with variants (primary, secondary, neutral, danger) |
+| **Card** | Content container with image, title, description |
+| **Checkbox** | Form checkbox with label and validation |
+| **Datepicker** | Date selection with calendar popup |
+| **FileUpload** | Drag & drop file upload |
+| **Footer** | Page footer with links and contact info |
+| **Header** | Navigation header with logo and menu |
+| **Icon** | SVG icon component |
+| **Input** | Text input field with validation |
+| **LanguageSwitcher** | Language toggle (CZ/EN) |
+| **Radio** | Radio button group |
+| **Select** | Dropdown select with options |
+
+### Design Tokens (Documentation)
+
+| Component | Description |
+|-----------|-------------|
+| **ColorTokens** | GOV.cz color palette documentation |
+| **SizeTokens** | Spacing and sizing tokens |
+| **TypographyTokens** | Font styles and type scale |
 
 ---
 
@@ -177,26 +195,35 @@ The design system uses GOV.cz CSS custom properties:
 
 ```
 storybook_ds/
-├── .storybook/          # Storybook configuration
-│   ├── main.js          # Addons, framework config
-│   └── preview.js       # Global decorators, parameters
+├── .storybook/              # Storybook configuration
+│   ├── main.js              # Addons, framework config
+│   ├── preview.js           # Global decorators, parameters
+│   ├── preview-head.html    # Custom HTML head
+│   └── theme.js             # Storybook UI theme
 ├── src/
-│   ├── components/      # React components
-│   │   ├── Button/
-│   │   │   ├── Button.jsx
-│   │   │   ├── Button.css
-│   │   │   ├── Button.stories.jsx
-│   │   │   └── index.js
-│   │   └── Card/
-│   │       └── ...
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css        # Global styles & design tokens
-├── Dockerfile           # Multi-stage production build
-├── Dockerfile.dev       # Development with hot-reload
-├── docker-compose.yml   # Docker Compose configuration
-├── nginx.conf           # Nginx config for production
-└── package.json
+│   ├── components/          # React components (GOV.cz based)
+│   │   ├── Button/          # Primary action button
+│   │   ├── Card/            # Content container
+│   │   ├── Checkbox/        # Form checkbox
+│   │   ├── ColorTokens/     # Color token documentation
+│   │   ├── Datepicker/      # Date selection
+│   │   ├── FileUpload/      # File upload input
+│   │   ├── Footer/          # Page footer
+│   │   ├── Header/          # Page header with navigation
+│   │   ├── Icon/            # Icon component
+│   │   ├── Input/           # Text input field
+│   │   ├── LanguageSwitcher/# Language toggle
+│   │   ├── Radio/           # Radio button group
+│   │   ├── Select/          # Dropdown select
+│   │   ├── SizeTokens/      # Size token documentation
+│   │   └── TypographyTokens/# Typography documentation
+│   ├── index.css            # Global styles & design tokens
+│   └── main.jsx             # React entry point
+├── Dockerfile               # Production build (nginx)
+├── Dockerfile.dev           # Development (Playwright + hot-reload)
+├── docker-compose.yml       # Container orchestration
+├── package.json             # Dependencies
+└── package-lock.json        # Locked dependency versions
 ```
 
 ---
