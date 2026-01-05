@@ -114,28 +114,35 @@ const displayAccessibility = [
 export const DisplayStyles = {
   render: () => (
     <div className="typography-docs">
-      <header className="typography-docs__header">
-        <h1 className="typography-docs__title">Display Typography</h1>
-        <p className="typography-docs__subtitle">
-          Large, impactful text for hero sections and landing pages
+      {/* Unified Info Box */}
+      <div className="doc-info-box">
+        <h1 className="doc-info-box__title">
+          Typography System
+        </h1>
+        <p className="doc-info-box__description">
+          The GOV.cz Design System uses Roboto as its primary typeface. The type scale is designed 
+          for maximum legibility across all digital government services.
         </p>
-        <div className="typography-docs__meta">
-          <span className="typography-docs__meta-item">
-            <strong>Font:</strong> Roboto Medium (500)
-          </span>
-          <span className="typography-docs__meta-item">
-            <strong>Figma:</strong> Node 5098:1112
-          </span>
-          <span className="typography-docs__meta-item">
-            <strong>Breakpoint:</strong> 768px
-          </span>
-        </div>
-      </header>
+        <a 
+          href="https://designsystem.gov.cz/principy/typografie.html" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="doc-info-box__link"
+        >
+          Official Documentation: Typography
+        </a>
+      </div>
+
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Display Typography
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Large, impactful text for hero sections and landing pages.
+      </p>
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">📐</span>
-          <h2 className="typography-section__title">Type Scale</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Type Scale</h1>
           <span className="typography-section__subtitle">Visual size comparison</span>
         </div>
         <TypeScale scales={displayScales} fontFamily="'Roboto', sans-serif" showBars={true} />
@@ -143,8 +150,7 @@ export const DisplayStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">📱</span>
-          <h2 className="typography-section__title">Responsive Sizes</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Responsive Sizes</h1>
           <span className="typography-section__subtitle">Desktop vs Mobile</span>
         </div>
         <ResponsivePreview scales={displayScales} />
@@ -152,8 +158,7 @@ export const DisplayStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">🔧</span>
-          <h2 className="typography-section__title">Token Reference</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Token Reference</h1>
           <span className="typography-section__subtitle">CSS variables & values</span>
         </div>
         <TokenTable tokens={displayScales} />
@@ -161,8 +166,7 @@ export const DisplayStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">📖</span>
-          <h2 className="typography-section__title">Usage Guidelines</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Usage Guidelines</h1>
         </div>
         <UsageGuidelines dos={displayDos} donts={displayDonts} tips={displayTips} />
       </section>
@@ -173,8 +177,7 @@ export const DisplayStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">💻</span>
-          <h2 className="typography-section__title">Code Examples</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Code Examples</h1>
         </div>
         <div className="code-snippet">
           <div className="code-snippet__header">
@@ -196,8 +199,7 @@ export const DisplayStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">🔗</span>
-          <h2 className="typography-section__title">Related Styles</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Related Styles</h1>
         </div>
         <div className="related-styles">
           <div className="related-style">
@@ -304,28 +306,16 @@ const headlineAccessibility = [
 export const HeadlineStyles = {
   render: () => (
     <div className="typography-docs">
-      <header className="typography-docs__header">
-        <h1 className="typography-docs__title">Headline Typography</h1>
-        <p className="typography-docs__subtitle">
-          Hierarchical headings for page structure and content organization
-        </p>
-        <div className="typography-docs__meta">
-          <span className="typography-docs__meta-item">
-            <strong>Font:</strong> Roboto Medium (500)
-          </span>
-          <span className="typography-docs__meta-item">
-            <strong>Figma:</strong> Node 5098:1112
-          </span>
-          <span className="typography-docs__meta-item">
-            <strong>Breakpoint:</strong> 768px
-          </span>
-        </div>
-      </header>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Headline Typography
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Hierarchical headings for page structure and content organization.
+      </p>
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">📐</span>
-          <h2 className="typography-section__title">Type Scale</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Type Scale</h1>
           <span className="typography-section__subtitle">H1 → H6 mapping</span>
         </div>
         <TypeScale scales={headlineScales} fontFamily="'Roboto', sans-serif" showBars={true} />
@@ -333,8 +323,7 @@ export const HeadlineStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">📱</span>
-          <h2 className="typography-section__title">Responsive Sizes</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Responsive Sizes</h1>
           <span className="typography-section__subtitle">Desktop vs Mobile</span>
         </div>
         <ResponsivePreview scales={headlineScales} />
@@ -342,8 +331,7 @@ export const HeadlineStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">🔧</span>
-          <h2 className="typography-section__title">Token Reference</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Token Reference</h1>
           <span className="typography-section__subtitle">CSS variables & values</span>
         </div>
         <TokenTable tokens={headlineScales} />
@@ -351,8 +339,7 @@ export const HeadlineStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">📖</span>
-          <h2 className="typography-section__title">Usage Guidelines</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Usage Guidelines</h1>
         </div>
         <UsageGuidelines dos={headlineDos} donts={headlineDonts} tips={headlineTips} />
       </section>
@@ -363,8 +350,7 @@ export const HeadlineStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">💻</span>
-          <h2 className="typography-section__title">Code Examples</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Code Examples</h1>
         </div>
         <div className="code-snippet">
           <div className="code-snippet__header">
@@ -401,8 +387,7 @@ export const HeadlineStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">🔗</span>
-          <h2 className="typography-section__title">Related Styles</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Related Styles</h1>
         </div>
         <div className="related-styles">
           <div className="related-style">
@@ -560,28 +545,16 @@ const bodyAccessibility = [
 export const BodyStyles = {
   render: () => (
     <div className="typography-docs">
-      <header className="typography-docs__header">
-        <h1 className="typography-docs__title">Body Typography</h1>
-        <p className="typography-docs__subtitle">
-          Content text styles with Regular and Bold variants for emphasis
-        </p>
-        <div className="typography-docs__meta">
-          <span className="typography-docs__meta-item">
-            <strong>Font:</strong> Roboto Regular/Bold
-          </span>
-          <span className="typography-docs__meta-item">
-            <strong>Figma:</strong> Node 5098:1112
-          </span>
-          <span className="typography-docs__meta-item">
-            <strong>Default:</strong> body-m (16px)
-          </span>
-        </div>
-      </header>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Body Typography
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Content text styles with Regular and Bold variants for emphasis.
+      </p>
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">📐</span>
-          <h2 className="typography-section__title">Type Scale</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Type Scale</h1>
           <span className="typography-section__subtitle">10 variants (5 sizes × Regular/Bold)</span>
         </div>
         <TypeScale scales={bodyScales} fontFamily="'Roboto', sans-serif" showBars={true} />
@@ -589,8 +562,7 @@ export const BodyStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">🔧</span>
-          <h2 className="typography-section__title">Token Reference</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Token Reference</h1>
           <span className="typography-section__subtitle">CSS variables & values</span>
         </div>
         <TokenTable tokens={bodyScales} />
@@ -598,8 +570,7 @@ export const BodyStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">📖</span>
-          <h2 className="typography-section__title">Usage Guidelines</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Usage Guidelines</h1>
         </div>
         <UsageGuidelines dos={bodyDos} donts={bodyDonts} tips={bodyTips} />
       </section>
@@ -610,8 +581,7 @@ export const BodyStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">💻</span>
-          <h2 className="typography-section__title">Code Examples</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Code Examples</h1>
         </div>
         <div className="code-snippet">
           <div className="code-snippet__header">
@@ -655,8 +625,7 @@ export const BodyStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">🔗</span>
-          <h2 className="typography-section__title">Related Styles</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Related Styles</h1>
         </div>
         <div className="related-styles">
           <div className="related-style">
@@ -794,28 +763,16 @@ const uiAccessibility = [
 export const UIStyles = {
   render: () => (
     <div className="typography-docs">
-      <header className="typography-docs__header">
-        <h1 className="typography-docs__title">UI Typography</h1>
-        <p className="typography-docs__subtitle">
-          Typography for interactive components: buttons, labels, navigation
-        </p>
-        <div className="typography-docs__meta">
-          <span className="typography-docs__meta-item">
-            <strong>Font:</strong> Roboto (various weights)
-          </span>
-          <span className="typography-docs__meta-item">
-            <strong>Key:</strong> SemiBold for buttons
-          </span>
-          <span className="typography-docs__meta-item">
-            <strong>Line Height:</strong> 1.0 (compact)
-          </span>
-        </div>
-      </header>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        UI Typography
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Typography for interactive components: buttons, labels, navigation.
+      </p>
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">📐</span>
-          <h2 className="typography-section__title">Component Styles</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Component Styles</h1>
           <span className="typography-section__subtitle">8 UI typography variants</span>
         </div>
         <TypeScale scales={uiScales} fontFamily="'Roboto', sans-serif" showBars={true} />
@@ -823,16 +780,14 @@ export const UIStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">🔧</span>
-          <h2 className="typography-section__title">Token Reference</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Token Reference</h1>
         </div>
         <TokenTable tokens={uiScales} />
       </section>
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">📖</span>
-          <h2 className="typography-section__title">Usage Guidelines</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Usage Guidelines</h1>
         </div>
         <UsageGuidelines dos={uiDos} donts={uiDonts} tips={uiTips} />
       </section>
@@ -843,8 +798,7 @@ export const UIStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">💻</span>
-          <h2 className="typography-section__title">Code Examples</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Code Examples</h1>
         </div>
         <div className="code-snippet">
           <div className="code-snippet__header">
@@ -880,8 +834,7 @@ export const UIStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">🔗</span>
-          <h2 className="typography-section__title">Related Styles</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Related Styles</h1>
         </div>
         <div className="related-styles">
           <div className="related-style">
@@ -1009,28 +962,16 @@ const specialAccessibility = [
 export const SpecialStyles = {
   render: () => (
     <div className="typography-docs">
-      <header className="typography-docs__header">
-        <h1 className="typography-docs__title">Special Typography</h1>
-        <p className="typography-docs__subtitle">
-          Links, emphasis, code, overlines, quotes, and list items
-        </p>
-        <div className="typography-docs__meta">
-          <span className="typography-docs__meta-item">
-            <strong>Font:</strong> Roboto + Mono for code
-          </span>
-          <span className="typography-docs__meta-item">
-            <strong>Uses:</strong> Body size variants
-          </span>
-          <span className="typography-docs__meta-item">
-            <strong>Styles:</strong> 7 patterns
-          </span>
-        </div>
-      </header>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Special Typography
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Links, emphasis, code, overlines, quotes, and list items.
+      </p>
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">📐</span>
-          <h2 className="typography-section__title">Special Patterns</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Special Patterns</h1>
           <span className="typography-section__subtitle">Decorative & functional text treatments</span>
         </div>
         <TypeScale scales={specialScales} fontFamily="'Roboto', sans-serif" showBars={true} />
@@ -1038,16 +979,14 @@ export const SpecialStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">🔧</span>
-          <h2 className="typography-section__title">Token Reference</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Token Reference</h1>
         </div>
         <TokenTable tokens={specialScales} />
       </section>
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">📖</span>
-          <h2 className="typography-section__title">Usage Guidelines</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Usage Guidelines</h1>
         </div>
         <UsageGuidelines dos={specialDos} donts={specialDonts} tips={specialTips} />
       </section>
@@ -1058,8 +997,7 @@ export const SpecialStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">💻</span>
-          <h2 className="typography-section__title">Code Examples</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Code Examples</h1>
         </div>
         <div className="code-snippet">
           <div className="code-snippet__header">
@@ -1131,8 +1069,7 @@ export const SpecialStyles = {
 
       <section className="typography-section">
         <div className="typography-section__header">
-          <span className="typography-section__icon">🔗</span>
-          <h2 className="typography-section__title">Related Styles</h2>
+          <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)' }}>Related Styles</h1>
         </div>
         <div className="related-styles">
           <div className="related-style">

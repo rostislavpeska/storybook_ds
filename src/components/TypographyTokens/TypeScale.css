@@ -5,6 +5,48 @@
    ======================================== */
 
 /* ----------------------------------------
+   Unified Documentation Info Box
+   ---------------------------------------- */
+.doc-info-box {
+  background: linear-gradient(135deg, var(--gov-primary-900) 0%, var(--gov-primary-800) 100%);
+  border-radius: var(--gov-radius-m, 16px);
+  padding: var(--gov-space-xl, 32px);
+  margin-bottom: var(--gov-space-xl, 32px);
+  color: var(--gov-neutral-0);
+}
+
+.doc-info-box__title {
+  font-size: var(--gov-font-headline-m, 24px);
+  font-weight: 600;
+  color: var(--gov-neutral-0);
+  margin-bottom: var(--gov-space-s, 8px);
+  display: flex;
+  align-items: center;
+  gap: var(--gov-space-s, 8px);
+}
+
+.doc-info-box__description {
+  font-size: var(--gov-font-body-m, 16px);
+  color: var(--gov-primary-200);
+  margin-bottom: var(--gov-space-m, 16px);
+}
+
+.doc-info-box__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gov-space-xs, 4px);
+  color: var(--gov-secondary-400);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.doc-info-box__link:hover {
+  color: var(--gov-secondary-300);
+  text-decoration: underline;
+}
+
+/* ----------------------------------------
    TypeScale - Visual Scale with Bars
    ---------------------------------------- */
 
