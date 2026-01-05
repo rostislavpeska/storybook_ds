@@ -1,0 +1,21 @@
+# Gov Test NPM - Agent 01's Application
+# Run with: docker-compose up -d
+
+version: '3.8'
+
+services:
+  gov-test-npm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gov-test-npm
+    ports:
+      - "5175:5173"  # Maps to localhost:5175
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped
+
+

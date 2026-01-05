@@ -1,0 +1,643 @@
+/* Google Fonts Import - Roboto for GOV.cz */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+/* ========================================
+   GOV.cz Design System Tokens
+   ======================================== */
+
+:root {
+  /* ----------------------------------------
+     GOV Primary Colors (Blue Scale)
+     ---------------------------------------- */
+  --gov-primary-50: #f3f7fc;
+  --gov-primary-100: #e5eef9;
+  --gov-primary-200: #c5dbf2;
+  --gov-primary-300: #93bde6;
+  --gov-primary-400: #599bd7;
+  --gov-primary-500: #337fc4;
+  --gov-primary-600: #2362a2;
+  --gov-primary-700: #1e5086;
+  --gov-primary-800: #1d456f;
+  --gov-primary-900: #1d3c5d;
+  --gov-primary-950: #13263e;
+  --gov-primary-1000: #0f1f33;
+  --gov-primary-1050: #010409;
+
+  /* ----------------------------------------
+     GOV Secondary Colors (Yellow/Gold Scale)
+     ---------------------------------------- */
+  --gov-secondary-50: #fff9e9;
+  --gov-secondary-100: #fff6e1;
+  --gov-secondary-200: #fef0d0;
+  --gov-secondary-300: #fde1a1;
+  --gov-secondary-400: #ffcf74;
+  --gov-secondary-500: #fbc342;
+  --gov-secondary-600: #fab413;
+  --gov-secondary-700: #c8900f;
+  --gov-secondary-800: #af7a00;
+  --gov-secondary-900: #4a3403;
+  --gov-secondary-950: #3d2b00;
+  --gov-secondary-1000: #241b04;
+
+  /* ----------------------------------------
+     GOV Neutral Colors (Grayscale)
+     ---------------------------------------- */
+  --gov-neutral-0: #ffffff;
+  --gov-neutral-50: #f6f6f6;
+  --gov-neutral-100: #e7e7e7;
+  --gov-neutral-200: #d1d1d1;
+  --gov-neutral-300: #b0b0b0;
+  --gov-neutral-400: #888888;
+  --gov-neutral-500: #6d6d6d;
+  --gov-neutral-600: #5d5d5d;
+  --gov-neutral-700: #4f4f4f;
+  --gov-neutral-800: #454545;
+  --gov-neutral-900: #3b3b3b;
+  --gov-neutral-950: #262626;
+  --gov-neutral-1000: #000000;
+
+  /* ----------------------------------------
+     GOV Error Colors (Red Scale)
+     ---------------------------------------- */
+  --gov-error-50: #fef2f2;
+  --gov-error-100: #fde3e3;
+  --gov-error-200: #fccccc;
+  --gov-error-300: #f8a9a9;
+  --gov-error-400: #f37676;
+  --gov-error-500: #e84b4b;
+  --gov-error-600: #c62828;
+  --gov-error-700: #b32222;
+  --gov-error-800: #7e1414;
+  --gov-error-900: #490c0c;
+
+  /* ----------------------------------------
+     GOV Success Colors (Green Scale)
+     ---------------------------------------- */
+  --gov-success-50: #f3faf3;
+  --gov-success-100: #e2f6e3;
+  --gov-success-200: #c7ebc9;
+  --gov-success-300: #9bda9e;
+  --gov-success-400: #67c16b;
+  --gov-success-500: #42a547;
+  --gov-success-600: #2e7d32;
+  --gov-success-700: #2a6b2d;
+
+  /* ----------------------------------------
+     GOV Warning Colors
+     ---------------------------------------- */
+  --gov-warning-50: #fefbe8;
+  --gov-warning-100: #fef7c3;
+  --gov-warning-400: #fac615;
+  --gov-warning-600: #ca8504;
+
+  /* ----------------------------------------
+     GOV Focus Colors
+     ---------------------------------------- */
+  --gov-focus-300: #6caef4;
+  --gov-focus-600: #007bff;
+
+  /* ----------------------------------------
+     GOV Spacing Scale
+     ---------------------------------------- */
+  --gov-space-none: 0;
+  --gov-space-2xs: 2px;
+  --gov-space-xs: 4px;
+  --gov-space-xs-nudge: 6px;
+  --gov-space-s: 8px;
+  --gov-space-s-nudge: 12px;
+  --gov-space-m: 16px;
+  --gov-space-m-nudge: 20px;
+  --gov-space-l: 24px;
+  --gov-space-xl: 32px;
+  --gov-space-2xl: 40px;
+  --gov-space-3xl: 48px;
+  --gov-space-4xl: 56px;
+  --gov-space-5xl: 64px;
+
+  /* ----------------------------------------
+     GOV Component Heights
+     ---------------------------------------- */
+  --gov-height-component-xs: 24px;
+  --gov-height-component-s: 32px;
+  --gov-height-component-m: 40px;
+  --gov-height-component-l: 48px;
+  --gov-height-component-xl: 56px;
+
+  /* ----------------------------------------
+     GOV Corner Radius
+     ---------------------------------------- */
+  --gov-radius-none: 0;
+  --gov-radius-2xs: 2px;
+  --gov-radius-xs: 4px;
+  --gov-radius-xs-nudge: 6px;
+  --gov-radius-s: 8px;
+  --gov-radius-s-nudge: 12px;
+  --gov-radius-m: 16px;
+  --gov-radius-l: 24px;
+
+  /* ----------------------------------------
+     GOV Font Sizes
+     ---------------------------------------- */
+  --gov-font-body-xs: 12px;
+  --gov-font-body-s: 14px;
+  --gov-font-body-m: 16px;
+  --gov-font-body-l: 18px;
+  --gov-font-body-xl: 20px;
+  --gov-font-headline-xs: 18px;
+  --gov-font-headline-s: 20px;
+  --gov-font-headline-m: 24px;
+  --gov-font-headline-l: 32px;
+  --gov-font-headline-xl: 40px;
+
+  /* ----------------------------------------
+     GOV Icon Sizes
+     ---------------------------------------- */
+  --gov-icon-xs: 12px;
+  --gov-icon-s: 14px;
+  --gov-icon-m: 16px;
+  --gov-icon-l: 18px;
+  --gov-icon-xl: 20px;
+  --gov-icon-2xl: 24px;
+  --gov-icon-3xl: 32px;
+
+  /* ========================================
+     Semantic Tokens - Light Mode
+     ======================================== */
+  
+  --gov-text-primary: var(--gov-neutral-950);
+  --gov-text-secondary: var(--gov-neutral-700);
+  --gov-text-tertiary: var(--gov-neutral-500);
+  --gov-text-white: var(--gov-neutral-0);
+  --gov-text-disabled: var(--gov-neutral-300);
+  --gov-text-primary-color: var(--gov-primary-700);
+  --gov-text-error: var(--gov-error-700);
+  --gov-text-success: var(--gov-success-700);
+
+  --gov-bg-page: var(--gov-neutral-50);
+  --gov-bg-block-primary: var(--gov-neutral-0);
+  --gov-bg-block-secondary: var(--gov-neutral-50);
+  --gov-bg-primary: var(--gov-primary-600);
+  --gov-bg-primary-subtle: var(--gov-primary-100);
+  --gov-bg-primary-subtlest: var(--gov-primary-50);
+  --gov-bg-secondary-subtle: var(--gov-secondary-200);
+  --gov-bg-neutral-disabled: var(--gov-neutral-200);
+
+  --gov-border-primary: var(--gov-primary-600);
+  --gov-border-subtle: var(--gov-neutral-300);
+  --gov-border-subtlest: var(--gov-neutral-100);
+  --gov-border-error: var(--gov-error-600);
+  --gov-border-success: var(--gov-success-600);
+  --gov-border-disabled: var(--gov-neutral-200);
+
+  --gov-btn-solid-primary: var(--gov-primary-600);
+  --gov-btn-solid-primary-hover: var(--gov-primary-700);
+  --gov-btn-solid-primary-active: var(--gov-primary-800);
+  --gov-btn-solid-secondary: var(--gov-secondary-600);
+  --gov-btn-solid-secondary-hover: var(--gov-secondary-400);
+  --gov-btn-solid-neutral: var(--gov-neutral-600);
+  --gov-btn-solid-neutral-hover: var(--gov-neutral-700);
+  --gov-btn-solid-error: var(--gov-error-600);
+  --gov-btn-solid-success: var(--gov-success-600);
+  --gov-btn-solid-disabled: var(--gov-neutral-200);
+
+  --gov-btn-outlined-primary: var(--gov-primary-50);
+  --gov-btn-outlined-primary-hover: var(--gov-primary-200);
+  --gov-btn-outlined-primary-active: var(--gov-primary-300);
+  --gov-btn-outlined-neutral: var(--gov-neutral-50);
+  --gov-btn-outlined-neutral-hover: var(--gov-neutral-200);
+
+  --gov-status-focus: var(--gov-focus-600);
+  --gov-focus-ring: var(--gov-focus-600);
+
+  /* Shadow Utilities */
+  --gov-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --gov-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --gov-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --gov-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+
+  /* Font Sizes (additional aliases) */
+  --gov-font-size-xs: var(--gov-font-body-xs);
+  --gov-font-size-s: var(--gov-font-body-s);
+  --gov-font-size-m: var(--gov-font-body-m);
+  --gov-font-size-l: var(--gov-font-body-l);
+  --gov-font-size-xl: var(--gov-font-headline-xs);
+  --gov-font-size-2xl: var(--gov-font-headline-m);
+  --gov-font-size-3xl: var(--gov-font-headline-l);
+
+  /* Warning Colors (additional) */
+  --gov-warning-700: #9a6700;
+}
+
+/* ========================================
+   Reset & Base Styles
+   ======================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: var(--gov-font-body-m);
+  line-height: 1.5;
+  color: var(--gov-text-primary);
+  background-color: var(--gov-bg-page);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--gov-text-primary-color);
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* ========================================
+   Skip Link for Accessibility
+   ======================================== */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--gov-primary-600);
+  color: var(--gov-neutral-0);
+  padding: var(--gov-space-s) var(--gov-space-m);
+  z-index: 1000;
+  text-decoration: none;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ========================================
+   App Layout
+   ======================================== */
+
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================
+   Header
+   ======================================== */
+
+.gov-header {
+  background-color: var(--gov-neutral-0);
+  border-bottom: 3px solid var(--gov-primary-600);
+  padding: var(--gov-space-m) var(--gov-space-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--gov-space-m);
+}
+
+.gov-header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--gov-space-s);
+  text-decoration: none;
+  color: var(--gov-text-primary);
+}
+
+.gov-header__logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--gov-primary-600);
+  border-radius: var(--gov-radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gov-neutral-0);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.gov-header__title {
+  font-size: var(--gov-font-headline-s);
+  font-weight: 600;
+  color: var(--gov-text-primary);
+}
+
+.gov-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--gov-space-s);
+}
+
+/* ========================================
+   Main Content
+   ======================================== */
+
+.gov-main {
+  flex: 1;
+  padding: var(--gov-space-xl);
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+.gov-footer {
+  background-color: var(--gov-primary-900);
+  color: var(--gov-neutral-0);
+  padding: var(--gov-space-xl);
+  text-align: center;
+  margin-top: auto;
+}
+
+.gov-footer__text {
+  font-size: var(--gov-font-body-s);
+  opacity: 0.8;
+}
+
+/* ========================================
+   Page Title
+   ======================================== */
+
+.page-title {
+  font-size: var(--gov-font-headline-l);
+  font-weight: 600;
+  color: var(--gov-text-primary);
+  margin-bottom: var(--gov-space-l);
+  border-bottom: 2px solid var(--gov-primary-600);
+  padding-bottom: var(--gov-space-s);
+}
+
+.page-description {
+  font-size: var(--gov-font-body-l);
+  color: var(--gov-text-secondary);
+  margin-bottom: var(--gov-space-xl);
+}
+
+/* ========================================
+   Cards Grid (Homepage)
+   ======================================== */
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--gov-space-l);
+  margin-bottom: var(--gov-space-xl);
+}
+
+/* ========================================
+   Form Sections
+   ======================================== */
+
+.form-section {
+  background-color: var(--gov-neutral-0);
+  border: 1px solid var(--gov-border-subtlest);
+  border-radius: var(--gov-radius-s);
+  padding: var(--gov-space-l);
+  margin-bottom: var(--gov-space-l);
+}
+
+.form-section__title {
+  font-size: var(--gov-font-headline-s);
+  font-weight: 600;
+  color: var(--gov-text-primary);
+  margin-bottom: var(--gov-space-m);
+  padding-bottom: var(--gov-space-s);
+  border-bottom: 1px solid var(--gov-border-subtle);
+}
+
+.form-section__description {
+  font-size: var(--gov-font-body-s);
+  color: var(--gov-text-secondary);
+  margin-bottom: var(--gov-space-m);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--gov-space-m);
+  margin-bottom: var(--gov-space-m);
+}
+
+.form-row--single {
+  grid-template-columns: 1fr;
+}
+
+.form-row--double {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.form-row--triple {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+  .form-row--double,
+  .form-row--triple {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   Dynamic List (Add More)
+   ======================================== */
+
+.dynamic-list {
+  margin-bottom: var(--gov-space-m);
+}
+
+.dynamic-list__item {
+  background-color: var(--gov-bg-block-secondary);
+  border: 1px solid var(--gov-border-subtlest);
+  border-radius: var(--gov-radius-xs);
+  padding: var(--gov-space-m);
+  margin-bottom: var(--gov-space-s);
+  position: relative;
+}
+
+.dynamic-list__item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--gov-space-s);
+}
+
+.dynamic-list__item-title {
+  font-size: var(--gov-font-body-s);
+  font-weight: 500;
+  color: var(--gov-text-secondary);
+}
+
+.dynamic-list__remove-btn {
+  background: none;
+  border: none;
+  color: var(--gov-error-600);
+  cursor: pointer;
+  padding: var(--gov-space-xs);
+  border-radius: var(--gov-radius-xs);
+  transition: background-color 0.2s;
+}
+
+.dynamic-list__remove-btn:hover {
+  background-color: var(--gov-error-50);
+}
+
+.dynamic-list__add-btn {
+  margin-top: var(--gov-space-s);
+}
+
+/* ========================================
+   Form Actions
+   ======================================== */
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gov-space-m);
+  padding: var(--gov-space-l);
+  background-color: var(--gov-neutral-0);
+  border: 1px solid var(--gov-border-subtlest);
+  border-radius: var(--gov-radius-s);
+  margin-top: var(--gov-space-l);
+}
+
+.form-actions--sticky {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   Breadcrumbs
+   ======================================== */
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--gov-space-xs);
+  font-size: var(--gov-font-body-s);
+  color: var(--gov-text-secondary);
+  margin-bottom: var(--gov-space-l);
+  flex-wrap: wrap;
+}
+
+.breadcrumbs__item {
+  color: var(--gov-text-primary-color);
+  text-decoration: none;
+}
+
+.breadcrumbs__item:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs__separator {
+  color: var(--gov-text-tertiary);
+}
+
+.breadcrumbs__current {
+  color: var(--gov-text-primary);
+}
+
+/* ========================================
+   Status Badges
+   ======================================== */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gov-space-xs);
+  padding: var(--gov-space-2xs) var(--gov-space-s);
+  border-radius: var(--gov-radius-xs);
+  font-size: var(--gov-font-body-xs);
+  font-weight: 500;
+}
+
+.status-badge--active {
+  background-color: var(--gov-success-100);
+  color: var(--gov-success-700);
+}
+
+.status-badge--coming-soon {
+  background-color: var(--gov-neutral-100);
+  color: var(--gov-neutral-600);
+}
+
+/* ========================================
+   Validation Summary
+   ======================================== */
+
+.validation-summary {
+  background-color: var(--gov-error-50);
+  border: 1px solid var(--gov-error-600);
+  border-radius: var(--gov-radius-s);
+  padding: var(--gov-space-m);
+  margin-bottom: var(--gov-space-l);
+}
+
+.validation-summary__title {
+  font-size: var(--gov-font-body-m);
+  font-weight: 600;
+  color: var(--gov-error-700);
+  margin-bottom: var(--gov-space-s);
+}
+
+.validation-summary__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.validation-summary__item {
+  font-size: var(--gov-font-body-s);
+  color: var(--gov-error-600);
+  padding: var(--gov-space-2xs) 0;
+}
+
+/* ========================================
+   Responsive Utilities
+   ======================================== */
+
+@media (max-width: 768px) {
+  .gov-header {
+    padding: var(--gov-space-m);
+  }
+
+  .gov-main {
+    padding: var(--gov-space-m);
+  }
+
+  .page-title {
+    font-size: var(--gov-font-headline-m);
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions > * {
+    width: 100%;
+  }
+}

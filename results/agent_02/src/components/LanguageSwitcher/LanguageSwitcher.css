@@ -1,0 +1,191 @@
+/* ==========================================================================
+   GOV.CZ LANGUAGE SWITCHER COMPONENT
+   Synthetic component inspired by portal.gov.cz
+   WCAG 2.1 AA accessible
+   ========================================================================== */
+
+/* Base */
+.gov-lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gov-spacing-xs, 8px);
+  font-family: var(--gov-font-family-primary, 'Roboto', sans-serif);
+  font-size: var(--gov-font-size-s, 14px);
+  position: relative;
+}
+
+/* Icon */
+.gov-lang-switcher__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   TOGGLE VARIANT
+   ========================================================================== */
+
+.gov-lang-switcher--toggle {
+  padding: var(--gov-spacing-xs, 8px) var(--gov-spacing-s, 12px);
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  border-radius: var(--gov-border-radius-s, 4px);
+  transition: background-color 0.2s ease;
+}
+
+.gov-lang-switcher--toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.gov-lang-switcher--toggle:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.gov-lang-switcher--toggle .gov-lang-switcher__label {
+  font-weight: var(--gov-font-weight-medium, 500);
+}
+
+/* ==========================================================================
+   BUTTONS VARIANT
+   ========================================================================== */
+
+.gov-lang-switcher--buttons {
+  gap: var(--gov-spacing-2xs, 4px);
+}
+
+.gov-lang-switcher__button {
+  padding: var(--gov-spacing-xs, 8px) var(--gov-spacing-s, 12px);
+  background: transparent;
+  border: 1px solid transparent;
+  color: inherit;
+  cursor: pointer;
+  border-radius: var(--gov-border-radius-s, 4px);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--gov-font-weight-regular, 400);
+  transition: all 0.2s ease;
+}
+
+.gov-lang-switcher__button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.gov-lang-switcher__button:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.gov-lang-switcher__button--active {
+  font-weight: var(--gov-font-weight-bold, 700);
+  border-color: currentColor;
+}
+
+/* ==========================================================================
+   DROPDOWN VARIANT
+   ========================================================================== */
+
+.gov-lang-switcher--dropdown {
+  position: relative;
+}
+
+.gov-lang-switcher__trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--gov-spacing-xs, 8px);
+  padding: var(--gov-spacing-xs, 8px) var(--gov-spacing-s, 12px);
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  border-radius: var(--gov-border-radius-s, 4px);
+  font-family: inherit;
+  font-size: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.gov-lang-switcher__trigger:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.gov-lang-switcher__trigger:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.gov-lang-switcher__chevron {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.gov-lang-switcher--open .gov-lang-switcher__chevron {
+  transform: rotate(180deg);
+}
+
+.gov-lang-switcher__dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--gov-spacing-xs, 8px);
+  min-width: 150px;
+  background-color: var(--gov-neutral-0, #ffffff);
+  border: 1px solid var(--gov-border-subtle, #cccccc);
+  border-radius: var(--gov-border-radius-s, 4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  padding: var(--gov-spacing-xs, 8px) 0;
+  margin: var(--gov-spacing-xs, 8px) 0 0 0;
+  z-index: 1000;
+}
+
+.gov-lang-switcher__option {
+  padding: var(--gov-spacing-xs, 8px) var(--gov-spacing-m, 16px);
+  color: var(--gov-text-primary, #262626);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.gov-lang-switcher__option:hover,
+.gov-lang-switcher__option:focus {
+  background-color: var(--gov-primary-50, #f3f7fc);
+  outline: none;
+}
+
+.gov-lang-switcher__option--active {
+  font-weight: var(--gov-font-weight-bold, 700);
+  background-color: var(--gov-primary-100, #d9e7f5);
+}
+
+/* ==========================================================================
+   LIGHT THEME (for dark backgrounds like header)
+   ========================================================================== */
+
+.gov-lang-switcher--light,
+.gov-lang-switcher--light .gov-lang-switcher__button,
+.gov-lang-switcher--light .gov-lang-switcher__trigger {
+  color: var(--gov-neutral-0, #ffffff);
+}
+
+.gov-lang-switcher--light .gov-lang-switcher__button:hover,
+.gov-lang-switcher--light .gov-lang-switcher__trigger:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   DARK THEME (for light backgrounds)
+   ========================================================================== */
+
+.gov-lang-switcher--dark,
+.gov-lang-switcher--dark .gov-lang-switcher__button,
+.gov-lang-switcher--dark .gov-lang-switcher__trigger {
+  color: var(--gov-text-primary, #262626);
+}
+
+.gov-lang-switcher--dark .gov-lang-switcher__button:hover,
+.gov-lang-switcher--dark .gov-lang-switcher__trigger:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+

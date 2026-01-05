@@ -1,0 +1,21 @@
+# Gov Test Figma - Agent 02's Application
+# Run with: docker-compose up -d
+
+version: '3.8'
+
+services:
+  gov-test-figma:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gov-test-figma
+    ports:
+      - "5177:5173"  # Maps to localhost:5177
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped
+
+

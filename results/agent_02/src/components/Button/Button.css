@@ -1,0 +1,501 @@
+/* ========================================
+   GOV.cz Button Component Styles
+   Based on Figma: gov-materials-4-2-5
+   ======================================== */
+
+/* ----------------------------------------
+   Base Button Styles
+   ---------------------------------------- */
+.gov-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gov-space-s);
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  line-height: 1.5;
+  border: 2px solid transparent;
+  border-radius: var(--gov-radius-xs);
+  cursor: pointer;
+  transition: all 150ms ease;
+  white-space: nowrap;
+  text-decoration: none;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.gov-button:focus-visible {
+  outline: 3px solid var(--gov-focus-600);
+  outline-offset: 2px;
+}
+
+.gov-button__label {
+  display: inline-block;
+}
+
+.gov-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ----------------------------------------
+   Size Variants
+   Based on GOV.cz component height tokens
+   ---------------------------------------- */
+
+/* XS: 24px height */
+.gov-button--xs {
+  height: var(--gov-height-component-xs);
+  padding: 0 var(--gov-space-s);
+  font-size: var(--gov-font-body-xs);
+  gap: var(--gov-space-xs);
+}
+.gov-button--xs .gov-button__icon {
+  width: var(--gov-icon-xs);
+  height: var(--gov-icon-xs);
+}
+
+/* S: 32px height */
+.gov-button--s {
+  height: var(--gov-height-component-s);
+  padding: 0 var(--gov-space-s-nudge);
+  font-size: var(--gov-font-body-s);
+  gap: var(--gov-space-xs);
+}
+.gov-button--s .gov-button__icon {
+  width: var(--gov-icon-s);
+  height: var(--gov-icon-s);
+}
+
+/* M: 40px height (default) */
+.gov-button--m {
+  height: var(--gov-height-component-m);
+  padding: 0 var(--gov-space-m);
+  font-size: var(--gov-font-body-m);
+}
+.gov-button--m .gov-button__icon {
+  width: var(--gov-icon-m);
+  height: var(--gov-icon-m);
+}
+
+/* L: 48px height */
+.gov-button--l {
+  height: var(--gov-height-component-l);
+  padding: 0 var(--gov-space-l);
+  font-size: var(--gov-font-body-l);
+}
+.gov-button--l .gov-button__icon {
+  width: var(--gov-icon-l);
+  height: var(--gov-icon-l);
+}
+
+/* XL: 56px height */
+.gov-button--xl {
+  height: var(--gov-height-component-xl);
+  padding: 0 var(--gov-space-xl);
+  font-size: var(--gov-font-body-xl);
+}
+.gov-button--xl .gov-button__icon {
+  width: var(--gov-icon-xl);
+  height: var(--gov-icon-xl);
+}
+
+/* ----------------------------------------
+   SOLID Button Variants
+   Filled background with white text
+   ---------------------------------------- */
+
+/* Primary Solid */
+.gov-button--primary.gov-button--solid {
+  background-color: var(--gov-btn-solid-primary);
+  color: var(--gov-neutral-0);
+  border-color: var(--gov-btn-solid-primary);
+}
+.gov-button--primary.gov-button--solid:hover:not(:disabled) {
+  background-color: var(--gov-btn-solid-primary-hover);
+  border-color: var(--gov-btn-solid-primary-hover);
+}
+.gov-button--primary.gov-button--solid:active:not(:disabled) {
+  background-color: var(--gov-btn-solid-primary-active);
+  border-color: var(--gov-btn-solid-primary-active);
+}
+
+/* Secondary Solid */
+.gov-button--secondary.gov-button--solid {
+  background-color: var(--gov-btn-solid-secondary);
+  color: var(--gov-neutral-950);
+  border-color: var(--gov-btn-solid-secondary);
+}
+.gov-button--secondary.gov-button--solid:hover:not(:disabled) {
+  background-color: var(--gov-btn-solid-secondary-hover);
+  border-color: var(--gov-btn-solid-secondary-hover);
+}
+.gov-button--secondary.gov-button--solid:active:not(:disabled) {
+  background-color: var(--gov-btn-solid-secondary-active);
+  border-color: var(--gov-btn-solid-secondary-active);
+}
+
+/* Neutral Solid */
+.gov-button--neutral.gov-button--solid {
+  background-color: var(--gov-btn-solid-neutral);
+  color: var(--gov-neutral-0);
+  border-color: var(--gov-btn-solid-neutral);
+}
+.gov-button--neutral.gov-button--solid:hover:not(:disabled) {
+  background-color: var(--gov-btn-solid-neutral-hover);
+  border-color: var(--gov-btn-solid-neutral-hover);
+}
+.gov-button--neutral.gov-button--solid:active:not(:disabled) {
+  background-color: var(--gov-btn-solid-neutral-active);
+  border-color: var(--gov-btn-solid-neutral-active);
+}
+
+/* Error Solid */
+.gov-button--error.gov-button--solid {
+  background-color: var(--gov-btn-solid-error);
+  color: var(--gov-neutral-0);
+  border-color: var(--gov-btn-solid-error);
+}
+.gov-button--error.gov-button--solid:hover:not(:disabled) {
+  background-color: var(--gov-btn-solid-error-hover);
+  border-color: var(--gov-btn-solid-error-hover);
+}
+.gov-button--error.gov-button--solid:active:not(:disabled) {
+  background-color: var(--gov-btn-solid-error-active);
+  border-color: var(--gov-btn-solid-error-active);
+}
+
+/* Warning Solid */
+.gov-button--warning.gov-button--solid {
+  background-color: var(--gov-btn-solid-warning);
+  color: var(--gov-neutral-950);
+  border-color: var(--gov-btn-solid-warning);
+}
+.gov-button--warning.gov-button--solid:hover:not(:disabled) {
+  background-color: var(--gov-btn-solid-warning-hover);
+  border-color: var(--gov-btn-solid-warning-hover);
+}
+.gov-button--warning.gov-button--solid:active:not(:disabled) {
+  background-color: var(--gov-btn-solid-warning-active);
+  border-color: var(--gov-btn-solid-warning-active);
+}
+
+/* Success Solid */
+.gov-button--success.gov-button--solid {
+  background-color: var(--gov-btn-solid-success);
+  color: var(--gov-neutral-0);
+  border-color: var(--gov-btn-solid-success);
+}
+.gov-button--success.gov-button--solid:hover:not(:disabled) {
+  background-color: var(--gov-btn-solid-success-hover);
+  border-color: var(--gov-btn-solid-success-hover);
+}
+.gov-button--success.gov-button--solid:active:not(:disabled) {
+  background-color: var(--gov-btn-solid-success-active);
+  border-color: var(--gov-btn-solid-success-active);
+}
+
+/* ----------------------------------------
+   OUTLINED Button Variants
+   Transparent background with colored border
+   ---------------------------------------- */
+
+/* Primary Outlined */
+.gov-button--primary.gov-button--outlined {
+  background-color: var(--gov-btn-outlined-primary);
+  color: var(--gov-text-primary-color);
+  border-color: var(--gov-border-primary);
+}
+.gov-button--primary.gov-button--outlined:hover:not(:disabled) {
+  background-color: var(--gov-btn-outlined-primary-hover);
+}
+.gov-button--primary.gov-button--outlined:active:not(:disabled) {
+  background-color: var(--gov-btn-outlined-primary-active);
+}
+
+/* Secondary Outlined */
+.gov-button--secondary.gov-button--outlined {
+  background-color: var(--gov-btn-outlined-secondary);
+  color: var(--gov-text-secondary-color);
+  border-color: var(--gov-border-secondary);
+}
+.gov-button--secondary.gov-button--outlined:hover:not(:disabled) {
+  background-color: var(--gov-btn-outlined-secondary-hover);
+}
+.gov-button--secondary.gov-button--outlined:active:not(:disabled) {
+  background-color: var(--gov-btn-outlined-secondary-active);
+}
+
+/* Neutral Outlined */
+.gov-button--neutral.gov-button--outlined {
+  background-color: var(--gov-btn-outlined-neutral);
+  color: var(--gov-text-primary);
+  border-color: var(--gov-border-neutral);
+}
+.gov-button--neutral.gov-button--outlined:hover:not(:disabled) {
+  background-color: var(--gov-btn-outlined-neutral-hover);
+}
+.gov-button--neutral.gov-button--outlined:active:not(:disabled) {
+  background-color: var(--gov-btn-outlined-neutral-active);
+}
+
+/* Error Outlined */
+.gov-button--error.gov-button--outlined {
+  background-color: var(--gov-btn-outlined-error);
+  color: var(--gov-text-error);
+  border-color: var(--gov-border-error);
+}
+.gov-button--error.gov-button--outlined:hover:not(:disabled) {
+  background-color: var(--gov-btn-outlined-error-hover);
+}
+.gov-button--error.gov-button--outlined:active:not(:disabled) {
+  background-color: var(--gov-btn-outlined-error-active);
+}
+
+/* Warning Outlined */
+.gov-button--warning.gov-button--outlined {
+  background-color: var(--gov-warning-50);
+  color: var(--gov-text-warning);
+  border-color: var(--gov-border-warning);
+}
+.gov-button--warning.gov-button--outlined:hover:not(:disabled) {
+  background-color: var(--gov-warning-100);
+}
+.gov-button--warning.gov-button--outlined:active:not(:disabled) {
+  background-color: var(--gov-warning-200);
+}
+
+/* Success Outlined */
+.gov-button--success.gov-button--outlined {
+  background-color: var(--gov-success-50);
+  color: var(--gov-text-success);
+  border-color: var(--gov-border-success);
+}
+.gov-button--success.gov-button--outlined:hover:not(:disabled) {
+  background-color: var(--gov-success-100);
+}
+.gov-button--success.gov-button--outlined:active:not(:disabled) {
+  background-color: var(--gov-success-200);
+}
+
+/* ----------------------------------------
+   BASE Button Variants
+   Text-only with hover background
+   ---------------------------------------- */
+
+/* Primary Base */
+.gov-button--primary.gov-button--base {
+  background-color: transparent;
+  color: var(--gov-text-primary-color);
+  border-color: transparent;
+}
+.gov-button--primary.gov-button--base:hover:not(:disabled) {
+  background-color: var(--gov-primary-100);
+}
+.gov-button--primary.gov-button--base:active:not(:disabled) {
+  background-color: var(--gov-primary-200);
+}
+
+/* Secondary Base */
+.gov-button--secondary.gov-button--base {
+  background-color: transparent;
+  color: var(--gov-text-secondary-color);
+  border-color: transparent;
+}
+.gov-button--secondary.gov-button--base:hover:not(:disabled) {
+  background-color: var(--gov-secondary-100);
+}
+.gov-button--secondary.gov-button--base:active:not(:disabled) {
+  background-color: var(--gov-secondary-200);
+}
+
+/* Neutral Base */
+.gov-button--neutral.gov-button--base {
+  background-color: transparent;
+  color: var(--gov-text-primary);
+  border-color: transparent;
+}
+.gov-button--neutral.gov-button--base:hover:not(:disabled) {
+  background-color: var(--gov-neutral-100);
+}
+.gov-button--neutral.gov-button--base:active:not(:disabled) {
+  background-color: var(--gov-neutral-200);
+}
+
+/* Error Base */
+.gov-button--error.gov-button--base {
+  background-color: transparent;
+  color: var(--gov-text-error);
+  border-color: transparent;
+}
+.gov-button--error.gov-button--base:hover:not(:disabled) {
+  background-color: var(--gov-error-100);
+}
+.gov-button--error.gov-button--base:active:not(:disabled) {
+  background-color: var(--gov-error-200);
+}
+
+/* Warning Base */
+.gov-button--warning.gov-button--base {
+  background-color: transparent;
+  color: var(--gov-text-warning);
+  border-color: transparent;
+}
+.gov-button--warning.gov-button--base:hover:not(:disabled) {
+  background-color: var(--gov-warning-100);
+}
+.gov-button--warning.gov-button--base:active:not(:disabled) {
+  background-color: var(--gov-warning-200);
+}
+
+/* Success Base */
+.gov-button--success.gov-button--base {
+  background-color: transparent;
+  color: var(--gov-text-success);
+  border-color: transparent;
+}
+.gov-button--success.gov-button--base:hover:not(:disabled) {
+  background-color: var(--gov-success-100);
+}
+.gov-button--success.gov-button--base:active:not(:disabled) {
+  background-color: var(--gov-success-200);
+}
+
+/* ----------------------------------------
+   LINK Button Variants
+   Text with underline, no background
+   ---------------------------------------- */
+
+.gov-button--link {
+  background-color: transparent;
+  border-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  height: auto;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Primary Link */
+.gov-button--primary.gov-button--link {
+  color: var(--gov-text-primary-color);
+}
+.gov-button--primary.gov-button--link:hover:not(:disabled) {
+  color: var(--gov-primary-800);
+}
+.gov-button--primary.gov-button--link:active:not(:disabled) {
+  color: var(--gov-primary-900);
+}
+
+/* Secondary Link */
+.gov-button--secondary.gov-button--link {
+  color: var(--gov-text-secondary-color);
+}
+.gov-button--secondary.gov-button--link:hover:not(:disabled) {
+  color: var(--gov-secondary-900);
+}
+.gov-button--secondary.gov-button--link:active:not(:disabled) {
+  color: var(--gov-secondary-950);
+}
+
+/* Neutral Link */
+.gov-button--neutral.gov-button--link {
+  color: var(--gov-text-primary);
+}
+.gov-button--neutral.gov-button--link:hover:not(:disabled) {
+  color: var(--gov-neutral-800);
+}
+.gov-button--neutral.gov-button--link:active:not(:disabled) {
+  color: var(--gov-neutral-900);
+}
+
+/* Error Link */
+.gov-button--error.gov-button--link {
+  color: var(--gov-text-error);
+}
+.gov-button--error.gov-button--link:hover:not(:disabled) {
+  color: var(--gov-error-800);
+}
+.gov-button--error.gov-button--link:active:not(:disabled) {
+  color: var(--gov-error-900);
+}
+
+/* Warning Link */
+.gov-button--warning.gov-button--link {
+  color: var(--gov-text-warning);
+}
+.gov-button--warning.gov-button--link:hover:not(:disabled) {
+  color: var(--gov-warning-950);
+}
+.gov-button--warning.gov-button--link:active:not(:disabled) {
+  color: var(--gov-warning-1000);
+}
+
+/* Success Link */
+.gov-button--success.gov-button--link {
+  color: var(--gov-text-success);
+}
+.gov-button--success.gov-button--link:hover:not(:disabled) {
+  color: var(--gov-success-800);
+}
+.gov-button--success.gov-button--link:active:not(:disabled) {
+  color: var(--gov-success-900);
+}
+
+/* ----------------------------------------
+   Disabled State
+   ---------------------------------------- */
+.gov-button--disabled,
+.gov-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.gov-button--solid.gov-button--disabled {
+  background-color: var(--gov-btn-solid-disabled);
+  border-color: var(--gov-btn-solid-disabled);
+  color: var(--gov-text-disabled);
+}
+
+.gov-button--outlined.gov-button--disabled {
+  background-color: transparent;
+  border-color: var(--gov-border-disabled);
+  color: var(--gov-text-disabled);
+}
+
+.gov-button--base.gov-button--disabled,
+.gov-button--link.gov-button--disabled {
+  color: var(--gov-text-disabled);
+}
+
+/* ----------------------------------------
+   Icon-only Button Adjustments
+   ---------------------------------------- */
+.gov-button:not(:has(.gov-button__label)) {
+  padding: 0;
+  aspect-ratio: 1;
+}
+
+.gov-button--xs:not(:has(.gov-button__label)) {
+  width: var(--gov-height-component-xs);
+}
+
+.gov-button--s:not(:has(.gov-button__label)) {
+  width: var(--gov-height-component-s);
+}
+
+.gov-button--m:not(:has(.gov-button__label)) {
+  width: var(--gov-height-component-m);
+}
+
+.gov-button--l:not(:has(.gov-button__label)) {
+  width: var(--gov-height-component-l);
+}
+
+.gov-button--xl:not(:has(.gov-button__label)) {
+  width: var(--gov-height-component-xl);
+}

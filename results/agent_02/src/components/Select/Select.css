@@ -1,0 +1,255 @@
+/* ========================================
+   GOV.cz Select Component Styles
+   ======================================== */
+
+/* Base Container */
+.gov-select {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-space-xs, 4px);
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.gov-select--full-width {
+  width: 100%;
+}
+
+/* ----------------------------------------
+   Label
+   ---------------------------------------- */
+.gov-select__label {
+  display: block;
+  font-size: var(--gov-font-body-s, 14px);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--gov-text-primary, var(--gov-neutral-950, #262626));
+  margin-bottom: var(--gov-space-2xs, 4px);
+}
+
+.gov-select__required {
+  color: var(--gov-error-600, #c62828);
+}
+
+/* ----------------------------------------
+   Select Wrapper
+   ---------------------------------------- */
+.gov-select__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* ----------------------------------------
+   Select Field
+   ---------------------------------------- */
+.gov-select__field {
+  width: 100%;
+  font-family: inherit;
+  font-size: var(--gov-font-body-m, 16px);
+  line-height: 1.5;
+  color: var(--gov-text-primary, var(--gov-neutral-950, #262626));
+  background-color: var(--gov-neutral-0, #ffffff);
+  border: 1px solid var(--gov-border-subtle, var(--gov-neutral-300, #b0b0b0));
+  border-radius: var(--gov-radius-s, 4px);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Size Variants */
+.gov-select--s .gov-select__field {
+  padding: var(--gov-space-xs, 6px) var(--gov-space-xl, 32px) var(--gov-space-xs, 6px) var(--gov-space-s, 8px);
+  font-size: var(--gov-font-body-s, 14px);
+}
+
+.gov-select--m .gov-select__field {
+  padding: var(--gov-space-s, 10px) var(--gov-space-xl, 40px) var(--gov-space-s, 10px) var(--gov-space-m, 12px);
+  font-size: var(--gov-font-body-m, 16px);
+}
+
+.gov-select--l .gov-select__field {
+  padding: var(--gov-space-m, 12px) var(--gov-space-2xl, 48px) var(--gov-space-m, 12px) var(--gov-space-l, 16px);
+  font-size: var(--gov-font-body-l, 18px);
+}
+
+/* Placeholder styling */
+.gov-select--placeholder .gov-select__field {
+  color: var(--gov-text-tertiary, var(--gov-neutral-500, #6d6d6d));
+}
+
+/* ----------------------------------------
+   Dropdown Icon
+   ---------------------------------------- */
+.gov-select__icon {
+  position: absolute;
+  right: var(--gov-space-s, 12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gov-neutral-600, #5d5d5d);
+  pointer-events: none;
+  transition: transform 0.15s ease;
+}
+
+.gov-select--s .gov-select__icon {
+  right: var(--gov-space-xs, 8px);
+}
+
+.gov-select--l .gov-select__icon {
+  right: var(--gov-space-m, 16px);
+}
+
+.gov-select__icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.gov-select--l .gov-select__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ----------------------------------------
+   States
+   ---------------------------------------- */
+
+/* Hover */
+.gov-select__field:hover:not(:disabled):not(:focus) {
+  border-color: var(--gov-primary-400, #599bd7);
+}
+
+/* Focus */
+.gov-select__field:focus {
+  outline: none;
+  border-color: var(--gov-focus-600, #0645ad);
+  box-shadow: 0 0 0 3px var(--gov-focus-100, rgba(6, 69, 173, 0.15));
+}
+
+/* Disabled */
+.gov-select--disabled .gov-select__field,
+.gov-select__field:disabled {
+  background-color: var(--gov-neutral-100, #e7e7e7);
+  border-color: var(--gov-neutral-200, #d1d1d1);
+  color: var(--gov-neutral-500, #6d6d6d);
+  cursor: not-allowed;
+}
+
+.gov-select--disabled .gov-select__label {
+  color: var(--gov-neutral-500, #6d6d6d);
+}
+
+.gov-select--disabled .gov-select__icon {
+  color: var(--gov-neutral-400, #888888);
+}
+
+/* Invalid/Error */
+.gov-select--invalid .gov-select__field {
+  border-color: var(--gov-error-600, #c62828);
+}
+
+.gov-select--invalid .gov-select__field:focus {
+  border-color: var(--gov-error-600, #c62828);
+  box-shadow: 0 0 0 3px var(--gov-error-100, rgba(198, 40, 40, 0.15));
+}
+
+/* ----------------------------------------
+   Footer (Helper/Error)
+   ---------------------------------------- */
+.gov-select__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--gov-space-s, 8px);
+  min-height: 20px;
+}
+
+.gov-select__helper {
+  font-size: var(--gov-font-body-xs, 12px);
+  line-height: 1.4;
+  color: var(--gov-text-tertiary, var(--gov-neutral-600, #5d5d5d));
+}
+
+.gov-select__error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gov-space-2xs, 4px);
+  font-size: var(--gov-font-body-xs, 12px);
+  line-height: 1.4;
+  color: var(--gov-error-600, #c62828);
+}
+
+.gov-select__error-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ----------------------------------------
+   Option Groups
+   ---------------------------------------- */
+.gov-select__field optgroup {
+  font-weight: 600;
+  color: var(--gov-text-primary, var(--gov-neutral-950, #262626));
+}
+
+.gov-select__field option {
+  font-weight: 400;
+  color: var(--gov-text-primary, var(--gov-neutral-950, #262626));
+  padding: var(--gov-space-xs, 8px);
+}
+
+.gov-select__field option:disabled {
+  color: var(--gov-neutral-400, #888888);
+}
+
+/* ----------------------------------------
+   Dark Mode (prepared)
+   ---------------------------------------- */
+[data-theme="dark"] .gov-select__label {
+  color: var(--gov-neutral-100, #e7e7e7);
+}
+
+[data-theme="dark"] .gov-select__field {
+  background-color: var(--gov-neutral-900, #3b3b3b);
+  border-color: var(--gov-neutral-700, #4f4f4f);
+  color: var(--gov-neutral-100, #e7e7e7);
+}
+
+[data-theme="dark"] .gov-select--placeholder .gov-select__field {
+  color: var(--gov-neutral-500, #6d6d6d);
+}
+
+[data-theme="dark"] .gov-select__icon {
+  color: var(--gov-neutral-400, #888888);
+}
+
+[data-theme="dark"] .gov-select__field:hover:not(:disabled):not(:focus) {
+  border-color: var(--gov-primary-500, #337fc4);
+}
+
+[data-theme="dark"] .gov-select__field:focus {
+  border-color: var(--gov-focus-400, #4a90d9);
+  box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.25);
+}
+
+[data-theme="dark"] .gov-select--disabled .gov-select__field,
+[data-theme="dark"] .gov-select__field:disabled {
+  background-color: var(--gov-neutral-800, #454545);
+  border-color: var(--gov-neutral-700, #4f4f4f);
+  color: var(--gov-neutral-600, #5d5d5d);
+}
+
+[data-theme="dark"] .gov-select__helper {
+  color: var(--gov-neutral-400, #888888);
+}
+
+[data-theme="dark"] .gov-select__error {
+  color: var(--gov-error-400, #f37676);
+}
+
+[data-theme="dark"] .gov-select__field option {
+  background-color: var(--gov-neutral-900, #3b3b3b);
+  color: var(--gov-neutral-100, #e7e7e7);
+}
+

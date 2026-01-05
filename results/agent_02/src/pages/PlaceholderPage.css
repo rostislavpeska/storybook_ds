@@ -1,0 +1,99 @@
+/* PlaceholderPage Styles */
+
+.placeholder-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: var(--gov-space-l);
+}
+
+.placeholder-page__card {
+  background: white;
+  border-radius: var(--gov-radius-l);
+  border: 2px solid var(--gov-neutral-200);
+  padding: var(--gov-space-3xl) var(--gov-space-2xl);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.placeholder-page__icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--gov-space-l) auto;
+}
+
+.placeholder-page__icon--warning {
+  background: var(--gov-warning-100);
+  color: var(--gov-warning-600);
+}
+
+.placeholder-page__icon--success {
+  background: var(--gov-success-100);
+  color: var(--gov-success-600);
+}
+
+.placeholder-page__icon--error {
+  background: var(--gov-error-100);
+  color: var(--gov-error-600);
+}
+
+.placeholder-page__status {
+  display: inline-block;
+  font-size: var(--gov-font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--gov-space-2xs) var(--gov-space-m);
+  border-radius: var(--gov-radius-s);
+  background: var(--gov-warning-100);
+  color: var(--gov-warning-700);
+  margin-bottom: var(--gov-space-m);
+}
+
+.placeholder-page__title {
+  font-size: var(--gov-font-size-2xl);
+  font-weight: 700;
+  color: var(--gov-neutral-900);
+  margin: 0 0 var(--gov-space-m) 0;
+  line-height: 1.3;
+}
+
+.placeholder-page__description {
+  font-size: var(--gov-font-size-m);
+  color: var(--gov-neutral-600);
+  margin: 0 0 var(--gov-space-s) 0;
+  line-height: 1.5;
+}
+
+.placeholder-page__message {
+  font-size: var(--gov-font-size-s);
+  color: var(--gov-neutral-500);
+  margin: 0 0 var(--gov-space-xl) 0;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .placeholder-page {
+    padding: var(--gov-space-m);
+  }
+
+  .placeholder-page__card {
+    padding: var(--gov-space-xl) var(--gov-space-l);
+  }
+
+  .placeholder-page__icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .placeholder-page__title {
+    font-size: var(--gov-font-size-xl);
+  }
+}

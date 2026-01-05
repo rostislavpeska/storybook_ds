@@ -1,0 +1,110 @@
+{
+  "app": {
+    "title": "Public Administration Portal",
+    "skipToContent": "Skip to content"
+  },
+  "nav": {
+    "home": "Home",
+    "forms": "Forms"
+  },
+  "language": {
+    "cs": "Čeština",
+    "en": "English",
+    "switch": "Change language"
+  },
+  "home": {
+    "title": "Electronic Forms",
+    "subtitle": "Select a form to fill out"
+  },
+  "forms": {
+    "rekvalifikace": {
+      "title": "Interest in Selected Requalification for Job Seekers",
+      "description": "Form for requalification applicants",
+      "status": "Active"
+    },
+    "povez": {
+      "title": "Application for POVEZ Program Enrollment",
+      "description": "Coming soon",
+      "status": "Coming soon"
+    },
+    "dotace": {
+      "title": "Application for Education Subsidy",
+      "description": "Coming soon",
+      "status": "Coming soon"
+    },
+    "comingSoon": "This form will be available soon."
+  },
+  "form": {
+    "sectionA": "A. Applicant",
+    "applicantType": "Applicant type",
+    "applicantTypeJobSeeker": "job seeker",
+    "applicantTypeInterested": "interested in employment",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "birthNumber": "Birth number (CZ)",
+    "birthNumberFormat": "Format: XXXXXX/XXXX",
+    "gender": "Gender",
+    "genderMale": "male",
+    "genderFemale": "female",
+    "birthDate": "Date of birth",
+    "email": "E-mail",
+    "phone": "Phone",
+    "dataBoxId": "Data box ID",
+    "addressSection": "Permanent residence address",
+    "city": "City",
+    "cityPart": "City part",
+    "postalCode": "Postal code",
+    "street": "Street",
+    "houseNumber": "House number",
+    "registrationNumber": "Registration number",
+    "orientationNumber": "Orientation number",
+    "educationSection": "Education and skills",
+    "educationDescription": "Description",
+    "completedRequalificationsSection": "Completed requalifications",
+    "requalificationName": "Requalification name",
+    "completedYear": "Completed in year",
+    "addAnother": "+ Add",
+    "professionsSection": "Professions and work activities",
+    "professionName": "Profession or work activity name",
+    "yearsOfPractice": "Years of practice",
+    "monthsOfPractice": "Months of practice",
+    "desiredRequalificationSection": "I am interested in selected requalification",
+    "courseName": "Course name",
+    "facilitySection": "Requalification facility",
+    "facilityName": "Name",
+    "facilityAddress": "Address",
+    "justificationSection": "Justification for requested requalification",
+    "justificationText": "Describe how requalification will help your employment",
+    "plannedEmploymentSection": "Planned employment after requalification",
+    "fromWhen": "From when",
+    "expectedEmployerSection": "Expected employer",
+    "employerName": "Employer",
+    "selfEmploymentSection": "Starting self-employment",
+    "businessField": "In which field",
+    "sectionB": "B. Applicant instructions acknowledgment",
+    "confirmRead": "I confirm that I have read the instructions",
+    "signedIn": "Signed in",
+    "signatureDate": "Signature date",
+    "required": "Required field",
+    "invalidEmail": "Invalid email format",
+    "invalidBirthNumber": "Invalid birth number format",
+    "invalidPostalCode": "Postal code must be 5 digits"
+  },
+  "actions": {
+    "saveDraft": "Save draft",
+    "printPdf": "Print / Save (PDF)",
+    "validate": "Validate form",
+    "submit": "Proceed to submit",
+    "back": "Back",
+    "remove": "Remove"
+  },
+  "messages": {
+    "draftSaved": "Form has been saved",
+    "draftLoaded": "Draft form loaded",
+    "validationErrors": "Form contains errors",
+    "validationSuccess": "Form is valid",
+    "pdfGenerated": "PDF has been generated"
+  }
+}
+
+

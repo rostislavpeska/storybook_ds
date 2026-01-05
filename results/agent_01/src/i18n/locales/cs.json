@@ -1,0 +1,110 @@
+{
+  "app": {
+    "title": "Portál veřejné správy",
+    "skipToContent": "Přejít na obsah"
+  },
+  "nav": {
+    "home": "Domů",
+    "forms": "Formuláře"
+  },
+  "language": {
+    "cs": "Čeština",
+    "en": "English",
+    "switch": "Změnit jazyk"
+  },
+  "home": {
+    "title": "Elektronické formuláře",
+    "subtitle": "Vyberte formulář pro vyplnění"
+  },
+  "forms": {
+    "rekvalifikace": {
+      "title": "Zájem o zvolenou rekvalifikaci uchazeče o zaměstnání",
+      "description": "Formulář pro zájemce o rekvalifikaci",
+      "status": "Aktivní"
+    },
+    "povez": {
+      "title": "Žádost o zařazení do programu POVEZ",
+      "description": "Připravujeme",
+      "status": "Připravujeme"
+    },
+    "dotace": {
+      "title": "Žádost o čerpání dotace na vzdělávání",
+      "description": "Připravujeme",
+      "status": "Připravujeme"
+    },
+    "comingSoon": "Tento formulář bude brzy k dispozici."
+  },
+  "form": {
+    "sectionA": "A. Žadatel",
+    "applicantType": "Typ žadatele",
+    "applicantTypeJobSeeker": "uchazeč o zaměstnání",
+    "applicantTypeInterested": "zájemce o zaměstnání",
+    "firstName": "Jméno",
+    "lastName": "Příjmení",
+    "birthNumber": "Rodné číslo v ČR",
+    "birthNumberFormat": "Formát: XXXXXX/XXXX",
+    "gender": "Pohlaví",
+    "genderMale": "muž",
+    "genderFemale": "žena",
+    "birthDate": "Datum narození",
+    "email": "E-mail",
+    "phone": "Telefon",
+    "dataBoxId": "ID datové schránky",
+    "addressSection": "Adresa trvalého pobytu",
+    "city": "Obec",
+    "cityPart": "Část obce",
+    "postalCode": "PSČ",
+    "street": "Ulice",
+    "houseNumber": "Číslo popisné",
+    "registrationNumber": "Číslo evidenční",
+    "orientationNumber": "Číslo orientační",
+    "educationSection": "Vzdělání a dovednosti",
+    "educationDescription": "Popis",
+    "completedRequalificationsSection": "Absolvované rekvalifikace",
+    "requalificationName": "Název rekvalifikace",
+    "completedYear": "Absolvování v roce",
+    "addAnother": "+ Přidat",
+    "professionsSection": "Vykonávané profese a pracovní činnosti",
+    "professionName": "Název profese nebo pracovní činnosti",
+    "yearsOfPractice": "Počet roků praxe",
+    "monthsOfPractice": "Počet měsíců praxe",
+    "desiredRequalificationSection": "Mám zájem o zvolenou rekvalifikaci",
+    "courseName": "Název kurzu",
+    "facilitySection": "Rekvalifikační zařízení",
+    "facilityName": "Název",
+    "facilityAddress": "Adresa",
+    "justificationSection": "Zdůvodnění požadované rekvalifikace",
+    "justificationText": "Uveďte, jak rekvalifikace přispěje k Vašemu uplatnění na trhu práce",
+    "plannedEmploymentSection": "Plánované uplatnění po rekvalifikaci",
+    "fromWhen": "Od kdy",
+    "expectedEmployerSection": "Předpokládaný zaměstnavatel",
+    "employerName": "Zaměstnavatel",
+    "selfEmploymentSection": "Zahájení samostatné výdělečné činnosti",
+    "businessField": "V jakém oboru",
+    "sectionB": "B. Poučení zájemce o zvolenou rekvalifikaci",
+    "confirmRead": "Potvrzuji, že jsem se seznámil(a) s poučením",
+    "signedIn": "Podepsáno v",
+    "signatureDate": "Datum podpisu",
+    "required": "Povinné pole",
+    "invalidEmail": "Neplatný formát e-mailu",
+    "invalidBirthNumber": "Neplatný formát rodného čísla",
+    "invalidPostalCode": "PSČ musí mít 5 číslic"
+  },
+  "actions": {
+    "saveDraft": "Uložit rozpracovaný formulář",
+    "printPdf": "Vytisknout / Uložit (PDF)",
+    "validate": "Kontrola formuláře",
+    "submit": "Přejít k odeslání",
+    "back": "Zpět",
+    "remove": "Odebrat"
+  },
+  "messages": {
+    "draftSaved": "Formulář byl uložen",
+    "draftLoaded": "Načten rozpracovaný formulář",
+    "validationErrors": "Formulář obsahuje chyby",
+    "validationSuccess": "Formulář je v pořádku",
+    "pdfGenerated": "PDF bylo vygenerováno"
+  }
+}
+
+

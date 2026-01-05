@@ -1,0 +1,291 @@
+/* ========================================
+   GOV.cz Radio Component Styles
+   ======================================== */
+
+/* ----------------------------------------
+   RadioGroup (Container)
+   ---------------------------------------- */
+.gov-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-space-xs, 8px);
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.gov-radio-group__legend {
+  font-size: var(--gov-font-body-s, 14px);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--gov-text-primary, var(--gov-neutral-950, #262626));
+  margin-bottom: var(--gov-space-xs, 8px);
+  padding: 0;
+}
+
+.gov-radio-group__required {
+  color: var(--gov-error-600, #c62828);
+}
+
+.gov-radio-group__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-space-s, 12px);
+}
+
+.gov-radio-group--horizontal .gov-radio-group__options {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--gov-space-m, 16px);
+}
+
+.gov-radio-group__helper {
+  font-size: var(--gov-font-body-xs, 12px);
+  line-height: 1.4;
+  color: var(--gov-text-tertiary, var(--gov-neutral-600, #5d5d5d));
+  margin-top: var(--gov-space-2xs, 4px);
+}
+
+.gov-radio-group__error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gov-space-2xs, 4px);
+  font-size: var(--gov-font-body-xs, 12px);
+  line-height: 1.4;
+  color: var(--gov-error-600, #c62828);
+  margin-top: var(--gov-space-2xs, 4px);
+}
+
+.gov-radio-group__error-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ----------------------------------------
+   Radio (Individual)
+   ---------------------------------------- */
+.gov-radio {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--gov-space-s, 10px);
+  cursor: pointer;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.gov-radio--disabled {
+  cursor: not-allowed;
+}
+
+/* ----------------------------------------
+   Radio Control (Circle)
+   ---------------------------------------- */
+.gov-radio__control {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gov-radio__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.gov-radio__circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--gov-border-subtle, var(--gov-neutral-400, #888888));
+  border-radius: 50%;
+  background-color: var(--gov-neutral-0, #ffffff);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+/* Size variants for circle */
+.gov-radio--s .gov-radio__circle {
+  width: 16px;
+  height: 16px;
+}
+
+.gov-radio--m .gov-radio__circle {
+  width: 20px;
+  height: 20px;
+}
+
+.gov-radio--l .gov-radio__circle {
+  width: 24px;
+  height: 24px;
+}
+
+/* ----------------------------------------
+   Radio Dot (Inner circle)
+   ---------------------------------------- */
+.gov-radio__dot {
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+  transform: scale(0);
+}
+
+.gov-radio--s .gov-radio__dot {
+  width: 8px;
+  height: 8px;
+}
+
+.gov-radio--m .gov-radio__dot {
+  width: 10px;
+  height: 10px;
+}
+
+.gov-radio--l .gov-radio__dot {
+  width: 12px;
+  height: 12px;
+}
+
+/* ----------------------------------------
+   Radio Content (Label + Helper)
+   ---------------------------------------- */
+.gov-radio__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-space-2xs, 2px);
+  padding-top: 1px;
+}
+
+.gov-radio__label {
+  font-size: var(--gov-font-body-m, 16px);
+  line-height: 1.4;
+  color: var(--gov-text-primary, var(--gov-neutral-950, #262626));
+}
+
+.gov-radio--s .gov-radio__label {
+  font-size: var(--gov-font-body-s, 14px);
+}
+
+.gov-radio--l .gov-radio__label {
+  font-size: var(--gov-font-body-l, 18px);
+}
+
+.gov-radio__helper {
+  font-size: var(--gov-font-body-xs, 12px);
+  line-height: 1.4;
+  color: var(--gov-text-tertiary, var(--gov-neutral-600, #5d5d5d));
+}
+
+/* ----------------------------------------
+   States
+   ---------------------------------------- */
+
+/* Hover */
+.gov-radio:hover:not(.gov-radio--disabled) .gov-radio__circle {
+  border-color: var(--gov-primary-500, #337fc4);
+}
+
+/* Focus */
+.gov-radio__input:focus-visible + .gov-radio__circle {
+  border-color: var(--gov-focus-600, #0645ad);
+  box-shadow: 0 0 0 3px var(--gov-focus-100, rgba(6, 69, 173, 0.15));
+}
+
+/* Checked */
+.gov-radio--checked .gov-radio__circle,
+.gov-radio__input:checked + .gov-radio__circle {
+  border-color: var(--gov-primary-600, #2362a2);
+  background-color: var(--gov-neutral-0, #ffffff);
+}
+
+.gov-radio--checked .gov-radio__dot,
+.gov-radio__input:checked + .gov-radio__circle .gov-radio__dot {
+  background-color: var(--gov-primary-600, #2362a2);
+  transform: scale(1);
+}
+
+/* Disabled */
+.gov-radio--disabled .gov-radio__circle {
+  background-color: var(--gov-neutral-100, #e7e7e7);
+  border-color: var(--gov-neutral-300, #b0b0b0);
+}
+
+.gov-radio--disabled .gov-radio__label {
+  color: var(--gov-neutral-500, #6d6d6d);
+}
+
+.gov-radio--disabled.gov-radio--checked .gov-radio__dot,
+.gov-radio--disabled .gov-radio__input:checked + .gov-radio__circle .gov-radio__dot {
+  background-color: var(--gov-neutral-400, #888888);
+}
+
+/* Invalid */
+.gov-radio--invalid .gov-radio__circle,
+.gov-radio-group--invalid .gov-radio__circle {
+  border-color: var(--gov-error-600, #c62828);
+}
+
+.gov-radio--invalid.gov-radio--checked .gov-radio__circle,
+.gov-radio-group--invalid .gov-radio--checked .gov-radio__circle,
+.gov-radio-group--invalid .gov-radio__input:checked + .gov-radio__circle {
+  border-color: var(--gov-error-600, #c62828);
+}
+
+.gov-radio--invalid.gov-radio--checked .gov-radio__dot,
+.gov-radio-group--invalid .gov-radio--checked .gov-radio__dot,
+.gov-radio-group--invalid .gov-radio__input:checked + .gov-radio__circle .gov-radio__dot {
+  background-color: var(--gov-error-600, #c62828);
+}
+
+/* ----------------------------------------
+   Dark Mode (prepared)
+   ---------------------------------------- */
+[data-theme="dark"] .gov-radio-group__legend {
+  color: var(--gov-neutral-100, #e7e7e7);
+}
+
+[data-theme="dark"] .gov-radio__circle {
+  background-color: var(--gov-neutral-900, #3b3b3b);
+  border-color: var(--gov-neutral-600, #5d5d5d);
+}
+
+[data-theme="dark"] .gov-radio__label {
+  color: var(--gov-neutral-100, #e7e7e7);
+}
+
+[data-theme="dark"] .gov-radio:hover:not(.gov-radio--disabled) .gov-radio__circle {
+  border-color: var(--gov-primary-400, #599bd7);
+}
+
+[data-theme="dark"] .gov-radio--checked .gov-radio__circle,
+[data-theme="dark"] .gov-radio__input:checked + .gov-radio__circle {
+  border-color: var(--gov-primary-400, #599bd7);
+}
+
+[data-theme="dark"] .gov-radio--checked .gov-radio__dot,
+[data-theme="dark"] .gov-radio__input:checked + .gov-radio__circle .gov-radio__dot {
+  background-color: var(--gov-primary-400, #599bd7);
+}
+
+[data-theme="dark"] .gov-radio--disabled .gov-radio__circle {
+  background-color: var(--gov-neutral-800, #454545);
+  border-color: var(--gov-neutral-700, #4f4f4f);
+}
+
+[data-theme="dark"] .gov-radio--disabled .gov-radio__label {
+  color: var(--gov-neutral-600, #5d5d5d);
+}
+
+[data-theme="dark"] .gov-radio-group__helper {
+  color: var(--gov-neutral-400, #888888);
+}
+
+[data-theme="dark"] .gov-radio-group__error {
+  color: var(--gov-error-400, #f37676);
+}
+

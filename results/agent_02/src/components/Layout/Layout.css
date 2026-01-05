@@ -1,0 +1,31 @@
+/* ==========================================================================
+   LAYOUT STYLES
+   Wrapper for Header, Main, and Footer
+   ========================================================================== */
+
+.gov-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--gov-neutral-100, #f2f2f2);
+}
+
+/* Main Content */
+.gov-main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--gov-spacing-xl, 32px) var(--gov-spacing-m, 16px);
+}
+
+.gov-main:focus {
+  outline: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gov-main {
+    padding: var(--gov-spacing-l, 24px) var(--gov-spacing-s, 12px);
+  }
+}

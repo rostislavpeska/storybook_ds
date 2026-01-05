@@ -1,0 +1,266 @@
+/* Requalification Form Styles */
+
+.requalification-form {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--gov-space-m);
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--gov-space-xs);
+  margin-bottom: var(--gov-space-l);
+  font-size: var(--gov-font-size-s);
+}
+
+.breadcrumbs__item {
+  color: var(--gov-primary-600);
+  text-decoration: none;
+}
+
+.breadcrumbs__item:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs__separator {
+  color: var(--gov-neutral-400);
+}
+
+.breadcrumbs__current {
+  color: var(--gov-neutral-600);
+}
+
+/* Page Title */
+.page-title {
+  font-size: var(--gov-font-size-3xl);
+  font-weight: 700;
+  color: var(--gov-neutral-900);
+  margin-bottom: var(--gov-space-xl);
+  line-height: 1.2;
+}
+
+/* Form Message Toast */
+.form-message {
+  position: fixed;
+  top: var(--gov-space-l);
+  right: var(--gov-space-l);
+  background: var(--gov-success-600);
+  color: white;
+  padding: var(--gov-space-m) var(--gov-space-l);
+  border-radius: var(--gov-radius-m);
+  box-shadow: var(--gov-shadow-lg);
+  z-index: 1000;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Validation Summary */
+.validation-summary {
+  background: var(--gov-error-50);
+  border: 2px solid var(--gov-error-600);
+  border-radius: var(--gov-radius-m);
+  padding: var(--gov-space-l);
+  margin-bottom: var(--gov-space-xl);
+}
+
+.validation-summary__title {
+  font-size: var(--gov-font-size-l);
+  font-weight: 700;
+  color: var(--gov-error-700);
+  margin: 0 0 var(--gov-space-m) 0;
+}
+
+.validation-summary__list {
+  margin: 0;
+  padding-left: var(--gov-space-l);
+  color: var(--gov-error-700);
+}
+
+.validation-summary__item {
+  margin-bottom: var(--gov-space-xs);
+}
+
+/* Form Sections */
+.form-section {
+  background: white;
+  border: 1px solid var(--gov-neutral-200);
+  border-radius: var(--gov-radius-m);
+  padding: var(--gov-space-l);
+  margin-bottom: var(--gov-space-l);
+}
+
+.form-section__title {
+  font-size: var(--gov-font-size-xl);
+  font-weight: 700;
+  color: var(--gov-neutral-900);
+  margin: 0 0 var(--gov-space-l) 0;
+  padding-bottom: var(--gov-space-m);
+  border-bottom: 2px solid var(--gov-primary-600);
+}
+
+/* Form Rows */
+.form-row {
+  margin-bottom: var(--gov-space-m);
+}
+
+.form-row--single {
+  max-width: 100%;
+}
+
+.form-row--double {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gov-space-m);
+}
+
+.form-row--triple {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--gov-space-m);
+}
+
+@media (max-width: 768px) {
+  .form-row--double,
+  .form-row--triple {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dynamic Lists (Requalifications, Professions) */
+.dynamic-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gov-space-m);
+}
+
+.dynamic-list__item {
+  background: var(--gov-neutral-50);
+  border: 1px solid var(--gov-neutral-200);
+  border-radius: var(--gov-radius-m);
+  padding: var(--gov-space-m);
+}
+
+.dynamic-list__item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--gov-space-m);
+}
+
+.dynamic-list__item-title {
+  font-size: var(--gov-font-size-m);
+  font-weight: 600;
+  color: var(--gov-neutral-700);
+}
+
+.dynamic-list__remove-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--gov-error-100);
+  color: var(--gov-error-600);
+  border-radius: var(--gov-radius-s);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--gov-font-size-l);
+  transition: background 0.2s, color 0.2s;
+}
+
+.dynamic-list__remove-btn:hover {
+  background: var(--gov-error-600);
+  color: white;
+}
+
+.dynamic-list__remove-btn:focus {
+  outline: 2px solid var(--gov-focus-ring);
+  outline-offset: 2px;
+}
+
+.dynamic-list__add-btn {
+  align-self: flex-start;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gov-space-m);
+  margin-top: var(--gov-space-xl);
+  padding: var(--gov-space-l);
+  background: white;
+  border-top: 1px solid var(--gov-neutral-200);
+}
+
+.form-actions--sticky {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-left: calc(-1 * var(--gov-space-m));
+  margin-right: calc(-1 * var(--gov-space-m));
+  z-index: 10;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .form-actions .gov-btn {
+    width: 100%;
+  }
+}
+
+/* Accessibility - Focus Indicators */
+.requalification-form :focus {
+  outline: 2px solid var(--gov-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--gov-primary-600);
+  color: white;
+  padding: var(--gov-space-s) var(--gov-space-m);
+  z-index: 1001;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Print Styles */
+@media print {
+  .form-actions {
+    display: none;
+  }
+  
+  .form-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  .requalification-form {
+    padding: 0;
+  }
+}
+
