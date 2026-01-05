@@ -27,16 +27,20 @@ Place this at the very top of the main story (usually the first one in the secti
 
 ## 2. Technical Best Practices & Safety
 
-### A. JSX Integrity (CRITICAL)
-When performing `search_replace` on large `.stories.jsx` files:
-- **Tag Matching**: Ensure every `<h1/2/3>` has a matching closing tag.
-- **Section Wrappers**: Always check that `<section className="size-section">` or similar wrappers are properly closed.
-- **Verification**: If you break the Storybook index (causing "Error fetching index.json"), check the browser console immediately. It will point to the exact line with the syntax error.
+### A. The "Critical Indexer" Failure (CRITICAL)
+**The Mistake**: Mismatched JSX tags (e.g., `<h1>` opening with `</h2>` closing) or unclosed `<section>` tags.
+**The Consequence**: Storybook fails to generate the `index.json` file. This results in a completely blank or broken interface where **no pages can load**, often showing a generic "Error fetching `/index.json`".
+**How to Avoid**:
+- **Double-check replacements**: After any `search_replace` that involves changing tag names (like `h2` to `h1`), verify that both opening and closing tags were updated.
+- **Incremental changes**: Avoid massive multi-line replacements that alter the document structure (nesting of `<section>` or `<div>`).
+- **Immediate Verification**: If the Storybook UI stops responding or shows an index error, check `browser_console_messages` immediately. Look for `SB_PREVIEW_API_0006 (StoryIndexFetchError)`. It will specify the exact file and line number where the syntax error exists.
 
-### B. Story Ordering
-Do NOT rely on export order to organize the sidebar menu. 
-- Use `.storybook/preview.js` -> `storySort` to programmatically define the order.
-- Standard order for Token pages: 
+### B. Story Ordering & Sidebar Bugs
+**The Mistake**: Trying to reorder the sidebar menu by changing the export order in `.stories.jsx` files.
+**The Consequence**: This is unreliable and often ignored by Storybook's indexer, leading to confusing menu structures or "missing" stories that are actually just out of order.
+**How to Avoid**:
+- **Only use `storySort`**: Centralize all ordering logic in `.storybook/preview.js`. Do not waste cycles trying to fix ordering inside individual story files.
+- **Standard order** for Token pages: 
     1. Introduction/Overview
     2. Primary Scale/Reference
     3. Usage Examples
@@ -46,15 +50,15 @@ Do NOT rely on export order to organize the sidebar menu.
 - **Don't Hallucinate**: Never manually style HTML elements (like `<button>`) to look like the design system. 
 - **Use Real Components**: Import and use the actual project components (e.g., `import { Button } from '../Button'`) in your usage examples. This ensures the documentation is a "living" reference.
 
-## 3. Tool-Specific Knowledge
+## 3. Deployment & Environment Stability
 
-### A. Browser Tool
-- If `browser_navigate` fails with `getURL` errors, it usually means the Storybook dev server is restarting or the build is broken.
-- Use `browser_console_messages` to diagnose "blank page" or "loading error" bugs.
-
-### B. Docker & Environment
-- Storybook runs on `http://localhost:6006`.
-- If the port is unreachable, the user may need to restart the Docker container manually. Do not attempt to fix the Docker daemon yourself.
+### A. Broken Resource/Container Loop
+**The Mistake**: Over-complicating `.storybook/manager.js` or `.storybook/preview.js` with complex decorators or themes that haven't been tested.
+**The Consequence**: Storybook gets stuck in an infinite loading loop or fails to resolve internal modules (e.g., `@storybook/theming/create` vs `@storybook/theming`).
+**How to Avoid**:
+- **Keep configuration minimal**: Only add decorators if absolutely necessary.
+- **Dependency check**: Ensure imports match the installed Storybook version (v8+ uses different paths for some addons).
+- **Restarting the Environment**: If Storybook is unreachable (port 6006), it is often a Docker daemon or network issue. Suggest a container restart to the user rather than trying to fix the internal Docker network.
 
 ## 4. Current Design Tokens Reference
 
