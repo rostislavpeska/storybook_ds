@@ -4,32 +4,95 @@ This document serves as the authoritative guide for AI agents working on the "St
 
 ---
 
-## ⛔ CRITICAL RULE: DOCKER ONLY - NO LOCAL SHORTCUTS
+## ⛔⛔⛔ CRITICAL RULE #1: DOCKER ONLY - ABSOLUTELY NO LOCAL EXECUTION ⛔⛔⛔
 
-**EVERYTHING MUST RUN INSIDE DOCKER. NO EXCEPTIONS.**
+# THIS IS THE MOST IMPORTANT RULE IN THIS ENTIRE DOCUMENT
 
-### Forbidden Actions
-- ❌ `npm run storybook` (local)
-- ❌ `npx storybook dev` (local)
-- ❌ `npm install` (local)
-- ❌ `npx vitest` (local)
-- ❌ ANY npm/npx command run directly on the host
+**EVERY SINGLE npm, npx, node, AND vitest COMMAND MUST RUN INSIDE DOCKER.**
 
-### Required Actions
-- ✅ `docker exec <container> npm install ...`
-- ✅ `docker exec <container> npm run storybook`
-- ✅ `docker-compose --profile dev up`
-- ✅ ALL commands must go through Docker
+**THERE ARE ZERO EXCEPTIONS. EVER.**
 
-### Why This Matters
-1. Local processes pollute the host system
-2. Creates confusion about what's running where
-3. Breaks reproducibility
-4. Causes port conflicts and zombie processes
+---
 
-### Before ANY npm/npx Command
-ASK YOURSELF: "Am I running this inside Docker?"
-If NO → STOP. Rewrite the command with `docker exec`.
+### 🚫 FORBIDDEN COMMANDS (Never Run These Directly)
+
+```powershell
+# ❌ FORBIDDEN - These will pollute the host system
+npm run storybook
+npm install <package>
+npm run test
+npx storybook dev
+npx vitest
+npx playwright install
+node anything.js
+```
+
+### ✅ REQUIRED COMMANDS (Always Use These Instead)
+
+```powershell
+# ✅ CORRECT - All commands go through Docker
+docker exec storybookds-storybook-dev-1 npm run storybook
+docker exec storybookds-storybook-dev-1 npm install <package> --legacy-peer-deps
+docker exec storybookds-storybook-dev-1 npm run test -- --run
+docker exec storybookds-storybook-dev-1 npx vitest --project=storybook --run
+docker-compose --profile dev up -d
+docker-compose --profile dev down
+docker-compose --profile dev build --no-cache
+```
+
+### 🔴 THE INCIDENT (Jan 5, 2026) - Why This Rule Exists
+
+**What Happened:**
+1. An AI agent ran `npx storybook dev` locally (not in Docker)
+2. This started a LOCAL Storybook server on port 6006
+3. The agent ALSO had Docker running with Storybook
+4. Both processes were fighting for the same port
+5. When Docker was stopped, Storybook was still running (locally)
+6. The agent was confused: "Why is Storybook still available?"
+7. The user had to manually kill Node processes
+8. Hours were wasted debugging
+
+**Root Cause:** The agent took a "shortcut" by running npm locally instead of through Docker.
+
+**Lesson:** SHORTCUTS CREATE CHAOS. ALWAYS USE DOCKER.
+
+### 🛑 BEFORE EVERY TERMINAL COMMAND
+
+**STOP AND ASK YOURSELF:**
+
+1. Does this command start with `npm`, `npx`, `node`, or `vitest`?
+2. If YES → Is it wrapped in `docker exec storybookds-storybook-dev-1`?
+3. If NO → **REWRITE THE COMMAND BEFORE RUNNING**
+
+### 🔍 HOW TO VERIFY YOU'RE IN DOCKER
+
+```powershell
+# Check what's running
+docker ps
+
+# Should show:
+# CONTAINER ID   IMAGE                       STATUS         PORTS                    NAMES
+# xxxxxxxxxxxx   storybookds-storybook-dev   Up X minutes   0.0.0.0:6006->6006/tcp   storybookds-storybook-dev-1
+```
+
+If Storybook is accessible but `docker ps` shows no container → **SOMETHING IS WRONG. KILL ALL NODE PROCESSES IMMEDIATELY.**
+
+### 🧹 EMERGENCY CLEANUP (If Local Processes Escape)
+
+```powershell
+# Kill all local Node processes
+Get-Process -Name "node" | Stop-Process -Force
+
+# Verify port 6006 is free
+netstat -ano | findstr :6006
+
+# If something shows, kill that PID
+taskkill /PID <number> /F
+
+# Restart Docker container
+docker-compose --profile dev down
+docker-compose --profile dev up -d
+```
 
 ---
 
@@ -100,19 +163,32 @@ Place this at the very top of the main story (usually the first one in the secti
 | **Typography** | `Design Tokens/Typography` | Unified |
 | **Color Tokens** | `Design Tokens/Color Tokens` | Unified |
 
-## 5. Testing Infrastructure
+## 5. Testing Infrastructure (ALL COMMANDS VIA DOCKER)
 
 ### A. Unit Tests (Vitest)
-- **Command**: `npm run test` (or `npm run test -- --run` for single run)
-- **UI Mode**: `npm run test:ui` (opens interactive test browser)
-- **Coverage**: `npm run test:coverage`
+```powershell
+# ✅ CORRECT - Run inside Docker
+docker exec storybookds-storybook-dev-1 npm run test -- --run
+
+# ❌ WRONG - Never run locally
+npm run test
+```
+
 - **Configuration**: `vite.config.js` contains the vitest configuration
 - **Setup File**: `src/setupTests.js` imports `@testing-library/jest-dom`
 
-### B. Storybook Tests (test-runner)
-- **Command**: `npm run test-storybook` (requires Storybook to be running)
-- **Configuration**: `.storybook/test-runner.js`
-- **Purpose**: Validates that all stories render without errors
+### B. Storybook Browser Tests (Vitest + Playwright)
+```powershell
+# ✅ CORRECT - Run inside Docker (168 tests)
+docker exec storybookds-storybook-dev-1 npx vitest --project=storybook --run
+
+# ❌ WRONG - Never run locally
+npx vitest --project=storybook --run
+```
+
+- **Configuration**: `vite.config.js` → `test.projects[0]`
+- **Setup File**: `.storybook/vitest.setup.js`
+- **Requires**: Ubuntu/Playwright Docker image (`mcr.microsoft.com/playwright:v1.57.0-noble`)
 
 ### C. CI/CD (GitHub Actions)
 - **Workflow File**: `.github/workflows/ci.yml`
@@ -146,18 +222,102 @@ describe('ComponentName', () => {
 
 ## 6. Docker Development Environment
 
-### Container Management
-- **Start**: `docker start storybookds-storybook-dev-1`
-- **Stop**: `docker stop storybookds-storybook-dev-1`
-- **Logs**: `docker logs storybookds-storybook-dev-1`
-- **Exec**: `docker exec storybookds-storybook-dev-1 <command>`
+### Container Details
+| Property | Value |
+|----------|-------|
+| **Container Name** | `storybookds-storybook-dev-1` |
+| **Base Image** | `mcr.microsoft.com/playwright:v1.57.0-noble` (Ubuntu) |
+| **Port** | `6006` (Storybook) |
+| **Profile** | `dev` |
 
-### Installing Packages
-Always install packages **inside the container** to maintain consistency:
-```bash
+### Essential Commands (MEMORIZE THESE)
+
+```powershell
+# Start the container
+docker-compose --profile dev up -d
+
+# Stop the container
+docker-compose --profile dev down
+
+# Rebuild container (after Dockerfile changes)
+docker-compose --profile dev build --no-cache
+docker-compose --profile dev up -d
+
+# View logs
+docker logs -f storybookds-storybook-dev-1
+
+# Execute commands inside container
+docker exec storybookds-storybook-dev-1 <command>
+
+# Install packages (ALWAYS use --legacy-peer-deps)
 docker exec storybookds-storybook-dev-1 npm install --save-dev <package> --legacy-peer-deps
+
+# Run tests
+docker exec storybookds-storybook-dev-1 npm run test -- --run
+docker exec storybookds-storybook-dev-1 npx vitest --project=storybook --run
+```
+
+### Why Ubuntu/Playwright Image?
+- **Alpine Linux** (previous): Lacks glibc → Playwright/Chromium cannot run → Tests fail
+- **Ubuntu/Playwright** (current): Has all dependencies → 168 browser tests pass
+
+### Dockerfile.dev Configuration
+```dockerfile
+FROM mcr.microsoft.com/playwright:v1.57.0-noble
+# This image includes:
+# - Node.js 20
+# - Chromium, Firefox, WebKit browsers
+# - All system dependencies for Playwright
+```
+
+### Volume Mounting
+The `docker-compose.yml` mounts the local directory:
+```yaml
+volumes:
+  - .:/app              # Code syncs to container
+  - /app/node_modules   # node_modules stays in container
+```
+
+This means:
+- ✅ Code changes reflect immediately
+- ✅ `package.json` changes sync
+- ⚠️ BUT you must run `npm install` INSIDE Docker for new packages
+
+---
+
+## 7. Quick Reference Card
+
+### Starting Development
+```powershell
+cd "C:\Users\TIGO\Desktop\WORKSPACE\Storybook DS"
+docker-compose --profile dev up -d
+# Open http://localhost:6006
+```
+
+### Running Tests
+```powershell
+docker exec storybookds-storybook-dev-1 npm run test -- --run
+docker exec storybookds-storybook-dev-1 npx vitest --project=storybook --run
+```
+
+### Installing a Package
+```powershell
+docker exec storybookds-storybook-dev-1 npm install --save-dev <package> --legacy-peer-deps
+```
+
+### Checking Container Status
+```powershell
+docker ps --filter "name=storybookds"
+```
+
+### Something Wrong? Full Reset
+```powershell
+docker-compose --profile dev down
+docker-compose --profile dev build --no-cache
+docker-compose --profile dev up -d
 ```
 
 ---
 **Last Updated**: Jan 5, 2026
+**Critical Rule Added**: DOCKER ONLY - No local npm/npx execution
 
