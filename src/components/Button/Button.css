@@ -229,17 +229,17 @@
   background-color: var(--gov-btn-outlined-secondary-active);
 }
 
-/* Neutral Outlined - visible gray border for light backgrounds */
+/* Neutral Outlined */
 .gov-button--neutral.gov-button--outlined {
-  background-color: var(--gov-btn-outlined-neutral, transparent);
-  color: var(--gov-neutral-700, #4f4f4f);
-  border-color: var(--gov-neutral-500, #8a8a8a);
+  background-color: var(--gov-btn-outlined-neutral);
+  color: var(--gov-text-primary);
+  border-color: var(--gov-border-neutral);
 }
 .gov-button--neutral.gov-button--outlined:hover:not(:disabled) {
-  background-color: var(--gov-neutral-100, #f0f0f0);
+  background-color: var(--gov-btn-outlined-neutral-hover);
 }
 .gov-button--neutral.gov-button--outlined:active:not(:disabled) {
-  background-color: var(--gov-neutral-200, #e0e0e0);
+  background-color: var(--gov-btn-outlined-neutral-active);
 }
 
 /* Error Outlined */
@@ -498,96 +498,4 @@
 
 .gov-button--xl:not(:has(.gov-button__label)) {
   width: var(--gov-height-component-xl);
-}
-
-/* ========================================
-   Button Storybook Documentation Styles
-   ======================================== */
-
-.doc-info-box {
-  background: linear-gradient(135deg, var(--gov-primary-900) 0%, var(--gov-primary-800) 100%);
-  border-radius: var(--gov-radius-m, 16px);
-  padding: var(--gov-space-xl, 32px);
-  margin-bottom: var(--gov-space-xl, 32px);
-  color: var(--gov-neutral-0);
-}
-
-.doc-info-box__title {
-  font-size: var(--gov-font-headline-m, 24px);
-  font-weight: 600;
-  color: var(--gov-neutral-0);
-  margin-bottom: var(--gov-space-s, 8px);
-  display: flex;
-  align-items: center;
-  gap: var(--gov-space-s, 8px);
-}
-
-.doc-info-box__description {
-  font-size: var(--gov-font-body-m, 16px);
-  color: var(--gov-primary-200);
-  margin-bottom: var(--gov-space-m, 16px);
-}
-
-.doc-info-box__link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--gov-space-xs, 4px);
-  color: var(--gov-secondary-400);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.doc-info-box__link:hover {
-  color: var(--gov-secondary-300);
-  text-decoration: underline;
-}
-
-.button-docs-section {
-  margin-bottom: var(--gov-space-2xl, 48px);
-}
-
-.button-docs-section__title {
-  font-size: var(--gov-font-headline-l, 32px);
-  font-weight: 600;
-  color: var(--gov-neutral-900, #1a1a1a);
-  margin-bottom: var(--gov-space-m, 16px);
-  padding-bottom: var(--gov-space-xs, 4px);
-  border-bottom: 1px solid var(--gov-neutral-200, #e0e0e0);
-}
-
-.button-docs-section__subtitle {
-  font-size: var(--gov-font-headline-s, 18px);
-  font-weight: 600;
-  color: var(--gov-neutral-800, #262626);
-  margin-bottom: var(--gov-space-s, 8px);
-}
-
-.button-docs-section__description {
-  font-size: var(--gov-font-body-m, 16px);
-  color: var(--gov-neutral-600, #5d5d5d);
-  margin-bottom: var(--gov-space-m, 16px);
-}
-
-.button-docs-grid {
-  display: flex;
-  gap: var(--gov-space-m, 16px);
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-/* Light mode only - white background matching Figma */
-.button-docs-group {
-  background: var(--gov-neutral-0, #ffffff);
-  border: 1px solid var(--gov-neutral-200, #e0e0e0);
-  border-radius: var(--gov-radius-s, 8px);
-  padding: var(--gov-space-l, 24px);
-  margin-bottom: var(--gov-space-m, 16px);
-}
-
-.button-docs-group__title {
-  font-size: var(--gov-font-body-l, 18px);
-  font-weight: 600;
-  color: var(--gov-neutral-800, #262626);
-  margin-bottom: var(--gov-space-m, 16px);
 }

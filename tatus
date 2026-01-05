@@ -1,0 +1,3 @@
+[33m1892a3c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Fix Outlined Neutral button - add visible gray border for light backgrounds
+[33mba0f222[m Unify Button component Storybook with doc-info-box template and h1 headlines - Add link to official GOV.cz docs (designsystem.gov.cz/komponenty/button.html) - Add All Button Variants main story with unified template - Update all stories with consistent h1 headlines and light-themed groups - Add doc-info-box styles to Button.css
+[33m34456fb[m Add Chromatic visual testing addon (@chromatic-com/storybook)

@@ -1,7 +1,6 @@
 import { Button } from './Button';
 import { Icon } from '../Icon/Icon';
 import { expect, fn, userEvent, within } from 'storybook/test';
-import './Button.css';
 
 export default {
   title: 'Components/Button',
@@ -11,10 +10,7 @@ export default {
     onClick: fn(),
   },
   parameters: {
-    layout: 'padded',
-    backgrounds: {
-      default: 'light',
-    },
+    layout: 'centered',
     docs: {
       description: {
         component: `
@@ -117,245 +113,15 @@ The button uses GOV.cz design tokens for consistent styling:
 };
 
 // ============================================
-// All Button Variants - Main Documentation Story
-// ============================================
-export const AllButtonVariants = {
-  name: 'All Button Variants',
-  parameters: {
-    layout: 'padded',
-  },
-  render: () => (
-    <div style={{ fontFamily: 'Roboto, sans-serif' }}>
-      {/* Documentation Header */}
-      <div className="doc-info-box">
-        <h1 className="doc-info-box__title">
-          GOV.cz Button Component
-        </h1>
-        <p className="doc-info-box__description">
-          Slouží ke spuštění akce nebo k přechodu na další stránku jedním kliknutím.
-          Supports 6 color variants, 4 style types, and 5 sizes.
-        </p>
-        <a 
-          href="https://designsystem.gov.cz/komponenty/button.html" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="doc-info-box__link"
-        >
-          View Official Documentation →
-        </a>
-      </div>
-
-      {/* Button Types Section */}
-      <section className="button-docs-section">
-        <h1 style={{ fontSize: '28px', fontWeight: 600, color: 'var(--gov-neutral-900)', marginBottom: '24px', paddingBottom: '8px', borderBottom: '2px solid var(--gov-neutral-200)' }}>
-          Button Types
-        </h1>
-        
-        <div className="button-docs-group">
-          <h2 className="button-docs-group__title">Solid (Default)</h2>
-          <div className="button-docs-grid">
-            <Button color="primary" type="solid">Primary</Button>
-            <Button color="secondary" type="solid">Secondary</Button>
-            <Button color="neutral" type="solid">Neutral</Button>
-            <Button color="error" type="solid">Error</Button>
-            <Button color="warning" type="solid">Warning</Button>
-            <Button color="success" type="solid">Success</Button>
-          </div>
-        </div>
-
-        <div className="button-docs-group">
-          <h2 className="button-docs-group__title">Outlined</h2>
-          <div className="button-docs-grid">
-            <Button color="primary" type="outlined">Primary</Button>
-            <Button color="secondary" type="outlined">Secondary</Button>
-            <Button color="neutral" type="outlined">Neutral</Button>
-            <Button color="error" type="outlined">Error</Button>
-            <Button color="warning" type="outlined">Warning</Button>
-            <Button color="success" type="outlined">Success</Button>
-          </div>
-        </div>
-
-        <div className="button-docs-group">
-          <h2 className="button-docs-group__title">Base (Ghost)</h2>
-          <div className="button-docs-grid">
-            <Button color="primary" type="base">Primary</Button>
-            <Button color="secondary" type="base">Secondary</Button>
-            <Button color="neutral" type="base">Neutral</Button>
-            <Button color="error" type="base">Error</Button>
-            <Button color="warning" type="base">Warning</Button>
-            <Button color="success" type="base">Success</Button>
-          </div>
-        </div>
-
-        <div className="button-docs-group">
-          <h2 className="button-docs-group__title">Link</h2>
-          <div className="button-docs-grid">
-            <Button color="primary" type="link">Primary</Button>
-            <Button color="secondary" type="link">Secondary</Button>
-            <Button color="neutral" type="link">Neutral</Button>
-            <Button color="error" type="link">Error</Button>
-            <Button color="warning" type="link">Warning</Button>
-            <Button color="success" type="link">Success</Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Size Variants Section */}
-      <section className="button-docs-section">
-        <h1 style={{ fontSize: '28px', fontWeight: 600, color: 'var(--gov-neutral-900)', marginBottom: '24px', paddingBottom: '8px', borderBottom: '2px solid var(--gov-neutral-200)' }}>
-          Size Variants
-        </h1>
-        <p style={{ fontSize: '14px', color: 'var(--gov-neutral-600)', marginBottom: '16px' }}>
-          Use larger buttons for important actions. Maintain consistent sizing when buttons appear together.
-        </p>
-        
-        <div className="button-docs-group">
-          <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-end', flexWrap: 'wrap' }}>
-            <div style={{ textAlign: 'center' }}>
-              <span style={{ display: 'block', fontSize: '12px', color: '#666', marginBottom: '8px' }}>XS (24px)</span>
-              <Button size="xs">Button</Button>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <span style={{ display: 'block', fontSize: '12px', color: '#666', marginBottom: '8px' }}>S (32px)</span>
-              <Button size="s">Button</Button>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <span style={{ display: 'block', fontSize: '12px', color: '#666', marginBottom: '8px' }}>M (40px)</span>
-              <Button size="m">Button</Button>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <span style={{ display: 'block', fontSize: '12px', color: '#666', marginBottom: '8px' }}>L (48px)</span>
-              <Button size="l">Button</Button>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <span style={{ display: 'block', fontSize: '12px', color: '#666', marginBottom: '8px' }}>XL (56px)</span>
-              <Button size="xl">Button</Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Color Variants Section */}
-      <section className="button-docs-section">
-        <h1 style={{ fontSize: '28px', fontWeight: 600, color: 'var(--gov-neutral-900)', marginBottom: '24px', paddingBottom: '8px', borderBottom: '2px solid var(--gov-neutral-200)' }}>
-          Color Variants
-        </h1>
-        <p style={{ fontSize: '14px', color: 'var(--gov-neutral-600)', marginBottom: '16px' }}>
-          Each color has semantic meaning. Error for destructive actions, Success for confirmation, Warning for caution.
-        </p>
-        
-        <div className="button-docs-group">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '16px' }}>
-            <div style={{ textAlign: 'center' }}>
-              <Button color="primary">Primary</Button>
-              <p style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>Main CTA</p>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <Button color="secondary">Secondary</Button>
-              <p style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>Alternative</p>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <Button color="neutral">Neutral</Button>
-              <p style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>Subtle</p>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <Button color="error">Error</Button>
-              <p style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>Destructive</p>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <Button color="warning">Warning</Button>
-              <p style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>Caution</p>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <Button color="success">Success</Button>
-              <p style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>Confirm</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* States Section */}
-      <section className="button-docs-section">
-        <h1 style={{ fontSize: '28px', fontWeight: 600, color: 'var(--gov-neutral-900)', marginBottom: '24px', paddingBottom: '8px', borderBottom: '2px solid var(--gov-neutral-200)' }}>
-          Button States
-        </h1>
-        
-        <div className="button-docs-group">
-          <h2 className="button-docs-group__title">Enabled vs Disabled</h2>
-          <div style={{ display: 'flex', gap: '32px', flexWrap: 'wrap' }}>
-            <div>
-              <span style={{ display: 'block', fontSize: '12px', color: '#666', marginBottom: '8px' }}>Enabled</span>
-              <div style={{ display: 'flex', gap: '12px' }}>
-                <Button type="solid">Solid</Button>
-                <Button type="outlined">Outlined</Button>
-                <Button type="base">Base</Button>
-              </div>
-            </div>
-            <div>
-              <span style={{ display: 'block', fontSize: '12px', color: '#666', marginBottom: '8px' }}>Disabled</span>
-              <div style={{ display: 'flex', gap: '12px' }}>
-                <Button type="solid" disabled>Solid</Button>
-                <Button type="outlined" disabled>Outlined</Button>
-                <Button type="base" disabled>Base</Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* With Icons Section */}
-      <section className="button-docs-section">
-        <h1 style={{ fontSize: '28px', fontWeight: 600, color: 'var(--gov-neutral-900)', marginBottom: '24px', paddingBottom: '8px', borderBottom: '2px solid var(--gov-neutral-200)' }}>
-          Buttons with Icons
-        </h1>
-        
-        <div className="button-docs-group">
-          <h2 className="button-docs-group__title">Icon Positions</h2>
-          <div className="button-docs-grid">
-            <Button leftIcon={<Icon name="download" size="m" color="white" />}>
-              Left Icon
-            </Button>
-            <Button rightIcon={<Icon name="chevron-right" size="m" color="white" />}>
-              Right Icon
-            </Button>
-            <Button 
-              leftIcon={<Icon name="file" size="m" color="white" />}
-              rightIcon={<Icon name="download" size="m" color="white" />}
-            >
-              Both Icons
-            </Button>
-          </div>
-        </div>
-
-        <div className="button-docs-group">
-          <h2 className="button-docs-group__title">Icon Only (Square)</h2>
-          <div className="button-docs-grid">
-            <Button size="xs" leftIcon={<Icon name="settings" size="xs" color="white" />} aria-label="Settings" />
-            <Button size="s" leftIcon={<Icon name="search" size="s" color="white" />} aria-label="Search" />
-            <Button size="m" leftIcon={<Icon name="menu" size="m" color="white" />} aria-label="Menu" />
-            <Button size="l" leftIcon={<Icon name="home" size="l" color="white" />} aria-label="Home" />
-            <Button size="xl" leftIcon={<Icon name="user" size="xl" color="white" />} aria-label="User" />
-          </div>
-        </div>
-      </section>
-    </div>
-  ),
-};
-
-// ============================================
-// Default Story with Controls (Playground)
+// Default Story with Controls
 // ============================================
 export const Default = {
-  name: 'Playground',
   args: {
     children: 'Button',
     color: 'primary',
     type: 'solid',
     size: 'm',
     disabled: false,
-  },
-  parameters: {
-    layout: 'centered',
   },
 };
 
@@ -484,7 +250,6 @@ export const MultipleClicks = {
 export const ColorVariants = {
   name: 'Color Variants',
   parameters: {
-    layout: 'padded',
     docs: {
       description: {
         story: 'All color variants showing solid type buttons. Each color has semantic meaning in the design system.',
@@ -492,14 +257,13 @@ export const ColorVariants = {
     },
   },
   render: () => (
-    <div style={{ fontFamily: 'Roboto, sans-serif' }}>
-      <h1 style={{ fontSize: '28px', fontWeight: 600, color: 'var(--gov-neutral-900)', marginBottom: '24px', paddingBottom: '8px', borderBottom: '2px solid var(--gov-neutral-200)' }}>
-        Color Variants by Type
-      </h1>
-
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Solid Buttons</h2>
-        <div className="button-docs-grid">
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+      {/* Solid variants */}
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          Solid Buttons
+        </h3>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
           <Button color="primary" type="solid">Primary</Button>
           <Button color="secondary" type="solid">Secondary</Button>
           <Button color="neutral" type="solid">Neutral</Button>
@@ -509,9 +273,12 @@ export const ColorVariants = {
         </div>
       </div>
 
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Outlined Buttons</h2>
-        <div className="button-docs-grid">
+      {/* Outlined variants */}
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          Outlined Buttons
+        </h3>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
           <Button color="primary" type="outlined">Primary</Button>
           <Button color="secondary" type="outlined">Secondary</Button>
           <Button color="neutral" type="outlined">Neutral</Button>
@@ -521,9 +288,12 @@ export const ColorVariants = {
         </div>
       </div>
 
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Base Buttons (Ghost)</h2>
-        <div className="button-docs-grid">
+      {/* Base variants */}
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          Base Buttons (Ghost)
+        </h3>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
           <Button color="primary" type="base">Primary</Button>
           <Button color="secondary" type="base">Secondary</Button>
           <Button color="neutral" type="base">Neutral</Button>
@@ -533,9 +303,12 @@ export const ColorVariants = {
         </div>
       </div>
 
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Link Buttons</h2>
-        <div className="button-docs-grid">
+      {/* Link variants */}
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          Link Buttons
+        </h3>
+        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
           <Button color="primary" type="link">Primary</Button>
           <Button color="secondary" type="link">Secondary</Button>
           <Button color="neutral" type="link">Neutral</Button>
@@ -554,103 +327,38 @@ export const ColorVariants = {
 export const SizeVariants = {
   name: 'Size Variants',
   parameters: {
-    layout: 'padded',
     docs: {
       description: {
-        story: 'All size variants from XS (24px) to XL (56px). Sizes correspond to GOV.cz component height tokens.',
+        story: `
+All size variants from XS (24px) to XL (56px). Sizes correspond to GOV.cz component height tokens.
+
+| Size | Height | Font Size | Icon Size | Use Case |
+|------|--------|-----------|-----------|----------|
+| XS | 24px | 12px | 12px | Compact UI, inline actions |
+| S | 32px | 14px | 14px | Secondary actions, tight spaces |
+| M | 40px | 16px | 16px | Default, most common |
+| L | 48px | 18px | 18px | Prominent actions |
+| XL | 56px | 20px | 20px | Hero sections, CTAs |
+        `,
       },
     },
   },
   render: () => (
-    <div style={{ fontFamily: 'Roboto, sans-serif' }}>
-      <h1 style={{ fontSize: '28px', fontWeight: 600, color: 'var(--gov-neutral-900)', marginBottom: '24px', paddingBottom: '8px', borderBottom: '2px solid var(--gov-neutral-200)' }}>
-        Size Variants
-      </h1>
-      <p style={{ fontSize: '14px', color: 'var(--gov-neutral-600)', marginBottom: '24px' }}>
-        Use larger buttons for important actions. Maintain consistent sizing when buttons appear together.
-      </p>
-
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Solid Sizes</h2>
-        <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-end', flexWrap: 'wrap' }}>
-          <div style={{ textAlign: 'center' }}>
-            <span style={{ display: 'block', fontSize: '12px', color: '#666', marginBottom: '8px' }}>XS (24px)</span>
-            <Button size="xs">Button</Button>
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            <span style={{ display: 'block', fontSize: '12px', color: '#666', marginBottom: '8px' }}>S (32px)</span>
-            <Button size="s">Button</Button>
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            <span style={{ display: 'block', fontSize: '12px', color: '#666', marginBottom: '8px' }}>M (40px)</span>
-            <Button size="m">Button</Button>
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            <span style={{ display: 'block', fontSize: '12px', color: '#666', marginBottom: '8px' }}>L (48px)</span>
-            <Button size="l">Button</Button>
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            <span style={{ display: 'block', fontSize: '12px', color: '#666', marginBottom: '8px' }}>XL (56px)</span>
-            <Button size="xl">Button</Button>
-          </div>
-        </div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+        <Button size="xs">XS (24px)</Button>
+        <Button size="s">S (32px)</Button>
+        <Button size="m">M (40px)</Button>
+        <Button size="l">L (48px)</Button>
+        <Button size="xl">XL (56px)</Button>
       </div>
-
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Outlined Sizes</h2>
-        <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-end', flexWrap: 'wrap' }}>
-          <Button size="xs" type="outlined">XS</Button>
-          <Button size="s" type="outlined">S</Button>
-          <Button size="m" type="outlined">M</Button>
-          <Button size="l" type="outlined">L</Button>
-          <Button size="xl" type="outlined">XL</Button>
-        </div>
-      </div>
-
-      <div className="button-docs-group" style={{ marginTop: '24px' }}>
-        <h2 className="button-docs-group__title">Size Reference</h2>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
-          <thead>
-            <tr style={{ borderBottom: '2px solid var(--gov-neutral-200)' }}>
-              <th style={{ padding: '12px', textAlign: 'left' }}>Size</th>
-              <th style={{ padding: '12px', textAlign: 'left' }}>Height</th>
-              <th style={{ padding: '12px', textAlign: 'left' }}>Font Size</th>
-              <th style={{ padding: '12px', textAlign: 'left' }}>Use Case</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={{ borderBottom: '1px solid var(--gov-neutral-200)' }}>
-              <td style={{ padding: '12px' }}>XS</td>
-              <td style={{ padding: '12px' }}>24px</td>
-              <td style={{ padding: '12px' }}>12px</td>
-              <td style={{ padding: '12px' }}>Compact UI, inline actions</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid var(--gov-neutral-200)' }}>
-              <td style={{ padding: '12px' }}>S</td>
-              <td style={{ padding: '12px' }}>32px</td>
-              <td style={{ padding: '12px' }}>14px</td>
-              <td style={{ padding: '12px' }}>Secondary actions, tight spaces</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid var(--gov-neutral-200)' }}>
-              <td style={{ padding: '12px' }}>M</td>
-              <td style={{ padding: '12px' }}>40px</td>
-              <td style={{ padding: '12px' }}>16px</td>
-              <td style={{ padding: '12px' }}>Default, most common</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid var(--gov-neutral-200)' }}>
-              <td style={{ padding: '12px' }}>L</td>
-              <td style={{ padding: '12px' }}>48px</td>
-              <td style={{ padding: '12px' }}>18px</td>
-              <td style={{ padding: '12px' }}>Prominent actions</td>
-            </tr>
-            <tr>
-              <td style={{ padding: '12px' }}>XL</td>
-              <td style={{ padding: '12px' }}>56px</td>
-              <td style={{ padding: '12px' }}>20px</td>
-              <td style={{ padding: '12px' }}>Hero sections, CTAs</td>
-            </tr>
-          </tbody>
-        </table>
+      
+      <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+        <Button size="xs" type="outlined">XS</Button>
+        <Button size="s" type="outlined">S</Button>
+        <Button size="m" type="outlined">M</Button>
+        <Button size="l" type="outlined">L</Button>
+        <Button size="xl" type="outlined">XL</Button>
       </div>
     </div>
   ),
@@ -662,7 +370,6 @@ export const SizeVariants = {
 export const WithIcons = {
   name: 'With Icons',
   parameters: {
-    layout: 'padded',
     docs: {
       description: {
         story: 'Buttons can include icons on the left, right, or both sides. Icon sizes automatically scale with button size.',
@@ -670,29 +377,31 @@ export const WithIcons = {
     },
   },
   render: () => (
-    <div style={{ fontFamily: 'Roboto, sans-serif' }}>
-      <h1 style={{ fontSize: '28px', fontWeight: 600, color: 'var(--gov-neutral-900)', marginBottom: '24px', paddingBottom: '8px', borderBottom: '2px solid var(--gov-neutral-200)' }}>
-        Buttons with Icons
-      </h1>
-
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Left Icon</h2>
-        <div className="button-docs-grid">
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      {/* Left icons */}
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          Left Icon
+        </h3>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
           <Button leftIcon={<Icon name="download" size="m" color="white" />}>
             Download
           </Button>
           <Button color="success" leftIcon={<Icon name="check" size="m" color="white" />}>
             Confirm
           </Button>
-          <Button color="error" leftIcon={<Icon name="x" size="m" color="white" />}>
+          <Button color="error" leftIcon={<Icon name="close" size="m" color="white" />}>
             Delete
           </Button>
         </div>
       </div>
 
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Right Icon</h2>
-        <div className="button-docs-grid">
+      {/* Right icons */}
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          Right Icon
+        </h3>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
           <Button rightIcon={<Icon name="chevron-right" size="m" color="white" />}>
             Next
           </Button>
@@ -702,9 +411,12 @@ export const WithIcons = {
         </div>
       </div>
 
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Both Icons</h2>
-        <div className="button-docs-grid">
+      {/* Both icons */}
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          Both Icons
+        </h3>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
           <Button 
             leftIcon={<Icon name="file" size="m" color="white" />}
             rightIcon={<Icon name="download" size="m" color="white" />}
@@ -714,19 +426,22 @@ export const WithIcons = {
         </div>
       </div>
 
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Icon Only (Square Buttons)</h2>
-        <div className="button-docs-grid" style={{ marginBottom: '12px' }}>
+      {/* Icon-only buttons */}
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          Icon Only (Square Buttons)
+        </h3>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
           <Button size="xs" leftIcon={<Icon name="settings" size="xs" color="white" />} aria-label="Settings" />
           <Button size="s" leftIcon={<Icon name="settings" size="s" color="white" />} aria-label="Settings" />
           <Button size="m" leftIcon={<Icon name="settings" size="m" color="white" />} aria-label="Settings" />
           <Button size="l" leftIcon={<Icon name="settings" size="l" color="white" />} aria-label="Settings" />
           <Button size="xl" leftIcon={<Icon name="settings" size="xl" color="white" />} aria-label="Settings" />
         </div>
-        <div className="button-docs-grid">
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center', marginTop: '12px' }}>
           <Button size="m" type="outlined" leftIcon={<Icon name="search" size="m" color="var(--gov-primary-700)" />} aria-label="Search" />
           <Button size="m" type="base" leftIcon={<Icon name="menu" size="m" color="var(--gov-primary-700)" />} aria-label="Menu" />
-          <Button size="m" color="error" leftIcon={<Icon name="x" size="m" color="white" />} aria-label="Close" />
+          <Button size="m" color="error" leftIcon={<Icon name="close" size="m" color="white" />} aria-label="Close" />
         </div>
       </div>
     </div>
@@ -739,7 +454,6 @@ export const WithIcons = {
 export const States = {
   name: 'States',
   parameters: {
-    layout: 'padded',
     docs: {
       description: {
         story: 'Interactive states for all button types. Hover over buttons to see state changes.',
@@ -747,36 +461,30 @@ export const States = {
     },
   },
   render: () => (
-    <div style={{ fontFamily: 'Roboto, sans-serif' }}>
-      <h1 style={{ fontSize: '28px', fontWeight: 600, color: 'var(--gov-neutral-900)', marginBottom: '24px', paddingBottom: '8px', borderBottom: '2px solid var(--gov-neutral-200)' }}>
-        Button States
-      </h1>
-
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Enabled vs Disabled</h2>
-        <div style={{ display: 'flex', gap: '48px', flexWrap: 'wrap' }}>
-          <div>
-            <span style={{ display: 'block', fontSize: '12px', fontWeight: 500, color: '#4f4f4f', marginBottom: '12px' }}>Enabled</span>
-            <div className="button-docs-grid">
-              <Button color="primary">Primary</Button>
-              <Button type="outlined">Outlined</Button>
-              <Button type="base">Base</Button>
-            </div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      {/* Normal vs Disabled */}
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          Enabled vs Disabled
+        </h3>
+        <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'flex-start' }}>
+            <span style={{ fontSize: '12px', fontWeight: 500, color: '#4f4f4f' }}>Enabled</span>
+            <Button color="primary">Primary</Button>
           </div>
-          <div>
-            <span style={{ display: 'block', fontSize: '12px', fontWeight: 500, color: '#4f4f4f', marginBottom: '12px' }}>Disabled</span>
-            <div className="button-docs-grid">
-              <Button color="primary" disabled>Primary</Button>
-              <Button type="outlined" disabled>Outlined</Button>
-              <Button type="base" disabled>Base</Button>
-            </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'flex-start' }}>
+            <span style={{ fontSize: '12px', fontWeight: 500, color: '#4f4f4f' }}>Disabled</span>
+            <Button color="primary" disabled>Primary</Button>
           </div>
         </div>
       </div>
 
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">All Types - Disabled</h2>
-        <div className="button-docs-grid">
+      {/* All disabled variants */}
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          All Types - Disabled
+        </h3>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
           <Button type="solid" disabled>Solid</Button>
           <Button type="outlined" disabled>Outlined</Button>
           <Button type="base" disabled>Base</Button>
@@ -784,12 +492,15 @@ export const States = {
         </div>
       </div>
 
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Focus State</h2>
-        <p style={{ fontSize: '13px', color: 'var(--gov-neutral-600)', marginBottom: '16px' }}>
-          Press Tab to navigate and see focus rings (blue outline). WCAG compliant focus indication.
+      {/* Focus indication */}
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          Focus State (Tab to see)
+        </h3>
+        <p style={{ fontSize: '13px', color: '#5d5d5d', marginBottom: '12px' }}>
+          Press Tab to navigate and see focus rings (blue outline)
         </p>
-        <div className="button-docs-grid">
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
           <Button>Tab here</Button>
           <Button type="outlined">Then here</Button>
           <Button type="base">And here</Button>
@@ -805,7 +516,6 @@ export const States = {
 export const ButtonMatrix = {
   name: 'Complete Matrix',
   parameters: {
-    layout: 'padded',
     docs: {
       description: {
         story: 'Complete matrix showing all color and type combinations for the M size.',
@@ -817,46 +527,37 @@ export const ButtonMatrix = {
     const types = ['solid', 'outlined', 'base', 'link'];
     
     return (
-      <div style={{ fontFamily: 'Roboto, sans-serif' }}>
-        <h1 style={{ fontSize: '28px', fontWeight: 600, color: 'var(--gov-neutral-900)', marginBottom: '24px', paddingBottom: '8px', borderBottom: '2px solid var(--gov-neutral-200)' }}>
-          Complete Button Matrix
-        </h1>
-        <p style={{ fontSize: '14px', color: 'var(--gov-neutral-600)', marginBottom: '24px' }}>
-          All 24 combinations of color × type at M size.
-        </p>
-
-        <div className="button-docs-group" style={{ overflowX: 'auto' }}>
-          <table style={{ borderCollapse: 'collapse', width: '100%' }}>
-            <thead>
-              <tr>
-                <th style={{ padding: '16px', textAlign: 'left', fontSize: '14px', fontWeight: 600, color: 'var(--gov-neutral-900)', borderBottom: '2px solid var(--gov-neutral-200)' }}>
-                  Color / Type
+      <div style={{ overflowX: 'auto' }}>
+        <table style={{ borderCollapse: 'collapse', fontFamily: 'Roboto, sans-serif' }}>
+          <thead>
+            <tr>
+              <th style={{ padding: '12px', textAlign: 'left', fontSize: '13px', fontWeight: 600, color: '#262626', borderBottom: '2px solid #d1d1d1' }}>
+                Color / Type
+              </th>
+              {types.map(type => (
+                <th key={type} style={{ padding: '12px', textAlign: 'center', fontSize: '13px', fontWeight: 600, color: '#262626', borderBottom: '2px solid #d1d1d1', textTransform: 'capitalize' }}>
+                  {type}
                 </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {colors.map(color => (
+              <tr key={color}>
+                <td style={{ padding: '12px', textTransform: 'capitalize', fontSize: '13px', fontWeight: 600, color: '#3b3b3b', borderBottom: '1px solid #e7e7e7' }}>
+                  {color}
+                </td>
                 {types.map(type => (
-                  <th key={type} style={{ padding: '16px', textAlign: 'center', fontSize: '14px', fontWeight: 600, color: 'var(--gov-neutral-900)', borderBottom: '2px solid var(--gov-neutral-200)', textTransform: 'capitalize' }}>
-                    {type}
-                  </th>
+                  <td key={`${color}-${type}`} style={{ padding: '12px', textAlign: 'center', borderBottom: '1px solid #e7e7e7' }}>
+                    <Button color={color} type={type}>
+                      Button
+                    </Button>
+                  </td>
                 ))}
               </tr>
-            </thead>
-            <tbody>
-              {colors.map(color => (
-                <tr key={color}>
-                  <td style={{ padding: '16px', textTransform: 'capitalize', fontSize: '14px', fontWeight: 600, color: 'var(--gov-neutral-800)', borderBottom: '1px solid var(--gov-neutral-200)' }}>
-                    {color}
-                  </td>
-                  {types.map(type => (
-                    <td key={`${color}-${type}`} style={{ padding: '16px', textAlign: 'center', borderBottom: '1px solid var(--gov-neutral-200)' }}>
-                      <Button color={color} type={type}>
-                        Button
-                      </Button>
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     );
   },
@@ -868,7 +569,6 @@ export const ButtonMatrix = {
 export const RealWorldExamples = {
   name: 'Real-World Examples',
   parameters: {
-    layout: 'padded',
     docs: {
       description: {
         story: 'Common button patterns and use cases in real applications.',
@@ -876,20 +576,15 @@ export const RealWorldExamples = {
     },
   },
   render: () => (
-    <div style={{ fontFamily: 'Roboto, sans-serif', maxWidth: '700px' }}>
-      <h1 style={{ fontSize: '28px', fontWeight: 600, color: 'var(--gov-neutral-900)', marginBottom: '24px', paddingBottom: '8px', borderBottom: '2px solid var(--gov-neutral-200)' }}>
-        Real-World Examples
-      </h1>
-      <p style={{ fontSize: '14px', color: 'var(--gov-neutral-600)', marginBottom: '32px' }}>
-        Common button patterns and use cases in government web applications.
-      </p>
-
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', maxWidth: '600px' }}>
       {/* Form actions */}
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Form Actions</h2>
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          Form Actions
+        </h3>
         <div style={{ 
           padding: '24px', 
-          backgroundColor: 'var(--gov-neutral-100)', 
+          backgroundColor: '#f6f6f6', 
           borderRadius: '8px',
           display: 'flex',
           gap: '12px',
@@ -901,20 +596,22 @@ export const RealWorldExamples = {
       </div>
 
       {/* Destructive action */}
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Destructive Action Confirmation</h2>
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          Destructive Action Confirmation
+        </h3>
         <div style={{ 
           padding: '24px', 
           backgroundColor: '#fff', 
           borderRadius: '8px',
-          border: '1px solid var(--gov-neutral-200)'
+          border: '1px solid #e7e7e7'
         }}>
-          <p style={{ marginBottom: '16px', fontSize: '14px', color: 'var(--gov-neutral-700)' }}>
+          <p style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', color: '#3b3b3b' }}>
             Are you sure you want to delete this item? This action cannot be undone.
           </p>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
             <Button type="outlined" color="neutral">Keep Item</Button>
-            <Button color="error" leftIcon={<Icon name="x" size="m" color="white" />}>
+            <Button color="error" leftIcon={<Icon name="close" size="m" color="white" />}>
               Delete
             </Button>
           </div>
@@ -922,22 +619,24 @@ export const RealWorldExamples = {
       </div>
 
       {/* Call to action */}
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Hero Call-to-Action</h2>
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          Hero Call-to-Action
+        </h3>
         <div style={{ 
           padding: '48px', 
           background: 'linear-gradient(135deg, var(--gov-primary-600) 0%, var(--gov-primary-800) 100%)',
           borderRadius: '8px',
           textAlign: 'center'
         }}>
-          <h2 style={{ color: 'white', marginBottom: '16px', fontSize: '24px' }}>
+          <h2 style={{ color: 'white', fontFamily: 'Roboto, sans-serif', marginBottom: '16px' }}>
             Get Started Today
           </h2>
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
             <Button size="l" color="secondary">
               Sign Up Free
             </Button>
-            <Button size="l" type="outlined" color="neutral">
+            <Button size="l" type="outlined" style={{ borderColor: 'white', color: 'white', backgroundColor: 'transparent' }}>
               Learn More
             </Button>
           </div>
@@ -945,32 +644,36 @@ export const RealWorldExamples = {
       </div>
 
       {/* Status actions */}
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Status-Based Actions</h2>
-        <div className="button-docs-grid">
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          Status-Based Actions
+        </h3>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
           <Button color="success" leftIcon={<Icon name="check" size="m" color="white" />}>
             Approve
           </Button>
-          <Button color="warning" leftIcon={<Icon name="exclamation-triangle" size="m" color="var(--gov-neutral-950)" />}>
+          <Button color="warning" leftIcon={<Icon name="warning" size="m" color="var(--gov-neutral-950)" />}>
             Review
           </Button>
-          <Button color="error" leftIcon={<Icon name="x" size="m" color="white" />}>
+          <Button color="error" leftIcon={<Icon name="close" size="m" color="white" />}>
             Reject
           </Button>
         </div>
       </div>
 
       {/* Navigation */}
-      <div className="button-docs-group">
-        <h2 className="button-docs-group__title">Pagination / Navigation</h2>
-        <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+      <div>
+        <h3 style={{ marginBottom: '16px', fontFamily: 'Roboto, sans-serif', fontSize: '14px', fontWeight: 600, color: '#262626' }}>
+          Pagination / Navigation
+        </h3>
+        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           <Button size="s" type="outlined" leftIcon={<Icon name="chevron-left" size="s" color="var(--gov-primary-700)" />}>
             Previous
           </Button>
           <Button size="s" type="base">1</Button>
           <Button size="s" type="solid">2</Button>
           <Button size="s" type="base">3</Button>
-          <span style={{ margin: '0 8px', color: 'var(--gov-neutral-600)', fontWeight: 500 }}>...</span>
+          <span style={{ margin: '0 8px', color: '#5d5d5d', fontWeight: 500 }}>...</span>
           <Button size="s" type="base">10</Button>
           <Button size="s" type="outlined" rightIcon={<Icon name="chevron-right" size="s" color="var(--gov-primary-700)" />}>
             Next
