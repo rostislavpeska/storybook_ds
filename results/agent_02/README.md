@@ -1,16 +1,60 @@
-# React + Vite
+# Agent 02: Figma + Custom Components Approach
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> ✅ **RESULT: SUCCESS** (42/50 points)
 
-Currently, two official plugins are available:
+## Approach
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This agent built GOV.cz components **from scratch** using Figma designs as reference, then copied pre-built components from the Storybook Design System.
 
-## React Compiler
+### Method
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Referenced Figma design files (`gov-materials-4-2-5`)
+2. Used pre-built components from this Storybook repository
+3. Wired up routing, state, form logic, and i18n
 
-## Expanding the ESLint configuration
+### No GOV.cz npm packages used!
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+All components were custom-built:
+- Button, Card, Checkbox, Datepicker, FileUpload
+- Footer, Header, Icon, Input, LanguageSwitcher
+- Radio, Select, Layout
+
+## What Worked
+
+The AI agent successfully:
+- ✅ Used all Storybook components properly
+- ✅ Built complete form with 12+ sections
+- ✅ Implemented file upload with drag & drop
+- ✅ Added dynamic "Add Another" fields
+- ✅ Created header with language switcher
+- ✅ Added footer with links
+- ✅ Built card-based homepage
+- ✅ Implemented breadcrumb navigation
+
+## Scores
+
+| Criterion | Score | Notes |
+|-----------|-------|-------|
+| Visual Accuracy | 8/10 | GOV.cz styling, proper components |
+| Functionality | 9/10 | All features work |
+| Accessibility | 8/10 | Proper structure, labels |
+| Code Quality | 8/10 | Clean component usage |
+| Completeness | 9/10 | All sections, dynamic fields |
+| **TOTAL** | **42/50** | ✅ Excellent result |
+
+## Running
+
+```bash
+npm install
+docker-compose up -d
+# → http://localhost:5177
+```
+
+## Key Insight
+
+> **AI excels at USING pre-built components but fails at using unfamiliar npm packages.**
+
+The recommended workflow:
+1. BUILD components in Storybook first
+2. COPY component files to new project
+3. LET AI wire up the logic (routing, state, forms, i18n)

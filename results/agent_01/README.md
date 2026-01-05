@@ -1,16 +1,59 @@
-# React + Vite
+# Agent 01: NPM Packages Approach
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> ❌ **RESULT: FAILED** (6/50 points)
 
-Currently, two official plugins are available:
+## Approach
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This agent attempted to build a GOV.cz form application using **only official npm packages**.
 
-## React Compiler
+### Installed Packages
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install @gov-design-system-ce/react @gov-design-system-ce/styles
+```
 
-## Expanding the ESLint configuration
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `@gov-design-system-ce/react` | ^3.4.0 | Official GOV.cz React components |
+| `@gov-design-system-ce/styles` | ^4.2.7 | Official GOV.cz CSS styles |
+| `i18next` | ^25.7.3 | Internationalization |
+| `react-i18next` | ^16.5.1 | React i18n bindings |
+| `jspdf` | ^4.0.0 | PDF export |
+| `react-router-dom` | ^7.11.0 | Routing |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## What Went Wrong
+
+The AI agent:
+1. ✅ Successfully installed the packages
+2. ❌ Failed to actually USE the imported components
+3. ❌ Rendered only default HTML elements (plain inputs, native checkboxes)
+4. ❌ No GOV.cz styling appeared despite having styles imported
+
+### Root Cause
+
+> **AI cannot properly use unfamiliar npm component libraries.**
+> 
+> Even with documentation available, the AI failed to understand the component APIs and how to integrate them correctly.
+
+## Scores
+
+| Criterion | Score | Notes |
+|-----------|-------|-------|
+| Visual Accuracy | 0/10 | No GOV.cz components rendered |
+| Functionality | 2/10 | Default HTML only |
+| Accessibility | 1/10 | No ARIA, no semantics |
+| Code Quality | 2/10 | Backend-focused, no styling |
+| Completeness | 1/10 | Missing almost everything |
+| **TOTAL** | **6/50** | ❌ Non-viable approach |
+
+## Running
+
+```bash
+npm install
+docker-compose up -d
+# → http://localhost:5175
+```
+
+## Lesson Learned
+
+Don't rely on AI to use npm packages it hasn't seen before. Pre-build components in Storybook first.
