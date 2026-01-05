@@ -62,11 +62,70 @@ Place this at the very top of the main story (usually the first one in the secti
 
 ## 4. Current Design Tokens Reference
 
-| Token Category | Canonical Story Path |
-| :--- | :--- |
-| **Icons** | `Design Tokens/Icons` |
-| **Size/Spacing** | `Design Tokens/Size` |
-| **Typography** | `Design Tokens/Typography` (Next for unification) |
+| Token Category | Canonical Story Path | Status |
+| :--- | :--- | :--- |
+| **Icons** | `Design Tokens/Icons` | Unified |
+| **Size/Spacing** | `Design Tokens/Size` | Unified |
+| **Typography** | `Design Tokens/Typography` | Unified |
+| **Color Tokens** | `Design Tokens/Color Tokens` | Unified |
+
+## 5. Testing Infrastructure
+
+### A. Unit Tests (Vitest)
+- **Command**: `npm run test` (or `npm run test -- --run` for single run)
+- **UI Mode**: `npm run test:ui` (opens interactive test browser)
+- **Coverage**: `npm run test:coverage`
+- **Configuration**: `vite.config.js` contains the vitest configuration
+- **Setup File**: `src/setupTests.js` imports `@testing-library/jest-dom`
+
+### B. Storybook Tests (test-runner)
+- **Command**: `npm run test-storybook` (requires Storybook to be running)
+- **Configuration**: `.storybook/test-runner.js`
+- **Purpose**: Validates that all stories render without errors
+
+### C. CI/CD (GitHub Actions)
+- **Workflow File**: `.github/workflows/ci.yml`
+- **Jobs**:
+  1. **Unit Tests**: Runs vitest on all `*.test.jsx` files
+  2. **Storybook Tests**: Builds Storybook, serves it, runs test-runner
+  3. **Build Check**: Verifies Storybook builds successfully
+
+### D. Writing Component Tests
+When creating new components, add tests following this pattern:
+```jsx
+// ComponentName.test.jsx
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { ComponentName } from './ComponentName';
+
+describe('ComponentName', () => {
+  it('renders correctly', () => {
+    render(<ComponentName />);
+    expect(screen.getByRole('...')).toBeInTheDocument();
+  });
+  
+  it('handles user interactions', () => {
+    const handler = vi.fn();
+    render(<ComponentName onClick={handler} />);
+    fireEvent.click(screen.getByRole('button'));
+    expect(handler).toHaveBeenCalled();
+  });
+});
+```
+
+## 6. Docker Development Environment
+
+### Container Management
+- **Start**: `docker start storybookds-storybook-dev-1`
+- **Stop**: `docker stop storybookds-storybook-dev-1`
+- **Logs**: `docker logs storybookds-storybook-dev-1`
+- **Exec**: `docker exec storybookds-storybook-dev-1 <command>`
+
+### Installing Packages
+Always install packages **inside the container** to maintain consistency:
+```bash
+docker exec storybookds-storybook-dev-1 npm install --save-dev <package> --legacy-peer-deps
+```
 
 ---
 **Last Updated**: Jan 5, 2026

@@ -8,5 +8,9 @@ const config = {
     name: '@storybook/react-vite',
     options: {},
   },
+  // Enable interaction testing with test-runner
+  features: {
+    interactionTests: true,
+  },
 };
 export default config;
