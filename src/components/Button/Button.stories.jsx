@@ -1,9 +1,14 @@
 import { Button } from './Button';
 import { Icon } from '../Icon/Icon';
+import { expect, fn, userEvent, within } from 'storybook/test';
 
 export default {
   title: 'Components/Button',
   component: Button,
+  args: {
+    // Provide a mock function to spy on
+    onClick: fn(),
+  },
   parameters: {
     layout: 'centered',
     docs: {
@@ -117,6 +122,125 @@ export const Default = {
     type: 'solid',
     size: 'm',
     disabled: false,
+  },
+};
+
+// ============================================
+// Interaction Tests with Play Functions
+// ============================================
+
+/**
+ * Tests that clicking the button triggers the onClick handler
+ */
+export const ClickInteraction = {
+  name: 'Test: Click Fires Event',
+  args: {
+    children: 'Click Me',
+    color: 'primary',
+  },
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /click me/i });
+    
+    // Simulate user clicking the button
+    await userEvent.click(button);
+    
+    // Assert that onClick was called
+    await expect(args.onClick).toHaveBeenCalledTimes(1);
+  },
+};
+
+/**
+ * Tests that a disabled button does NOT fire onClick
+ */
+export const DisabledNoClick = {
+  name: 'Test: Disabled Blocks Click',
+  args: {
+    children: 'Disabled Button',
+    color: 'primary',
+    disabled: true,
+  },
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /disabled button/i });
+    
+    // Assert the button is disabled
+    await expect(button).toBeDisabled();
+    
+    // Assert the button has the disabled class
+    await expect(button).toHaveClass('gov-button--disabled');
+    
+    // Assert that onClick was never called (disabled buttons prevent clicks)
+    await expect(args.onClick).not.toHaveBeenCalled();
+  },
+};
+
+/**
+ * Tests that the button can be focused via keyboard
+ */
+export const KeyboardFocus = {
+  name: 'Test: Keyboard Focus',
+  args: {
+    children: 'Focus Me',
+    color: 'primary',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /focus me/i });
+    
+    // Focus the button via keyboard navigation
+    await userEvent.tab();
+    
+    // Assert that the button is now focused
+    await expect(button).toHaveFocus();
+  },
+};
+
+/**
+ * Tests that pressing Enter on a focused button triggers onClick
+ */
+export const KeyboardEnter = {
+  name: 'Test: Enter Key Clicks',
+  args: {
+    children: 'Press Enter',
+    color: 'success',
+  },
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /press enter/i });
+    
+    // Focus the button
+    button.focus();
+    await expect(button).toHaveFocus();
+    
+    // Press Enter key
+    await userEvent.keyboard('{Enter}');
+    
+    // Assert onClick was called
+    await expect(args.onClick).toHaveBeenCalledTimes(1);
+  },
+};
+
+/**
+ * Tests multiple rapid clicks
+ */
+export const MultipleClicks = {
+  name: 'Test: Multiple Clicks',
+  args: {
+    children: 'Click Multiple Times',
+    color: 'secondary',
+  },
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /click multiple times/i });
+    
+    // Click the button 3 times
+    await userEvent.click(button);
+    await userEvent.click(button);
+    await userEvent.click(button);
+    
+    // Assert onClick was called exactly 3 times
+    await expect(args.onClick).toHaveBeenCalledTimes(3);
   },
 };
 
