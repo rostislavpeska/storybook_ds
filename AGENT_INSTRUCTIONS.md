@@ -2,6 +2,37 @@
 
 This document serves as the authoritative guide for AI agents working on the "Storybook DS" project. Our goal is a unified, professional, and accessible documentation system for the GOV.cz Design System components.
 
+---
+
+## ⛔ CRITICAL RULE: DOCKER ONLY - NO LOCAL SHORTCUTS
+
+**EVERYTHING MUST RUN INSIDE DOCKER. NO EXCEPTIONS.**
+
+### Forbidden Actions
+- ❌ `npm run storybook` (local)
+- ❌ `npx storybook dev` (local)
+- ❌ `npm install` (local)
+- ❌ `npx vitest` (local)
+- ❌ ANY npm/npx command run directly on the host
+
+### Required Actions
+- ✅ `docker exec <container> npm install ...`
+- ✅ `docker exec <container> npm run storybook`
+- ✅ `docker-compose --profile dev up`
+- ✅ ALL commands must go through Docker
+
+### Why This Matters
+1. Local processes pollute the host system
+2. Creates confusion about what's running where
+3. Breaks reproducibility
+4. Causes port conflicts and zombie processes
+
+### Before ANY npm/npx Command
+ASK YOURSELF: "Am I running this inside Docker?"
+If NO → STOP. Rewrite the command with `docker exec`.
+
+---
+
 ## 1. Unified Design Language (The "Canonical" Look)
 
 Every documentation story (e.g., Icons, Size Tokens, Typography) should follow this structure:

@@ -1,9 +1,7 @@
 /** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: [
-    '@storybook/addon-mcp',
-  ],
+  addons: ['@storybook/addon-mcp', '@storybook/addon-vitest'],
   framework: {
     name: '@storybook/react-vite',
     options: {},

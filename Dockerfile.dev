@@ -1,9 +1,10 @@
 # ========================================
 # Storybook Development Dockerfile
 # Use this for local development with hot-reload
+# Uses Playwright base image for browser testing support
 # ========================================
 
-FROM node:20-alpine
+FROM mcr.microsoft.com/playwright:v1.57.0-noble
 
 WORKDIR /app
 
