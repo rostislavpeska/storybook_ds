@@ -219,12 +219,72 @@ storybook_ds/
 │   │   └── TypographyTokens/# Typography documentation
 │   ├── index.css            # Global styles & design tokens
 │   └── main.jsx             # React entry point
+├── results/                 # AI Agent experiment results
+│   ├── agent_01/            # NPM approach (FAILED)
+│   └── agent_02/            # Figma approach (SUCCESS)
 ├── Dockerfile               # Production build (nginx)
 ├── Dockerfile.dev           # Development (Playwright + hot-reload)
 ├── docker-compose.yml       # Container orchestration
 ├── package.json             # Dependencies
 └── package-lock.json        # Locked dependency versions
 ```
+
+---
+
+## 🧪 Experiment Results
+
+This repository includes results from an **AI Agent Implementation Contest** comparing different approaches to building GOV.cz compliant applications.
+
+### The Challenge
+
+Build a complete GOV.cz form application with:
+- Homepage with 3 form cards
+- Working requalification form with 12+ sections
+- Czech + English language support
+- PDF export capability
+- File upload with drag & drop
+- WCAG 2.1 AA accessibility
+
+### Approaches Tested
+
+| Approach | Agent | Method | Result |
+|----------|-------|--------|--------|
+| **NPM Packages** | agent_01 | Use official `@gov-design-system-ce/react` | ❌ **FAILED** (6/50) |
+| **Figma + Custom** | agent_02 | Build components from Figma designs | ✅ **SUCCESS** (42/50) |
+
+### Key Findings
+
+| What Works ✅ | What Doesn't Work ❌ |
+|---------------|---------------------|
+| Pre-built custom components | npm packages only |
+| Figma as design reference | Reading package documentation |
+| Explicit component mapping | Implicit understanding |
+| Copy-paste approach | Complex component APIs |
+
+### Running the Experiments
+
+```bash
+# Agent 01 (NPM approach) - port 5175
+cd results/agent_01
+npm install
+docker-compose up -d
+# → http://localhost:5175
+
+# Agent 02 (Figma approach) - port 5177
+cd results/agent_02
+npm install
+docker-compose up -d
+# → http://localhost:5177
+```
+
+### Conclusion
+
+> **AI excels at USING pre-built components but FAILS at importing and configuring npm packages.**
+
+The recommended workflow for AI-assisted GOV.cz development:
+1. BUILD components in Storybook first (human or AI-assisted)
+2. COPY component files to new project
+3. LET AI wire up the components (routing, state, form logic, i18n)
 
 ---
 
