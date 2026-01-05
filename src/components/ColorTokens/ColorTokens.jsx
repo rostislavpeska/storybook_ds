@@ -23,7 +23,11 @@ const ColorSwatch = ({ name, value, cssVar, usage }) => (
  */
 export const ColorTokens = ({ colors, title }) => (
   <div className="color-tokens">
-    {title && <h3 className="color-tokens__title">{title}</h3>}
+    {title && (
+      <h1 style={{ color: 'var(--gov-neutral-900)', fontSize: 'var(--gov-font-headline-m)', marginBottom: 'var(--gov-space-m)' }}>
+        {title}
+      </h1>
+    )}
     <div className="color-tokens__grid">
       {colors.map((color, index) => (
         <ColorSwatch key={index} {...color} />

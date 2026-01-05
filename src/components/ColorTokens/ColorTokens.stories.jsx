@@ -30,8 +30,40 @@ const govPrimaryColors = [
 ];
 
 export const GovPrimary = {
+  render: (args) => (
+    <div>
+      {/* Unified Info Box */}
+      <div className="doc-info-box">
+        <h1 className="doc-info-box__title">
+          Color System
+        </h1>
+        <p className="doc-info-box__description">
+          The GOV.cz color palette is built on a foundation of blue and yellow, 
+          representing the national colors of the Czech Republic. It includes semantic status 
+          colors and a flexible grayscale for UI depth.
+        </p>
+        <a 
+          href="https://designsystem.gov.cz/principy/barevne-tokeny.html" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="doc-info-box__link"
+        >
+          Official Documentation: Color Tokens
+        </a>
+      </div>
+
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Primary Colors
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        The core blue scale used for branding, primary actions, and key interactive elements.
+      </p>
+
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'GOV Primary Colors (Blue Scale)',
+    title: 'Blue Scale (Default)',
     colors: govPrimaryColors,
   },
 };
@@ -56,8 +88,19 @@ const govSecondaryColors = [
 ];
 
 export const GovSecondary = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Secondary Colors
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        The gold/yellow scale used for highlights, secondary brand elements, and warnings.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'GOV Secondary Colors (Yellow/Gold)',
+    title: 'Yellow/Gold Scale',
     colors: govSecondaryColors,
   },
 };
@@ -82,8 +125,19 @@ const govNeutralColors = [
 ];
 
 export const GovNeutral = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Neutral Colors
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Grayscale palette for text, backgrounds, borders, and UI structure.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'GOV Neutral Colors (Grayscale)',
+    title: 'Grayscale Scale',
     colors: govNeutralColors,
   },
 };
@@ -107,8 +161,19 @@ const govErrorColors = [
 ];
 
 export const GovError = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Error Colors
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Red palette for error states, destructive actions, and alerts.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'GOV Error Colors (Red Scale)',
+    title: 'Red Scale',
     colors: govErrorColors,
   },
 };
@@ -132,8 +197,19 @@ const govWarningColors = [
 ];
 
 export const GovWarning = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Warning Colors
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Yellow/Gold palette for warning states and cautionary information.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'GOV Warning Colors (Yellow Scale)',
+    title: 'Yellow Scale',
     colors: govWarningColors,
   },
 };
@@ -157,8 +233,19 @@ const govSuccessColors = [
 ];
 
 export const GovSuccess = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Success Colors
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Green palette for success states, confirmations, and positive feedback.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'GOV Success Colors (Green Scale)',
+    title: 'Green Scale',
     colors: govSuccessColors,
   },
 };
@@ -175,8 +262,19 @@ const govInteractiveColors = [
 ];
 
 export const GovInteractive = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Interactive & State Colors
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Colors for focused elements, visited links, and specialized interactive states.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'GOV Focus & Visited Colors',
+    title: 'Focus & Visited',
     colors: govInteractiveColors,
   },
 };
@@ -200,8 +298,19 @@ const govMode2Colors = [
 ];
 
 export const GovMode2Green = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Mode 2: Green Theme
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Alternative green brand palette for specific departmental use.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'Alternative Brand: Mode 2 (Green)',
+    title: 'Mode 2 (Green)',
     colors: govMode2Colors,
   },
 };
@@ -225,8 +334,19 @@ const govMode3Colors = [
 ];
 
 export const GovMode3GreenAlt = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Mode 3: Green Alt
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Alternative light green brand palette.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'Alternative Brand: Mode 3 (Green Alt)',
+    title: 'Mode 3 (Green Alt)',
     colors: govMode3Colors,
   },
 };
@@ -250,8 +370,19 @@ const govMode4Colors = [
 ];
 
 export const GovMode4Teal = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Mode 4: Teal Theme
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Alternative teal brand palette.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'Alternative Brand: Mode 4 (Teal)',
+    title: 'Mode 4 (Teal)',
     colors: govMode4Colors,
   },
 };
@@ -271,8 +402,19 @@ const govSemanticColors = [
 ];
 
 export const GovSemanticStatus = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Semantic Status Colors
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Core functional colors used across all themes for error, success, and warning states.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'GOV Semantic Status Colors',
+    title: 'Semantic Status',
     colors: govSemanticColors,
   },
 };
@@ -296,8 +438,19 @@ const govTextColors = [
 ];
 
 export const GovTextColors = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Text Colors
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Semantic tokens for text content in light mode.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'GOV Text Colors (Light Mode)',
+    title: 'Text (Light Mode)',
     colors: govTextColors,
   },
 };
@@ -319,8 +472,19 @@ const govBackgroundColors = [
 ];
 
 export const GovBackgroundColors = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Background Colors
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Tokens for page, block, and component backgrounds.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'GOV Background Colors (Light Mode)',
+    title: 'Background (Light Mode)',
     colors: govBackgroundColors,
   },
 };
@@ -341,8 +505,19 @@ const govButtonSolidColors = [
 ];
 
 export const GovButtonSolid = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Button Colors
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Tokens specifically for solid button backgrounds and states.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'GOV Button Colors (Solid)',
+    title: 'Buttons (Solid)',
     colors: govButtonSolidColors,
   },
 };
@@ -364,8 +539,19 @@ const govBorderColors = [
 ];
 
 export const GovBorderColors = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Border Colors
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Tokens for primary, secondary, and functional borders.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'GOV Border Colors',
+    title: 'Borders',
     colors: govBorderColors,
   },
 };
@@ -382,8 +568,19 @@ const govNavColors = [
 ];
 
 export const GovNavigationColors = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Navigation Colors
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Component-specific tokens for site navigation.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'GOV Component: Navigation',
+    title: 'Navigation',
     colors: govNavColors,
   },
 };
@@ -400,8 +597,19 @@ const govFooterColors = [
 ];
 
 export const GovFooterColors = {
+  render: (args) => (
+    <div>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Footer Colors
+      </h1>
+      <p style={{ color: 'var(--gov-neutral-600)', marginBottom: 'var(--gov-space-l)' }}>
+        Component-specific tokens for the global footer.
+      </p>
+      <ColorTokens {...args} />
+    </div>
+  ),
   args: {
-    title: 'GOV Component: Footer',
+    title: 'Footer',
     colors: govFooterColors,
   },
 };
@@ -412,6 +620,9 @@ export const GovFooterColors = {
 export const CompleteOverview = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Core Palette Overview
+      </h1>
       <ColorTokens title="Primary (Blue)" colors={govPrimaryColors} />
       <ColorTokens title="Secondary (Yellow/Gold)" colors={govSecondaryColors} />
       <ColorTokens title="Neutral (Grayscale)" colors={govNeutralColors} />
@@ -429,6 +640,9 @@ export const CompleteOverview = {
 export const BrandModesComparison = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+      <h1 style={{ color: 'var(--gov-neutral-900)', marginBottom: 'var(--gov-space-m)' }}>
+        Brand Mode Comparison
+      </h1>
       <ColorTokens title="Mode: GOV (Default Blue)" colors={govPrimaryColors.slice(4, 8)} />
       <ColorTokens title="Mode 2: Green" colors={govMode2Colors.slice(4, 8)} />
       <ColorTokens title="Mode 3: Green Alt" colors={govMode3Colors.slice(4, 8)} />

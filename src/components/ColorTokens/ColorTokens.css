@@ -1,81 +1,125 @@
 /* ========================================
+   Unified Documentation Info Box
+   ---------------------------------------- */
+.doc-info-box {
+  background: linear-gradient(135deg, var(--gov-primary-900) 0%, var(--gov-primary-800) 100%);
+  border-radius: var(--gov-radius-m, 16px);
+  padding: var(--gov-space-xl, 32px);
+  margin-bottom: var(--gov-space-xl, 32px);
+  color: var(--gov-neutral-0);
+}
+
+.doc-info-box__title {
+  font-size: var(--gov-font-headline-m, 24px);
+  font-weight: 600;
+  color: var(--gov-neutral-0);
+  margin-bottom: var(--gov-space-s, 8px);
+  display: flex;
+  align-items: center;
+  gap: var(--gov-space-s, 8px);
+}
+
+.doc-info-box__description {
+  font-size: var(--gov-font-body-m, 16px);
+  color: var(--gov-primary-200);
+  margin-bottom: var(--gov-space-m, 16px);
+}
+
+.doc-info-box__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gov-space-xs, 4px);
+  color: var(--gov-secondary-400);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.doc-info-box__link:hover {
+  color: var(--gov-secondary-300);
+  text-decoration: underline;
+}
+
+/* ========================================
    Color Tokens Documentation Styles
    ======================================== */
 
 .color-tokens {
-  font-family: var(--font-family);
+  font-family: 'Roboto', system-ui, sans-serif;
+  margin-bottom: var(--gov-space-2xl);
 }
 
 .color-tokens__title {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-6);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--color-border);
+  font-size: var(--gov-font-headline-m);
+  font-weight: 600;
+  color: var(--gov-neutral-900);
+  margin-bottom: var(--gov-space-m);
+  padding-bottom: var(--gov-space-xs);
+  border-bottom: 1px solid var(--gov-neutral-200);
 }
 
 .color-tokens__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--gov-space-m);
 }
 
 /* Individual Swatch */
 .color-swatch {
-  background: var(--color-bg-elevated);
-  border-radius: var(--radius-lg);
+  background: var(--gov-neutral-0);
+  border-radius: var(--gov-radius-m);
   overflow: hidden;
-  border: 1px solid var(--color-border);
-  transition: all var(--transition-base);
+  border: 1px solid var(--gov-neutral-200);
+  transition: all 0.2s ease;
 }
 
 .color-swatch:hover {
-  border-color: var(--color-border-hover);
+  border-color: var(--gov-primary-400);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .color-swatch__preview {
   height: 80px;
   width: 100%;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--gov-neutral-100);
 }
 
 .color-swatch__info {
-  padding: var(--space-3);
+  padding: var(--gov-space-m);
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--gov-space-xs);
 }
 
 .color-swatch__var {
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-xs);
-  color: var(--color-accent-secondary);
-  background: var(--color-bg-primary);
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-sm);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--gov-font-body-xs);
+  color: var(--gov-primary-700);
+  background: var(--gov-primary-50);
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--gov-radius-xs);
   display: inline-block;
   width: fit-content;
+  word-break: break-all;
 }
 
 .color-swatch__value {
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--gov-font-body-s);
+  color: var(--gov-neutral-600);
   text-transform: uppercase;
 }
 
 .color-swatch__name {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
+  font-size: var(--gov-font-body-m);
+  font-weight: 500;
+  color: var(--gov-neutral-900);
 }
 
 .color-swatch__usage {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
+  font-size: var(--gov-font-body-xs);
+  color: var(--gov-neutral-500);
   font-style: italic;
 }
 
