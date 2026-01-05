@@ -47,4 +47,7 @@ coverage/
 *.tsbuildinfo
 .eslintcache
 
+# Documentation/Articles (internal notes)
+articles/
+
 
